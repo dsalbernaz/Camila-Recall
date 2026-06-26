@@ -31,6 +31,7 @@ const RECALL_TIME_WINDOWS = String(process.env.RECALL_TIME_WINDOWS || '10:00-18:
   .filter(Boolean);
 const RECALL_TEST_MESSAGE = process.env.RECALL_TEST_MESSAGE
   || `Oi! Aqui e a equipe da ${process.env.CLINIC_NAME || 'clinica'}. Esta mensagem faz parte do piloto controlado da Camila Recall.`;
+const RECALL_TIMEZONE = String(process.env.RECALL_TIMEZONE || 'America/Sao_Paulo').trim() || 'America/Sao_Paulo';
 const RECALL_TEMPLATE_NAME = String(process.env.RECALL_TEMPLATE_NAME || '').trim();
 const RECALL_TEMPLATE_OPENING = String(process.env.RECALL_TEMPLATE_OPENING || RECALL_TEMPLATE_NAME || 'recall_abertura_1').trim();
 const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 'recall_lembrete_2').trim();
@@ -153,11 +154,24 @@ function parseTimeToMinutes(value) {
   return (hours * 60) + minutes;
 }
 
+function getMinutesNowInTimezone(date = new Date(), timeZone = RECALL_TIMEZONE) {
+  const formatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+  const parts = formatter.formatToParts(date);
+  const hour = parseInt(parts.find((part) => part.type === 'hour')?.value || '0', 10);
+  const minute = parseInt(parts.find((part) => part.type === 'minute')?.value || '0', 10);
+  return (hour * 60) + minute;
+}
+
 function isWithinAllowedWindow(date = new Date()) {
   if (!RECALL_TIME_WINDOWS.length) {
     return true;
   }
-  const minutesNow = (date.getHours() * 60) + date.getMinutes();
+  const minutesNow = getMinutesNowInTimezone(date, RECALL_TIMEZONE);
   return RECALL_TIME_WINDOWS.some((windowRange) => {
     const [startRaw, endRaw] = windowRange.split('-');
     const start = parseTimeToMinutes(startRaw);
@@ -969,6 +983,7 @@ function buildDispatchConfig() {
     mode: RECALL_DRY_RUN || !RECALL_ENABLE_REAL_SEND ? 'dry_run' : 'real_send',
     maxSendsPerRun: RECALL_MAX_SENDS_PER_RUN,
     timeWindows: RECALL_TIME_WINDOWS,
+    timezone: RECALL_TIMEZONE,
     testDestinationPhone: RECALL_TEST_DESTINATION_PHONE || null,
     allowlistPhonesCount: RECALL_ALLOWED_PHONES.size,
     allowlistLeadIdsCount: RECALL_ALLOWED_LEAD_IDS.size,

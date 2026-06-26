@@ -106,6 +106,7 @@ Variaveis principais:
 - `RECALL_AGENT_SENDER=camila_recall`
 - `RECALL_AGENT_DELAY_MIN_MS=1200`
 - `RECALL_AGENT_DELAY_MAX_MS=2800`
+- `RECALL_TIMEZONE=America/Sao_Paulo`
 - `CHATWOOT_RECALL_LABEL_HANDOFF=recall_agendar`
 - `CHATWOOT_RECALL_LABEL_IA_OFF=ia_off`
 - `CHATWOOT_RECALL_LABEL_AGUARDANDO=aguardando_atendimento`
