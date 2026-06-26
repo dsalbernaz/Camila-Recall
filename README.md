@@ -61,6 +61,26 @@ Use `docker-stack-portainer.yml` quando voce ja tiver publicado uma imagem e qui
 Vantagem:
 - Melhor para ambientes onde a imagem ja faz parte do pipeline de publicacao.
 
+## Publicacao de imagem via GitHub
+
+Este repositorio ja inclui o workflow:
+
+- `.github/workflows/publish-image.yml`
+
+Fluxo esperado:
+
+1. Fazer o primeiro push do repositorio para o GitHub
+2. Garantir que o GitHub Actions esteja habilitado
+3. Fazer push na branch `main`
+4. O GitHub Actions publicara a imagem em:
+   `ghcr.io/<seu-usuario>/camila-recall:latest`
+
+No Portainer, voce pode usar diretamente:
+
+- `ghcr.io/<seu-usuario>/camila-recall:latest`
+
+Se o pacote ficar privado no GHCR, o servidor/Portainer precisara estar autenticado no registry.
+
 ## Isolamento do Recall
 
 Este pacote foi preparado para evitar cruzamento com o projeto Remarketing:
