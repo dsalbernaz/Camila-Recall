@@ -45,7 +45,15 @@ const RECALL_META_WHATSAPP_TOKEN = process.env.RECALL_META_WHATSAPP_TOKEN || MET
 const RECALL_META_PHONE_NUMBER_ID = process.env.RECALL_META_PHONE_NUMBER_ID || META_PHONE_NUMBER_ID;
 const CHATWOOT_BASE_URL = process.env.CHATWOOT_BASE_URL || '';
 const CHATWOOT_ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID || '';
+const CHATWOOT_API_ACCESS_TOKEN = process.env.CHATWOOT_API_ACCESS_TOKEN || '';
 const CHATWOOT_RECALL_INBOX_ID = process.env.CHATWOOT_RECALL_INBOX_ID || '5';
+const RECALL_AGENT_ENABLED = String(process.env.RECALL_AGENT_ENABLED || 'true').trim().toLowerCase() !== 'false';
+const RECALL_AGENT_SENDER = String(process.env.RECALL_AGENT_SENDER || 'camila_recall').trim() || 'camila_recall';
+const CHATWOOT_RECALL_LABEL_HANDOFF = String(process.env.CHATWOOT_RECALL_LABEL_HANDOFF || 'recall_agendar').trim() || 'recall_agendar';
+const CHATWOOT_RECALL_LABEL_IA_OFF = String(process.env.CHATWOOT_RECALL_LABEL_IA_OFF || 'ia_off').trim() || 'ia_off';
+const CHATWOOT_RECALL_LABEL_OPT_OUT = String(process.env.CHATWOOT_RECALL_LABEL_OPT_OUT || 'recall_opt_out').trim() || 'recall_opt_out';
+const CHATWOOT_RECALL_LABEL_WRONG_NUMBER = String(process.env.CHATWOOT_RECALL_LABEL_WRONG_NUMBER || 'recall_numero_errado').trim() || 'recall_numero_errado';
+const CHATWOOT_RECALL_LABEL_SEM_INTERESSE = String(process.env.CHATWOOT_RECALL_LABEL_SEM_INTERESSE || 'recall_sem_interesse').trim() || 'recall_sem_interesse';
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -201,32 +209,151 @@ function extractChatwootInbound(rawBody) {
   };
 }
 
-function classifyRecallInbound(content) {
-  const normalized = String(content || '')
+function normalizeRecallText(content) {
+  return String(content || '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .trim()
     .toLowerCase();
+}
+
+function includesAny(normalizedText, terms) {
+  return terms.some((term) => normalizedText.includes(term));
+}
+
+function isPositiveRecallIntent(normalizedText) {
+  if (!normalizedText) {
+    return false;
+  }
+  if (normalizedText.includes('quero informa')) {
+    return false;
+  }
+  return includesAny(normalizedText, [
+    'sim',
+    'quero',
+    'tenho interesse',
+    'pode marcar',
+    'pode agendar',
+    'quero fazer',
+    'vamos marcar',
+    'vamos agendar',
+    'bora',
+    'pode ser',
+    'gostaria',
+    'tenho interesse sim',
+    'quero aproveitar',
+  ]);
+}
+
+function buildRecallOpeningMessage(lead) {
+  const firstName = getLeadFirstName(lead.paciente_nome);
+  return `Oi, ${firstName}! Aqui e a Camila, da OrthoDontic. Vi que faz um tempinho desde sua ultima visita com a gente.\n\nComo parte do acompanhamento preventivo, separei um beneficio: avaliacao clinica com o dentista e limpeza dental por R$ 100 em vez de R$ 150.\n\nPosso te explicar rapidinho como funciona?`;
+}
+
+function buildRecallClarificationMessage() {
+  return 'Imagina, sem problema. Voce tem cadastro aqui na OrthoDontic, em Sao Jose dos Campos, e entrei em contato para oferecer um beneficio de acompanhamento preventivo: avaliacao com o dentista + limpeza por R$ 100 em vez de R$ 150.\n\nFaz sentido para voce cuidar disso agora?';
+}
+
+function buildRecallPersuasionMessage() {
+  return 'Que bom que esta cuidando disso. Mesmo assim, a limpeza remove o tartaro que a escovacao nao alcanca, e ele pode virar problema de gengiva ou carie silenciosa.\n\nPor isso a prevencao a cada 6 meses faz diferenca. Quer aproveitar a avaliacao com a limpeza por R$ 100?';
+}
+
+function buildRecallHandoffMessage(lead) {
+  const firstName = getLeadFirstName(lead.paciente_nome);
+  return `Que otimo, ${firstName}! Vou te transferir agora para o nosso setor de Relacionamento com o Cliente, que vai encontrar o melhor horario na agenda do dentista para voce.\n\nEm instantes alguem fala com voce por aqui para confirmar o dia.`;
+}
+
+function buildRecallNoInterestMessage() {
+  return 'Sem problemas. Se em outro momento voce quiser retomar esse cuidado preventivo, e so chamar a gente por aqui.';
+}
+
+function buildRecallOptOutMessage() {
+  return 'Entendido. Vou registrar por aqui para nao te incomodarmos mais com mensagens de recall. Se precisar da OrthoDontic no futuro, estaremos a disposicao.';
+}
+
+function buildRecallWrongNumberMessage() {
+  return 'Obrigada por avisar. Vou registrar este numero como divergente e encerrar esse contato por aqui.';
+}
+
+function buildRecallFallbackMessage(lead) {
+  const firstName = getLeadFirstName(lead.paciente_nome);
+  return `Oi, ${firstName}. Posso te explicar direitinho: esse contato e para um retorno preventivo com avaliacao clinica e limpeza por R$ 100.\n\nFaz sentido para voce aproveitar esse cuidado agora?`;
+}
+
+function classifyRecallInbound(content) {
+  const normalized = normalizeRecallText(content);
 
   if (!normalized) {
     return { intent: 'mensagem_vazia', status: 'pendente' };
   }
 
+  if (includesAny(normalized, [
+    'pare de me mandar',
+    'para de me mandar',
+    'nao quero receber',
+    'nao quero mais receber',
+    'remova meu contato',
+    'sai da lista',
+    'nao me mande mais',
+    'pare com as mensagens',
+  ])) {
+    return { intent: 'opt_out', status: 'opt_out', optOut: true };
+  }
+
+  if (includesAny(normalized, [
+    'numero errado',
+    'engano',
+    'pessoa errada',
+    'nao sou',
+    'esse numero nao e',
+    'nao e a',
+  ])) {
+    return { intent: 'numero_errado', status: 'erro', metaError: 'numero_errado' };
+  }
+
   if (normalized.includes('nao reconhe') || normalized.includes('desconhec')) {
-    return { intent: 'nao_reconhece', status: 'erro', metaError: 'nao_reconhece', openHandoff: true };
+    return { intent: 'nao_reconhece', status: 'em_atendimento_ia', metaError: 'nao_reconhece' };
   }
 
   if (normalized.includes('quero informa')) {
-    return { intent: 'quero_informacoes', status: 'em_atendimento_humano', openHandoff: true };
+    return { intent: 'quero_informacoes', status: 'em_atendimento_ia' };
   }
 
-  return { intent: 'resposta_livre', status: 'em_atendimento_humano', openHandoff: true };
+  if (includesAny(normalized, [
+    'ja faco em outro lugar',
+    'ja faco em outro',
+    'ja tenho dentista',
+    'tenho dentista',
+    'ja faco em outra clinica',
+    'nao tenho interesse',
+    'sem interesse',
+  ])) {
+    return { intent: 'sem_interesse', status: 'concluido_sem_interesse' };
+  }
+
+  if (includesAny(normalized, [
+    'ta tudo bem',
+    'tudo bem por aqui',
+    'estou bem',
+    'nao preciso',
+    'agora nao',
+    'depois eu vejo',
+    'nao precisa',
+  ])) {
+    return { intent: 'objecao_prevencao', status: 'em_atendimento_ia' };
+  }
+
+  if (isPositiveRecallIntent(normalized)) {
+    return { intent: 'aceite_recall', status: 'em_atendimento_humano', openHandoff: true };
+  }
+
+  return { intent: 'resposta_livre', status: 'em_atendimento_ia' };
 }
 
 async function findRecallLeadForInbound(client, inbound) {
   if (inbound.conversationId) {
     const byConversation = await client.query(
-      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id
+      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id, status, respondeu, opt_out, handoff_at, handoff_resolved, meta_error
        FROM ${RECALL_SCHEMA}.recall_leads
        WHERE chatwoot_conversation_id = $1
        LIMIT 1`,
@@ -239,7 +366,7 @@ async function findRecallLeadForInbound(client, inbound) {
 
   if (inbound.phone && inbound.phone !== normalizePhone(RECALL_TEST_DESTINATION_PHONE)) {
     const byPhone = await client.query(
-      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id
+      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id, status, respondeu, opt_out, handoff_at, handoff_resolved, meta_error
        FROM ${RECALL_SCHEMA}.recall_leads
        WHERE regexp_replace(coalesce(telefone, ''), '\\D', '', 'g') = $1
        LIMIT 1`,
@@ -252,7 +379,7 @@ async function findRecallLeadForInbound(client, inbound) {
 
   if (inbound.phone && inbound.phone === normalizePhone(RECALL_TEST_DESTINATION_PHONE)) {
     const byLatestDispatch = await client.query(
-      `SELECT l.id, l.paciente_nome, l.telefone, l.chatwoot_conversation_id
+      `SELECT l.id, l.paciente_nome, l.telefone, l.chatwoot_conversation_id, l.status, l.respondeu, l.opt_out, l.handoff_at, l.handoff_resolved, l.meta_error
        FROM ${RECALL_SCHEMA}.recall_events e
        JOIN ${RECALL_SCHEMA}.recall_leads l
          ON l.id = e.lead_id
@@ -268,6 +395,204 @@ async function findRecallLeadForInbound(client, inbound) {
   }
 
   return null;
+}
+
+async function loadRecallInboundHistory(client, leadId) {
+  const rows = await client.query(
+    `SELECT
+       count(*) FILTER (WHERE payload->>'intent' = 'nao_reconhece')::int AS nao_reconhece_count,
+       count(*) FILTER (WHERE payload->>'intent' = 'quero_informacoes')::int AS quero_informacoes_count,
+       count(*) FILTER (WHERE payload->>'intent' = 'aceite_recall')::int AS aceite_count
+     FROM ${RECALL_SCHEMA}.recall_events
+     WHERE lead_id = $1
+       AND event_type = 'chatwoot_inbound'`,
+    [leadId]
+  );
+  return rows.rows[0] || {
+    nao_reconhece_count: 0,
+    quero_informacoes_count: 0,
+    aceite_count: 0,
+  };
+}
+
+function buildRecallAgentDecision(lead, inbound, history) {
+  const classification = classifyRecallInbound(inbound.content);
+  const labels = (inbound.labels || []).map((label) => String(label || '').toLowerCase());
+
+  if (lead.opt_out) {
+    return {
+      ...classification,
+      ignore: true,
+      reason: 'lead_opt_out',
+    };
+  }
+
+  if (lead.handoff_at && lead.handoff_resolved === false) {
+    return {
+      ...classification,
+      ignore: true,
+      reason: 'handoff_aberto',
+    };
+  }
+
+  if (labels.includes(String(CHATWOOT_RECALL_LABEL_IA_OFF).toLowerCase())) {
+    return {
+      ...classification,
+      ignore: true,
+      reason: 'ia_off_ativo',
+    };
+  }
+
+  if (!RECALL_AGENT_ENABLED) {
+    return {
+      ...classification,
+      ignore: true,
+      reason: 'agente_desativado',
+    };
+  }
+
+  switch (classification.intent) {
+    case 'quero_informacoes':
+      return {
+        ...classification,
+        status: 'em_atendimento_ia',
+        replyMessage: buildRecallOpeningMessage(lead),
+      };
+    case 'nao_reconhece':
+      if ((history.nao_reconhece_count || 0) >= 1) {
+        return {
+          intent: 'numero_errado',
+          status: 'erro',
+          metaError: 'numero_errado',
+          replyMessage: buildRecallWrongNumberMessage(),
+          labelsToAdd: [CHATWOOT_RECALL_LABEL_WRONG_NUMBER, CHATWOOT_RECALL_LABEL_IA_OFF],
+        };
+      }
+      return {
+        ...classification,
+        status: 'em_atendimento_ia',
+        replyMessage: buildRecallClarificationMessage(),
+      };
+    case 'objecao_prevencao':
+      return {
+        ...classification,
+        status: 'em_atendimento_ia',
+        replyMessage: buildRecallPersuasionMessage(),
+      };
+    case 'aceite_recall':
+      return {
+        ...classification,
+        status: 'em_atendimento_humano',
+        openHandoff: true,
+        replyMessage: buildRecallHandoffMessage(lead),
+        privateNote: 'Camila Recall: paciente confirmou interesse no retorno preventivo. Assumir a conversa para definir o melhor horario com o dentista.',
+        labelsToAdd: [CHATWOOT_RECALL_LABEL_HANDOFF, CHATWOOT_RECALL_LABEL_IA_OFF],
+      };
+    case 'opt_out':
+      return {
+        ...classification,
+        status: 'opt_out',
+        optOut: true,
+        replyMessage: buildRecallOptOutMessage(),
+        labelsToAdd: [CHATWOOT_RECALL_LABEL_OPT_OUT, CHATWOOT_RECALL_LABEL_IA_OFF],
+      };
+    case 'numero_errado':
+      return {
+        ...classification,
+        status: 'erro',
+        metaError: 'numero_errado',
+        replyMessage: buildRecallWrongNumberMessage(),
+        labelsToAdd: [CHATWOOT_RECALL_LABEL_WRONG_NUMBER, CHATWOOT_RECALL_LABEL_IA_OFF],
+      };
+    case 'sem_interesse':
+      return {
+        ...classification,
+        status: 'concluido_sem_interesse',
+        replyMessage: buildRecallNoInterestMessage(),
+        labelsToAdd: [CHATWOOT_RECALL_LABEL_SEM_INTERESSE, CHATWOOT_RECALL_LABEL_IA_OFF],
+      };
+    case 'resposta_livre':
+      return {
+        ...classification,
+        status: 'em_atendimento_ia',
+        replyMessage: (history.quero_informacoes_count || 0) > 0
+          ? buildRecallPersuasionMessage()
+          : buildRecallFallbackMessage(lead),
+      };
+    default:
+      return {
+        ...classification,
+        status: classification.status || 'em_atendimento_ia',
+      };
+  }
+}
+
+function buildChatwootApiUrl(pathname) {
+  const base = String(CHATWOOT_BASE_URL || '').replace(/\/+$/, '');
+  return `${base}/api/v1/accounts/${CHATWOOT_ACCOUNT_ID}${pathname}`;
+}
+
+async function chatwootRequest(pathname, options = {}) {
+  if (!CHATWOOT_BASE_URL || !CHATWOOT_ACCOUNT_ID || !CHATWOOT_API_ACCESS_TOKEN) {
+    throw new Error('chatwoot_nao_configurado');
+  }
+
+  const response = await fetch(buildChatwootApiUrl(pathname), {
+    method: options.method || 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      api_access_token: CHATWOOT_API_ACCESS_TOKEN,
+      ...(options.headers || {}),
+    },
+    body: options.body ? JSON.stringify(options.body) : undefined,
+  });
+
+  const responseText = await response.text();
+  let parsed;
+  try {
+    parsed = responseText ? JSON.parse(responseText) : {};
+  } catch (error) {
+    parsed = { raw: responseText };
+  }
+
+  if (!response.ok) {
+    throw new Error(parsed?.error || parsed?.message || `chatwoot_http_${response.status}`);
+  }
+
+  return parsed;
+}
+
+async function postChatwootConversationMessage(conversationId, content, options = {}) {
+  return chatwootRequest(`/conversations/${conversationId}/messages`, {
+    method: 'POST',
+    body: {
+      content,
+      message_type: 'outgoing',
+      private: options.private === true,
+      ...(options.private === true
+        ? {}
+        : { content_attributes: { sent_by: RECALL_AGENT_SENDER } }),
+    },
+  });
+}
+
+async function mergeChatwootConversationLabels(conversationId, labelsToAdd = []) {
+  if (!labelsToAdd.length) {
+    return [];
+  }
+
+  const current = await chatwootRequest(`/conversations/${conversationId}/labels`, {
+    method: 'GET',
+  });
+  const existing = Array.isArray(current.payload) ? current.payload.map(String) : [];
+  const merged = [...new Set([...existing, ...labelsToAdd.filter(Boolean)])];
+
+  await chatwootRequest(`/conversations/${conversationId}/labels`, {
+    method: 'POST',
+    body: { labels: merged },
+  });
+
+  return merged;
 }
 
 async function handleRecallChatwootInbound(rawBody) {
@@ -287,6 +612,7 @@ async function handleRecallChatwootInbound(rawBody) {
 
   const client = new Client({ connectionString });
   await client.connect();
+  let leadIdForError = null;
 
   try {
     await client.query('BEGIN');
@@ -295,26 +621,41 @@ async function handleRecallChatwootInbound(rawBody) {
       await client.query('ROLLBACK');
       return { success: false, reason: 'lead_nao_encontrado', inbound };
     }
+    leadIdForError = lead.id;
 
-    const classification = classifyRecallInbound(inbound.content);
+    const history = await loadRecallInboundHistory(client, lead.id);
+    const decision = buildRecallAgentDecision(lead, inbound, history);
+
+    if (decision.ignore) {
+      await client.query('ROLLBACK');
+      return {
+        success: true,
+        ignored: true,
+        reason: decision.reason,
+        leadId: lead.id,
+      };
+    }
+
     await client.query(
       `UPDATE ${RECALL_SCHEMA}.recall_leads
        SET respondeu = true,
            status = $2,
            meta_error = $3,
-           handoff_at = CASE WHEN $4 THEN coalesce(handoff_at, now()) ELSE handoff_at END,
-           handoff_resolved = CASE WHEN $4 THEN false ELSE handoff_resolved END,
-           chatwoot_conversation_id = coalesce($5, chatwoot_conversation_id),
-           chatwoot_contact_id = coalesce($6, chatwoot_contact_id),
+           opt_out = $4,
+           handoff_at = CASE WHEN $5 THEN coalesce(handoff_at, now()) ELSE handoff_at END,
+           handoff_resolved = CASE WHEN $5 THEN false ELSE handoff_resolved END,
+           chatwoot_conversation_id = coalesce($6, chatwoot_conversation_id),
+           chatwoot_contact_id = coalesce($7, chatwoot_contact_id),
            proxima_acao_tipo = null,
            proxima_acao_em = null,
            updated_at = now()
        WHERE id = $1`,
       [
         lead.id,
-        classification.status,
-        classification.metaError || null,
-        Boolean(classification.openHandoff),
+        decision.status,
+        decision.metaError || null,
+        decision.optOut === true,
+        Boolean(decision.openHandoff),
         inbound.conversationId,
         inbound.contactId,
       ]
@@ -332,24 +673,83 @@ async function handleRecallChatwootInbound(rawBody) {
           phone: inbound.phone,
           content: inbound.content,
           labels: inbound.labels,
-          intent: classification.intent,
-          status_aplicado: classification.status,
+          intent: decision.intent,
+          status_aplicado: decision.status,
         }),
       ]
     );
 
     await client.query('COMMIT');
+
+    let sentMessage = false;
+    let mergedLabels = [];
+    if (decision.replyMessage && inbound.conversationId) {
+      await postChatwootConversationMessage(inbound.conversationId, decision.replyMessage, {
+        private: false,
+      });
+      sentMessage = true;
+    }
+
+    if (decision.privateNote && inbound.conversationId) {
+      await postChatwootConversationMessage(inbound.conversationId, decision.privateNote, {
+        private: true,
+      });
+    }
+
+    if (decision.labelsToAdd?.length && inbound.conversationId) {
+      mergedLabels = await mergeChatwootConversationLabels(inbound.conversationId, decision.labelsToAdd);
+    }
+
+    await runQuery(
+      `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+       VALUES ($1, 'chatwoot_agent_reply', $2::jsonb)`,
+      [
+        lead.id,
+        JSON.stringify({
+          conversation_id: inbound.conversationId,
+          intent: decision.intent,
+          status_aplicado: decision.status,
+          handoff_open: Boolean(decision.openHandoff),
+          opt_out: decision.optOut === true,
+          labels: mergedLabels,
+          sent_message: sentMessage,
+          private_note: Boolean(decision.privateNote),
+        }),
+      ]
+    );
+
     return {
       success: true,
       ignored: false,
       leadId: lead.id,
       pacienteNome: lead.paciente_nome,
-      intent: classification.intent,
-      status: classification.status,
+      intent: decision.intent,
+      status: decision.status,
       conversationId: inbound.conversationId,
+      handoffOpen: Boolean(decision.openHandoff),
+      labels: mergedLabels,
     };
   } catch (error) {
     await client.query('ROLLBACK').catch(() => {});
+    if (error?.message && error.message !== 'chatwoot_nao_configurado') {
+      try {
+        if (leadIdForError) {
+          await runQuery(
+            `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+             VALUES ($1, 'chatwoot_agent_error', $2::jsonb)`,
+            [
+              leadIdForError,
+              JSON.stringify({
+                error: error.message,
+                conversation_id: inbound.conversationId,
+              }),
+            ]
+          );
+        }
+      } catch (_) {
+        // ignore secondary logging failures
+      }
+    }
     throw error;
   } finally {
     await client.end();
@@ -568,8 +968,17 @@ function buildDispatchConfig() {
     templateLanguage: RECALL_TEMPLATE_LANGUAGE,
     templateUsesFirstName: RECALL_TEMPLATE_USE_FIRST_NAME,
     reminderDelayDays: RECALL_REMINDER_DELAY_DAYS,
-    chatwootConfigured: Boolean(CHATWOOT_BASE_URL && CHATWOOT_ACCOUNT_ID),
+    chatwootConfigured: Boolean(CHATWOOT_BASE_URL && CHATWOOT_ACCOUNT_ID && CHATWOOT_API_ACCESS_TOKEN),
     chatwootRecallInboxId: CHATWOOT_RECALL_INBOX_ID || null,
+    agentEnabled: RECALL_AGENT_ENABLED,
+    agentSender: RECALL_AGENT_SENDER,
+    agentLabels: {
+      handoff: CHATWOOT_RECALL_LABEL_HANDOFF,
+      iaOff: CHATWOOT_RECALL_LABEL_IA_OFF,
+      optOut: CHATWOOT_RECALL_LABEL_OPT_OUT,
+      wrongNumber: CHATWOOT_RECALL_LABEL_WRONG_NUMBER,
+      semInteresse: CHATWOOT_RECALL_LABEL_SEM_INTERESSE,
+    },
     testMessagePreview: RECALL_TEST_MESSAGE,
   };
 }

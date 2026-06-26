@@ -90,6 +90,33 @@ Este pacote foi preparado para evitar cruzamento com o projeto Remarketing:
 - `RECALL_META_PHONE_NUMBER_ID` dedicado: `1185849817944465`
 - envio real bloqueado se as credenciais dedicadas do Recall nao estiverem preenchidas
 
+## Agente Recall MVP
+
+O servidor da Recall agora suporta um agente inicial de atendimento na inbox `5`, com foco em:
+
+- responder a `Quero informacoes`
+- tratar `Nao reconheco`
+- persuadir objeções simples de prevencao
+- abrir handoff humano apenas quando o paciente confirmar interesse
+- respeitar opt-out e numero errado
+
+Variaveis principais:
+
+- `RECALL_AGENT_ENABLED=true`
+- `RECALL_AGENT_SENDER=camila_recall`
+- `CHATWOOT_RECALL_LABEL_HANDOFF=recall_agendar`
+- `CHATWOOT_RECALL_LABEL_IA_OFF=ia_off`
+- `CHATWOOT_RECALL_LABEL_OPT_OUT=recall_opt_out`
+- `CHATWOOT_RECALL_LABEL_WRONG_NUMBER=recall_numero_errado`
+- `CHATWOOT_RECALL_LABEL_SEM_INTERESSE=recall_sem_interesse`
+
+Quando houver aceite do paciente, a Recall:
+
+- envia a mensagem de transferencia
+- adiciona a label de handoff
+- adiciona `ia_off`
+- grava `handoff_at` no lead
+
 Para envio real, configure obrigatoriamente:
 
 - `RECALL_META_WHATSAPP_TOKEN`
