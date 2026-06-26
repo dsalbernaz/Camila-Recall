@@ -115,3 +115,17 @@ Rotas principais apos deploy:
 5. Subir o servico
 6. No Chatwoot inbox `5`, apontar o webhook `message_created` para:
    `https://dashboard.oc332.com.br/api/recall/chatwoot/webhook`
+
+## Banco no servidor
+
+Para deploy em servidor Docker, use o pooler do Supabase em vez do host direto IPv6.
+
+Configuracao recomendada:
+
+- `PGHOST=aws-1-sa-east-1.pooler.supabase.com`
+- `PGPORT=5432`
+- `PGDATABASE=postgres`
+- `PGUSER=postgres.nndduotjbyunggamqnyh`
+- `PGPASSWORD=<sua-senha>`
+
+Se usar `db.nndduotjbyunggamqnyh.supabase.co`, o container pode falhar com erro de rede IPv6 como `ENETUNREACH`.

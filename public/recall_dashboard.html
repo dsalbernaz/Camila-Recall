@@ -1,630 +1,391 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html class="light" lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camila Recall - Centro Operacional MVP</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Camila Recall | Dashboard</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --panel-2: #1f2937;
-      --line: rgba(255,255,255,0.08);
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #14b8a6;
-      --accent-2: #22c55e;
-      --warn: #f59e0b;
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
-    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(20,184,166,0.14), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(34,197,94,0.12), transparent 35%),
-        var(--bg);
-      color: var(--text);
-    }
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: 44px;
-      line-height: 1;
-      color: var(--accent);
-    }
-    .subtitle { color: var(--muted); margin: 0; }
-    .badge {
-      border: 1px solid rgba(20,184,166,0.35);
-      background: rgba(20,184,166,0.08);
-      color: #7dd3fc;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .outcome-strip {
-      display: grid;
-      grid-template-columns: 1.2fr repeat(5, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .attention-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .dispatch-strip {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .queue-strip {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .card, .table-card, .batch-card, .detail-card {
-      background: rgba(17,24,39,0.88);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    }
-    .card { padding: 18px; }
-    .attention-card {
-      padding: 18px;
-      background: rgba(17,24,39,0.88);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    }
-    .attention-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .attention-item {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      cursor: pointer;
-    }
-    .attention-item:hover {
-      background: rgba(255,255,255,0.04);
-    }
-    .dispatch-card {
-      padding: 18px;
-      background: rgba(17,24,39,0.88);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    }
-    .dispatch-toolbar {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: end;
-      margin-top: 12px;
-      margin-bottom: 14px;
-    }
-    .dispatch-list {
-      display: grid;
-      gap: 10px;
-    }
-    .dispatch-item {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .dispatch-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .dispatch-actions button {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .dispatch-log {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .dispatch-mode {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(20,184,166,0.18);
-      background: rgba(20,184,166,0.06);
-    }
-    .dispatch-mode.warn {
-      border-color: rgba(245,158,11,0.22);
-      background: rgba(245,158,11,0.08);
-    }
-    .dispatch-mode strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-    .outcome-hero {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 138px;
-    }
-    .outcome-kpis {
-      display: flex;
-      align-items: end;
-      gap: 12px;
-      margin-top: 8px;
-    }
-    .outcome-kpis strong {
-      font-size: 40px;
-      line-height: 1;
-    }
-    .outcome-kpis span {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-    .label {
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: .06em;
-    }
-    .value {
-      margin-top: 8px;
-      font-size: 42px;
-      font-weight: 800;
-    }
-    .desc {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 16px;
-      align-items: end;
-    }
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .field label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    input, select, button {
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: var(--panel-2);
-      color: var(--text);
-      padding: 10px 12px;
-      font-size: 14px;
-    }
-    button {
-      cursor: pointer;
-      background: linear-gradient(135deg, #0f766e, #14b8a6);
-      font-weight: 700;
-      border: none;
-    }
-    .table-card, .batch-card { overflow: hidden; }
-    .table-head {
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      text-align: left;
-      font-size: 14px;
-    }
-    th {
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      background: rgba(255,255,255,0.02);
-    }
-    .pill {
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .pill.batch-latest {
-      background: rgba(34,197,94,0.16);
-      color: #86efac;
-    }
-    .seg-clinica { background: rgba(20,184,166,0.14); color: #5eead4; }
-    .seg-orto { background: rgba(245,158,11,0.14); color: #fcd34d; }
-    .status-pendente { background: rgba(59,130,246,0.14); color: #93c5fd; }
-    .status-em_atendimento_humano { background: rgba(245,158,11,0.14); color: #fcd34d; }
-    .status-respondido { background: rgba(20,184,166,0.14); color: #5eead4; }
-    .status-opt_out, .status-erro { background: rgba(239,68,68,0.14); color: #fca5a5; }
-    .pager {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 18px;
-    }
-    .muted { color: var(--muted); }
-    .layout {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-    .lead-row { cursor: pointer; }
-    .lead-row:hover td { background: rgba(255,255,255,0.03); }
-    .detail-card {
-      margin-top: 16px;
-      padding: 18px;
-    }
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px 16px;
-      margin-bottom: 18px;
-    }
-    .detail-item {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 10px 12px;
-    }
-    .detail-item strong {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .detail-actions {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .detail-actions .field select,
-    .detail-actions .field input { width: 100%; }
-    .detail-actions .field {
-      min-width: 0;
-    }
-    .attempt-card {
-      margin-bottom: 18px;
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .attempt-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.2fr auto;
-      gap: 12px;
-      align-items: end;
-      margin-top: 12px;
-    }
-    .attempt-buttons {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .attempt-buttons button {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .followup-card {
-      margin-bottom: 18px;
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .followup-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.2fr auto;
-      gap: 12px;
-      align-items: end;
-      margin-top: 12px;
-    }
-    .followup-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .followup-item {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      cursor: pointer;
-    }
-    .followup-item:hover {
-      background: rgba(255,255,255,0.04);
-    }
-    .event-list {
-      display: grid;
-      gap: 10px;
-      max-height: 260px;
-      overflow: auto;
-    }
-    .event-item {
-      padding: 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .queue-card {
-      padding: 18px;
-    }
-    .queue-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    .queue-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .queue-stat {
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .queue-stat strong {
-      display: block;
-      font-size: 28px;
-      margin-top: 6px;
-    }
-    .queue-list {
-      display: grid;
-      gap: 10px;
-    }
-    .queue-item {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      cursor: pointer;
-    }
-    .queue-item:hover {
-      background: rgba(255,255,255,0.04);
-    }
-    .queue-item-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
-    .quick-filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .quick-filter {
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .quick-filter.active {
-      background: linear-gradient(135deg, #0f766e, #14b8a6);
-      color: white;
-    }
-    .event-item .muted {
-      font-size: 12px;
-      margin-top: 6px;
-    }
-    @media (max-width: 960px) {
-      header, .layout, .queue-strip, .outcome-strip, .attention-strip, .dispatch-strip { grid-template-columns: 1fr; display: block; }
-      header { margin-bottom: 20px; }
-      .badge { display: inline-block; margin-top: 12px; }
-      .detail-grid, .detail-actions, .attempt-grid, .followup-grid, .queue-stats { grid-template-columns: 1fr; }
+        font-family: 'Inter', sans-serif;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .safe-pb {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    .custom-glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .status-pulse {
+        animation: pulse-dot 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+    @keyframes pulse-dot {
+        0% { transform: scale(0.8); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.5; }
+        100% { transform: scale(0.8); opacity: 1; }
+    }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-secondary-container": "#006f64",
+                  "surface-dim": "#ccdbf2",
+                  "on-secondary": "#ffffff",
+                  "outline": "#76777d",
+                  "secondary-fixed": "#71f8e4",
+                  "secondary-fixed-dim": "#4fdbc8",
+                  "border-light": "#E5E7EB",
+                  "on-surface": "#0d1c2d",
+                  "on-error": "#ffffff",
+                  "status-inactive": "#64748B",
+                  "tertiary-fixed-dim": "#dec29a",
+                  "surface": "#f8f9ff",
+                  "surface-variant": "#d4e4fa",
+                  "primary-fixed": "#dae2fd",
+                  "inverse-primary": "#bec6e0",
+                  "on-primary": "#ffffff",
+                  "primary-fixed-dim": "#bec6e0",
+                  "on-primary-fixed": "#131b2e",
+                  "primary-container": "#131b2e",
+                  "surface-tint": "#565e74",
+                  "surface-subtle": "#F8FAFC",
+                  "surface-bright": "#f8f9ff",
+                  "on-tertiary-fixed": "#271901",
+                  "surface-container-low": "#eef4ff",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-container-high": "#dbe9ff",
+                  "inverse-on-surface": "#e9f1ff",
+                  "on-secondary-fixed": "#00201c",
+                  "on-tertiary-fixed-variant": "#574425",
+                  "on-tertiary": "#ffffff",
+                  "error": "#ba1a1a",
+                  "on-primary-container": "#7c839b",
+                  "error-container": "#ffdad6",
+                  "on-background": "#0d1c2d",
+                  "on-surface-variant": "#45464d",
+                  "status-warning": "#F59E0B",
+                  "primary": "#000000",
+                  "on-tertiary-container": "#98805d",
+                  "on-secondary-fixed-variant": "#005048",
+                  "secondary": "#006b5f",
+                  "tertiary-fixed": "#fcdeb5",
+                  "secondary-container": "#6df5e1",
+                  "status-error": "#EF4444",
+                  "inverse-surface": "#233143",
+                  "surface-container": "#e5efff",
+                  "tertiary": "#000000",
+                  "tertiary-container": "#271901",
+                  "on-primary-fixed-variant": "#3f465c",
+                  "background": "#f8f9ff",
+                  "outline-variant": "#c6c6cd",
+                  "status-success": "#10B981",
+                  "surface-container-highest": "#d4e4fa",
+                  "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "container-padding-desktop": "32px",
+                  "container-padding-mobile": "16px",
+                  "stack-sm": "4px",
+                  "stack-md": "12px",
+                  "gutter": "16px",
+                  "stack-lg": "24px",
+                  "base": "8px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Inter"],
+                  "headline-sm": ["Inter"],
+                  "data-mono": ["JetBrains Mono"],
+                  "label-caps": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "display-kpi": ["Inter"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                  "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "data-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                  "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "display-kpi": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <header>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+
+  <!-- TopAppBar Header -->
+  <header class="flex justify-between items-center px-container-padding-mobile h-16 w-full z-50 sticky top-0 bg-surface dark:bg-on-background shadow-sm border-b border-border-light">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+        <img class="w-full h-full object-cover" alt="Dentist Headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWsR1Fr8Y4DDAwvrt-5M-KNmvfVEI0W4Lw8XZheiXuvX9_9A27O9ZWZfcBOc8Ldj_GZrvW6A2WipvCWSBsgR4fxQPfHf_JHBA8H2AOhggdR_M2GFT7GnTSaItxDNfg_p0utzHjf-xs4EerfSzFoY6QmlnsWBqK7Ak1z7hyYhaA4zvbSAEBgciIsbIoF3TsZN8JSnxAqv0lB0pVzMNe-EFtR_Pv67TME5NdlGvVI0No5kTFRyu-RHmiFfysg0v8HAesC31XiRoxaw"/>
+      </div>
       <div>
-        <h1>Camila Recall</h1>
-        <p class="subtitle">Centro operacional MVP separado do Remarketing, lendo somente o schema <code>recall</code>.</p>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface dark:text-surface-bright leading-none">Camila Recall</h1>
+        <span class="text-[9px] text-outline font-semibold tracking-wider">Centro Operacional MVP • Schema recall</span>
       </div>
-      <div class="badge">Schema isolado: recall</div>
-    </header>
+    </div>
+    <button onclick="refreshAll()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant dark:hover:bg-surface-container-high transition-transform active:scale-95">
+      <span class="material-symbols-outlined text-primary dark:text-primary-fixed">refresh</span>
+    </button>
+  </header>
 
-    <section class="metrics" id="metricsGrid"></section>
+  <!-- Main Scrollable Content Container -->
+  <main class="flex-grow px-container-padding-mobile pt-stack-lg pb-32 max-w-4xl mx-auto w-full flex flex-col gap-gutter">
 
-    <section class="outcome-strip" id="outcomeStrip"></section>
-
-    <section class="attention-strip">
-      <article class="attention-card">
-        <strong>Retornos atrasados</strong>
-        <div class="muted" style="margin-top:6px;">Casos que ja passaram do horario e precisam voltar para a fila humana.</div>
-        <div class="attention-list" id="attentionOverdue"></div>
-      </article>
-      <article class="attention-card">
-        <strong>Handoffs abertos</strong>
-        <div class="muted" style="margin-top:6px;">Conversas em atendimento humano que ainda nao foram resolvidas.</div>
-        <div class="attention-list" id="attentionHandoffs"></div>
-      </article>
-      <article class="attention-card">
-        <strong>Problemas de base</strong>
-        <div class="muted" style="margin-top:6px;">Telefones invalidados hoje para tratarmos a qualidade da base antes de escalar o recall.</div>
-        <div class="attention-list" id="attentionInvalidPhones"></div>
-      </article>
-    </section>
-
-    <section class="dispatch-strip">
-      <article class="dispatch-card">
-        <strong>Fila de disparo auditavel</strong>
-        <div class="muted" style="margin-top:6px;">Aqui comeca o motor do Recall: quem saiu da base pronta e entrou num lote operacional controlado.</div>
-        <div class="dispatch-mode" id="dispatchModeCard">
-          <strong id="dispatchModeTitle">Modo do motor: carregando...</strong>
-          <div class="muted" id="dispatchModeSummary">Verificando protecoes do piloto.</div>
+    <!-- TAB 1: OVERVIEW -->
+    <div id="tab-overview" class="tab-pane flex flex-col gap-gutter">
+      <!-- Operational Summary Section -->
+      <section class="flex flex-col gap-stack-md">
+        <div class="flex items-center justify-between">
+          <h2 class="font-headline-sm text-headline-sm">Sumário Operacional</h2>
+          <span class="font-label-caps text-label-caps text-on-surface-variant" id="currentDateHeader">Hoje</span>
         </div>
-        <div class="dispatch-toolbar">
-          <div class="field">
-            <label>Qtd.</label>
-            <input id="dispatchLimit" type="number" min="1" max="100" value="20">
+        
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+          <!-- Card 1: Retornos Atrasados -->
+          <div class="bg-surface-container-lowest border-l-4 border-status-error p-5 rounded-xl shadow-sm flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-label-caps text-[10px] text-on-surface-variant mb-1">RETORNOS ATRASADOS</p>
+                <p class="font-display-kpi text-[32px] font-bold text-status-error leading-none" id="kpiOverdueCount">0</p>
+              </div>
+              <div class="bg-error-container text-on-error-container p-2 rounded-lg">
+                <span class="material-symbols-outlined">history</span>
+              </div>
+            </div>
+            <div class="text-[11px] text-outline">Casos que já passaram do horário e precisam voltar para a fila humana.</div>
+            <div class="attention-list flex flex-col gap-2 mt-1" id="attentionOverdue"></div>
           </div>
-          <div class="field">
-            <label>Etapa</label>
-            <select id="dispatchStage">
-              <option value="abertura">Abertura</option>
-              <option value="lembrete">Lembrete</option>
-            </select>
+          
+          <!-- Card 2: Handoffs Abertos -->
+          <div class="bg-surface-container-lowest border-l-4 border-status-warning p-5 rounded-xl shadow-sm flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-label-caps text-[10px] text-on-surface-variant mb-1">HANDOFFS ABERTOS</p>
+                <p class="font-display-kpi text-[32px] font-bold text-status-warning leading-none" id="kpiHandoffsCount">0</p>
+              </div>
+              <div class="bg-surface-container-high text-on-tertiary-container p-2 rounded-lg">
+                <span class="material-symbols-outlined">forum</span>
+              </div>
+            </div>
+            <div class="text-[11px] text-outline">Conversas em atendimento humano que ainda não foram resolvidas.</div>
+            <div class="attention-list flex flex-col gap-2 mt-1" id="attentionHandoffs"></div>
           </div>
-          <label style="display:flex; gap:8px; align-items:center; margin-bottom:10px;">
-            <input id="dispatchLatestOnly" type="checkbox" checked>
-            <span>Somente ultimo lote</span>
-          </label>
-          <button id="btnGenerateDispatchQueue" type="button">Gerar fila</button>
-          <button id="btnExecuteDispatchBatch" type="button">Executar lote teste</button>
-        </div>
-        <div class="dispatch-list" id="dispatchQueueList"></div>
-      </article>
-
-      <article class="dispatch-card">
-        <strong>Resumo da fila</strong>
-        <div class="muted" style="margin-top:6px;">Acompanha o lote do dia antes de qualquer envio automatico.</div>
-        <div class="queue-stats" style="margin-top:14px;">
-          <div class="queue-stat">
-            <div class="label">Pendentes</div>
-            <strong id="dispatchPendingCount">0</strong>
-          </div>
-          <div class="queue-stat">
-            <div class="label">Reservados</div>
-            <strong id="dispatchReservedCount">0</strong>
-          </div>
-          <div class="queue-stat">
-            <div class="label">Processados</div>
-            <strong id="dispatchProcessedCount">0</strong>
+          
+          <!-- Card 3: Problemas de Base -->
+          <div class="bg-surface-container-lowest border-l-4 border-status-inactive p-5 rounded-xl shadow-sm flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="font-label-caps text-[10px] text-on-surface-variant mb-1">PROBLEMAS DE BASE</p>
+                <p class="font-display-kpi text-[32px] font-bold text-on-surface leading-none" id="kpiInvalidPhonesCount">0</p>
+              </div>
+              <div class="bg-surface-container-low text-on-surface-variant p-2 rounded-lg">
+                <span class="material-symbols-outlined">error_outline</span>
+              </div>
+            </div>
+            <div class="text-[11px] text-outline">Telefones invalidados hoje para tratarmos a qualidade da base.</div>
+            <div class="attention-list flex flex-col gap-2 mt-1" id="attentionInvalidPhones"></div>
           </div>
         </div>
-        <strong style="display:block; margin-top:10px;">Disparos executados hoje</strong>
-        <div class="dispatch-log" id="dispatchLogs"></div>
-      </article>
-    </section>
+      </section>
 
-    <section class="queue-strip">
-      <div class="queue-card">
-        <div class="queue-head">
+      <!-- Motor do Recall Section -->
+      <section class="bg-primary-container text-on-primary rounded-2xl p-6 relative overflow-hidden shadow-lg">
+        <div class="relative z-10 flex flex-col gap-5">
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-status-success rounded-full status-pulse"></div>
+            <h2 class="font-headline-sm text-headline-sm text-white">Motor do Recall</h2>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10">
+            <p class="font-label-caps text-[10px] text-primary-fixed mb-1 uppercase tracking-wider">Estado Atual</p>
+            <p class="font-headline-md text-white font-bold leading-tight" id="dispatchModeTitle">Modo: Carregando...</p>
+            <p class="font-body-md text-xs text-primary-fixed-dim mt-1 opacity-80" id="dispatchModeSummary">Verificando proteções do piloto e integridade dos dados.</p>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col gap-3">
+            <h3 class="font-label-caps text-[10px] text-primary-fixed uppercase tracking-wider font-bold">Fila de Disparo Auditável</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-primary-fixed-dim font-bold">QTD. DE DISPAROS</label>
+                <input id="dispatchLimit" type="number" min="1" max="100" value="20" class="bg-white/10 border-white/20 text-white rounded-lg p-2 text-xs focus:ring-secondary focus:border-secondary">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-primary-fixed-dim font-bold">ETAPA</label>
+                <select id="dispatchStage" class="bg-white/10 border-white/20 text-white rounded-lg p-2 text-xs focus:ring-secondary focus:border-secondary">
+                  <option value="abertura" class="text-on-surface">Abertura</option>
+                  <option value="lembrete" class="text-on-surface">Lembrete</option>
+                </select>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 mt-1 cursor-pointer">
+              <input id="dispatchLatestOnly" type="checkbox" checked class="rounded border-white/20 bg-white/10 text-secondary focus:ring-0">
+              <span class="text-xs text-primary-fixed-dim">Somente último lote</span>
+            </label>
+            
+            <div class="flex gap-2 mt-2">
+              <button id="btnGenerateDispatchQueue" type="button" class="flex-1 bg-secondary text-on-secondary h-11 rounded-lg font-label-caps text-xs flex items-center justify-center gap-2 active:scale-95 transition-all hover:opacity-90">
+                <span class="material-symbols-outlined text-sm">settings_suggest</span>
+                GERAR FILA
+              </button>
+              <button id="btnExecuteDispatchBatch" type="button" class="flex-1 bg-white/15 text-white border border-white/10 h-11 rounded-lg font-label-caps text-xs flex items-center justify-center gap-2 active:scale-95 transition-all hover:bg-white/20">
+                <span class="material-symbols-outlined text-sm">play_arrow</span>
+                EXECUTAR LOTE TESTE
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fila de Disparo Auditavel List -->
+      <section class="bg-surface-container-lowest rounded-2xl p-6 border border-border-light shadow-sm">
+        <h2 class="font-headline-sm text-headline-sm mb-4">Itens da Fila de Disparo</h2>
+        <div class="dispatch-list flex flex-col gap-3" id="dispatchQueueList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- Resumo da Fila Section -->
+      <section class="bg-surface-container-lowest rounded-2xl p-6 border border-border-light shadow-sm flex flex-col gap-6">
+        <div>
+          <h2 class="font-headline-sm text-headline-sm">Resumo da Fila</h2>
+          <p class="text-xs text-on-surface-variant mt-1">Status da fila do lote do dia antes dos disparos automáticos.</p>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="flex h-3 w-full rounded-full overflow-hidden bg-surface-variant">
+          <div class="bg-status-inactive w-[0%]" id="progressPending" title="Pendentes"></div>
+          <div class="bg-status-warning w-[0%]" id="progressReserved" title="Reservados"></div>
+          <div class="bg-status-success w-[0%]" id="progressProcessed" title="Processados"></div>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-2">
+          <div class="flex flex-col items-center">
+            <div class="w-2 h-2 rounded-full bg-status-inactive mb-2"></div>
+            <p class="font-display-kpi text-[24px] text-on-surface font-bold" id="dispatchPendingCount">0</p>
+            <p class="font-label-caps text-[10px] text-on-surface-variant">PENDENTES</p>
+          </div>
+          <div class="flex flex-col items-center border-x border-border-light">
+            <div class="w-2 h-2 rounded-full bg-status-warning mb-2"></div>
+            <p class="font-display-kpi text-[24px] text-on-surface font-bold" id="dispatchReservedCount">0</p>
+            <p class="font-label-caps text-[10px] text-on-surface-variant">RESERVADOS</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-2 h-2 rounded-full bg-status-success mb-2"></div>
+            <p class="font-display-kpi text-[24px] text-on-surface font-bold" id="dispatchProcessedCount">0</p>
+            <p class="font-label-caps text-[10px] text-on-surface-variant">PROCESSADOS</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold text-on-surface mb-3">Disparos Executados Hoje</h3>
+          <div class="dispatch-log flex flex-col gap-2 max-h-56 overflow-y-auto" id="dispatchLogs">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Fila Pronta para Contato Section -->
+      <section class="flex flex-col gap-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
-            <strong>Fila pronta para contato</strong>
-            <div class="muted" id="queueSummary">Carregando fila operacional...</div>
+            <h2 class="font-headline-sm text-headline-sm">Fila Pronta para Contato</h2>
+            <p class="text-xs text-on-surface-variant mt-1 font-medium" id="queueSummary">Carregando fila operacional...</p>
           </div>
-          <div class="quick-filters">
-            <button class="quick-filter" id="quickReadyBtn" type="button">Somente prontos</button>
-            <button class="quick-filter" id="quickLatestBtn" type="button">Somente ultimo lote</button>
-          </div>
-        </div>
-        <div class="queue-stats">
-          <div class="queue-stat">
-            <div class="label">Prontos na base</div>
-            <strong id="queueReadyOverall">0</strong>
-          </div>
-          <div class="queue-stat">
-            <div class="label">Prontos no ultimo lote</div>
-            <strong id="queueReadyLatest">0</strong>
-          </div>
-          <div class="queue-stat">
-            <div class="label">Retornos ate hoje</div>
-            <strong id="queueFollowupsDue">0</strong>
+          <!-- Filters -->
+          <div class="flex gap-2">
+            <button class="quick-filter px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all" id="quickReadyBtn" type="button">Somente prontos</button>
+            <button class="quick-filter px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all" id="quickLatestBtn" type="button">Somente último lote</button>
           </div>
         </div>
-        <div class="queue-list" id="queueList"></div>
-        <div class="followup-list" id="followupList"></div>
-      </div>
+        
+        <div class="grid grid-cols-3 gap-2">
+          <div class="flex flex-col items-center bg-surface-container-lowest p-3 border border-border-light rounded-xl shadow-sm">
+            <p class="font-display-kpi text-[22px] text-on-surface font-bold" id="queueReadyOverall">0</p>
+            <p class="text-[9px] text-on-surface-variant font-bold text-center uppercase tracking-wider">Na Base</p>
+          </div>
+          <div class="flex flex-col items-center bg-surface-container-lowest p-3 border border-border-light rounded-xl shadow-sm">
+            <p class="font-display-kpi text-[22px] text-on-surface font-bold" id="queueReadyLatest">0</p>
+            <p class="text-[9px] text-on-surface-variant font-bold text-center uppercase tracking-wider">No Último Lote</p>
+          </div>
+          <div class="flex flex-col items-center bg-surface-container-lowest p-3 border border-border-light rounded-xl shadow-sm">
+            <p class="font-display-kpi text-[22px] text-on-surface font-bold" id="queueFollowupsDue">0</p>
+            <p class="text-[9px] text-on-surface-variant font-bold text-center uppercase tracking-wider">Retornos Hoje</p>
+          </div>
+        </div>
 
-      <div class="queue-card">
-        <strong>Leitura operacional</strong>
-        <div class="muted" style="margin:10px 0 14px;">Esta onda organiza o trabalho humano antes da automacao. O objetivo aqui e responder rapidamente: o que entrou agora, o que esta pronto e quem precisa ser tratado primeiro.</div>
-        <div class="queue-list">
-          <div class="event-item">
-            <strong>1. Ultimo lote em destaque</strong>
-            <div class="muted">Ajuda o time a operar em cima da importacao mais recente sem misturar bases antigas.</div>
-          </div>
-          <div class="event-item">
-            <strong>2. Filtro de prontos</strong>
-            <div class="muted">Mostra apenas pendentes sem resposta, sem opt-out e sem handoff humano aberto.</div>
-          </div>
-          <div class="event-item">
-            <strong>3. Proximos da fila</strong>
-            <div class="muted">Prioriza coorte mais sensivel e ultimo atendimento mais antigo, para dar ritmo ao MVP.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="layout">
-      <div class="table-card">
-        <div class="table-head">
+        <div class="flex flex-col gap-4">
           <div>
-            <strong>Leads Recall</strong>
-            <div class="muted" id="tableSummary">Carregando...</div>
+            <h3 class="text-sm font-bold text-on-surface mb-3">Fila Pronta (WhatsApp/Ligações)</h3>
+            <div class="flex flex-col gap-2" id="queueList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-on-surface mb-3">Próximos Retornos Agendados</h3>
+            <div class="flex flex-col gap-2" id="followupList">
+              <!-- Dynamically populated -->
+            </div>
           </div>
         </div>
+      </section>
+    </div>
 
-        <div class="filters">
-          <div class="field">
-            <label>Buscar</label>
-            <input id="searchInput" placeholder="Nome ou telefone">
+    <!-- TAB 2: LEADS -->
+    <div id="tab-leads" class="tab-pane hidden flex flex-col gap-gutter">
+      <!-- Header & Filter Bar -->
+      <section class="flex flex-col gap-6">
+        <div class="flex justify-between items-center">
+          <h2 class="font-headline-md text-headline-md text-on-surface font-bold">Leads Recall</h2>
+          <span class="font-label-caps text-xs bg-surface-container text-on-primary-container px-3 py-1 rounded-full font-bold" id="tableSummary">0 Leads</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 bg-surface-container-lowest p-4 border border-border-light rounded-2xl shadow-sm">
+          <div class="md:col-span-5 relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">search</span>
+            <input id="searchInput" class="w-full h-12 pl-10 pr-4 bg-surface border-border-light rounded-xl font-body-md text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" placeholder="Buscar paciente, telefone ou dentista..." type="text"/>
           </div>
-          <div class="field">
-            <label>Segmento</label>
-            <select id="segmentoSelect">
+          
+          <div class="bg-surface border border-border-light p-2 rounded-xl">
+            <label class="block font-label-caps text-[9px] text-outline px-1 mb-1 font-bold">SEGMENTO</label>
+            <select id="segmentoSelect" class="w-full bg-transparent border-none p-0 px-1 font-body-md text-xs text-on-surface focus:ring-0">
               <option value="">Todos</option>
               <option value="clinica_geral">Clinica geral</option>
               <option value="ortodontia_adimplente">Ortodontia adimplente</option>
             </select>
           </div>
-          <div class="field">
-            <label>Coorte</label>
-            <select id="coorteSelect">
+          <div class="bg-surface border border-border-light p-2 rounded-xl">
+            <label class="block font-label-caps text-[9px] text-outline px-1 mb-1 font-bold">COORTE</label>
+            <select id="coorteSelect" class="w-full bg-transparent border-none p-0 px-1 font-body-md text-xs text-on-surface focus:ring-0">
               <option value="">Todas</option>
               <option value="6-12m">6-12m</option>
               <option value="1-2a">1-2a</option>
@@ -632,9 +393,9 @@
               <option value="3a+">3a+</option>
             </select>
           </div>
-          <div class="field">
-            <label>Status</label>
-            <select id="statusSelect">
+          <div class="bg-surface border border-border-light p-2 rounded-xl">
+            <label class="block font-label-caps text-[9px] text-outline px-1 mb-1 font-bold">STATUS</label>
+            <select id="statusSelect" class="w-full bg-transparent border-none p-0 px-1 font-body-md text-xs text-on-surface focus:ring-0">
               <option value="">Todos</option>
               <option value="pendente">Pendente</option>
               <option value="followup_due">Retorno ate hoje</option>
@@ -644,56 +405,56 @@
               <option value="erro">Erro</option>
             </select>
           </div>
-          <div class="field">
-            <label>Lote</label>
-            <select id="batchSelect">
+          <div class="bg-surface border border-border-light p-2 rounded-xl">
+            <label class="block font-label-caps text-[9px] text-outline px-1 mb-1 font-bold">OPERAR EM LOTE</label>
+            <select id="batchSelect" class="w-full bg-transparent border-none p-0 px-1 font-body-md text-xs text-on-surface focus:ring-0">
               <option value="">Todos</option>
             </select>
           </div>
-          <button id="refreshBtn">Atualizar</button>
+          
+          <button id="refreshBtn" class="bg-secondary text-on-secondary h-12 rounded-xl font-label-caps text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[18px]">refresh</span>
+            FILTRAR
+          </button>
+        </div>
+      </section>
+
+      <!-- Leads Feed Cards Container -->
+      <section class="flex flex-col gap-3" id="leadsBody">
+        <!-- Dynamically populated cards -->
+      </section>
+
+      <!-- Pagination Footer -->
+      <div class="pager flex justify-between items-center py-4 bg-surface-container-lowest border border-border-light rounded-xl px-4 shadow-sm">
+        <button id="prevBtn" class="px-4 py-2 bg-surface hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95">Anterior</button>
+        <div class="text-xs text-outline font-semibold" id="pageInfo">Página 1 de 1</div>
+        <button id="nextBtn" class="px-4 py-2 bg-surface hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95">Próxima</button>
+      </div>
+
+      <!-- Detail Card (Fills when clicked) -->
+      <section class="bg-surface-container-lowest rounded-2xl p-6 border border-border-light shadow-sm flex flex-col gap-4">
+        <div class="border-b border-border-light pb-4 mb-2">
+          <h2 class="font-headline-sm text-headline-sm font-bold">Ficha de Atendimento do Lead</h2>
+          <p class="text-xs text-on-surface-variant mt-1" id="detailSummary">Selecione um lead acima para ver informações operacionais, tentativas e histórico.</p>
         </div>
 
-        <div style="overflow:auto;">
-          <table>
-            <thead>
-              <tr>
-                <th>Paciente</th>
-                <th>Telefone</th>
-                <th>Responsavel</th>
-                <th>Segmento</th>
-                <th>Coorte</th>
-                <th>Status</th>
-                <th>Ult. atendimento</th>
-                <th>Imports</th>
-              </tr>
-            </thead>
-            <tbody id="leadsBody"></tbody>
-          </table>
+        <div id="detailEmpty" class="text-center py-8 text-xs text-outline">
+          Nenhum lead selecionado. Selecione um na lista para carregar o histórico de atendimentos e registrar contatos.
         </div>
 
-        <div class="pager">
-          <button id="prevBtn">Anterior</button>
-          <div class="muted" id="pageInfo">Pagina 1</div>
-          <button id="nextBtn">Proxima</button>
-        </div>
-
-        <div class="detail-card">
-          <div class="table-head" style="padding:0 0 16px; border-bottom: none;">
-            <div>
-              <strong>Detalhe do Lead</strong>
-              <div class="muted" id="detailSummary">Clique em um lead para ver detalhes e acoes manuais.</div>
-            </div>
+        <div id="detailContent" style="display:none;" class="flex flex-col gap-6">
+          <!-- Bento Grid of lead details fields -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="detailGrid">
+            <!-- Dynamically populated via JS -->
           </div>
 
-          <div id="detailEmpty" class="muted">Nenhum lead selecionado.</div>
-
-          <div id="detailContent" style="display:none;">
-            <div class="detail-grid" id="detailGrid"></div>
-
-            <div class="detail-actions">
-              <div class="field">
-                <label>Status</label>
-                <select id="detailStatus">
+          <!-- Status and Annotation Settings -->
+          <div class="bg-surface p-4 rounded-xl border border-border-light flex flex-col gap-4">
+            <h3 class="text-sm font-bold text-on-surface">Configurações Rápidas do Atendimento</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">STATUS OPERACIONAL</label>
+                <select id="detailStatus" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
                   <option value="pendente">Pendente</option>
                   <option value="em_atendimento_humano">Em atendimento humano</option>
                   <option value="respondido">Respondido</option>
@@ -701,114 +462,191 @@
                   <option value="erro">Erro</option>
                 </select>
               </div>
-              <div class="field">
-                <label>Meta error / anotacao</label>
-                <input id="detailMetaError" placeholder="Observacao curta">
-              </div>
-              <div class="field">
-                <label>Acoes rapidas</label>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                  <button id="btnOpenHandoff" type="button">Abrir handoff</button>
-                  <button id="btnResolveHandoff" type="button">Resolver handoff</button>
-                  <button id="btnSaveDetail" type="button">Salvar</button>
-                </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">ERRO / ANOTAÇÃO OPERACIONAL</label>
+                <input id="detailMetaError" placeholder="Código de erro ou observação do recall" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
               </div>
             </div>
 
-            <div style="display:flex; gap:14px; margin-bottom:16px; flex-wrap:wrap;">
-              <label><input type="checkbox" id="detailRespondeu"> Respondeu</label>
-              <label><input type="checkbox" id="detailOptOut"> Opt-out</label>
+            <div class="flex gap-4 flex-wrap mt-1">
+              <label class="inline-flex items-center gap-2 text-xs font-bold text-on-surface cursor-pointer select-none">
+                <input type="checkbox" id="detailRespondeu" class="rounded border-border-light text-secondary focus:ring-0">
+                Marcar como respondido
+              </label>
+              <label class="inline-flex items-center gap-2 text-xs font-bold text-on-surface cursor-pointer select-none">
+                <input type="checkbox" id="detailOptOut" class="rounded border-border-light text-secondary focus:ring-0">
+                Paciente solicitou Opt-out (Remover da lista)
+              </label>
             </div>
 
-            <div class="attempt-card">
-              <strong>Registrar tentativa</strong>
-              <div class="muted" style="margin-top:6px;">Use este bloco para marcar o resultado do contato manual sem depender de automacao.</div>
-              <div class="attempt-grid">
-                <div class="field">
-                  <label>Canal</label>
-                  <select id="attemptChannel">
-                    <option value="whatsapp">WhatsApp</option>
-                    <option value="telefone">Telefone</option>
-                    <option value="manual">Manual</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Resultado</label>
-                  <select id="attemptOutcome">
-                    <option value="sem_resposta">Sem resposta</option>
-                    <option value="respondeu">Respondeu</option>
-                    <option value="opt_out">Opt-out</option>
-                    <option value="handoff_humano">Handoff humano</option>
-                    <option value="telefone_invalido">Telefone invalido</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Observacao</label>
-                  <input id="attemptNotes" placeholder="Ex.: pediu retorno amanha">
-                </div>
-                <button id="btnRegisterAttempt" type="button">Registrar</button>
-              </div>
-              <div class="attempt-buttons">
-                <button id="btnQuickNoAnswer" type="button">Sem resposta</button>
-                <button id="btnQuickReplied" type="button">Respondeu</button>
-                <button id="btnQuickOptOut" type="button">Opt-out</button>
-                <button id="btnQuickHandoff" type="button">Handoff humano</button>
-              </div>
+            <div class="flex gap-2 flex-wrap mt-2 pb-2">
+              <button id="btnOpenHandoff" type="button" class="px-4 py-2 bg-amber-50 text-status-warning hover:bg-amber-100 text-xs font-bold rounded-lg transition-all active:scale-95 border border-amber-200">Handoff Humano</button>
+              <button id="btnResolveHandoff" type="button" class="px-4 py-2 bg-emerald-50 text-status-success hover:bg-emerald-100 text-xs font-bold rounded-lg transition-all active:scale-95 border border-emerald-200">Resolver Handoff</button>
+              <button id="btnSaveDetail" type="button" class="px-6 py-2 bg-secondary text-on-secondary hover:opacity-90 text-xs font-bold rounded-lg transition-all active:scale-95 ml-auto">Salvar Alterações</button>
             </div>
+          </div>
 
-            <div class="followup-card">
-              <strong>Agendar proxima acao</strong>
-              <div class="muted" style="margin-top:6px;">Use quando o lead precisar de retorno futuro, sem sair do radar operacional.</div>
-              <div class="followup-grid">
-                <div class="field">
-                  <label>Tipo</label>
-                  <select id="followupType">
-                    <option value="retorno_whatsapp">Retorno WhatsApp</option>
-                    <option value="retorno_telefone">Retorno telefone</option>
-                    <option value="revisar_manual">Revisar manual</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Quando</label>
-                  <input id="followupAt" type="datetime-local">
-                </div>
-                <div class="field">
-                  <label>Observacao</label>
-                  <input id="followupNotes" placeholder="Ex.: pediu retorno na sexta">
-                </div>
-                <button id="btnScheduleFollowup" type="button">Agendar</button>
+          <!-- Registrar Tentativa -->
+          <div class="bg-surface p-4 rounded-xl border border-border-light flex flex-col gap-4">
+            <div>
+              <h3 class="text-sm font-bold text-on-surface">Registrar Resultado de Contato</h3>
+              <p class="text-xs text-on-surface-variant mt-1">Use este bloco para marcar o resultado do contato manual feito hoje.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">CANAL DE CONTATO</label>
+                <select id="attemptChannel" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="telefone">Telefone</option>
+                  <option value="manual">Presencial / Manual</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">RESULTADO</label>
+                <select id="attemptOutcome" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+                  <option value="sem_resposta">Sem resposta</option>
+                  <option value="respondeu">Respondeu</option>
+                  <option value="opt_out">Opt-out</option>
+                  <option value="handoff_humano">Handoff humano</option>
+                  <option value="telefone_invalido">Telefone inválido</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">OBSERVAÇÃO DO CONTATO</label>
+                <input id="attemptNotes" placeholder="Resumo do que foi conversado" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
               </div>
             </div>
 
-            <strong>Eventos recentes</strong>
-            <div class="event-list" id="detailEvents" style="margin-top:12px;"></div>
+            <div class="flex gap-2 flex-wrap">
+              <button id="btnQuickNoAnswer" type="button" class="px-3 py-1.5 bg-surface-container-high text-xs font-semibold rounded-lg hover:bg-surface-variant active:scale-95 transition-all text-on-surface-variant">Sem resposta</button>
+              <button id="btnQuickReplied" type="button" class="px-3 py-1.5 bg-surface-container-high text-xs font-semibold rounded-lg hover:bg-surface-variant active:scale-95 transition-all text-on-surface-variant">Respondeu</button>
+              <button id="btnQuickOptOut" type="button" class="px-3 py-1.5 bg-surface-container-high text-xs font-semibold rounded-lg hover:bg-surface-variant active:scale-95 transition-all text-on-surface-variant">Opt-out</button>
+              <button id="btnQuickHandoff" type="button" class="px-3 py-1.5 bg-surface-container-high text-xs font-semibold rounded-lg hover:bg-surface-variant active:scale-95 transition-all text-on-surface-variant">Handoff</button>
+              
+              <button id="btnRegisterAttempt" type="button" class="ml-auto px-6 py-2 bg-secondary text-on-secondary hover:opacity-90 text-xs font-bold rounded-lg transition-all active:scale-95">Registrar</button>
+            </div>
+          </div>
+
+          <!-- Agendar Proxima Acao -->
+          <div class="bg-surface p-4 rounded-xl border border-border-light flex flex-col gap-4">
+            <div>
+              <h3 class="text-sm font-bold text-on-surface">Agendar Retorno / Acompanhamento</h3>
+              <p class="text-xs text-on-surface-variant mt-1">Coloque o lead de volta na fila operacional em uma data futura para lembretes.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">TIPO DE CONTATO FUTURO</label>
+                <select id="followupType" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+                  <option value="retorno_whatsapp">Retorno WhatsApp</option>
+                  <option value="retorno_telefone">Retorno telefone</option>
+                  <option value="revisar_manual">Revisar manual</option>
+                </select>
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">DATA DO RETORNO</label>
+                <input id="followupAt" type="datetime-local" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+              </div>
+              <div class="flex flex-col gap-1">
+                <label class="text-[9px] text-outline font-bold">OBSERVAÇÃO DO AGENDAMENTO</label>
+                <input id="followupNotes" placeholder="Instrução para quem for ligar/escrever" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+              </div>
+            </div>
+            
+            <button id="btnScheduleFollowup" type="button" class="w-full md:w-auto md:ml-auto px-6 py-2 bg-secondary text-on-secondary hover:opacity-90 text-xs font-bold rounded-lg transition-all active:scale-95">Agendar Retorno</button>
+          </div>
+
+          <!-- Histórico de Eventos -->
+          <div>
+            <h3 class="text-sm font-bold mb-3 text-on-surface">Histórico Completo de Eventos</h3>
+            <div class="event-list flex flex-col gap-3 max-h-72 overflow-y-auto" id="detailEvents">
+              <!-- Dynamically populated list -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 3: LOTES -->
+    <div id="tab-lotes" class="tab-pane hidden flex flex-col gap-gutter">
+      <!-- Audit Header -->
+      <section class="flex flex-col gap-base">
+        <h2 class="font-headline-lg text-headline-lg mb-base text-on-surface font-bold">Lotes Recall</h2>
+        <p class="font-body-md text-on-surface-variant">Histórico de importações, auditorias e processamento de coortes.</p>
+      </section>
+
+      <!-- KPI Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md mb-2">
+        <!-- Card 1: Total Lotes -->
+        <div class="glass-card bg-surface-container-lowest p-stack-lg rounded-xl shadow-sm border border-border-light flex items-center justify-between">
+          <div>
+            <p class="font-label-caps text-[10px] text-on-surface-variant mb-1 font-bold">LOTES IMPORTADOS</p>
+            <p class="font-display-kpi text-[32px] font-bold text-primary leading-none animate-pulse" id="kpiTotalBatchesCount">0</p>
+          </div>
+          <div class="bg-surface-container text-on-surface-variant p-2 rounded-lg">
+            <span class="material-symbols-outlined">layers</span>
+          </div>
+        </div>
+        
+        <!-- Card 2: Último Lote Importado -->
+        <div class="glass-card bg-surface-container-lowest p-stack-lg rounded-xl shadow-sm border border-border-light flex items-center justify-between col-span-1 md:col-span-2">
+          <div class="flex-1 min-w-0">
+            <p class="font-label-caps text-[10px] text-on-surface-variant mb-1 font-bold">ÚLTIMO LOTE EM DESTAQUE</p>
+            <p class="font-headline-sm text-sm font-bold text-on-surface truncate" id="kpiLatestBatchName">Carregando...</p>
+            <p class="text-[11px] text-outline mt-1 font-medium" id="kpiLatestBatchTime">-</p>
+          </div>
+          <div class="bg-secondary-container text-on-secondary-container p-2 rounded-lg flex-shrink-0 ml-3">
+            <span class="material-symbols-outlined">cloud_download</span>
           </div>
         </div>
       </div>
 
-      <div class="batch-card">
-        <div class="table-head">
-          <div>
-            <strong>Lotes Recall</strong>
-            <div class="muted">Ultimas importacoes auditadas</div>
-          </div>
+      <!-- Batches Table -->
+      <section class="bg-surface-container-lowest rounded-2xl p-6 border border-border-light shadow-sm">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="font-headline-sm text-headline-sm font-bold">Importações Auditadas</h2>
+          <span class="text-xs text-outline">Lotes importados no banco do recall</span>
         </div>
-        <div style="overflow:auto;">
-          <table>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse">
             <thead>
-              <tr>
-                <th>Lote</th>
-                <th>Elegiveis</th>
-                <th>Criado em</th>
+              <tr class="border-b border-border-light text-left text-xs uppercase font-bold text-outline">
+                <th class="py-3 px-4 font-bold text-[10px] tracking-wider">Nome do Lote</th>
+                <th class="py-3 px-4 font-bold text-[10px] tracking-wider">Elegíveis / Total</th>
+                <th class="py-3 px-4 font-bold text-[10px] tracking-wider text-right">Data de Importação</th>
               </tr>
             </thead>
-            <tbody id="batchesBody"></tbody>
+            <tbody id="batchesBody" class="divide-y divide-border-light text-sm">
+              <!-- Dynamically populated -->
+            </tbody>
           </table>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
+  </main>
 
+  <!-- BottomNavBar Footer Navigation -->
+  <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-4 pb-safe bg-surface-container-lowest border-t border-border-light shadow-2xl rounded-t-2xl">
+    <!-- Overview Tab -->
+    <button id="nav-overview" onclick="switchTab('overview')" class="flex flex-col items-center justify-center rounded-xl px-4 py-1.5 active:scale-90 transition-all duration-200">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+      <span class="font-label-caps text-[10px] font-bold tracking-wider mt-0.5">Visão Geral</span>
+    </button>
+    <!-- Leads Tab -->
+    <button id="nav-leads" onclick="switchTab('leads')" class="flex flex-col items-center justify-center rounded-xl px-4 py-1.5 active:scale-90 transition-all duration-200">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+      <span class="font-label-caps text-[10px] font-bold tracking-wider mt-0.5">Leads</span>
+    </button>
+    <!-- Lotes Tab -->
+    <button id="nav-lotes" onclick="switchTab('lotes')" class="flex flex-col items-center justify-center rounded-xl px-4 py-1.5 active:scale-90 transition-all duration-200">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">layers</span>
+      <span class="font-label-caps text-[10px] font-bold tracking-wider mt-0.5">Lotes</span>
+    </button>
+  </nav>
+
+  <!-- Client-side Router and Controller Code -->
   <script>
     const API_URL = window.location.origin;
     let currentPage = 1;
@@ -819,70 +657,61 @@
     let lastLoadedBatchId = '';
     let dispatchConfig = null;
 
-    function metricCard(label, value, desc) {
-      return `
-        <article class="card">
-          <div class="label">${label}</div>
-          <div class="value">${value ?? 0}</div>
-          <div class="desc">${desc}</div>
-        </article>
-      `;
+    // --- TAB SWITCHER LOGIC ---
+    function switchTab(tab) {
+      // Hide all panes
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.add('hidden'));
+      // Show targeted pane
+      document.getElementById(`tab-${tab}`).classList.remove('hidden');
+
+      // Highlight active nav button
+      const tabs = ['overview', 'leads', 'lotes'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`nav-${t}`);
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (t === tab) {
+          btn.className = "flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-xl px-4 py-1.5 active:scale-90 transition-all duration-200";
+          icon.style.fontVariationSettings = "'FILL' 1";
+        } else {
+          btn.className = "flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:bg-surface-container-low dark:hover:bg-surface-container-high active:scale-90 transition-all duration-200 rounded-xl px-4 py-1.5";
+          icon.style.fontVariationSettings = "'FILL' 0";
+        }
+      });
+      
+      // Auto scroll to top of window when switching tabs
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function outcomeCard(label, value, desc) {
-      return `
-        <article class="card">
-          <div class="label">${label}</div>
-          <div class="value">${value ?? 0}</div>
-          <div class="desc">${desc}</div>
-        </article>
-      `;
+    async function openLeadAndSwitchTab(leadId) {
+      selectedLeadId = leadId;
+      switchTab('leads');
+      await loadLeadDetail(leadId);
     }
 
+    // Format current date in Header dynamically
+    function initDateHeader() {
+      const today = new Date();
+      const options = { weekday: 'long', day: 'numeric', month: 'short' };
+      const formatted = today.toLocaleDateString('pt-BR', options);
+      // Capitalize first letter
+      document.getElementById('currentDateHeader').textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+    }
+
+    // --- API & DATA BINDING ---
     async function loadMetrics() {
       const res = await fetch(`${API_URL}/api/recall/metrics`);
       const m = await res.json();
-      const tentativasHoje = Number(m.tentativas_hoje || 0);
-      const respostasHoje = Number(m.respostas_hoje || 0);
-      const taxaResposta = tentativasHoje > 0
-        ? `${Math.round((respostasHoje / tentativasHoje) * 100)}%`
-        : '0%';
+      
+      // Update top header/attention counters
+      document.getElementById('kpiOverdueCount').textContent = m.retornos_atrasados || 0;
+      document.getElementById('kpiHandoffsCount').textContent = m.handoff_aberto || 0;
+      document.getElementById('kpiInvalidPhonesCount').textContent = m.telefone_invalido_hoje || 0;
 
-      document.getElementById('metricsGrid').innerHTML = [
-        metricCard('Leads totais', m.total_leads, 'Base total hoje no schema recall'),
-        metricCard('Leads mapeados', m.leads_mapeados, 'Com origem_segmento preenchido'),
-        metricCard('Clinica geral', m.clinica_geral, 'Publico principal do recall'),
-        metricCard('Orto adimplente', m.ortodontia_adimplente, 'Excecao elegivel de ortodontia'),
-        metricCard('Pendentes', m.pendentes, 'Fila operacional atual'),
-        metricCard('Prontos p/ contato', m.pronto_contato, m.ultimo_lote_nome ? `Ultimo lote: ${m.ultimo_lote_nome}` : 'Sem lote identificado'),
-        metricCard('Handoffs abertos', m.handoff_aberto, 'Conversas humanas nao resolvidas'),
-        metricCard('Tentativas hoje', m.tentativas_hoje, 'Registros operacionais do dia'),
-        metricCard('Respostas hoje', m.respostas_hoje, 'Tentativas com resposta registrada'),
-        metricCard('Retornos hoje', m.retornos_hoje, 'Leads com proxima acao agendada para hoje'),
-        metricCard('Retornos atrasados', m.retornos_atrasados, 'Leads com proxima acao vencida'),
-        metricCard('Respondeu', m.respondeu, 'Leads que ja responderam'),
-        metricCard('Lotes', m.batches, m.ultimo_lote_em ? `Ultimo lote em ${new Date(m.ultimo_lote_em).toLocaleString('pt-BR')}` : 'Sem lote registrado')
-      ].join('');
+      // Update batches tab KPI grid
+      document.getElementById('kpiTotalBatchesCount').textContent = m.batches || 0;
+      document.getElementById('kpiLatestBatchName').textContent = m.ultimo_lote_nome || 'Sem lote importado';
+      document.getElementById('kpiLatestBatchTime').textContent = m.ultimo_lote_em ? `Importado em ${new Date(m.ultimo_lote_em).toLocaleString('pt-BR')}` : 'Nenhuma data';
 
-      document.getElementById('outcomeStrip').innerHTML = [
-        `
-          <article class="card outcome-hero">
-            <div>
-              <div class="label">Resultados de hoje</div>
-              <div class="desc">Leitura rapida da operacao para sabermos se o recall esta virando conversa, retorno ou problema de base.</div>
-            </div>
-            <div class="outcome-kpis">
-              <strong>${taxaResposta}</strong>
-              <span>taxa de resposta do dia</span>
-            </div>
-          </article>
-        `,
-        outcomeCard('Sem resposta', m.sem_resposta_hoje, 'Tentativas sem retorno ainda'),
-        outcomeCard('Respondeu', m.respostas_hoje, 'Conversas abertas no dia'),
-        outcomeCard('Handoff', m.handoffs_hoje, 'Casos enviados para humano'),
-        outcomeCard('Opt-out', m.opt_out_hoje, 'Pacientes que pediram saida'),
-        outcomeCard('Tel. invalido', m.telefone_invalido_hoje, 'Problemas de base para corrigir')
-      ].join('');
       lastLoadedBatchId = m.ultimo_lote_id || '';
     }
 
@@ -890,57 +719,97 @@
       const params = new URLSearchParams();
       params.set('page', currentPage);
       params.set('pageSize', 25);
+      
       const search = document.getElementById('searchInput').value.trim();
       const segmento = document.getElementById('segmentoSelect').value;
       const coorte = document.getElementById('coorteSelect').value;
       const status = document.getElementById('statusSelect').value;
       const batchId = document.getElementById('batchSelect').value;
+      
       if (search) params.set('search', search);
       if (segmento) params.set('segmento', segmento);
       if (coorte) params.set('coorte', coorte);
       if (status) params.set('status', status);
       if (batchId) params.set('batchId', batchId);
+      
       if (onlyReady) params.set('onlyReady', 'true');
       if (latestBatchOnly) params.set('latestBatchOnly', 'true');
       if (status === 'followup_due') params.set('onlyFollowupDue', 'true');
       return params.toString();
     }
 
-    function statusClass(status) {
-      return `status-${status || 'pendente'}`;
-    }
-
     function updateQuickFilterButtons() {
-      document.getElementById('quickReadyBtn').classList.toggle('active', onlyReady);
-      document.getElementById('quickLatestBtn').classList.toggle('active', latestBatchOnly);
+      document.getElementById('quickReadyBtn').classList.toggle('bg-secondary', onlyReady);
+      document.getElementById('quickReadyBtn').classList.toggle('text-on-secondary', onlyReady);
+      
+      document.getElementById('quickLatestBtn').classList.toggle('bg-secondary', latestBatchOnly);
+      document.getElementById('quickLatestBtn').classList.toggle('text-on-secondary', latestBatchOnly);
     }
 
     async function loadLeads() {
       const res = await fetch(`${API_URL}/api/recall/leads?${getFilters()}`);
       const data = await res.json();
       totalPages = data.totalPages || 1;
-      document.getElementById('pageInfo').textContent = `Pagina ${data.page} de ${totalPages}`;
-      document.getElementById('tableSummary').textContent = `${data.totalRows} leads encontrados`;
+      
+      document.getElementById('pageInfo').textContent = `Página ${data.page} de ${totalPages}`;
+      document.getElementById('tableSummary').textContent = `${data.totalRows} Leads`;
 
-      document.getElementById('leadsBody').innerHTML = data.leads.map((lead) => `
-        <tr class="lead-row" data-lead-id="${lead.id}">
-          <td>${lead.paciente_nome || ''}</td>
-          <td>${lead.telefone || ''}</td>
-          <td>${lead.dentista_responsavel || ''}</td>
-          <td><span class="pill ${lead.origem_segmento === 'clinica_geral' ? 'seg-clinica' : 'seg-orto'}">${lead.origem_segmento || 'nao_mapeado'}</span></td>
-          <td>${lead.coorte || ''}</td>
-          <td><span class="pill ${statusClass(lead.status)}">${lead.status || ''}</span></td>
-          <td>${lead.ultimo_atendimento ? new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR') : ''}</td>
-          <td>${lead.import_count ?? 0}</td>
-        </tr>
-      `).join('') || `<tr><td colspan="8" class="muted">Nenhum lead encontrado.</td></tr>`;
+      document.getElementById('leadsBody').innerHTML = data.leads.map((lead) => {
+        let borderClass = 'border-status-inactive';
+        let badgeClass = 'bg-slate-100 text-status-inactive border border-slate-200';
+        const statusStr = (lead.status || 'pendente').toUpperCase();
+        
+        if (lead.status === 'pendente') {
+          borderClass = 'border-status-warning';
+          badgeClass = 'bg-amber-50 text-status-warning border border-amber-100';
+        } else if (lead.status === 'respondido') {
+          borderClass = 'border-status-success';
+          badgeClass = 'bg-emerald-50 text-status-success border border-emerald-100';
+        } else if (lead.status === 'em_atendimento_humano') {
+          borderClass = 'border-secondary';
+          badgeClass = 'bg-cyan-50 text-secondary border border-cyan-100';
+        } else if (lead.status === 'erro') {
+          borderClass = 'border-status-error';
+          badgeClass = 'bg-red-50 text-status-error border border-red-100';
+        }
+        
+        const cleanPhone = (lead.telefone || '').replace(/\D/g, '');
+        const waUrl = cleanPhone ? `https://wa.me/55${cleanPhone}` : '#';
+        const telUrl = cleanPhone ? `tel:+55${cleanPhone}` : '#';
 
-      document.querySelectorAll('.lead-row').forEach((row) => {
-        row.addEventListener('click', () => {
-          selectedLeadId = row.getAttribute('data-lead-id');
-          loadLeadDetail(selectedLeadId);
-        });
-      });
+        return `
+          <div class="bg-surface-container-lowest border-l-4 ${borderClass} rounded-xl p-4 shadow-sm flex items-center justify-between group hover:shadow-md transition-all cursor-pointer ${lead.id == selectedLeadId ? 'ring-2 ring-secondary' : ''}" onclick="loadLeadDetail('${lead.id}')">
+            <div class="flex-grow pr-4">
+              <div class="flex items-center gap-2 flex-wrap mb-1">
+                <span class="font-headline-sm text-sm font-bold text-on-surface">${lead.paciente_nome || 'Sem nome'}</span>
+                <span class="font-label-caps text-[9px] px-2 py-0.5 rounded font-bold tracking-wider tracking-wide ${badgeClass}">${statusStr}</span>
+              </div>
+              <div class="flex items-center gap-4 text-on-surface-variant text-xs flex-wrap">
+                <div class="flex items-center gap-1 font-medium">
+                  <span class="material-symbols-outlined text-[15px]">dentistry</span>
+                  ${lead.origem_segmento === 'clinica_geral' ? 'Clínica Geral' : lead.origem_segmento === 'ortodontia_adimplente' ? 'Ortodontia' : (lead.origem_segmento || 'Não mapeado')}
+                </div>
+                <div class="flex items-center gap-1 font-medium">
+                  <span class="material-symbols-outlined text-[15px]">calendar_month</span>
+                  ${lead.coorte || 'Sem coorte'}
+                </div>
+                <div class="flex items-center gap-1 text-[11px] text-outline font-medium">
+                  Dentista: ${lead.dentista_responsavel || 'Sem resp.'} • Lotes: ${lead.import_count ?? 0}
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-2 flex-shrink-0" onclick="event.stopPropagation();">
+              <a href="${waUrl}" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-xl bg-secondary-container text-on-secondary-container hover:scale-105 active:scale-90 transition-all">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">chat</span>
+              </a>
+              <a href="${telUrl}" class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-all">
+                <span class="material-symbols-outlined text-[20px]">call</span>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('') || `<div class="muted text-center py-4 bg-surface-container-lowest rounded-xl p-4 border border-border-light text-xs">Nenhum lead encontrado.</div>`;
 
       document.getElementById('prevBtn').disabled = currentPage <= 1;
       document.getElementById('nextBtn').disabled = currentPage >= totalPages;
@@ -949,77 +818,70 @@
     async function loadBatches() {
       const res = await fetch(`${API_URL}/api/recall/batches`);
       const rows = await res.json();
+      
       document.getElementById('batchSelect').innerHTML = `<option value="">Todos</option>` + rows.map((row) => `
         <option value="${row.id}">${row.lote_nome}</option>
       `).join('');
+      
       document.getElementById('batchesBody').innerHTML = rows.map((row) => `
-        <tr>
-          <td>${row.lote_nome} ${row.id === lastLoadedBatchId ? '<span class="pill batch-latest">ultimo</span>' : ''}</td>
-          <td>${row.eligible_total ?? 0}</td>
-          <td>${row.created_at ? new Date(row.created_at).toLocaleString('pt-BR') : ''}</td>
+        <tr class="hover:bg-surface-subtle transition-all">
+          <td class="py-4 px-4 font-bold text-on-surface flex items-center gap-2">
+            ${row.lote_nome}
+            ${row.id === lastLoadedBatchId ? '<span class="inline-block px-1.5 py-0.5 bg-emerald-50 text-status-success border border-emerald-100 rounded text-[9px] font-bold uppercase">último</span>' : ''}
+          </td>
+          <td class="py-4 px-4 font-mono font-medium text-on-surface-variant">${row.eligible_total ?? 0} <span class="text-xs text-outline">/ ${row.total_rows ?? 0}</span></td>
+          <td class="py-4 px-4 text-right text-on-surface-variant font-medium">${row.created_at ? new Date(row.created_at).toLocaleString('pt-BR') : ''}</td>
         </tr>
-      `).join('') || `<tr><td colspan="3" class="muted">Nenhum lote encontrado.</td></tr>`;
+      `).join('') || `<tr><td colspan="3" class="muted text-center py-4 text-xs">Nenhum lote importado encontrado.</td></tr>`;
     }
 
     async function loadQueue() {
       const res = await fetch(`${API_URL}/api/recall/queue`);
       const data = await res.json();
+      
       document.getElementById('queueReadyOverall').textContent = data.readyOverall ?? 0;
       document.getElementById('queueReadyLatest').textContent = data.readyLatestBatch ?? 0;
       document.getElementById('queueFollowupsDue').textContent = data.followupsDue ?? 0;
       document.getElementById('queueSummary').textContent = data.latestBatch?.lote_nome
-        ? `Ultimo lote: ${data.latestBatch.lote_nome}`
-        : 'Nenhum lote encontrado.';
+        ? `Último lote importado: ${data.latestBatch.lote_nome}`
+        : 'Nenhum lote importado identificado.';
 
       document.getElementById('queueList').innerHTML = data.nextLeads.map((lead) => `
-        <div class="queue-item" data-lead-id="${lead.id}">
-          <div class="queue-item-top">
-            <strong>${lead.paciente_nome || 'Sem nome'}</strong>
-            <span class="pill ${lead.origem_segmento === 'clinica_geral' ? 'seg-clinica' : 'seg-orto'}">${lead.coorte || 'sem coorte'}</span>
+        <div class="bg-surface p-3.5 rounded-xl border border-border-light flex items-center justify-between hover:shadow-md cursor-pointer transition-all active:scale-[0.98]" onclick="openLeadAndSwitchTab('${lead.id}')">
+          <div>
+            <h4 class="font-headline-sm text-sm font-bold leading-tight text-on-surface">${lead.paciente_nome || 'Sem nome'}</h4>
+            <p class="text-xs text-on-surface-variant mt-1">${lead.telefone || '-'} • Coorte: ${lead.coorte || 'sem coorte'}</p>
+            <p class="text-[10px] text-outline font-semibold uppercase tracking-wider mt-0.5">${lead.origem_segmento || 'nao_mapeado'} • Resp: ${lead.dentista_responsavel || 'Sem responsável'}</p>
           </div>
-          <div>${lead.telefone || '-'}</div>
-          <div class="muted">
-            ${lead.origem_segmento || 'nao_mapeado'} • ${lead.dentista_responsavel || 'Sem responsavel'} • ${lead.ultimo_atendimento ? `Ult. atendimento ${new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR')}` : 'Sem data de atendimento'}
-          </div>
+          <span class="inline-block px-2 py-0.5 bg-amber-50 text-status-warning border border-amber-100 rounded text-[9px] font-bold uppercase tracking-wider">PENDENTE</span>
         </div>
-      `).join('') || `<div class="muted">Nenhum lead pronto para contato no momento.</div>`;
+      `).join('') || `<div class="muted text-center py-4 bg-surface rounded-xl border border-border-light text-xs">Nenhum lead pronto para contato no momento.</div>`;
 
-      document.querySelectorAll('.queue-item').forEach((item) => {
-        item.addEventListener('click', async () => {
-          selectedLeadId = item.getAttribute('data-lead-id');
-          await loadLeadDetail(selectedLeadId);
-        });
-      });
-
-      document.getElementById('followupList').innerHTML = data.nextFollowups.map((lead) => `
-        <div class="followup-item" data-lead-id="${lead.id}">
-          <div class="queue-item-top">
-            <strong>${lead.paciente_nome || 'Sem nome'}</strong>
-            <span class="pill ${lead.proxima_acao_em && new Date(lead.proxima_acao_em).getTime() < Date.now() ? 'status-erro' : 'status-em_atendimento_humano'}">${lead.proxima_acao_tipo || 'retorno'}</span>
+      document.getElementById('followupList').innerHTML = data.nextFollowups.map((lead) => {
+        const isOverdue = lead.proxima_acao_em && new Date(lead.proxima_acao_em).getTime() < Date.now();
+        return `
+          <div class="bg-surface p-3.5 rounded-xl border border-border-light flex items-center justify-between hover:shadow-md cursor-pointer transition-all active:scale-[0.98]" onclick="openLeadAndSwitchTab('${lead.id}')">
+            <div>
+              <h4 class="font-headline-sm text-sm font-bold leading-tight text-on-surface">${lead.paciente_nome || 'Sem nome'}</h4>
+              <p class="text-xs text-on-surface-variant mt-1">${lead.telefone || '-'} • Agendado: ${lead.proxima_acao_tipo || 'retorno'}</p>
+              <p class="text-[10px] text-outline font-semibold mt-0.5">${lead.proxima_acao_em ? `Retorno em ${new Date(lead.proxima_acao_em).toLocaleString('pt-BR')}` : 'Sem data'}</p>
+            </div>
+            <span class="inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider ${
+              isOverdue ? 'bg-red-50 text-status-error border border-red-100' : 'bg-blue-50 text-primary-fixed-variant border border-blue-100'
+            }">${isOverdue ? 'ATRASADO' : 'AGENDADO'}</span>
           </div>
-          <div>${lead.telefone || '-'}</div>
-          <div class="muted">
-            ${lead.proxima_acao_em ? `Agendado para ${new Date(lead.proxima_acao_em).toLocaleString('pt-BR')}` : 'Sem agendamento'} • ${lead.ultima_tentativa_resultado || 'Sem tentativa'}
-          </div>
-        </div>
-      `).join('') || `<div class="muted">Nenhum retorno agendado ate o momento.</div>`;
-
-      document.querySelectorAll('.followup-item').forEach((item) => {
-        item.addEventListener('click', async () => {
-          selectedLeadId = item.getAttribute('data-lead-id');
-          await loadLeadDetail(selectedLeadId);
-        });
-      });
+        `;
+      }).join('') || `<div class="muted text-center py-4 bg-surface rounded-xl border border-border-light text-xs">Nenhum retorno agendado até o momento.</div>`;
     }
 
     function attentionItemHtml(title, subtitle, extra, leadId) {
       return `
-        <div class="attention-item" data-lead-id="${leadId}">
-          <div class="queue-item-top">
-            <strong>${title}</strong>
-            <span class="muted">${extra || ''}</span>
+        <div class="p-3 bg-surface rounded-xl border border-border-light flex items-center justify-between hover:shadow-md cursor-pointer transition-all active:scale-[0.98]" onclick="openLeadAndSwitchTab('${leadId}')">
+          <div class="flex-1 min-w-0 pr-2">
+            <h4 class="font-headline-sm text-xs font-bold leading-tight text-on-surface truncate">${title}</h4>
+            <p class="text-[10px] text-on-surface-variant mt-0.5 truncate">${subtitle || ''}</p>
           </div>
-          <div class="muted">${subtitle || ''}</div>
+          <span class="text-[10px] text-outline font-semibold flex-shrink-0 text-right">${extra || ''}</span>
         </div>
       `;
     }
@@ -1028,39 +890,32 @@
       const res = await fetch(`${API_URL}/api/recall/attention`);
       const data = await res.json();
 
-      document.getElementById('attentionOverdue').innerHTML = data.overdueFollowups.map((lead) =>
+      document.getElementById('attentionOverdue').innerHTML = data.overdueFollowups.slice(0, 5).map((lead) =>
         attentionItemHtml(
           lead.paciente_nome || 'Sem nome',
           `${lead.telefone || '-'} • ${lead.proxima_acao_tipo || 'retorno'}`,
-          lead.proxima_acao_em ? new Date(lead.proxima_acao_em).toLocaleString('pt-BR') : '',
+          lead.proxima_acao_em ? new Date(lead.proxima_acao_em).toLocaleDateString('pt-BR') : '',
           lead.id
         )
-      ).join('') || `<div class="muted">Nenhum retorno atrasado agora.</div>`;
+      ).join('') || `<div class="muted text-center py-2 text-xs">Nenhum retorno atrasado agora.</div>`;
 
-      document.getElementById('attentionHandoffs').innerHTML = data.openHandoffs.map((lead) =>
+      document.getElementById('attentionHandoffs').innerHTML = data.openHandoffs.slice(0, 5).map((lead) =>
         attentionItemHtml(
           lead.paciente_nome || 'Sem nome',
           `${lead.telefone || '-'} • ${lead.origem_segmento || 'sem segmento'}`,
-          lead.handoff_at ? new Date(lead.handoff_at).toLocaleString('pt-BR') : '',
+          lead.handoff_at ? new Date(lead.handoff_at).toLocaleDateString('pt-BR') : '',
           lead.id
         )
-      ).join('') || `<div class="muted">Nenhum handoff aberto no momento.</div>`;
+      ).join('') || `<div class="muted text-center py-2 text-xs">Nenhum handoff aberto.</div>`;
 
-      document.getElementById('attentionInvalidPhones').innerHTML = data.invalidPhones.map((lead) =>
+      document.getElementById('attentionInvalidPhones').innerHTML = data.invalidPhones.slice(0, 5).map((lead) =>
         attentionItemHtml(
           lead.paciente_nome || 'Sem nome',
-          `${lead.telefone || '-'} • telefone invalido`,
-          lead.created_at ? new Date(lead.created_at).toLocaleString('pt-BR') : '',
+          `${lead.telefone || '-'} • Inválido`,
+          lead.created_at ? new Date(lead.created_at).toLocaleDateString('pt-BR') : '',
           lead.id
         )
-      ).join('') || `<div class="muted">Nenhum telefone invalido registrado hoje.</div>`;
-
-      document.querySelectorAll('.attention-item').forEach((item) => {
-        item.addEventListener('click', async () => {
-          selectedLeadId = item.getAttribute('data-lead-id');
-          await loadLeadDetail(selectedLeadId);
-        });
-      });
+      ).join('') || `<div class="muted text-center py-2 text-xs">Nenhum erro de telefone hoje.</div>`;
     }
 
     async function updateDispatchQueueItem(queueItemId, queueStatus) {
@@ -1070,32 +925,27 @@
         body: JSON.stringify({ queue_status: queueStatus })
       });
       await loadDispatchQueue();
+      await loadMetrics();
     }
 
     async function loadDispatchConfig() {
       const res = await fetch(`${API_URL}/api/recall/dispatch/config`);
       dispatchConfig = await res.json();
 
-      const card = document.getElementById('dispatchModeCard');
       const title = document.getElementById('dispatchModeTitle');
       const summary = document.getElementById('dispatchModeSummary');
-      const modeLabel = dispatchConfig.mode === 'dry_run' ? 'Dry-run protegido' : 'Envio real habilitado';
+      const modeLabel = dispatchConfig.mode === 'dry_run' ? 'Dry-run Protegido' : 'Envio Real Habilitado';
+      
       const protectionBits = [
-        `Janela: ${(dispatchConfig.timeWindows || []).join(', ') || 'nao configurada'}`,
-        `Max por rodada: ${dispatchConfig.maxSendsPerRun || 0}`,
-        `Destino teste: ${dispatchConfig.testDestinationPhone || 'nao definido'}`,
-        `Whitelist telefones: ${dispatchConfig.allowlistPhonesCount || 0}`,
-        `Whitelist leads: ${dispatchConfig.allowlistLeadIdsCount || 0}`,
-        `Meta configurado: ${dispatchConfig.metaConfigured ? 'sim' : 'nao'}`,
-        `Meta exclusivo Recall: ${dispatchConfig.metaDedicatedConfigured ? 'sim' : 'nao'}`,
-        `Abertura: ${dispatchConfig.templates?.abertura || 'pendente'}`,
-        `Lembrete: ${dispatchConfig.templates?.lembrete || 'pendente'}`,
-        `Chatwoot: ${dispatchConfig.chatwootConfigured ? 'sim' : 'nao'}`
+        `Janela: ${(dispatchConfig.timeWindows || []).join(', ') || 'Sem config'}`,
+        `Máx/run: ${dispatchConfig.maxSendsPerRun || 0}`,
+        `Destino teste: ${dispatchConfig.testDestinationPhone || 'Não def.'}`,
+        `Whitelist tel: ${dispatchConfig.allowlistPhonesCount || 0}`,
+        `Meta exclusive Recall: ${dispatchConfig.metaDedicatedConfigured ? 'Sim' : 'Não'}`
       ];
 
-      title.textContent = `Modo do motor: ${modeLabel}`;
+      title.textContent = `Modo do Motor: ${modeLabel}`;
       summary.textContent = protectionBits.join(' • ');
-      card.classList.toggle('warn', dispatchConfig.mode !== 'dry_run');
     }
 
     async function executeDispatchQueueItem(queueItemId) {
@@ -1105,9 +955,12 @@
       });
       const data = await res.json();
       if (!res.ok) {
-        alert(`Execucao bloqueada: ${data.reason || 'falha_desconhecida'}`);
+        alert(`Execução bloqueada pelo piloto: ${data.reason || 'falha_desconhecida'}`);
+      } else {
+        alert(`Sucesso! Envio testado com sucesso.`);
       }
       await loadDispatchQueue();
+      await loadMetrics();
     }
 
     async function executeDispatchBatch() {
@@ -1119,8 +972,9 @@
       });
       const data = await res.json();
       const blockedText = data.blocked ? ` e ${data.blocked} bloqueado(s)` : '';
-      alert(`Lote teste concluido: ${data.executed || 0} executado(s)${blockedText}.`);
+      alert(`Lote de disparo processado: ${data.executed || 0} enviado(s)${blockedText}.`);
       await loadDispatchQueue();
+      await loadMetrics();
     }
 
     async function loadDispatchQueue() {
@@ -1131,24 +985,44 @@
       document.getElementById('dispatchReservedCount').textContent = data.summary?.reservados ?? 0;
       document.getElementById('dispatchProcessedCount').textContent = data.summary?.processados ?? 0;
 
+      // Update progress bar
+      const total = (data.summary?.pendentes ?? 0) + (data.summary?.reservados ?? 0) + (data.summary?.processados ?? 0);
+      if (total > 0) {
+        document.getElementById('progressPending').style.width = `${((data.summary?.pendentes ?? 0) / total) * 100}%`;
+        document.getElementById('progressReserved').style.width = `${((data.summary?.reservados ?? 0) / total) * 100}%`;
+        document.getElementById('progressProcessed').style.width = `${((data.summary?.processados ?? 0) / total) * 100}%`;
+      } else {
+        document.getElementById('progressPending').style.width = '0%';
+        document.getElementById('progressReserved').style.width = '0%';
+        document.getElementById('progressProcessed').style.width = '0%';
+      }
+
       document.getElementById('dispatchQueueList').innerHTML = data.items.map((item) => `
-        <div class="dispatch-item">
-          <div class="queue-item-top">
-            <strong>${item.paciente_nome || 'Sem nome'}</strong>
-            <span class="pill ${statusClass(item.queue_status)}">${item.queue_status}</span>
+        <div class="bg-surface p-4 rounded-xl border border-border-light flex flex-col gap-3 transition-all hover:shadow-md">
+          <div class="flex justify-between items-start gap-2">
+            <div>
+              <h4 class="font-headline-sm text-sm font-bold leading-tight text-on-surface">${item.paciente_nome || 'Sem nome'}</h4>
+              <p class="text-xs text-on-surface-variant mt-1">${item.telefone || '-'} • Segmento: ${item.origem_segmento || 'sem segmento'} • Coorte: ${item.coorte || 'sem coorte'}</p>
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded text-[9px] font-bold tracking-wider ${
+              item.queue_status === 'pendente' ? 'bg-amber-50 text-status-warning border border-amber-100' :
+              item.queue_status === 'reservado' ? 'bg-blue-50 text-primary-fixed-variant border border-blue-100' :
+              item.queue_status === 'processado' ? 'bg-emerald-50 text-status-success border border-emerald-100' :
+              'bg-slate-100 text-status-inactive border border-slate-200'
+            }">${item.queue_status.toUpperCase()}</span>
           </div>
-          <div>${item.telefone || '-'} • ${item.origem_segmento || 'sem segmento'} • ${item.coorte || 'sem coorte'}</div>
-          <div class="muted">${item.motivo || '-'} • ${item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : ''}</div>
-          <div class="dispatch-actions">
-            <button type="button" data-queue-action="reservado" data-queue-id="${item.id}">Reservar</button>
-            <button type="button" data-queue-execute-id="${item.id}">Executar teste</button>
-            <button type="button" data-queue-action="processado" data-queue-id="${item.id}">Marcar processado</button>
-            <button type="button" data-queue-action="cancelado" data-queue-id="${item.id}">Cancelar</button>
-            <button type="button" data-queue-lead-id="${item.lead_id}">Abrir lead</button>
+          <div class="text-[11px] text-outline font-medium">Motivo do envio: ${item.motivo || '-'} • Criado em: ${item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : ''}</div>
+          <div class="flex gap-2 flex-wrap mt-1">
+            <button type="button" data-queue-action="reservado" data-queue-id="${item.id}" class="px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all text-on-surface-variant">Reservar</button>
+            <button type="button" data-queue-execute-id="${item.id}" class="px-3 py-1.5 bg-secondary-container text-on-secondary-container hover:scale-105 active:scale-95 transition-all text-xs font-bold">Executar teste</button>
+            <button type="button" data-queue-action="processado" data-queue-id="${item.id}" class="px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all text-on-surface-variant">Marcar processado</button>
+            <button type="button" data-queue-action="cancelado" data-queue-id="${item.id}" class="px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all text-on-surface-variant">Cancelar</button>
+            <button type="button" data-queue-lead-id="${item.lead_id}" class="px-4 py-1.5 bg-primary text-on-primary hover:opacity-90 active:scale-95 transition-all text-xs font-bold rounded-lg ml-auto">Ficha do Lead</button>
           </div>
         </div>
-      `).join('') || `<div class="muted">Nenhum item na fila de disparo ainda.</div>`;
+      `).join('') || `<div class="muted text-center py-4 text-xs">Nenhum disparo pendente na fila auditável no momento.</div>`;
 
+      // Set event listeners for dispatch actions
       document.querySelectorAll('[data-queue-action]').forEach((button) => {
         button.addEventListener('click', async () => {
           await updateDispatchQueueItem(
@@ -1166,20 +1040,23 @@
 
       document.querySelectorAll('[data-queue-lead-id]').forEach((button) => {
         button.addEventListener('click', async () => {
-          selectedLeadId = button.getAttribute('data-queue-lead-id');
-          await loadLeadDetail(selectedLeadId);
+          const leadId = button.getAttribute('data-queue-lead-id');
+          await openLeadAndSwitchTab(leadId);
         });
       });
 
+      // Load dispatch logs
       const logsRes = await fetch(`${API_URL}/api/recall/dispatch/logs`);
       const logs = await logsRes.json();
       document.getElementById('dispatchLogs').innerHTML = logs.map((log) => `
-        <div class="event-item">
-          <div><strong>${log.paciente_nome || 'Sem nome'}</strong></div>
-          <div class="muted">${log.telefone || '-'} • ${log.created_at ? new Date(log.created_at).toLocaleString('pt-BR') : ''}</div>
-          <div class="muted">${log.payload?.motivo || 'dispatch_executado'} • ${log.payload?.executor || 'manual_mvp'}</div>
+        <div class="p-3 bg-surface rounded-xl border border-border-light flex flex-col gap-1 transition-all">
+          <div class="flex justify-between items-start gap-2">
+            <strong class="text-xs text-on-surface font-bold">${log.paciente_nome || 'Sem nome'}</strong>
+            <span class="text-[9px] text-outline font-semibold flex-shrink-0">${log.created_at ? new Date(log.created_at).toLocaleString('pt-BR') : ''}</span>
+          </div>
+          <div class="text-[11px] text-on-surface-variant">${log.telefone || '-'} • Motivo: ${log.payload?.motivo || 'disparo'} • Disparado via: ${log.payload?.executor || 'piloto_autonomo'}</div>
         </div>
-      `).join('') || `<div class="muted">Nenhum disparo executado hoje.</div>`;
+      `).join('') || `<div class="muted text-center py-2 text-xs">Nenhum disparo registrado hoje.</div>`;
     }
 
     async function generateDispatchQueue() {
@@ -1197,39 +1074,46 @@
       });
 
       await loadDispatchQueue();
+      await loadMetrics();
+      alert(`Nova fila gerada com sucesso.`);
     }
 
     function detailItem(label, value) {
-      return `<div class="detail-item"><strong>${label}</strong><span>${value ?? ''}</span></div>`;
+      return `
+        <div class="bg-surface p-3 border border-border-light rounded-xl flex flex-col gap-1 shadow-sm min-w-0">
+          <span class="text-[9px] text-outline font-bold uppercase tracking-wider truncate">${label}</span>
+          <span class="text-xs text-on-surface font-bold truncate" title="${value ?? ''}">${value ?? '-'}</span>
+        </div>
+      `;
     }
 
     async function loadLeadDetail(leadId) {
       const res = await fetch(`${API_URL}/api/recall/leads/${leadId}`);
       const data = await res.json();
       const lead = data.lead;
+      selectedLeadId = leadId;
 
       document.getElementById('detailEmpty').style.display = 'none';
       document.getElementById('detailContent').style.display = 'block';
-      document.getElementById('detailSummary').textContent = `${lead.paciente_nome} • ${lead.telefone}`;
+      document.getElementById('detailSummary').textContent = `${lead.paciente_nome} • ${lead.telefone || 'Sem número'}`;
 
       document.getElementById('detailGrid').innerHTML = [
         detailItem('Paciente', lead.paciente_nome),
         detailItem('Telefone principal', lead.telefone),
-        detailItem('Telefone secundario', lead.telefone_secundario || '-'),
-        detailItem('Responsavel', lead.dentista_responsavel || '-'),
+        detailItem('Telefone secundário', lead.telefone_secundario || '-'),
+        detailItem('Responsável', lead.dentista_responsavel || '-'),
         detailItem('Segmento', lead.origem_segmento || '-'),
         detailItem('Coorte', lead.coorte || '-'),
-        detailItem('Ult. atendimento', lead.ultimo_atendimento ? new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR') : '-'),
-        detailItem('Situacao financeira', lead.situacao_financeira || '-'),
+        detailItem('Últ. atendimento', lead.ultimo_atendimento ? new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR') : '-'),
+        detailItem('Situação financeira', lead.situacao_financeira || '-'),
         detailItem('Agendado raw', lead.agendado_raw || '-'),
-        detailItem('Imports', lead.import_count ?? 0),
-        detailItem('Tentativas', lead.tentativa_count ?? 0),
-        detailItem('Ult. tentativa', lead.ultima_tentativa_em ? new Date(lead.ultima_tentativa_em).toLocaleString('pt-BR') : '-'),
-        detailItem('Resultado ult. tentativa', lead.ultima_tentativa_resultado || '-'),
-        detailItem('Proxima acao', lead.proxima_acao_tipo || '-'),
-        detailItem('Quando voltar', lead.proxima_acao_em ? new Date(lead.proxima_acao_em).toLocaleString('pt-BR') : '-'),
-        detailItem('Ult. atualizacao', lead.updated_at ? new Date(lead.updated_at).toLocaleString('pt-BR') : '-'),
-        detailItem('Batch', lead.last_import_batch_id || '-')
+        detailItem('Importações', lead.import_count ?? 0),
+        detailItem('Tentativas manuais', lead.tentativa_count ?? 0),
+        detailItem('Últ. tentativa em', lead.ultima_tentativa_em ? new Date(lead.ultima_tentativa_em).toLocaleString('pt-BR') : '-'),
+        detailItem('Resultado últ. tentativa', lead.ultima_tentativa_resultado || '-'),
+        detailItem('Próxima ação', lead.proxima_acao_tipo || '-'),
+        detailItem('Agendado para', lead.proxima_acao_em ? new Date(lead.proxima_acao_em).toLocaleString('pt-BR') : '-'),
+        detailItem('Última atualização', lead.updated_at ? new Date(lead.updated_at).toLocaleString('pt-BR') : '-')
       ].join('');
 
       document.getElementById('detailStatus').value = lead.status || 'pendente';
@@ -1245,12 +1129,20 @@
       document.getElementById('followupNotes').value = '';
 
       document.getElementById('detailEvents').innerHTML = data.events.map((event) => `
-        <div class="event-item">
-          <div><strong>${event.event_type}</strong></div>
-          <div class="muted">${new Date(event.created_at).toLocaleString('pt-BR')}</div>
-          <div class="muted">${JSON.stringify(event.payload)}</div>
+        <div class="p-3 bg-surface rounded-xl border border-border-light flex flex-col gap-1 transition-all">
+          <div class="flex justify-between items-center gap-2">
+            <strong class="text-xs text-on-surface font-bold">${event.event_type}</strong>
+            <span class="text-[9px] text-outline font-semibold">${new Date(event.created_at).toLocaleString('pt-BR')}</span>
+          </div>
+          <div class="text-[10px] text-on-surface-variant font-mono bg-surface-container-lowest p-2 border border-border-light rounded max-h-36 overflow-y-auto whitespace-pre-wrap">${JSON.stringify(event.payload, null, 2)}</div>
         </div>
-      `).join('') || `<div class="muted">Sem eventos recentes.</div>`;
+      `).join('') || `<div class="muted text-center py-4 bg-surface rounded-xl border border-border-light text-xs">Nenhum evento registrado no histórico recente.</div>`;
+
+      // Highlight selected lead card in the list
+      document.querySelectorAll('#leadsBody > div').forEach(c => {
+        c.classList.remove('ring-2', 'ring-secondary');
+      });
+      // We can search the list for the matching card and add classes
     }
 
     async function saveLeadDetail(extra = {}) {
@@ -1269,11 +1161,9 @@
         body: JSON.stringify(payload)
       });
 
-      await loadMetrics();
-      await loadQueue();
-      await loadLeads();
-      await loadBatches();
+      await refreshAll();
       await loadLeadDetail(selectedLeadId);
+      alert(`Dados do lead atualizados.`);
     }
 
     async function registerAttempt(override = {}) {
@@ -1293,12 +1183,16 @@
 
       await refreshAll();
       await loadLeadDetail(selectedLeadId);
+      alert(`Tentativa registrada com sucesso.`);
     }
 
     async function scheduleFollowup() {
       if (!selectedLeadId) return;
       const scheduledFor = document.getElementById('followupAt').value;
-      if (!scheduledFor) return;
+      if (!scheduledFor) {
+        alert('Por favor, informe a data/hora para o agendamento.');
+        return;
+      }
 
       await fetch(`${API_URL}/api/recall/leads/${selectedLeadId}/followup`, {
         method: 'POST',
@@ -1312,6 +1206,7 @@
 
       await refreshAll();
       await loadLeadDetail(selectedLeadId);
+      alert(`Próximo retorno agendado com sucesso.`);
     }
 
     async function refreshAll() {
@@ -1324,66 +1219,83 @@
       await loadBatches();
     }
 
-    document.getElementById('refreshBtn').addEventListener('click', async () => {
-      currentPage = 1;
-      await refreshAll();
-    });
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage -= 1;
-        loadLeads();
-      }
-    });
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      if (currentPage < totalPages) {
-        currentPage += 1;
-        loadLeads();
-      }
-    });
-    document.getElementById('btnSaveDetail').addEventListener('click', () => saveLeadDetail());
-    document.getElementById('btnOpenHandoff').addEventListener('click', () => saveLeadDetail({
-      status: 'em_atendimento_humano',
-      handoff_open: true,
-      handoff_resolved: false
-    }));
-    document.getElementById('btnResolveHandoff').addEventListener('click', () => saveLeadDetail({
-      handoff_resolved: true
-    }));
-    document.getElementById('btnRegisterAttempt').addEventListener('click', () => registerAttempt());
-    document.getElementById('btnQuickNoAnswer').addEventListener('click', () => registerAttempt({
-      outcome: 'sem_resposta',
-      notes: document.getElementById('attemptNotes').value.trim()
-    }));
-    document.getElementById('btnQuickReplied').addEventListener('click', () => registerAttempt({
-      outcome: 'respondeu',
-      notes: document.getElementById('attemptNotes').value.trim()
-    }));
-    document.getElementById('btnQuickOptOut').addEventListener('click', () => registerAttempt({
-      outcome: 'opt_out',
-      notes: document.getElementById('attemptNotes').value.trim()
-    }));
-    document.getElementById('btnQuickHandoff').addEventListener('click', () => registerAttempt({
-      outcome: 'handoff_humano',
-      notes: document.getElementById('attemptNotes').value.trim()
-    }));
-    document.getElementById('btnScheduleFollowup').addEventListener('click', () => scheduleFollowup());
-    document.getElementById('btnGenerateDispatchQueue').addEventListener('click', () => generateDispatchQueue());
-    document.getElementById('btnExecuteDispatchBatch').addEventListener('click', () => executeDispatchBatch());
-    document.getElementById('quickReadyBtn').addEventListener('click', () => {
-      onlyReady = !onlyReady;
-      currentPage = 1;
-      updateQuickFilterButtons();
-      loadLeads();
-    });
-    document.getElementById('quickLatestBtn').addEventListener('click', () => {
-      latestBatchOnly = !latestBatchOnly;
-      currentPage = 1;
-      updateQuickFilterButtons();
-      loadLeads();
-    });
+    // --- SETUP LISTENERS ---
+    document.addEventListener('DOMContentLoaded', () => {
+      initDateHeader();
+      switchTab('overview'); // Set initial active tab to Overview
 
-    updateQuickFilterButtons();
-    refreshAll();
+      // Leads filters & navigation listeners
+      document.getElementById('refreshBtn').addEventListener('click', async () => {
+        currentPage = 1;
+        await loadLeads();
+      });
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage -= 1;
+          loadLeads();
+        }
+      });
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage += 1;
+          loadLeads();
+        }
+      });
+
+      // Selected Lead Actions
+      document.getElementById('btnSaveDetail').addEventListener('click', () => saveLeadDetail());
+      document.getElementById('btnOpenHandoff').addEventListener('click', () => saveLeadDetail({
+        status: 'em_atendimento_humano',
+        handoff_open: true,
+        handoff_resolved: false
+      }));
+      document.getElementById('btnResolveHandoff').addEventListener('click', () => saveLeadDetail({
+        handoff_resolved: true
+      }));
+      
+      // Attempt Log Actions
+      document.getElementById('btnRegisterAttempt').addEventListener('click', () => registerAttempt());
+      document.getElementById('btnQuickNoAnswer').addEventListener('click', () => registerAttempt({
+        outcome: 'sem_resposta',
+        notes: document.getElementById('attemptNotes').value.trim()
+      }));
+      document.getElementById('btnQuickReplied').addEventListener('click', () => registerAttempt({
+        outcome: 'respondeu',
+        notes: document.getElementById('attemptNotes').value.trim()
+      }));
+      document.getElementById('btnQuickOptOut').addEventListener('click', () => registerAttempt({
+        outcome: 'opt_out',
+        notes: document.getElementById('attemptNotes').value.trim()
+      }));
+      document.getElementById('btnQuickHandoff').addEventListener('click', () => registerAttempt({
+        outcome: 'handoff_humano',
+        notes: document.getElementById('attemptNotes').value.trim()
+      }));
+
+      // Follow-up Scheduling Action
+      document.getElementById('btnScheduleFollowup').addEventListener('click', () => scheduleFollowup());
+
+      // Motor do Recall Actions
+      document.getElementById('btnGenerateDispatchQueue').addEventListener('click', () => generateDispatchQueue());
+      document.getElementById('btnExecuteDispatchBatch').addEventListener('click', () => executeDispatchBatch());
+
+      // Queue filters on Overview tab
+      document.getElementById('quickReadyBtn').addEventListener('click', () => {
+        onlyReady = !onlyReady;
+        currentPage = 1;
+        updateQuickFilterButtons();
+        loadLeads();
+      });
+      document.getElementById('quickLatestBtn').addEventListener('click', () => {
+        latestBatchOnly = !latestBatchOnly;
+        currentPage = 1;
+        updateQuickFilterButtons();
+        loadLeads();
+      });
+
+      // Initial Refresh of metrics, loads and lists
+      refreshAll();
+    });
   </script>
 </body>
 </html>
