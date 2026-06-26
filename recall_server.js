@@ -276,20 +276,20 @@ function isPositiveRecallIntent(normalizedText) {
 
 function buildRecallOpeningMessage(lead) {
   const firstName = getLeadFirstName(lead.paciente_nome);
-  return `Oi, ${firstName}! Aqui é a Camila, da OrthoDontic. Vi que faz um tempinho desde sua última visita com a gente.\n\nComo parte do acompanhamento preventivo, separei um benefício: avaliação clínica com o dentista e limpeza dental por R$ 100 em vez de R$ 150.\n\nPosso te explicar rapidinho como funciona?`;
+  return `Oi, ${firstName}! Aqui é a Camila, da OrthoDontic. Notei que já faz um tempinho desde a sua última visita com a gente.\n\nComo parte do nosso acompanhamento preventivo, separei uma condição especial: avaliação clínica com o dentista + limpeza dental por R$ 100, em vez de R$ 150.\n\nPosso te explicar rapidinho como funciona?`;
 }
 
 function buildRecallClarificationMessage() {
-  return 'Imagina, sem problema. Você tem cadastro aqui na OrthoDontic, em São José dos Campos, e entrei em contato para oferecer um benefício de acompanhamento preventivo: avaliação com o dentista + limpeza por R$ 100 em vez de R$ 150.\n\nFaz sentido para você cuidar disso agora?';
+  return 'Imagina, sem problema. Você tem cadastro aqui na OrthoDontic, em São José dos Campos, e te chamei porque separei uma condição especial para o seu acompanhamento preventivo: avaliação com o dentista + limpeza por R$ 100, em vez de R$ 150.\n\nFaz sentido para você cuidar disso agora?';
 }
 
 function buildRecallPersuasionMessage() {
-  return 'Que bom que está cuidando disso. Mesmo assim, a limpeza remove o tártaro que a escovação não alcança, e ele pode virar problema de gengiva ou cárie silenciosa.\n\nPor isso a prevenção a cada 6 meses faz diferença. Quer aproveitar a avaliação com a limpeza por R$ 100?';
+  return 'Que bom que está cuidando disso. Mesmo assim, a limpeza remove o tártaro que a escovação não alcança, e ele pode acabar virando um problema de gengiva ou uma cárie silenciosa.\n\nPor isso, fazer essa prevenção a cada 6 meses costuma fazer bastante diferença. Quer aproveitar a avaliação com a limpeza por R$ 100?';
 }
 
 function buildRecallHandoffMessage(lead) {
   const firstName = getLeadFirstName(lead.paciente_nome);
-  return `Que ótimo, ${firstName}! Vou te transferir agora para o nosso setor de Relacionamento com o Cliente, que vai encontrar o melhor horário na agenda do dentista para você.\n\nEm instantes alguém fala com você por aqui para confirmar o dia.`;
+  return `Perfeito, ${firstName}! Vou te transferir agora para o nosso setor de Relacionamento com o Cliente, que vai encontrar o melhor horário na agenda do dentista para você.\n\nDaqui a pouquinho alguém fala com você por aqui para confirmar o dia.`;
 }
 
 function buildRecallNoInterestMessage() {
@@ -306,7 +306,7 @@ function buildRecallWrongNumberMessage() {
 
 function buildRecallFallbackMessage(lead) {
   const firstName = getLeadFirstName(lead.paciente_nome);
-  return `Oi, ${firstName}. Posso te explicar direitinho: esse contato é para um retorno preventivo com avaliação clínica e limpeza por R$ 100.\n\nFaz sentido para você aproveitar esse cuidado agora?`;
+  return `Oi, ${firstName}. Posso te explicar direitinho: esse contato é para um retorno preventivo com avaliação clínica e limpeza por R$ 100.\n\nFaz sentido para você aproveitar essa condição especial agora?`;
 }
 
 function classifyRecallInbound(content) {
