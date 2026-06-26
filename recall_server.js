@@ -49,8 +49,11 @@ const CHATWOOT_API_ACCESS_TOKEN = process.env.CHATWOOT_API_ACCESS_TOKEN || '';
 const CHATWOOT_RECALL_INBOX_ID = process.env.CHATWOOT_RECALL_INBOX_ID || '5';
 const RECALL_AGENT_ENABLED = String(process.env.RECALL_AGENT_ENABLED || 'true').trim().toLowerCase() !== 'false';
 const RECALL_AGENT_SENDER = String(process.env.RECALL_AGENT_SENDER || 'camila_recall').trim() || 'camila_recall';
+const RECALL_AGENT_DELAY_MIN_MS = Math.max(0, parseInt(process.env.RECALL_AGENT_DELAY_MIN_MS, 10) || 1200);
+const RECALL_AGENT_DELAY_MAX_MS = Math.max(RECALL_AGENT_DELAY_MIN_MS, parseInt(process.env.RECALL_AGENT_DELAY_MAX_MS, 10) || 2800);
 const CHATWOOT_RECALL_LABEL_HANDOFF = String(process.env.CHATWOOT_RECALL_LABEL_HANDOFF || 'recall_agendar').trim() || 'recall_agendar';
 const CHATWOOT_RECALL_LABEL_IA_OFF = String(process.env.CHATWOOT_RECALL_LABEL_IA_OFF || 'ia_off').trim() || 'ia_off';
+const CHATWOOT_RECALL_LABEL_AGUARDANDO = String(process.env.CHATWOOT_RECALL_LABEL_AGUARDANDO || 'aguardando_atendimento').trim() || 'aguardando_atendimento';
 const CHATWOOT_RECALL_LABEL_OPT_OUT = String(process.env.CHATWOOT_RECALL_LABEL_OPT_OUT || 'recall_opt_out').trim() || 'recall_opt_out';
 const CHATWOOT_RECALL_LABEL_WRONG_NUMBER = String(process.env.CHATWOOT_RECALL_LABEL_WRONG_NUMBER || 'recall_numero_errado').trim() || 'recall_numero_errado';
 const CHATWOOT_RECALL_LABEL_SEM_INTERESSE = String(process.env.CHATWOOT_RECALL_LABEL_SEM_INTERESSE || 'recall_sem_interesse').trim() || 'recall_sem_interesse';
@@ -221,6 +224,18 @@ function includesAny(normalizedText, terms) {
   return terms.some((term) => normalizedText.includes(term));
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function getRecallAgentDelayMs() {
+  if (RECALL_AGENT_DELAY_MAX_MS <= RECALL_AGENT_DELAY_MIN_MS) {
+    return RECALL_AGENT_DELAY_MIN_MS;
+  }
+  const spread = RECALL_AGENT_DELAY_MAX_MS - RECALL_AGENT_DELAY_MIN_MS;
+  return RECALL_AGENT_DELAY_MIN_MS + Math.floor(Math.random() * (spread + 1));
+}
+
 function isPositiveRecallIntent(normalizedText) {
   if (!normalizedText) {
     return false;
@@ -247,37 +262,37 @@ function isPositiveRecallIntent(normalizedText) {
 
 function buildRecallOpeningMessage(lead) {
   const firstName = getLeadFirstName(lead.paciente_nome);
-  return `Oi, ${firstName}! Aqui e a Camila, da OrthoDontic. Vi que faz um tempinho desde sua ultima visita com a gente.\n\nComo parte do acompanhamento preventivo, separei um beneficio: avaliacao clinica com o dentista e limpeza dental por R$ 100 em vez de R$ 150.\n\nPosso te explicar rapidinho como funciona?`;
+  return `Oi, ${firstName}! Aqui é a Camila, da OrthoDontic. Vi que faz um tempinho desde sua última visita com a gente.\n\nComo parte do acompanhamento preventivo, separei um benefício: avaliação clínica com o dentista e limpeza dental por R$ 100 em vez de R$ 150.\n\nPosso te explicar rapidinho como funciona?`;
 }
 
 function buildRecallClarificationMessage() {
-  return 'Imagina, sem problema. Voce tem cadastro aqui na OrthoDontic, em Sao Jose dos Campos, e entrei em contato para oferecer um beneficio de acompanhamento preventivo: avaliacao com o dentista + limpeza por R$ 100 em vez de R$ 150.\n\nFaz sentido para voce cuidar disso agora?';
+  return 'Imagina, sem problema. Você tem cadastro aqui na OrthoDontic, em São José dos Campos, e entrei em contato para oferecer um benefício de acompanhamento preventivo: avaliação com o dentista + limpeza por R$ 100 em vez de R$ 150.\n\nFaz sentido para você cuidar disso agora?';
 }
 
 function buildRecallPersuasionMessage() {
-  return 'Que bom que esta cuidando disso. Mesmo assim, a limpeza remove o tartaro que a escovacao nao alcanca, e ele pode virar problema de gengiva ou carie silenciosa.\n\nPor isso a prevencao a cada 6 meses faz diferenca. Quer aproveitar a avaliacao com a limpeza por R$ 100?';
+  return 'Que bom que está cuidando disso. Mesmo assim, a limpeza remove o tártaro que a escovação não alcança, e ele pode virar problema de gengiva ou cárie silenciosa.\n\nPor isso a prevenção a cada 6 meses faz diferença. Quer aproveitar a avaliação com a limpeza por R$ 100?';
 }
 
 function buildRecallHandoffMessage(lead) {
   const firstName = getLeadFirstName(lead.paciente_nome);
-  return `Que otimo, ${firstName}! Vou te transferir agora para o nosso setor de Relacionamento com o Cliente, que vai encontrar o melhor horario na agenda do dentista para voce.\n\nEm instantes alguem fala com voce por aqui para confirmar o dia.`;
+  return `Que ótimo, ${firstName}! Vou te transferir agora para o nosso setor de Relacionamento com o Cliente, que vai encontrar o melhor horário na agenda do dentista para você.\n\nEm instantes alguém fala com você por aqui para confirmar o dia.`;
 }
 
 function buildRecallNoInterestMessage() {
-  return 'Sem problemas. Se em outro momento voce quiser retomar esse cuidado preventivo, e so chamar a gente por aqui.';
+  return 'Sem problemas. Se em outro momento você quiser retomar esse cuidado preventivo, é só chamar a gente por aqui.';
 }
 
 function buildRecallOptOutMessage() {
-  return 'Entendido. Vou registrar por aqui para nao te incomodarmos mais com mensagens de recall. Se precisar da OrthoDontic no futuro, estaremos a disposicao.';
+  return 'Entendido. Vou registrar por aqui para não te incomodarmos mais com mensagens de recall. Se precisar da OrthoDontic no futuro, estaremos à disposição.';
 }
 
 function buildRecallWrongNumberMessage() {
-  return 'Obrigada por avisar. Vou registrar este numero como divergente e encerrar esse contato por aqui.';
+  return 'Obrigada por avisar. Vou registrar este número como divergente e encerrar esse contato por aqui.';
 }
 
 function buildRecallFallbackMessage(lead) {
   const firstName = getLeadFirstName(lead.paciente_nome);
-  return `Oi, ${firstName}. Posso te explicar direitinho: esse contato e para um retorno preventivo com avaliacao clinica e limpeza por R$ 100.\n\nFaz sentido para voce aproveitar esse cuidado agora?`;
+  return `Oi, ${firstName}. Posso te explicar direitinho: esse contato é para um retorno preventivo com avaliação clínica e limpeza por R$ 100.\n\nFaz sentido para você aproveitar esse cuidado agora?`;
 }
 
 function classifyRecallInbound(content) {
@@ -486,7 +501,7 @@ function buildRecallAgentDecision(lead, inbound, history) {
         openHandoff: true,
         replyMessage: buildRecallHandoffMessage(lead),
         privateNote: 'Camila Recall: paciente confirmou interesse no retorno preventivo. Assumir a conversa para definir o melhor horario com o dentista.',
-        labelsToAdd: [CHATWOOT_RECALL_LABEL_HANDOFF, CHATWOOT_RECALL_LABEL_IA_OFF],
+        labelsToAdd: [CHATWOOT_RECALL_LABEL_HANDOFF, CHATWOOT_RECALL_LABEL_AGUARDANDO, CHATWOOT_RECALL_LABEL_IA_OFF],
       };
     case 'opt_out':
       return {
@@ -684,6 +699,7 @@ async function handleRecallChatwootInbound(rawBody) {
     let sentMessage = false;
     let mergedLabels = [];
     if (decision.replyMessage && inbound.conversationId) {
+      await sleep(getRecallAgentDelayMs());
       await postChatwootConversationMessage(inbound.conversationId, decision.replyMessage, {
         private: false,
       });
@@ -972,9 +988,14 @@ function buildDispatchConfig() {
     chatwootRecallInboxId: CHATWOOT_RECALL_INBOX_ID || null,
     agentEnabled: RECALL_AGENT_ENABLED,
     agentSender: RECALL_AGENT_SENDER,
+    agentDelayMs: {
+      min: RECALL_AGENT_DELAY_MIN_MS,
+      max: RECALL_AGENT_DELAY_MAX_MS,
+    },
     agentLabels: {
       handoff: CHATWOOT_RECALL_LABEL_HANDOFF,
       iaOff: CHATWOOT_RECALL_LABEL_IA_OFF,
+      aguardandoAtendimento: CHATWOOT_RECALL_LABEL_AGUARDANDO,
       optOut: CHATWOOT_RECALL_LABEL_OPT_OUT,
       wrongNumber: CHATWOOT_RECALL_LABEL_WRONG_NUMBER,
       semInteresse: CHATWOOT_RECALL_LABEL_SEM_INTERESSE,

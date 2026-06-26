@@ -104,8 +104,11 @@ Variaveis principais:
 
 - `RECALL_AGENT_ENABLED=true`
 - `RECALL_AGENT_SENDER=camila_recall`
+- `RECALL_AGENT_DELAY_MIN_MS=1200`
+- `RECALL_AGENT_DELAY_MAX_MS=2800`
 - `CHATWOOT_RECALL_LABEL_HANDOFF=recall_agendar`
 - `CHATWOOT_RECALL_LABEL_IA_OFF=ia_off`
+- `CHATWOOT_RECALL_LABEL_AGUARDANDO=aguardando_atendimento`
 - `CHATWOOT_RECALL_LABEL_OPT_OUT=recall_opt_out`
 - `CHATWOOT_RECALL_LABEL_WRONG_NUMBER=recall_numero_errado`
 - `CHATWOOT_RECALL_LABEL_SEM_INTERESSE=recall_sem_interesse`
@@ -114,6 +117,7 @@ Quando houver aceite do paciente, a Recall:
 
 - envia a mensagem de transferencia
 - adiciona a label de handoff
+- adiciona a label `aguardando_atendimento`
 - adiciona `ia_off`
 - grava `handoff_at` no lead
 
