@@ -1,0 +1,1657 @@
+require('dns').setDefaultResultOrder('ipv4first');
+
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const { Client } = require('pg');
+require('dotenv').config();
+
+const PORT = process.env.RECALL_PORT || 3001;
+const RECALL_SCHEMA = process.env.RECALL_DB_SCHEMA || 'recall';
+const connectionString = `postgresql://${process.env.PGUSER || 'postgres'}:${process.env.PGPASSWORD}@${process.env.PGHOST || 'db.nndduotjbyunggamqnyh.supabase.co'}:${process.env.PGPORT || 5432}/${process.env.PGDATABASE || 'postgres'}`;
+const RECALL_DRY_RUN = process.env.RECALL_DRY_RUN !== 'false';
+const RECALL_ENABLE_REAL_SEND = process.env.RECALL_ENABLE_REAL_SEND === 'true';
+const RECALL_TEST_DESTINATION_PHONE = String(process.env.RECALL_TEST_DESTINATION_PHONE || '5512991286873').trim();
+const RECALL_ALLOWED_PHONES = new Set(
+  String(process.env.RECALL_ALLOWED_PHONES || RECALL_TEST_DESTINATION_PHONE)
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+);
+const RECALL_ALLOWED_LEAD_IDS = new Set(
+  String(process.env.RECALL_ALLOWED_LEAD_IDS || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+);
+const RECALL_MAX_SENDS_PER_RUN = Math.min(20, Math.max(1, parseInt(process.env.RECALL_MAX_SENDS_PER_RUN, 10) || 3));
+const RECALL_TIME_WINDOWS = String(process.env.RECALL_TIME_WINDOWS || '10:00-18:00')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean);
+const RECALL_TEST_MESSAGE = process.env.RECALL_TEST_MESSAGE
+  || `Oi! Aqui e a equipe da ${process.env.CLINIC_NAME || 'clinica'}. Esta mensagem faz parte do piloto controlado da Camila Recall.`;
+const RECALL_TEMPLATE_NAME = String(process.env.RECALL_TEMPLATE_NAME || '').trim();
+const RECALL_TEMPLATE_OPENING = String(process.env.RECALL_TEMPLATE_OPENING || RECALL_TEMPLATE_NAME || 'recall_abertura_1').trim();
+const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 'recall_lembrete_2').trim();
+const RECALL_TEMPLATE_LANGUAGE = String(process.env.RECALL_TEMPLATE_LANGUAGE || 'pt_BR').trim();
+const RECALL_TEMPLATE_USE_FIRST_NAME = String(process.env.RECALL_TEMPLATE_USE_FIRST_NAME || 'true').trim().toLowerCase() !== 'false';
+const RECALL_REMINDER_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_REMINDER_DELAY_DAYS, 10) || 3));
+const META_WHATSAPP_TOKEN = process.env.META_WHATSAPP_TOKEN || '';
+const META_PHONE_NUMBER_ID = process.env.META_PHONE_NUMBER_ID || '';
+const HAS_RECALL_META_TOKEN = Boolean(String(process.env.RECALL_META_WHATSAPP_TOKEN || '').trim());
+const HAS_RECALL_META_PHONE_NUMBER_ID = Boolean(String(process.env.RECALL_META_PHONE_NUMBER_ID || '').trim());
+const RECALL_META_WHATSAPP_TOKEN = process.env.RECALL_META_WHATSAPP_TOKEN || META_WHATSAPP_TOKEN;
+const RECALL_META_PHONE_NUMBER_ID = process.env.RECALL_META_PHONE_NUMBER_ID || META_PHONE_NUMBER_ID;
+const CHATWOOT_BASE_URL = process.env.CHATWOOT_BASE_URL || '';
+const CHATWOOT_ACCOUNT_ID = process.env.CHATWOOT_ACCOUNT_ID || '';
+const CHATWOOT_RECALL_INBOX_ID = process.env.CHATWOOT_RECALL_INBOX_ID || '5';
+
+const mimeTypes = {
+  '.html': 'text/html',
+  '.css': 'text/css',
+  '.js': 'text/javascript',
+  '.json': 'application/json',
+};
+
+function parseJsonBody(req) {
+  return new Promise((resolve, reject) => {
+    let body = '';
+    req.on('data', (chunk) => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      if (!body.trim()) {
+        resolve({});
+        return;
+      }
+      try {
+        resolve(JSON.parse(body));
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
+async function runQuery(query, params = []) {
+  const client = new Client({ connectionString });
+  await client.connect();
+  try {
+    const res = await client.query(query, params);
+    return res.rows;
+  } finally {
+    await client.end();
+  }
+}
+
+function sendJson(res, status, payload) {
+  res.writeHead(status, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify(payload));
+}
+
+function buildReadyFilters(params, idxRef, alias = '') {
+  const prefix = alias ? `${alias}.` : '';
+  const filters = [
+    `${prefix}status = $${idxRef.value++}`,
+    `${prefix}respondeu = false`,
+    `${prefix}opt_out = false`,
+    `(${prefix}handoff_at IS NULL OR ${prefix}handoff_resolved = true)`,
+  ];
+  params.push('pendente');
+  return filters;
+}
+
+function normalizeAttemptOutcome(outcome) {
+  const allowed = new Set([
+    'sem_resposta',
+    'respondeu',
+    'opt_out',
+    'handoff_humano',
+    'telefone_invalido',
+  ]);
+  return allowed.has(outcome) ? outcome : 'sem_resposta';
+}
+
+function normalizeNextActionType(actionType) {
+  const allowed = new Set([
+    'retorno_whatsapp',
+    'retorno_telefone',
+    'revisar_manual',
+  ]);
+  return allowed.has(actionType) ? actionType : 'retorno_whatsapp';
+}
+
+function normalizePhone(value) {
+  return String(value || '').replace(/\D+/g, '');
+}
+
+function normalizeDispatchQueueStatus(status) {
+  const allowed = new Set(['pendente', 'reservado', 'cancelado', 'processado']);
+  return allowed.has(status) ? status : 'pendente';
+}
+
+function parseTimeToMinutes(value) {
+  const [hoursRaw, minutesRaw = '0'] = String(value).split(':');
+  const hours = parseInt(hoursRaw, 10);
+  const minutes = parseInt(minutesRaw, 10);
+  if (Number.isNaN(hours) || Number.isNaN(minutes)) {
+    return null;
+  }
+  return (hours * 60) + minutes;
+}
+
+function isWithinAllowedWindow(date = new Date()) {
+  if (!RECALL_TIME_WINDOWS.length) {
+    return true;
+  }
+  const minutesNow = (date.getHours() * 60) + date.getMinutes();
+  return RECALL_TIME_WINDOWS.some((windowRange) => {
+    const [startRaw, endRaw] = windowRange.split('-');
+    const start = parseTimeToMinutes(startRaw);
+    const end = parseTimeToMinutes(endRaw);
+    if (start === null || end === null) {
+      return false;
+    }
+    return minutesNow >= start && minutesNow <= end;
+  });
+}
+
+function getDispatchTargetPhone(lead) {
+  return String(RECALL_TEST_DESTINATION_PHONE || lead?.telefone || '').trim();
+}
+
+function getLeadFirstName(rawName) {
+  const first = String(rawName || '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)[0];
+  if (!first) {
+    return 'paciente';
+  }
+  return first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+}
+
+function extractChatwootInbound(rawBody) {
+  const body = rawBody?.body || rawBody || {};
+  const event = String(body.event || '');
+  const messageType = body.message_type;
+  const isIncoming = messageType === 0 || messageType === 'incoming';
+  const content = String(body.content || '').trim();
+  const conversation = body.conversation || {};
+  const sender = body.sender || {};
+  const contactInbox = conversation.contact_inbox || {};
+  const phoneRaw = contactInbox.source_id || sender.phone_number || sender.identifier || '';
+  const inboxId = conversation.inbox_id || body.inbox_id || null;
+  const conversationId = conversation.id || body.conversation_id || null;
+  const contactId = contactInbox.contact_id || sender.id || null;
+  const labels = Array.isArray(conversation.labels) ? conversation.labels.map(String) : [];
+
+  return {
+    event,
+    isIncoming,
+    content,
+    inboxId: inboxId != null ? String(inboxId) : null,
+    conversationId: conversationId != null ? Number(conversationId) : null,
+    contactId: contactId != null ? String(contactId) : null,
+    phone: normalizePhone(phoneRaw),
+    labels,
+    raw: body,
+  };
+}
+
+function classifyRecallInbound(content) {
+  const normalized = String(content || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
+
+  if (!normalized) {
+    return { intent: 'mensagem_vazia', status: 'pendente' };
+  }
+
+  if (normalized.includes('nao reconhe') || normalized.includes('desconhec')) {
+    return { intent: 'nao_reconhece', status: 'erro', metaError: 'nao_reconhece', openHandoff: true };
+  }
+
+  if (normalized.includes('quero informa')) {
+    return { intent: 'quero_informacoes', status: 'em_atendimento_humano', openHandoff: true };
+  }
+
+  return { intent: 'resposta_livre', status: 'em_atendimento_humano', openHandoff: true };
+}
+
+async function findRecallLeadForInbound(client, inbound) {
+  if (inbound.conversationId) {
+    const byConversation = await client.query(
+      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id
+       FROM ${RECALL_SCHEMA}.recall_leads
+       WHERE chatwoot_conversation_id = $1
+       LIMIT 1`,
+      [inbound.conversationId]
+    );
+    if (byConversation.rows.length) {
+      return byConversation.rows[0];
+    }
+  }
+
+  if (inbound.phone && inbound.phone !== normalizePhone(RECALL_TEST_DESTINATION_PHONE)) {
+    const byPhone = await client.query(
+      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id
+       FROM ${RECALL_SCHEMA}.recall_leads
+       WHERE regexp_replace(coalesce(telefone, ''), '\\D', '', 'g') = $1
+       LIMIT 1`,
+      [inbound.phone]
+    );
+    if (byPhone.rows.length) {
+      return byPhone.rows[0];
+    }
+  }
+
+  if (inbound.phone && inbound.phone === normalizePhone(RECALL_TEST_DESTINATION_PHONE)) {
+    const byLatestDispatch = await client.query(
+      `SELECT l.id, l.paciente_nome, l.telefone, l.chatwoot_conversation_id
+       FROM ${RECALL_SCHEMA}.recall_events e
+       JOIN ${RECALL_SCHEMA}.recall_leads l
+         ON l.id = e.lead_id
+       WHERE e.event_type = 'dispatch_executado'
+         AND e.payload->>'target_phone' = $1
+       ORDER BY e.id DESC
+       LIMIT 1`,
+      [inbound.phone]
+    );
+    if (byLatestDispatch.rows.length) {
+      return byLatestDispatch.rows[0];
+    }
+  }
+
+  return null;
+}
+
+async function handleRecallChatwootInbound(rawBody) {
+  const inbound = extractChatwootInbound(rawBody);
+
+  if (inbound.event !== 'message_created' || !inbound.isIncoming) {
+    return { success: true, ignored: true, reason: 'evento_nao_processado' };
+  }
+
+  if (!inbound.inboxId || inbound.inboxId !== String(CHATWOOT_RECALL_INBOX_ID)) {
+    return { success: true, ignored: true, reason: 'inbox_diferente', inboxId: inbound.inboxId };
+  }
+
+  if (!inbound.content) {
+    return { success: true, ignored: true, reason: 'conteudo_vazio' };
+  }
+
+  const client = new Client({ connectionString });
+  await client.connect();
+
+  try {
+    await client.query('BEGIN');
+    const lead = await findRecallLeadForInbound(client, inbound);
+    if (!lead) {
+      await client.query('ROLLBACK');
+      return { success: false, reason: 'lead_nao_encontrado', inbound };
+    }
+
+    const classification = classifyRecallInbound(inbound.content);
+    await client.query(
+      `UPDATE ${RECALL_SCHEMA}.recall_leads
+       SET respondeu = true,
+           status = $2,
+           meta_error = $3,
+           handoff_at = CASE WHEN $4 THEN coalesce(handoff_at, now()) ELSE handoff_at END,
+           handoff_resolved = CASE WHEN $4 THEN false ELSE handoff_resolved END,
+           chatwoot_conversation_id = coalesce($5, chatwoot_conversation_id),
+           chatwoot_contact_id = coalesce($6, chatwoot_contact_id),
+           proxima_acao_tipo = null,
+           proxima_acao_em = null,
+           updated_at = now()
+       WHERE id = $1`,
+      [
+        lead.id,
+        classification.status,
+        classification.metaError || null,
+        Boolean(classification.openHandoff),
+        inbound.conversationId,
+        inbound.contactId,
+      ]
+    );
+
+    await client.query(
+      `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+       VALUES ($1, 'chatwoot_inbound', $2::jsonb)`,
+      [
+        lead.id,
+        JSON.stringify({
+          inbox_id: inbound.inboxId,
+          conversation_id: inbound.conversationId,
+          contact_id: inbound.contactId,
+          phone: inbound.phone,
+          content: inbound.content,
+          labels: inbound.labels,
+          intent: classification.intent,
+          status_aplicado: classification.status,
+        }),
+      ]
+    );
+
+    await client.query('COMMIT');
+    return {
+      success: true,
+      ignored: false,
+      leadId: lead.id,
+      pacienteNome: lead.paciente_nome,
+      intent: classification.intent,
+      status: classification.status,
+      conversationId: inbound.conversationId,
+    };
+  } catch (error) {
+    await client.query('ROLLBACK').catch(() => {});
+    throw error;
+  } finally {
+    await client.end();
+  }
+}
+
+function normalizeRecallStage(value) {
+  const stage = String(value || 'abertura').trim().toLowerCase();
+  return stage === 'lembrete' ? 'lembrete' : 'abertura';
+}
+
+function getTemplateNameForStage(stage) {
+  return stage === 'lembrete' ? RECALL_TEMPLATE_REMINDER : RECALL_TEMPLATE_OPENING;
+}
+
+function canSendLeadNow(lead) {
+  const targetPhone = getDispatchTargetPhone(lead);
+  if (!targetPhone) {
+    return { allowed: false, reason: 'telefone_ausente' };
+  }
+  if (RECALL_ALLOWED_PHONES.size && !RECALL_ALLOWED_PHONES.has(targetPhone)) {
+    return { allowed: false, reason: 'telefone_fora_allowlist' };
+  }
+  if (RECALL_ALLOWED_LEAD_IDS.size && !RECALL_ALLOWED_LEAD_IDS.has(String(lead.lead_id || lead.id).trim())) {
+    return { allowed: false, reason: 'lead_fora_allowlist' };
+  }
+  if (!isWithinAllowedWindow()) {
+    return { allowed: false, reason: 'fora_janela_horario' };
+  }
+  return { allowed: true, reason: null };
+}
+
+async function sendRecallWhatsappMessage(lead) {
+  const targetPhone = getDispatchTargetPhone(lead);
+  const stage = normalizeRecallStage(lead.stage || lead.snapshot?.stage);
+  const templateName = lead.template_name || lead.snapshot?.template_name || getTemplateNameForStage(stage);
+  const components = [];
+  if (RECALL_TEMPLATE_USE_FIRST_NAME) {
+    components.push({
+      type: 'body',
+      parameters: [
+        {
+          type: 'text',
+          text: getLeadFirstName(lead.paciente_nome),
+        },
+      ],
+    });
+  }
+
+  const payload = {
+    messaging_product: 'whatsapp',
+    to: targetPhone,
+    type: 'template',
+    template: {
+      name: templateName,
+      language: {
+        code: RECALL_TEMPLATE_LANGUAGE,
+      },
+      ...(components.length ? { components } : {}),
+    },
+  };
+
+  const response = await fetch(`https://graph.facebook.com/v22.0/${RECALL_META_PHONE_NUMBER_ID}/messages`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${RECALL_META_WHATSAPP_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseText = await response.text();
+  let parsed;
+  try {
+    parsed = JSON.parse(responseText);
+  } catch (error) {
+    parsed = { raw: responseText };
+  }
+
+  if (!response.ok) {
+    const message = parsed?.error?.message || `Falha no envio Meta (${response.status})`;
+    throw new Error(message);
+  }
+
+  return {
+    provider: 'meta_whatsapp',
+    payload,
+    response: parsed,
+  };
+}
+
+async function executeDispatchQueueItem(client, queueItemId) {
+  const queueResult = await client.query(
+    `SELECT
+       q.id,
+       q.queue_status,
+       q.motivo,
+       q.snapshot,
+       l.id AS lead_id,
+       l.paciente_nome,
+       l.telefone,
+       l.origem_segmento,
+       l.coorte
+     FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+     JOIN ${RECALL_SCHEMA}.recall_leads l
+       ON l.id = q.lead_id
+     WHERE q.id = $1
+     LIMIT 1`,
+    [queueItemId]
+  );
+
+  if (!queueResult.rows.length) {
+    return { success: false, reason: 'item_nao_encontrado' };
+  }
+
+  const queueRow = queueResult.rows[0];
+  if (!['pendente', 'reservado'].includes(queueRow.queue_status)) {
+    return { success: false, reason: 'status_nao_executavel', queueStatus: queueRow.queue_status };
+  }
+
+  const gating = canSendLeadNow(queueRow);
+  if (!gating.allowed) {
+    return { success: false, reason: gating.reason, queueStatus: queueRow.queue_status };
+  }
+
+  let execution;
+  const stage = normalizeRecallStage(queueRow.snapshot?.stage);
+  const templateName = queueRow.snapshot?.template_name || getTemplateNameForStage(stage);
+  if (RECALL_DRY_RUN || !RECALL_ENABLE_REAL_SEND) {
+    execution = {
+      provider: 'dry_run',
+      payload: {
+        to: getDispatchTargetPhone(queueRow),
+        type: 'template',
+        template_name: templateName || 'template_pendente_configuracao',
+        language: RECALL_TEMPLATE_LANGUAGE,
+        first_name: getLeadFirstName(queueRow.paciente_nome),
+        stage,
+      },
+      response: {
+        simulated: true,
+      },
+    };
+  } else {
+    if (!RECALL_META_WHATSAPP_TOKEN || !RECALL_META_PHONE_NUMBER_ID) {
+      return { success: false, reason: 'meta_nao_configurado', queueStatus: queueRow.queue_status };
+    }
+    if (!HAS_RECALL_META_TOKEN || !HAS_RECALL_META_PHONE_NUMBER_ID) {
+      return { success: false, reason: 'meta_recall_exclusivo_nao_configurado', queueStatus: queueRow.queue_status };
+    }
+    if (!templateName) {
+      return { success: false, reason: 'template_nao_configurado', queueStatus: queueRow.queue_status };
+    }
+    execution = await sendRecallWhatsappMessage({ ...queueRow, stage, template_name: templateName });
+  }
+
+  await client.query(
+    `UPDATE ${RECALL_SCHEMA}.recall_dispatch_queue_items
+     SET queue_status = 'processado',
+         processed_at = now()
+     WHERE id = $1`,
+    [queueItemId]
+  );
+
+  await client.query(
+    `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+     VALUES ($1, 'dispatch_executado', $2::jsonb)`,
+    [
+      queueRow.lead_id,
+      JSON.stringify({
+        queue_item_id: queueItemId,
+        motivo: queueRow.motivo,
+        executor: RECALL_DRY_RUN || !RECALL_ENABLE_REAL_SEND ? 'manual_mvp_dry_run' : 'meta_whatsapp',
+        provider: execution.provider,
+        stage,
+        template_name: templateName,
+        original_phone: queueRow.telefone,
+        target_phone: getDispatchTargetPhone(queueRow),
+        payload: execution.payload,
+        response: execution.response,
+      }),
+    ]
+  );
+
+  return {
+    success: true,
+    queueStatus: 'processado',
+    mode: RECALL_DRY_RUN || !RECALL_ENABLE_REAL_SEND ? 'dry_run' : 'real_send',
+    leadId: queueRow.lead_id,
+    phone: getDispatchTargetPhone(queueRow),
+    stage,
+    templateName,
+  };
+}
+
+function buildDispatchConfig() {
+  return {
+    schema: RECALL_SCHEMA,
+    dryRun: RECALL_DRY_RUN,
+    realSendEnabled: RECALL_ENABLE_REAL_SEND,
+    mode: RECALL_DRY_RUN || !RECALL_ENABLE_REAL_SEND ? 'dry_run' : 'real_send',
+    maxSendsPerRun: RECALL_MAX_SENDS_PER_RUN,
+    timeWindows: RECALL_TIME_WINDOWS,
+    testDestinationPhone: RECALL_TEST_DESTINATION_PHONE || null,
+    allowlistPhonesCount: RECALL_ALLOWED_PHONES.size,
+    allowlistLeadIdsCount: RECALL_ALLOWED_LEAD_IDS.size,
+    metaConfigured: Boolean(RECALL_META_WHATSAPP_TOKEN && RECALL_META_PHONE_NUMBER_ID),
+    metaDedicatedConfigured: HAS_RECALL_META_TOKEN && HAS_RECALL_META_PHONE_NUMBER_ID,
+    recallMetaPhoneNumberId: RECALL_META_PHONE_NUMBER_ID || null,
+    templateConfigured: Boolean(RECALL_TEMPLATE_OPENING && RECALL_TEMPLATE_REMINDER),
+    templateName: RECALL_TEMPLATE_NAME || null,
+    templates: {
+      abertura: RECALL_TEMPLATE_OPENING || null,
+      lembrete: RECALL_TEMPLATE_REMINDER || null,
+    },
+    templateLanguage: RECALL_TEMPLATE_LANGUAGE,
+    templateUsesFirstName: RECALL_TEMPLATE_USE_FIRST_NAME,
+    reminderDelayDays: RECALL_REMINDER_DELAY_DAYS,
+    chatwootConfigured: Boolean(CHATWOOT_BASE_URL && CHATWOOT_ACCOUNT_ID),
+    chatwootRecallInboxId: CHATWOOT_RECALL_INBOX_ID || null,
+    testMessagePreview: RECALL_TEST_MESSAGE,
+  };
+}
+
+const server = http.createServer(async (req, res) => {
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  const pathname = parsedUrl.pathname;
+  const leadDetailMatch = pathname.match(/^\/api\/recall\/leads\/([0-9a-f-]+)$/i);
+  const leadAttemptMatch = pathname.match(/^\/api\/recall\/leads\/([0-9a-f-]+)\/attempt$/i);
+  const leadFollowupMatch = pathname.match(/^\/api\/recall\/leads\/([0-9a-f-]+)\/followup$/i);
+  const dispatchQueueItemMatch = pathname.match(/^\/api\/recall\/dispatch\/queue\/([0-9a-f-]+)$/i);
+  const dispatchExecuteItemMatch = pathname.match(/^\/api\/recall\/dispatch\/execute\/([0-9a-f-]+)$/i);
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
+  try {
+    if (pathname === '/api/recall/metrics' && req.method === 'GET') {
+      const rows = await runQuery(`
+        SELECT
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads) AS total_leads,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE origem_segmento IS NOT NULL) AS leads_mapeados,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE origem_segmento = 'clinica_geral') AS clinica_geral,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE origem_segmento = 'ortodontia_adimplente') AS ortodontia_adimplente,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'pendente') AS pendentes,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE respondeu = true) AS respondeu,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE opt_out = true) AS opt_out,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE handoff_resolved = false AND handoff_at IS NOT NULL) AS handoff_aberto,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_leads
+            WHERE status = 'pendente'
+              AND respondeu = false
+              AND opt_out = false
+              AND (handoff_at IS NULL OR handoff_resolved = true)) AS pronto_contato,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'tentativa_contato'
+              AND created_at >= date_trunc('day', now())) AS tentativas_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'tentativa_contato'
+              AND payload->>'outcome' = 'respondeu'
+              AND created_at >= date_trunc('day', now())) AS respostas_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'tentativa_contato'
+              AND payload->>'outcome' = 'sem_resposta'
+              AND created_at >= date_trunc('day', now())) AS sem_resposta_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'tentativa_contato'
+              AND payload->>'outcome' = 'handoff_humano'
+              AND created_at >= date_trunc('day', now())) AS handoffs_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'tentativa_contato'
+              AND payload->>'outcome' = 'opt_out'
+              AND created_at >= date_trunc('day', now())) AS opt_out_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'tentativa_contato'
+              AND payload->>'outcome' = 'telefone_invalido'
+              AND created_at >= date_trunc('day', now())) AS telefone_invalido_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_leads
+            WHERE proxima_acao_em IS NOT NULL
+              AND proxima_acao_em >= date_trunc('day', now())
+              AND proxima_acao_em < date_trunc('day', now()) + interval '1 day') AS retornos_hoje,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_leads
+            WHERE proxima_acao_em IS NOT NULL
+              AND proxima_acao_em < now()) AS retornos_atrasados,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_import_batches) AS batches,
+          (SELECT max(created_at) FROM ${RECALL_SCHEMA}.recall_import_batches) AS ultimo_lote_em,
+          (SELECT id
+             FROM ${RECALL_SCHEMA}.recall_import_batches
+            ORDER BY created_at DESC
+            LIMIT 1) AS ultimo_lote_id,
+          (SELECT lote_nome
+             FROM ${RECALL_SCHEMA}.recall_import_batches
+            ORDER BY created_at DESC
+            LIMIT 1) AS ultimo_lote_nome
+      `);
+
+      sendJson(res, 200, rows[0]);
+      return;
+    }
+
+    if (pathname === '/api/recall/queue' && req.method === 'GET') {
+      const latestBatchRows = await runQuery(`
+        SELECT id, lote_nome, created_at
+        FROM ${RECALL_SCHEMA}.recall_import_batches
+        ORDER BY created_at DESC
+        LIMIT 1
+      `);
+      const latestBatch = latestBatchRows[0] || null;
+
+      const readyOverallRows = await runQuery(`
+        SELECT count(*)::int AS total
+        FROM ${RECALL_SCHEMA}.recall_leads
+        WHERE status = 'pendente'
+          AND respondeu = false
+          AND opt_out = false
+          AND (handoff_at IS NULL OR handoff_resolved = true)
+      `);
+
+      let readyLatestBatch = 0;
+      if (latestBatch?.id) {
+        const readyLatestRows = await runQuery(
+          `SELECT count(*)::int AS total
+           FROM ${RECALL_SCHEMA}.recall_leads
+           WHERE last_import_batch_id = $1
+             AND status = 'pendente'
+             AND respondeu = false
+             AND opt_out = false
+             AND (handoff_at IS NULL OR handoff_resolved = true)`,
+          [latestBatch.id]
+        );
+        readyLatestBatch = readyLatestRows[0]?.total || 0;
+      }
+
+      const followupRows = await runQuery(`
+        SELECT count(*)::int AS total
+        FROM ${RECALL_SCHEMA}.recall_leads
+        WHERE proxima_acao_em IS NOT NULL
+          AND proxima_acao_em < date_trunc('day', now()) + interval '1 day'
+      `);
+
+      const nextFollowups = await runQuery(`
+        SELECT
+          id,
+          paciente_nome,
+          telefone,
+          proxima_acao_tipo,
+          proxima_acao_em,
+          ultima_tentativa_resultado,
+          origem_segmento
+        FROM ${RECALL_SCHEMA}.recall_leads
+        WHERE proxima_acao_em IS NOT NULL
+        ORDER BY proxima_acao_em ASC
+        LIMIT 8
+      `);
+
+      const nextLeads = await runQuery(
+        `SELECT
+           id,
+           paciente_nome,
+           telefone,
+           origem_segmento,
+           coorte,
+           ultimo_atendimento,
+           dentista_responsavel,
+           last_import_batch_id
+         FROM ${RECALL_SCHEMA}.recall_leads
+         WHERE status = 'pendente'
+           AND respondeu = false
+           AND opt_out = false
+           AND (handoff_at IS NULL OR handoff_resolved = true)
+         ORDER BY
+           CASE WHEN last_import_batch_id = $1 THEN 0 ELSE 1 END,
+           coorte_prioridade ASC,
+           ultimo_atendimento ASC NULLS LAST,
+           updated_at DESC
+         LIMIT 12`,
+        [latestBatch?.id || null]
+      );
+
+      sendJson(res, 200, {
+        latestBatch,
+        readyOverall: readyOverallRows[0]?.total || 0,
+        readyLatestBatch,
+        followupsDue: followupRows[0]?.total || 0,
+        nextFollowups,
+        nextLeads,
+      });
+      return;
+    }
+
+    if (pathname === '/api/recall/attention' && req.method === 'GET') {
+      const overdueFollowups = await runQuery(`
+        SELECT
+          id,
+          paciente_nome,
+          telefone,
+          proxima_acao_tipo,
+          proxima_acao_em,
+          origem_segmento
+        FROM ${RECALL_SCHEMA}.recall_leads
+        WHERE proxima_acao_em IS NOT NULL
+          AND proxima_acao_em < now()
+        ORDER BY proxima_acao_em ASC
+        LIMIT 8
+      `);
+
+      const openHandoffs = await runQuery(`
+        SELECT
+          id,
+          paciente_nome,
+          telefone,
+          handoff_at,
+          meta_error,
+          origem_segmento
+        FROM ${RECALL_SCHEMA}.recall_leads
+        WHERE handoff_resolved = false
+          AND handoff_at IS NOT NULL
+        ORDER BY handoff_at ASC
+        LIMIT 8
+      `);
+
+      const invalidPhones = await runQuery(`
+        SELECT
+          l.id,
+          l.paciente_nome,
+          l.telefone,
+          e.created_at,
+          e.payload
+        FROM ${RECALL_SCHEMA}.recall_events e
+        JOIN ${RECALL_SCHEMA}.recall_leads l
+          ON l.id = e.lead_id
+        WHERE e.event_type = 'tentativa_contato'
+          AND e.payload->>'outcome' = 'telefone_invalido'
+          AND e.created_at >= date_trunc('day', now())
+        ORDER BY e.created_at DESC
+        LIMIT 8
+      `);
+
+      sendJson(res, 200, {
+        overdueFollowups,
+        openHandoffs,
+        invalidPhones,
+      });
+      return;
+    }
+
+    if (pathname === '/api/recall/dispatch/queue' && req.method === 'GET') {
+      const rows = await runQuery(`
+        SELECT
+          q.id,
+          q.queue_status,
+          q.motivo,
+          q.reserved_at,
+          q.processed_at,
+          q.created_at,
+          l.id AS lead_id,
+          l.paciente_nome,
+          l.telefone,
+          l.origem_segmento,
+          l.coorte,
+          l.ultimo_atendimento
+        FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+        JOIN ${RECALL_SCHEMA}.recall_leads l
+          ON l.id = q.lead_id
+        ORDER BY
+          CASE q.queue_status
+            WHEN 'pendente' THEN 0
+            WHEN 'reservado' THEN 1
+            WHEN 'processado' THEN 2
+            ELSE 3
+          END,
+          q.created_at DESC
+        LIMIT 40
+      `);
+
+      const summaryRows = await runQuery(`
+        SELECT
+          count(*) FILTER (WHERE queue_status = 'pendente')::int AS pendentes,
+          count(*) FILTER (WHERE queue_status = 'reservado')::int AS reservados,
+          count(*) FILTER (WHERE queue_status = 'processado')::int AS processados,
+          count(*) FILTER (WHERE queue_status = 'cancelado')::int AS cancelados
+        FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items
+        WHERE created_at >= date_trunc('day', now())
+      `);
+
+      sendJson(res, 200, {
+        items: rows,
+        summary: summaryRows[0] || {
+          pendentes: 0,
+          reservados: 0,
+          processados: 0,
+          cancelados: 0,
+        },
+      });
+      return;
+    }
+
+    if (pathname === '/api/recall/dispatch/logs' && req.method === 'GET') {
+      const rows = await runQuery(`
+        SELECT
+          e.id,
+          e.created_at,
+          e.payload,
+          l.id AS lead_id,
+          l.paciente_nome,
+          l.telefone
+        FROM ${RECALL_SCHEMA}.recall_events e
+        JOIN ${RECALL_SCHEMA}.recall_leads l
+          ON l.id = e.lead_id
+        WHERE e.event_type = 'dispatch_executado'
+          AND e.created_at >= date_trunc('day', now())
+        ORDER BY e.created_at DESC
+        LIMIT 20
+      `);
+
+      sendJson(res, 200, rows);
+      return;
+    }
+
+    if (pathname === '/api/recall/dispatch/config' && req.method === 'GET') {
+      sendJson(res, 200, buildDispatchConfig());
+      return;
+    }
+
+    if (pathname === '/api/recall/chatwoot/webhook' && req.method === 'POST') {
+      const body = await parseJsonBody(req);
+      const result = await handleRecallChatwootInbound(body);
+      sendJson(res, result.ignored ? 202 : (result.success ? 200 : 404), result);
+      return;
+    }
+
+    if (pathname === '/api/recall/dispatch/generate' && req.method === 'POST') {
+      const body = await parseJsonBody(req);
+      const limit = Math.min(100, Math.max(1, parseInt(body.limit, 10) || 20));
+      const latestBatchOnly = body.latest_batch_only !== false;
+      const stage = normalizeRecallStage(body.stage);
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+
+        const latestBatchRows = await client.query(`
+          SELECT id
+          FROM ${RECALL_SCHEMA}.recall_import_batches
+          ORDER BY created_at DESC
+          LIMIT 1
+        `);
+        const latestBatchId = latestBatchRows.rows[0]?.id || null;
+
+        const params = ['pendente'];
+        let batchFilterSql = '';
+        if (latestBatchOnly && latestBatchId) {
+          params.push(latestBatchId);
+          batchFilterSql = `AND l.last_import_batch_id = $2`;
+        }
+        let candidates;
+        if (stage === 'lembrete') {
+          candidates = await client.query(
+            `SELECT
+               l.id,
+               l.paciente_nome,
+               l.telefone,
+               l.origem_segmento,
+               l.coorte,
+               l.ultimo_atendimento,
+               l.last_import_batch_id,
+               max(e.created_at) AS last_opening_sent_at
+             FROM ${RECALL_SCHEMA}.recall_leads l
+             JOIN ${RECALL_SCHEMA}.recall_events e
+               ON e.lead_id = l.id
+              AND e.event_type = 'dispatch_executado'
+              AND coalesce(e.payload->>'stage', 'abertura') = 'abertura'
+             WHERE l.status = $1
+               AND l.respondeu = false
+               AND l.opt_out = false
+               AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+               AND NOT EXISTS (
+                 SELECT 1
+                 FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+                 WHERE q.lead_id = l.id
+                   AND q.queue_status IN ('pendente', 'reservado')
+               )
+               AND NOT EXISTS (
+                 SELECT 1
+                 FROM ${RECALL_SCHEMA}.recall_events e2
+                 WHERE e2.lead_id = l.id
+                   AND e2.event_type = 'dispatch_executado'
+                   AND coalesce(e2.payload->>'stage', 'abertura') = 'lembrete'
+               )
+               ${batchFilterSql}
+             GROUP BY l.id, l.paciente_nome, l.telefone, l.origem_segmento, l.coorte, l.ultimo_atendimento, l.last_import_batch_id
+             HAVING max(e.created_at) <= now() - make_interval(days => ${RECALL_REMINDER_DELAY_DAYS})
+             ORDER BY max(e.created_at) ASC, l.coorte_prioridade ASC, l.ultimo_atendimento ASC NULLS LAST
+             LIMIT ${limit}`,
+            params
+          );
+        } else {
+          candidates = await client.query(
+            `SELECT
+               l.id,
+               l.paciente_nome,
+               l.telefone,
+               l.origem_segmento,
+               l.coorte,
+               l.ultimo_atendimento,
+               l.last_import_batch_id
+             FROM ${RECALL_SCHEMA}.recall_leads l
+             WHERE l.status = $1
+               AND l.respondeu = false
+               AND l.opt_out = false
+               AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+               AND NOT EXISTS (
+                 SELECT 1
+                 FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+                 WHERE q.lead_id = l.id
+                   AND q.queue_status IN ('pendente', 'reservado')
+               )
+               AND NOT EXISTS (
+                 SELECT 1
+                 FROM ${RECALL_SCHEMA}.recall_events e
+                 WHERE e.lead_id = l.id
+                   AND e.event_type = 'dispatch_executado'
+                   AND coalesce(e.payload->>'stage', 'abertura') = 'abertura'
+               )
+               ${batchFilterSql}
+             ORDER BY l.coorte_prioridade ASC, l.ultimo_atendimento ASC NULLS LAST, l.updated_at DESC
+             LIMIT ${limit}`,
+            params
+          );
+        }
+
+        let inserted = 0;
+        for (const row of candidates.rows) {
+          const templateName = getTemplateNameForStage(stage);
+          await client.query(
+            `INSERT INTO ${RECALL_SCHEMA}.recall_dispatch_queue_items (lead_id, queue_status, motivo, snapshot)
+             VALUES ($1, 'pendente', $2, $3::jsonb)`,
+            [
+              row.id,
+              stage === 'lembrete'
+                ? 'fila_disparo_lembrete'
+                : (latestBatchOnly && latestBatchId ? 'fila_disparo_ultimo_lote' : 'fila_disparo_base_pronta'),
+              JSON.stringify({
+                stage,
+                template_name: templateName,
+                paciente_nome: row.paciente_nome,
+                telefone: row.telefone,
+                origem_segmento: row.origem_segmento,
+                coorte: row.coorte,
+                ultimo_atendimento: row.ultimo_atendimento,
+                last_import_batch_id: row.last_import_batch_id,
+                last_opening_sent_at: row.last_opening_sent_at || null,
+              }),
+            ]
+          );
+          inserted += 1;
+        }
+
+        await client.query('COMMIT');
+        sendJson(res, 200, {
+          success: true,
+          inserted,
+          stage,
+          templateName: getTemplateNameForStage(stage),
+          latestBatchOnly,
+          latestBatchId,
+        });
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (pathname === '/api/recall/dispatch/execute-batch' && req.method === 'POST') {
+      const body = await parseJsonBody(req);
+      const limit = Math.min(RECALL_MAX_SENDS_PER_RUN, Math.max(1, parseInt(body.limit, 10) || RECALL_MAX_SENDS_PER_RUN));
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+        const candidateRows = await client.query(
+          `SELECT id
+           FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items
+           WHERE queue_status IN ('pendente', 'reservado')
+           ORDER BY
+             CASE queue_status
+               WHEN 'reservado' THEN 0
+               WHEN 'pendente' THEN 1
+               ELSE 2
+             END,
+             created_at ASC
+           LIMIT $1`,
+          [limit]
+        );
+
+        const results = [];
+        for (const row of candidateRows.rows) {
+          const result = await executeDispatchQueueItem(client, row.id);
+          results.push({ queueItemId: row.id, ...result });
+        }
+
+        await client.query('COMMIT');
+        sendJson(res, 200, {
+          success: true,
+          requested: limit,
+          attempted: candidateRows.rows.length,
+          executed: results.filter((item) => item.success).length,
+          blocked: results.filter((item) => !item.success).length,
+          mode: buildDispatchConfig().mode,
+          results,
+        });
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (dispatchExecuteItemMatch && req.method === 'POST') {
+      const queueItemId = dispatchExecuteItemMatch[1];
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+        const result = await executeDispatchQueueItem(client, queueItemId);
+
+        if (!result.success) {
+          await client.query('ROLLBACK');
+          sendJson(res, 409, result);
+          return;
+        }
+
+        await client.query('COMMIT');
+        sendJson(res, 200, result);
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (dispatchQueueItemMatch && req.method === 'POST') {
+      const queueItemId = dispatchQueueItemMatch[1];
+      const body = await parseJsonBody(req);
+      const nextStatus = normalizeDispatchQueueStatus(String(body.queue_status || '').trim().toLowerCase());
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+        const existing = await client.query(
+          `SELECT id, lead_id, queue_status, motivo, snapshot
+           FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items
+           WHERE id = $1
+           LIMIT 1`,
+          [queueItemId]
+        );
+
+        if (!existing.rows.length) {
+          await client.query('ROLLBACK');
+          sendJson(res, 404, { error: 'Item da fila nao encontrado.' });
+          return;
+        }
+
+        const queueRow = existing.rows[0];
+
+        await client.query(
+          `UPDATE ${RECALL_SCHEMA}.recall_dispatch_queue_items
+           SET queue_status = $2,
+               reserved_at = CASE WHEN $2 = 'reservado' THEN now() ELSE reserved_at END,
+               processed_at = CASE WHEN $2 = 'processado' THEN now() ELSE processed_at END
+           WHERE id = $1`,
+          [queueItemId, nextStatus]
+        );
+
+        await client.query('COMMIT');
+        sendJson(res, 200, { success: true, queue_status: nextStatus });
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (pathname === '/api/recall/leads' && req.method === 'GET') {
+      const page = Math.max(1, parseInt(parsedUrl.searchParams.get('page'), 10) || 1);
+      const pageSize = Math.min(200, Math.max(10, parseInt(parsedUrl.searchParams.get('pageSize'), 10) || 50));
+      const offset = (page - 1) * pageSize;
+
+      const filters = [];
+      const params = [];
+      let idx = 1;
+
+      const status = parsedUrl.searchParams.get('status');
+      const coorte = parsedUrl.searchParams.get('coorte');
+      const segmento = parsedUrl.searchParams.get('segmento');
+      const batchId = parsedUrl.searchParams.get('batchId');
+      const search = parsedUrl.searchParams.get('search');
+      const onlyReady = parsedUrl.searchParams.get('onlyReady') === 'true';
+      const latestBatchOnly = parsedUrl.searchParams.get('latestBatchOnly') === 'true';
+      const onlyFollowupDue = parsedUrl.searchParams.get('onlyFollowupDue') === 'true';
+
+      if (status) {
+        filters.push(`status = $${idx++}`);
+        params.push(status);
+      }
+      if (coorte) {
+        filters.push(`coorte = $${idx++}`);
+        params.push(coorte);
+      }
+      if (segmento) {
+        filters.push(`origem_segmento = $${idx++}`);
+        params.push(segmento);
+      }
+      if (batchId) {
+        filters.push(`last_import_batch_id = $${idx++}`);
+        params.push(batchId);
+      }
+      if (search) {
+        filters.push(`(paciente_nome ILIKE $${idx} OR telefone ILIKE $${idx})`);
+        params.push(`%${search}%`);
+        idx += 1;
+      }
+      if (onlyReady) {
+        filters.push(...buildReadyFilters(params, { value: idx }));
+        idx = params.length + 1;
+      }
+      if (latestBatchOnly) {
+        const latestBatchRows = await runQuery(`
+          SELECT id
+          FROM ${RECALL_SCHEMA}.recall_import_batches
+          ORDER BY created_at DESC
+          LIMIT 1
+        `);
+        if (latestBatchRows[0]?.id) {
+          filters.push(`last_import_batch_id = $${idx++}`);
+          params.push(latestBatchRows[0].id);
+        }
+      }
+      if (onlyFollowupDue) {
+        filters.push(`proxima_acao_em IS NOT NULL`);
+        filters.push(`proxima_acao_em < date_trunc('day', now()) + interval '1 day'`);
+      }
+
+      const whereClause = filters.length ? `WHERE ${filters.join(' AND ')}` : '';
+
+      const totalRows = await runQuery(
+        `SELECT count(*)::int AS total FROM ${RECALL_SCHEMA}.recall_leads ${whereClause}`,
+        params
+      );
+
+      const leads = await runQuery(
+        `SELECT
+           id,
+           paciente_nome,
+           telefone,
+           telefone_secundario,
+           dentista_responsavel,
+           situacao_financeira,
+           origem_segmento,
+           coorte,
+           status,
+           ultimo_atendimento,
+           agendado_raw,
+           respondeu,
+           opt_out,
+           handoff_at,
+           handoff_resolved,
+           ultima_tentativa_em,
+           ultima_tentativa_resultado,
+           tentativa_count,
+           proxima_acao_tipo,
+           proxima_acao_em,
+           import_count,
+           updated_at
+         FROM ${RECALL_SCHEMA}.recall_leads
+         ${whereClause}
+         ORDER BY
+           CASE WHEN last_import_batch_id = (
+             SELECT id
+             FROM ${RECALL_SCHEMA}.recall_import_batches
+             ORDER BY created_at DESC
+             LIMIT 1
+           ) THEN 0 ELSE 1 END,
+           coorte_prioridade ASC,
+           updated_at DESC
+         LIMIT $${idx} OFFSET $${idx + 1}`,
+        [...params, pageSize, offset]
+      );
+
+      sendJson(res, 200, {
+        leads,
+        totalRows: totalRows[0]?.total || 0,
+        totalPages: Math.ceil((totalRows[0]?.total || 0) / pageSize),
+        page,
+        pageSize,
+      });
+      return;
+    }
+
+    if (leadDetailMatch && req.method === 'GET') {
+      const leadId = leadDetailMatch[1];
+      const leadRows = await runQuery(
+        `SELECT
+           id,
+           paciente_nome,
+           telefone,
+           telefone_secundario,
+           telefones_raw,
+           nascimento,
+           dentista_responsavel,
+           situacao_financeira,
+           origem_segmento,
+           coorte,
+           status,
+           ultimo_atendimento,
+           agendado_raw,
+           respondeu,
+           opt_out,
+           handoff_at,
+           handoff_resolved,
+           meta_error,
+           ultima_tentativa_em,
+           ultima_tentativa_resultado,
+           tentativa_count,
+           proxima_acao_tipo,
+           proxima_acao_em,
+           observacoes_importacao,
+           import_count,
+           created_at,
+           updated_at,
+           last_import_batch_id
+         FROM ${RECALL_SCHEMA}.recall_leads
+         WHERE id = $1
+         LIMIT 1`,
+        [leadId]
+      );
+
+      if (!leadRows.length) {
+        sendJson(res, 404, { error: 'Lead nao encontrado.' });
+        return;
+      }
+
+      const eventRows = await runQuery(
+        `SELECT id, event_type, payload, created_at
+         FROM ${RECALL_SCHEMA}.recall_events
+         WHERE lead_id = $1
+         ORDER BY created_at DESC
+         LIMIT 20`,
+        [leadId]
+      );
+
+      sendJson(res, 200, { lead: leadRows[0], events: eventRows });
+      return;
+    }
+
+    if (leadAttemptMatch && req.method === 'POST') {
+      const leadId = leadAttemptMatch[1];
+      const body = await parseJsonBody(req);
+      const channel = String(body.channel || 'whatsapp').trim().toLowerCase();
+      const outcome = normalizeAttemptOutcome(String(body.outcome || '').trim().toLowerCase());
+      const notes = String(body.notes || '').trim();
+      const scheduleForRaw = body.schedule_for ? String(body.schedule_for).trim() : '';
+      const scheduleTypeRaw = body.schedule_type ? String(body.schedule_type).trim().toLowerCase() : '';
+      const scheduleFor = scheduleForRaw ? new Date(scheduleForRaw) : null;
+      const scheduleType = scheduleTypeRaw ? normalizeNextActionType(scheduleTypeRaw) : null;
+
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+
+        const existing = await client.query(
+          `SELECT id, status, respondeu, opt_out, handoff_at, handoff_resolved, meta_error
+           FROM ${RECALL_SCHEMA}.recall_leads
+           WHERE id = $1
+           LIMIT 1`,
+          [leadId]
+        );
+
+        if (!existing.rows.length) {
+          await client.query('ROLLBACK');
+          sendJson(res, 404, { error: 'Lead nao encontrado.' });
+          return;
+        }
+
+        const current = existing.rows[0];
+        let nextStatus = current.status;
+        let nextRespondeu = current.respondeu;
+        let nextOptOut = current.opt_out;
+        let openHandoff = false;
+        let nextHandoffResolved = current.handoff_resolved;
+        let nextMetaError = current.meta_error;
+
+        if (outcome === 'respondeu') {
+          nextStatus = 'respondido';
+          nextRespondeu = true;
+        }
+        if (outcome === 'opt_out') {
+          nextStatus = 'opt_out';
+          nextOptOut = true;
+        }
+        if (outcome === 'handoff_humano') {
+          nextStatus = 'em_atendimento_humano';
+          openHandoff = true;
+          nextHandoffResolved = false;
+        }
+        if (outcome === 'telefone_invalido') {
+          nextStatus = 'erro';
+          nextMetaError = notes || 'telefone_invalido';
+        }
+
+        await client.query(
+          `UPDATE ${RECALL_SCHEMA}.recall_leads
+           SET status = $2,
+               respondeu = $3,
+               opt_out = $4,
+               handoff_at = CASE
+                 WHEN $5 = true THEN now()
+                 ELSE handoff_at
+               END,
+               handoff_resolved = $6,
+               meta_error = $7,
+               ultima_tentativa_em = now(),
+               ultima_tentativa_resultado = $8,
+               tentativa_count = COALESCE(tentativa_count, 0) + 1,
+               proxima_acao_tipo = $9,
+               proxima_acao_em = $10,
+               updated_at = now()
+           WHERE id = $1`,
+          [
+            leadId,
+            nextStatus,
+            nextRespondeu,
+            nextOptOut,
+            openHandoff,
+            nextHandoffResolved,
+            nextMetaError,
+            outcome,
+            scheduleFor ? (scheduleType || 'retorno_whatsapp') : null,
+            scheduleFor ? scheduleFor.toISOString() : null,
+          ]
+        );
+
+        await client.query(
+          `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+           VALUES ($1, 'tentativa_contato', $2::jsonb)`,
+          [
+            leadId,
+            JSON.stringify({
+              channel,
+              outcome,
+              notes: notes || null,
+              schedule_for: scheduleFor ? scheduleFor.toISOString() : null,
+              schedule_type: scheduleFor ? (scheduleType || 'retorno_whatsapp') : null,
+              lead_status_after: nextStatus,
+            }),
+          ]
+        );
+
+        await client.query('COMMIT');
+        sendJson(res, 200, { success: true });
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (leadFollowupMatch && req.method === 'POST') {
+      const leadId = leadFollowupMatch[1];
+      const body = await parseJsonBody(req);
+      const nextActionType = normalizeNextActionType(String(body.next_action_type || '').trim().toLowerCase());
+      const scheduledForRaw = String(body.scheduled_for || '').trim();
+      const notes = String(body.notes || '').trim();
+
+      if (!scheduledForRaw) {
+        sendJson(res, 400, { error: 'scheduled_for é obrigatório.' });
+        return;
+      }
+
+      const scheduledFor = new Date(scheduledForRaw);
+      if (Number.isNaN(scheduledFor.getTime())) {
+        sendJson(res, 400, { error: 'scheduled_for inválido.' });
+        return;
+      }
+
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+
+        const existing = await client.query(
+          `SELECT id
+           FROM ${RECALL_SCHEMA}.recall_leads
+           WHERE id = $1
+           LIMIT 1`,
+          [leadId]
+        );
+
+        if (!existing.rows.length) {
+          await client.query('ROLLBACK');
+          sendJson(res, 404, { error: 'Lead nao encontrado.' });
+          return;
+        }
+
+        await client.query(
+          `UPDATE ${RECALL_SCHEMA}.recall_leads
+           SET proxima_acao_tipo = $2,
+               proxima_acao_em = $3,
+               updated_at = now()
+           WHERE id = $1`,
+          [leadId, nextActionType, scheduledFor.toISOString()]
+        );
+
+        await client.query(
+          `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+           VALUES ($1, 'followup_agendado', $2::jsonb)`,
+          [
+            leadId,
+            JSON.stringify({
+              next_action_type: nextActionType,
+              scheduled_for: scheduledFor.toISOString(),
+              notes: notes || null,
+            }),
+          ]
+        );
+
+        await client.query('COMMIT');
+        sendJson(res, 200, { success: true });
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (leadDetailMatch && req.method === 'POST') {
+      const leadId = leadDetailMatch[1];
+      const body = await parseJsonBody(req);
+      const {
+        status,
+        respondeu,
+        opt_out,
+        handoff_open,
+        handoff_resolved,
+        meta_error,
+      } = body;
+
+      const client = new Client({ connectionString });
+      await client.connect();
+
+      try {
+        await client.query('BEGIN');
+
+        const existing = await client.query(
+          `SELECT id, telefone, status, respondeu, opt_out, handoff_at, handoff_resolved
+           FROM ${RECALL_SCHEMA}.recall_leads
+           WHERE id = $1
+           LIMIT 1`,
+          [leadId]
+        );
+
+        if (!existing.rows.length) {
+          await client.query('ROLLBACK');
+          sendJson(res, 404, { error: 'Lead nao encontrado.' });
+          return;
+        }
+
+        const current = existing.rows[0];
+        const nextStatus = status ?? current.status;
+        const nextRespondeu = typeof respondeu === 'boolean' ? respondeu : current.respondeu;
+        const nextOptOut = typeof opt_out === 'boolean' ? opt_out : current.opt_out;
+        const shouldOpenHandoff = handoff_open === true;
+        const nextHandoffResolved = typeof handoff_resolved === 'boolean'
+          ? handoff_resolved
+          : (shouldOpenHandoff ? false : current.handoff_resolved);
+
+        await client.query(
+          `UPDATE ${RECALL_SCHEMA}.recall_leads
+           SET status = $2,
+               respondeu = $3,
+               opt_out = $4,
+               handoff_at = CASE
+                 WHEN $5 = true THEN now()
+                 WHEN $6 = true THEN handoff_at
+                 ELSE handoff_at
+               END,
+               handoff_resolved = $6,
+               meta_error = COALESCE(NULLIF($7::text, ''), meta_error),
+               updated_at = now()
+           WHERE id = $1`,
+          [
+            leadId,
+            nextStatus,
+            nextRespondeu,
+            nextOptOut,
+            shouldOpenHandoff,
+            nextHandoffResolved,
+            meta_error ?? null,
+          ]
+        );
+
+        await client.query(
+          `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+           VALUES ($1, 'status_atualizado', $2::jsonb)`,
+          [
+            leadId,
+            JSON.stringify({
+              status: nextStatus,
+              respondeu: nextRespondeu,
+              opt_out: nextOptOut,
+              handoff_open: shouldOpenHandoff,
+              handoff_resolved: nextHandoffResolved,
+              meta_error: meta_error ?? null,
+            }),
+          ]
+        );
+
+        await client.query('COMMIT');
+        sendJson(res, 200, { success: true });
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (pathname === '/api/recall/batches' && req.method === 'GET') {
+      const rows = await runQuery(`
+        SELECT id, lote_nome, eligible_total, total_rows, created_at
+        FROM ${RECALL_SCHEMA}.recall_import_batches
+        ORDER BY created_at DESC
+        LIMIT 20
+      `);
+      sendJson(res, 200, rows);
+      return;
+    }
+
+    let filePath;
+    if (pathname === '/' || pathname === '/recall') {
+      filePath = path.join(__dirname, 'public', 'recall_dashboard.html');
+    } else {
+      filePath = path.join(__dirname, pathname);
+    }
+
+    if (!filePath.startsWith(__dirname)) {
+      res.writeHead(403);
+      res.end('Forbidden');
+      return;
+    }
+
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+      const ext = path.extname(filePath);
+      res.writeHead(200, { 'Content-Type': mimeTypes[ext] || 'text/plain' });
+      fs.createReadStream(filePath).pipe(res);
+      return;
+    }
+
+    res.writeHead(404);
+    res.end('Not Found');
+  } catch (error) {
+    console.error('Recall server error:', error);
+    sendJson(res, 500, { success: false, error: error.message });
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`Recall Dashboard Server listening at http://localhost:${PORT}/recall`);
+});

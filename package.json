@@ -1,0 +1,19 @@
+{
+  "name": "camila-recall",
+  "version": "1.0.0",
+  "description": "Camila Recall - MVP operacional isolado",
+  "main": "recall_server.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.5",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "start": "node recall_server.js",
+    "migrate:wave2": "node scripts/recall_run_wave2_migration.js",
+    "migrate:wave3": "node scripts/recall_run_wave3_followup_migration.js",
+    "migrate:wave4": "node scripts/recall_run_wave4_dispatch_queue_migration.js",
+    "import:mvp": "node scripts/recall_generate_mvp_import.js",
+    "import:wave2": "node scripts/recall_import_wave2.js"
+  }
+}

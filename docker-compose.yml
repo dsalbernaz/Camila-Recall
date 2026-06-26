@@ -1,0 +1,36 @@
+services:
+  camila_recall:
+    build:
+      context: .
+    container_name: camila_recall
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      RECALL_PORT: 3001
+      RECALL_DB_SCHEMA: ${RECALL_DB_SCHEMA:-recall}
+      CHATWOOT_RECALL_INBOX_ID: ${CHATWOOT_RECALL_INBOX_ID:-5}
+      RECALL_DRY_RUN: ${RECALL_DRY_RUN:-true}
+      RECALL_ENABLE_REAL_SEND: ${RECALL_ENABLE_REAL_SEND:-false}
+      RECALL_MAX_SENDS_PER_RUN: ${RECALL_MAX_SENDS_PER_RUN:-1}
+      RECALL_TIME_WINDOWS: ${RECALL_TIME_WINDOWS:-10:00-18:00}
+      RECALL_TEMPLATE_OPENING: ${RECALL_TEMPLATE_OPENING:-recall_abertura_1}
+      RECALL_TEMPLATE_REMINDER: ${RECALL_TEMPLATE_REMINDER:-recall_lembrete_2}
+      RECALL_TEMPLATE_LANGUAGE: ${RECALL_TEMPLATE_LANGUAGE:-pt_BR}
+      RECALL_TEMPLATE_USE_FIRST_NAME: ${RECALL_TEMPLATE_USE_FIRST_NAME:-true}
+      RECALL_REMINDER_DELAY_DAYS: ${RECALL_REMINDER_DELAY_DAYS:-3}
+    restart: unless-stopped
+    networks:
+      - Dg579500
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=Dg579500
+      - traefik.http.routers.camila_recall.rule=Host(`${RECALL_PUBLIC_HOST:-dashboard.oc332.com.br}`)
+      - traefik.http.routers.camila_recall.entrypoints=websecure
+      - traefik.http.routers.camila_recall.tls.certresolver=letsencryptresolver
+      - traefik.http.services.camila_recall.loadbalancer.server.port=3001
+      - traefik.http.services.camila_recall.loadbalancer.passHostHeader=true
+
+networks:
+  Dg579500:
+    external: true

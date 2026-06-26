@@ -1,0 +1,1457 @@
+row_number,paciente_nome,dentista_responsavel,situacao_financeira,ultimo_atendimento,agendado,telefone_raw,exclusion_reason
+2,Paciente,Den. Responsável,Sit.Financ.,Últ.Atend,Agendado,Telefone,segmento_nao_elegivel
+3,Teste Boleto Da Silva,Marina Melo Maciel,INADIMPLENTE,26/03/2026,,(12) 97811-3939,segmento_nao_elegivel
+5,Nelcy Domingos Dos Santos,Luiz Gustavo Teodoro,ADIMPLENTE,15/01/2026,,(12) 99719-1630  (12) 97408-2717,menos_de_6_meses
+6,Robson Da Silva Veroneses,Renata Portella Bason,ADIMPLENTE,19/01/2026,,(12) 98166-7119  (12) 98113-2589,menos_de_6_meses
+10,Francisco De Assis Nunes Ferreira,Não informado,ADIMPLENTE,23/04/2021,,,telefone_invalido
+13,Yago Xavier Bueno Dos Reis,Marina Melo Maciel,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99134-2872  (12) 99236-6114,menos_de_6_meses
+17,Amanda Carolina Ribeiro Chaves,Renata Portella Bason,INADIMPLENTE,09/04/2026,30/06/2026,(12) 98884-0893,segmento_nao_elegivel
+25,Francini Corrá Monteiro Ferreira,Larissa De Sá Lucena Macedo,INADIMPLENTE,20/05/2021,,(12) 98838-7170  (12) 98838-7170,segmento_nao_elegivel
+27,Maria Jose Nunes de Oliveira,Giuliano Ferreira Queiroz,ADIMPLENTE,31/05/2021,,(12) 3944-3395,telefone_invalido
+28,Luis Paulo Da Silva Carvalho,Renata Portella Bason,INADIMPLENTE,23/05/2026,04/07/2026,(12) 99669-9313,segmento_nao_elegivel
+36,Maria Beatriz Dos Santos Gama,Marina Melo Maciel,ADIMPLENTE,22/04/2026,27/06/2026,(12) 99723-8951,menos_de_6_meses
+38,Anderson Oswaldo Carneiro,Erik Augusto Silva,INADIMPLENTE,20/05/2026,,(12) 98319-3149  (12) 98159-8115  (12) 98122-2421,segmento_nao_elegivel
+39,Cailane Cristina Da Silva Nicacio,Marina Melo Maciel,ADIMPLENTE,16/06/2026,15/07/2026,(12) 98159-8115  (12) 98162-4116  (12) 98162-4116  (12) 98162-4116,menos_de_6_meses
+42,Joao Pedro Fernandes Felizardo,Marina Melo Maciel,ADIMPLENTE,12/05/2026,25/06/2026,(12) 99604-9695,menos_de_6_meses
+43,Davi Miguel Fernandes Felizardo,Marina Melo Maciel,ADIMPLENTE,12/05/2026,25/06/2026,(12) 99604-9695  (12) 99604-9695,menos_de_6_meses
+44,Ronaldo Ferreira Leite,Giuliano Ferreira Queiroz,ADIMPLENTE,10/08/2021,,(12) 3905-3381 (12) 3905-3381,telefone_invalido
+47,Amancio Da Silva Braz,Giuliano Ferreira Queiroz,ADIMPLENTE,13/12/2022,,(12) 3937-2603,telefone_invalido
+54,Alana Luzia Teotonio,Mariane Ignat,ADIMPLENTE,10/06/2026,,(12) 99670-6151,menos_de_6_meses
+56,Fabio Nogueira Da Silva,Natalia Dos Santos Silva,INADIMPLENTE,03/10/2023,,(12) 99623-0248  (12) 99623-0248  (12) 98124-6495,segmento_nao_elegivel
+58,Sandra Regina Dos Santos,Luiz Gustavo Teodoro,INADIMPLENTE,17/06/2026,15/07/2026,(12) 98822-4410  (12) 98822-4410,segmento_nao_elegivel
+61,Edmilson Marcondes Sabino,Renata Portella Bason,INADIMPLENTE,05/06/2026,03/07/2026,(12) 98853-1551  (12) 98853-1551  (12) 12988-5315 (12) 98853-1567,segmento_nao_elegivel
+62,Victor Carvalho De Azevedo Silva,Marina Melo Maciel,ADIMPLENTE,20/06/2026,25/07/2026,(12) 98119-5392  (12) 98119-5392,menos_de_6_meses
+64,Patrícia Regina Farias Do Carmo,Giuliano Ferreira Queiroz,INADIMPLENTE,,,(12) 98317-9533  (12) 98317-9533,ultimo_atendimento_invalido
+67,Elisangela Santos De Moura,Renata Portella Bason,ADIMPLENTE,12/06/2026,16/07/2026,(12) 99209-4641,menos_de_6_meses
+71,Maria Heloisa Pereira Simeão,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98701-2422,menos_de_6_meses
+72,Josiane Cristina Lino Porto,Natalia Dos Santos Silva,ADIMPLENTE,16/03/2026,,(12) 98857-5816  (12) 98857-5816  (12) 12988-5758,menos_de_6_meses
+76,Miguel Cenci Garcia,Erik Augusto Silva,ADIMPLENTE,11/06/2026,16/07/2026,(12) 99755-5446  (12) 99755-5446,menos_de_6_meses
+78,Raquel Cerqueira Nocito Boffano,Natalia Dos Santos Silva,ADIMPLENTE,18/07/2024,,,telefone_invalido
+79,Edlayne Santos Carvalho Nascimento,Marina Melo Maciel,INADIMPLENTE,09/06/2026,07/07/2026,(12) 98854-9836  (12) 98854-9836,segmento_nao_elegivel
+80,Fabiana Fátima Rezende Porfirio,Giuliano Ferreira Queiroz,ADIMPLENTE,,,(12) 99654-4106,ultimo_atendimento_invalido
+82,Alexandra Mariana Dos Santos,Giuliano Ferreira Queiroz,ADIMPLENTE,23/04/2026,,(12) 99786-9727,menos_de_6_meses
+84,Beatriz Dos Santos Da Cunha Maia,Mariane Ignat,ADIMPLENTE,07/02/2026,,(12) 99761-7231  (12) 99761-7231,menos_de_6_meses
+85,Tifany Portes Da Costa Maia,Tatiana De Almeida Lage Machado,ADIMPLENTE,24/06/2026,29/07/2026,(12) 99669-9805  (12) 99608-9025  (12) 99683-5518,menos_de_6_meses
+87,Bianca Nocito Boffano Cunha,Marina Melo Maciel,ADIMPLENTE,19/05/2026,25/06/2026,(12) 99202-4949  (12) 99148-3732,menos_de_6_meses
+88,Zélia Moreira Dos Santos,Giuliano Ferreira Queiroz,ADIMPLENTE,23/04/2026,,(12) 98132-9882  (12) 98132-9882,menos_de_6_meses
+94,Natascha Messias Dos Santos,Giuliano Ferreira Queiroz,ADIMPLENTE,15/09/2021,,035999633616,telefone_invalido
+95,Rosangela Aparecida,Emerson Yuji Assakura,INADIMPLENTE,16/12/2022,,(12) 98264-2372  (12) 98264-2372,segmento_nao_elegivel
+97,Carmelita De Oliveira Barreto,Luiz Gustavo Teodoro,INADIMPLENTE,22/06/2026,22/07/2026,(12) 99762-5253  (12) 99762-5253,segmento_nao_elegivel
+102,Jonatas Augusto De Morais Maia,Mariane Ignat,INADIMPLENTE,04/10/2025,11/07/2026,(12) 99669-8191  (12) 99669-8191,segmento_nao_elegivel
+104,Jonatan Henrique Da Silva,Mariane Ignat,INADIMPLENTE,08/05/2026,,(12) 99619-8759  (12) 98871-7883,segmento_nao_elegivel
+105,Bruno Velozo Dos Santos,Renata Portella Bason,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98186-9913,menos_de_6_meses
+107,Simone Rodrigues Da Silva,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 98871-0546  (12) 98871-0546,menos_de_6_meses
+109,Nicole Luceli Idelusde Sousa,Renata Portella Bason,INADIMPLENTE,17/12/2024,,(12) 99663-9927  (12) 99663-9927  (12) 12996-6399 (12) 98706-3966,segmento_nao_elegivel
+110,Fabricio Faria Ramos,Renata Portella Bason,ADIMPLENTE,09/05/2026,,(12) 99680-8634,menos_de_6_meses
+112,Pamela Bonfim Pereira Dos Santos,Renata Portella Bason,ADIMPLENTE,06/06/2026,10/07/2026,(12) 99232-1382  (12) 99232-1382,menos_de_6_meses
+114,Thiago Oliveira Dos Santos Júnior,Luiz Gustavo Teodoro,ADIMPLENTE,21/05/2026,,(12) 98852-4797  (12) 98208-7616,menos_de_6_meses
+115,José Roberto Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,08/06/2026,,(12) 98170-5607  (12) 98170-5607  (12) 12817-0560,menos_de_6_meses
+118,Iago De Miranda Ladeira,Luiz Gustavo Teodoro,ADIMPLENTE,10/04/2026,,(12) 99774-9750  (12) 99235-0550,menos_de_6_meses
+121,Daiana Fernanda Leal Ferreira Santos,Marina Melo Maciel,INADIMPLENTE,18/05/2026,,(12) 99798-9470  (12) 99798-9470,segmento_nao_elegivel
+124,Mauro Cezar Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,10/06/2026,08/07/2026,(12) 99235-6677,segmento_nao_elegivel
+125,Gilmar Leonardo Ferreira,Erik Augusto Silva,INADIMPLENTE,11/06/2026,16/07/2026,(12) 99745-3151  (12) 98851-9130  (12) 12982-1020 (19) 99720-6142  (12) 98210-2081,segmento_nao_elegivel
+129,Igor Da Silva Rosa,Renata Portella Bason,INADIMPLENTE,23/05/2026,27/06/2026,(12) 99610-2555  (12) 99741-0564,segmento_nao_elegivel
+133,Ronaldo De Sousa Lins,Mariane Ignat,INADIMPLENTE,05/12/2025,,(12) 98109-2056  (12) 98109-2056  (12) 12981-0920,segmento_nao_elegivel
+135,Crislaine Rosalina Da Cunha,Brício De Moraes Mesquita,ADIMPLENTE,,,(12) 99104-9892,ultimo_atendimento_invalido
+138,Matheus Henrique Da Silva Santos,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 98248-2151  (12) 12982-4821 (12) 12982-4824,menos_de_6_meses
+139,Valdete,Giuliano Ferreira Queiroz,INADIMPLENTE,05/11/2021,,,telefone_invalido
+140,Allan,Não informado,INADIMPLENTE,05/11/2021,,,telefone_invalido
+145,Mohammad Sami Lima Abbasi Kamran,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,27/06/2026,(12) 98229-2640  (12) 98199-2503  (12) 98229-2940,segmento_nao_elegivel
+162,Dayane Vitória Pereira De Oliveira,Marina Melo Maciel,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99763-2093,menos_de_6_meses
+176,Nicéia Claro Dos Santos,Mariane Ignat,INADIMPLENTE,11/04/2026,04/07/2026,(12) 99608-8272  (12) 99608-8272,segmento_nao_elegivel
+184,Mariana Lopes Serra Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,06/02/2026,,(12) 99604-0810  (12) 99640-1893  (12) 99636-1598,segmento_nao_elegivel
+189,Glaudston Rohr Gonçalves,Rodrigo Fernandes Cabral Pais Ferraz,INADIMPLENTE,01/02/2025,,(11) 94576-4021  (12) 99646-3397,segmento_nao_elegivel
+190,Dulce Fatima Oliveira Faria,Giuliano Ferreira Queiroz,ADIMPLENTE,28/01/2026,,(12) 98853-8341  (12) 98211-5865,menos_de_6_meses
+193,Samuel Levi Dos Santos Marques Felix,Giuliano Ferreira Queiroz,ADIMPLENTE,,,(12) 98897-3161,ultimo_atendimento_invalido
+195,Fernanda Alessandra Mota Ribeiro,Luiz Gustavo Teodoro,INADIMPLENTE,25/05/2026,27/06/2026,(12) 99647-6555  (12) 99647-6555  (12) 99716-0545,segmento_nao_elegivel
+196,João Vitor Mota Ribeiro,Luiz Gustavo Teodoro,INADIMPLENTE,25/05/2026,27/06/2026,(12) 99647-6555  (12) 99647-6555,segmento_nao_elegivel
+197,Bruna Ellen De Moraes Rodrigues,Tatiana De Almeida Lage Machado,ADIMPLENTE,16/06/2026,14/07/2026,(12) 99618-3192  (12) 99618-3192  (12) 12996-1831,menos_de_6_meses
+198,Ray Gabriel Jesus Dos Santos,Renata Portella Bason,ADIMPLENTE,12/06/2026,16/07/2026,(12) 98256-6559,menos_de_6_meses
+201,Carla Luana De Barros,Renata Portella Bason,ADIMPLENTE,30/05/2026,26/06/2026,(12) 98123-9974,menos_de_6_meses
+204,Elenice Candido Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,08/04/2026,,(12) 98706-0783  (12) 98706-0783,segmento_nao_elegivel
+205,Caroline Nogueira Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,17/08/2023,,(12) 98220-5104,segmento_nao_elegivel
+210,Joane Santos Souza,Renata Portella Bason,ADIMPLENTE,18/06/2026,,(12) 98266-4347,menos_de_6_meses
+211,Livia Cunha Vicente Pereira,Renata Portella Bason,ADIMPLENTE,26/05/2026,25/06/2026,(12) 99700-8050  (12) 99215-0420,menos_de_6_meses
+212,Camila De Carvalho Silva,Dentista SAC - PADRÃO,INADIMPLENTE,22/01/2026,,(12) 98318-4667,segmento_nao_elegivel
+215,Nicolly Samara Bezerra De Barros,Mariane Ignat,INADIMPLENTE,15/05/2026,,(12) 98120-2278  (12) 99758-3887,segmento_nao_elegivel
+217,Crislany Rocha De Sousa Machado,Mariane Ignat,INADIMPLENTE,25/05/2026,26/06/2026,(12) 98832-7710,segmento_nao_elegivel
+221,Yesica Paola Arcilla Narin,Marina Melo Maciel,ADIMPLENTE,09/05/2026,26/06/2026,(11) 99659-9877  (11) 96059-9877,menos_de_6_meses
+222,Pamela Rodrigues De Oliveira,Erik Augusto Silva,ADIMPLENTE,18/06/2026,20/07/2026,(12) 98808-9147,menos_de_6_meses
+224,Davi Augusto De Gois,Marina Melo Maciel,ADIMPLENTE,27/05/2026,01/07/2026,(41) 99593-1464  (12) 41995-9314,menos_de_6_meses
+225,Elida Karine Da Silva Neves,Mariane Ignat,INADIMPLENTE,15/05/2026,26/06/2026,(12) 98864-3767  (12) 98121-8464  (12) 99119-9030,segmento_nao_elegivel
+226,Pedro Henrique Nunes Dos Santos,Renata Portella Bason,INADIMPLENTE,16/05/2026,25/06/2026,(12) 97408-5677,segmento_nao_elegivel
+227,Karen Larissa Guerino Galdino,Marina Melo Maciel,ADIMPLENTE,05/06/2026,08/07/2026,(12) 98841-6786  (12) 99884-1678,menos_de_6_meses
+232,Kailaine Dos Santos Gama,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 98802-4825  (12) 98802-4825,menos_de_6_meses
+233,Ana Caroline Marques Dos Santos,Emerson Yuji Assakura,INADIMPLENTE,14/07/2022,,(12) 98228-9879,segmento_nao_elegivel
+240,Erik Santos Vieira Ribeiro,Renata Portella Bason,ADIMPLENTE,26/05/2026,25/06/2026,(12) 98884-6816,menos_de_6_meses
+242,Roberta Aparecida Mota Ribeiro,Ana Clara Rezeck De Moura,ADIMPLENTE,18/04/2026,,(12) 99647-6555,menos_de_6_meses
+247,Kátia Souza Da Silva,Marina Melo Maciel,INADIMPLENTE,12/05/2026,,(12) 98849-3441  (12) 98232-8846  (12) 98232-8846,segmento_nao_elegivel
+260,Daniela Conceicao Lopes,Mariane Ignat,INADIMPLENTE,08/05/2026,,(12) 98278-6876  (12) 12982-7868,segmento_nao_elegivel
+261,Kelvin De Jesus Goncalves De Almeida,Mariane Ignat,INADIMPLENTE,30/04/2026,,(12) 98160-2529  (12) 98209-9977,segmento_nao_elegivel
+263,Silvana Tavares De Farias,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,11/07/2026,(11) 98745-6902,menos_de_6_meses
+265,Caio Vitor Nascimento Malhone,Renata Portella Bason,INADIMPLENTE,21/05/2026,25/06/2026,(12) 98215-0016  (12) 98296-2433  (12) 98215-0016  (12) 98296-2433  (12) 99176-2704,segmento_nao_elegivel
+267,Pablo Caique Marcondes Dos Santos,Renata Portella Bason,ADIMPLENTE,09/05/2026,27/06/2026,(12) 99643-4468  (12) 99732-5230,menos_de_6_meses
+269,Carmem Lucia Rodrigues Moreira,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,(12) 99144-8907  (12) 99144-8907  (12) 12991-4489,menos_de_6_meses
+270,Thainara Carvalho Silva,Mariane Ignat,ADIMPLENTE,17/04/2026,26/06/2026,(12) 99720-5111,menos_de_6_meses
+275,Monique Fernanda Antunes Custodio,Larissa Monteiro Saldanha Lopes,INADIMPLENTE,29/07/2022,,(12) 98894-6003,segmento_nao_elegivel
+276,Arielly Vitoria Rodrigues,Luiz Gustavo Teodoro,INADIMPLENTE,22/06/2026,15/07/2026,(12) 99651-0534  (12) 99651-0534,segmento_nao_elegivel
+277,Valdirene Das Graças Rodrigues,Luiz Gustavo Teodoro,ADIMPLENTE,27/01/2026,,(12) 99651-0534,menos_de_6_meses
+287,Gabriella Vitoria De Carvalho Santos,Mariane Ignat,ADIMPLENTE,22/06/2026,18/07/2026,(12) 98807-1919,menos_de_6_meses
+290,Vilma Aparecida De Azevedo,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,27/06/2026,(12) 99799-6212,segmento_nao_elegivel
+291,Wesley De Azevedo Maciel,Tatiana De Almeida Lage Machado,ADIMPLENTE,28/05/2026,30/06/2026,(12) 99799-6212  (12) 99677-6197,menos_de_6_meses
+292,Caio Fernandes  Vampre Da Silva Alves,Renata Portella Bason,ADIMPLENTE,21/05/2026,25/06/2026,(12) 98157-9425,menos_de_6_meses
+301,Marcelo Rodrigo Coelho Costa,Mariane Ignat,INADIMPLENTE,05/06/2026,17/07/2026,(12) 97407-2520  (12) 98825-0361,segmento_nao_elegivel
+302,Gleidison Gama Nunes,Mariane Ignat,ADIMPLENTE,23/05/2026,27/06/2026,(12) 98844-9740  (12) 99706-7460  (12) 98882-1884,menos_de_6_meses
+303,Guilherme Gama Nunes,Renata Portella Bason,ADIMPLENTE,16/05/2026,27/06/2026,(12) 98882-1884  (12) 98844-0740  (12) 12988-4497 (12) 98844-9740,menos_de_6_meses
+304,Mike Carvalho Dos Santos,Mariane Ignat,INADIMPLENTE,08/05/2026,27/06/2026,(12) 99637-7866  (12) 99153-3390  (12) 99153-3390,segmento_nao_elegivel
+305,Mirelly Alves Aloysio,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 98134-4988,menos_de_6_meses
+306,Vanderleia Ferreira,Giuliano Ferreira Queiroz,ADIMPLENTE,,,(12) 99782-8228,ultimo_atendimento_invalido
+310,Samuel Gustavo Rodrigues Dantas,Luiz Gustavo Teodoro,INADIMPLENTE,21/02/2026,,(12) 98209-4886,segmento_nao_elegivel
+312,Marcos Vinicius Arantes Dos Santos.,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(14) 99835-4774,menos_de_6_meses
+313,Murilo Henrique Dias Da Silva,Mariane Ignat,ADIMPLENTE,24/04/2026,26/06/2026,(12) 98117-3345,menos_de_6_meses
+314,Maria Thereza Honorio Flausino,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 99777-9398  (12) 12997-7793 (12) 98176-9852,menos_de_6_meses
+315,José Pedro Narciso De Moraes,Luiz Gustavo Teodoro,INADIMPLENTE,06/10/2025,,(12) 99143-9644,segmento_nao_elegivel
+316,Bruno Ferreira Dias,Marina Melo Maciel,INADIMPLENTE,12/05/2026,,(12) 97410-3964,segmento_nao_elegivel
+317,Theo Gustavo Moreira Costa,Marina Melo Maciel,INADIMPLENTE,20/05/2026,30/06/2026,(12) 99618-7672  (12) 12996-1876,segmento_nao_elegivel
+319,Wellington De Oliveira,Mariane Ignat,INADIMPLENTE,13/04/2026,,(12) 99198-2720,segmento_nao_elegivel
+323,Mateus Rodolfo  Nazario Wunderlich,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 99107-4643  (12) 99254-0004  (12) 12992-5400,menos_de_6_meses
+328,Cristiano Tucci Garcia Brigagao,Marina Melo Maciel,ADIMPLENTE,09/06/2026,07/07/2026,(12) 98827-0848,menos_de_6_meses
+329,Pamela Suelen Da Silva,Renata Portella Bason,ADIMPLENTE,12/02/2026,,(12) 98849-5136,menos_de_6_meses
+330,Gerson Antonio,Mariane Ignat,ADIMPLENTE,29/05/2026,26/06/2026,(12) 98268-7320,menos_de_6_meses
+331,Matheus Henrique Amorim Da Silva,Mariane Ignat,ADIMPLENTE,30/03/2026,,,menos_de_6_meses
+334,Keise Dos Santos Azevedo,Tatiana De Almeida Lage Machado,INADIMPLENTE,12/05/2026,25/07/2026,(79) 99684-5067  (12) 99236-6497,segmento_nao_elegivel
+336,Gabriel Gordiano De Castro,Luiz Gustavo Teodoro,INADIMPLENTE,13/05/2026,,(12) 99778-2003  (12) 12997-7820,segmento_nao_elegivel
+337,Cilda Maria Nogueira Dos Santos,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/04/2026,30/06/2026,(12) 99740-6328,menos_de_6_meses
+338,Eduarda Cristina Do Nascimento,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 99603-3445,menos_de_6_meses
+342,Rebeca de Paula Oliveira Silva,Luiz Gustavo Teodoro,INADIMPLENTE,26/05/2026,01/07/2026,(12) 98216-8147,segmento_nao_elegivel
+343,Melissa Gabrielle De Paula Mandarino,Mariane Ignat,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98856-0884,menos_de_6_meses
+347,Bruna De Paulo Dos Santos Da Silva,Marina Melo Maciel,ADIMPLENTE,24/06/2026,22/07/2026,(12) 98835-9519  (12) 99217-2584,menos_de_6_meses
+348,Isabela Pereira Goncalves,Renata Portella Bason,INADIMPLENTE,08/05/2026,26/06/2026,(12) 99790-8446  (12) 12997-9084,segmento_nao_elegivel
+351,Esther Marcela Ramos Rosa,Mariane Ignat,INADIMPLENTE,01/06/2026,03/07/2026,(12) 93300-9652  (12) 98158-9317  (12) 93300-9652,segmento_nao_elegivel
+353,Ely De Paula Rodrigues,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98163-9918,menos_de_6_meses
+355,CAMILLY GABRIELI DE PAULO DA SILVA NEVES,Marina Melo Maciel,ADIMPLENTE,24/06/2026,22/07/2026,(12) 98835-9519  (12) 99217-2584,menos_de_6_meses
+356,Debora Caroline Dos Santos Vieira,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98830-5012,menos_de_6_meses
+357,Paulo Henrique Dos Santos Aquino,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 98830-5012  (12) 12988-3050 (12) 99113-0847,menos_de_6_meses
+359,Eveline Siqueira Pinto,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 99616-6964  (12) 98820-2536,menos_de_6_meses
+360,Tamires Da Silva Costa,Renata Portella Bason,INADIMPLENTE,28/04/2026,25/06/2026,(12) 98132-5756  (12) 12981-3257,segmento_nao_elegivel
+362,Enzo Emanuel Souza De Jesus,Larissa De Sá Lucena Macedo,INADIMPLENTE,03/03/2023,,(12) 99625-6091  (12) 98886-0382,segmento_nao_elegivel
+364,Eduardo Alisson Alves Gonçalves Macedo,Larissa De Sá Lucena Macedo,ADIMPLENTE,16/07/2022,,,telefone_invalido
+366,Orivaldo Francisco Dos Santos,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99716-7069,menos_de_6_meses
+367,Sirlene Ferraz Ramos Souza,Mariane Ignat,INADIMPLENTE,17/04/2026,,(12) 98850-4653,segmento_nao_elegivel
+368,Ana Claudia Lima Castro,Mariane Ignat,ADIMPLENTE,08/06/2026,,(12) 98316-9560  (12) 98316-9560,menos_de_6_meses
+373,Maria José Pereira Batista,Giuliano Ferreira Queiroz,ADIMPLENTE,05/05/2026,01/07/2026,(12) 98850-5256,menos_de_6_meses
+374,Adrielle Alves Firmino,Paula Cristine De Oliveira Esteves,INADIMPLENTE,08/06/2026,10/07/2026,(12) 99659-8841,segmento_nao_elegivel
+375,Isabelly Vitoria Moreira Veloso,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98209-7584  (12) 98284-9552,menos_de_6_meses
+381,Cintia Rodrigues Correia,Luiz Gustavo Teodoro,INADIMPLENTE,11/06/2026,15/07/2026,(12) 98207-3745,segmento_nao_elegivel
+387,Thais Bernardo Belmiro,Marina Melo Maciel,ADIMPLENTE,11/06/2026,14/07/2026,(12) 99665-9869  (12) 99665-9869,menos_de_6_meses
+389,Patricia da Silva Santos,Mariane Ignat,INADIMPLENTE,08/05/2026,,(12) 98178-3691  (12) 98178-3691,segmento_nao_elegivel
+395,Barbara Thalia Barretto Freitas,Renata Portella Bason,INADIMPLENTE,31/03/2026,,(12) 99743-5376  (12) 99751-7153,segmento_nao_elegivel
+398,Allan Silva Gomes Nogueira,Paula Cristine De Oliveira Esteves,INADIMPLENTE,15/06/2026,13/07/2026,(43) 99803-0365  (12) 98132-6450  (12) 98841-9798,segmento_nao_elegivel
+399,Addan Silva Nogueira,Renata Portella Bason,ADIMPLENTE,15/05/2026,25/06/2026,(12) 98174-0278,menos_de_6_meses
+400,Juliano,Karina Dos Santos Domingues Jardim,INADIMPLENTE,23/08/2022,,(12) 98821-4003,segmento_nao_elegivel
+402,Janicleide Lima Martins,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,10/07/2026,(12) 99652-6822,menos_de_6_meses
+405,Beatriz Mota Viana,Brício De Moraes Mesquita,INADIMPLENTE,27/08/2022,,(12) 99120-9108,segmento_nao_elegivel
+410,José Benedito Ramos,Giuliano Ferreira Queiroz,ADIMPLENTE,22/12/2022,,,telefone_invalido
+412,José Ronivon De Souza,Renata Portella Bason,ADIMPLENTE,07/03/2026,,(12) 98884-6793,menos_de_6_meses
+414,Raimunda Nonata Da Silva Carvalho,Luiz Gustavo Teodoro,INADIMPLENTE,23/11/2022,,(11) 93493-2825,segmento_nao_elegivel
+415,Rafael Da Silva Santos,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99611-5172  (12) 99771-7682,menos_de_6_meses
+416,Andre Luiz Rodrigues,Mariane Ignat,ADIMPLENTE,19/06/2026,20/07/2026,(12) 98257-5415  (12) 98257-5415,menos_de_6_meses
+417,Victoria Emanuelle Alves Ferreira,Renata Portella Bason,INADIMPLENTE,20/06/2026,11/07/2026,(12) 99682-6967  (12) 98877-4200,segmento_nao_elegivel
+418,Isabely Silva Carvalho,Mariane Ignat,INADIMPLENTE,03/06/2026,18/07/2026,(12) 98247-6270  (12) 98870-8398,segmento_nao_elegivel
+420,Calebe Rodrigues Moreira Moura,Renata Portella Bason,ADIMPLENTE,11/06/2026,03/07/2026,(12) 99600-9015,menos_de_6_meses
+421,Gustavo Bitencourt Arcanjo,Renata Portella Bason,ADIMPLENTE,19/05/2026,30/06/2026,(12) 98188-3104,menos_de_6_meses
+422,Luciana Beatriz De Siqueira Rosa,Mariane Ignat,INADIMPLENTE,22/05/2026,26/06/2026,(12) 98146-3540,segmento_nao_elegivel
+423,Sebastião Ramos De Lima,Tainá Ribeiro De Moraes,ADIMPLENTE,24/08/2023,,(12) 3942-3713,telefone_invalido
+424,Maycon Eduardo Cicari,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98248-2851  (12) 12982-4828,menos_de_6_meses
+426,Peterson Rodrigo Gonçalves Pereira,Luiz Gustavo Teodoro,ADIMPLENTE,13/06/2026,11/07/2026,(12) 98892-0279,menos_de_6_meses
+428,Nayara Costa Felix De Souza,Mariane Ignat,INADIMPLENTE,09/06/2025,,(12) 98134-2837,segmento_nao_elegivel
+429,Ariane Do Carmo Nogueira Lemes,Paula Cristine De Oliveira Esteves,INADIMPLENTE,26/05/2026,26/06/2026,(12) 99706-9156,segmento_nao_elegivel
+431,Alessandra Aparecida Santos,Marina Melo Maciel,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99110-9787,menos_de_6_meses
+432,Pierre Augusto De Paula Teixeira,Mariane Ignat,INADIMPLENTE,20/06/2026,24/07/2026,(12) 98165-9898,segmento_nao_elegivel
+433,Alexandra De Souza,Mariane Ignat,INADIMPLENTE,01/06/2026,03/07/2026,(12) 98247-6615,segmento_nao_elegivel
+437,Alexsandra Lopes Da Silva,Erik Augusto Silva,INADIMPLENTE,01/06/2026,06/07/2026,(12) 99260-2673,segmento_nao_elegivel
+439,Renata Aparecida Fernandes Rodrigues,Renata Portella Bason,INADIMPLENTE,09/04/2026,,(12) 98163-4465,segmento_nao_elegivel
+441,Aline De Souza Santos Moreira,Mariane Ignat,ADIMPLENTE,25/05/2026,06/07/2026,(14) 99124-9008,menos_de_6_meses
+442,Henrique Cadmiel Da Silva Moura,Luiz Gustavo Teodoro,INADIMPLENTE,29/11/2025,,(12) 98273-1636,segmento_nao_elegivel
+443,Carla Danielle Da Silva De Souza,Renata Portella Bason,INADIMPLENTE,23/05/2026,26/06/2026,(12) 99103-6892,segmento_nao_elegivel
+447,Edimundo Turci,Não informado,ADIMPLENTE,30/07/2025,,(12) 39372-871_,telefone_invalido
+450,Amanda Dos Reis Ferreira Da Silva,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,03/07/2026,(12) 98217-4510,menos_de_6_meses
+460,Matheus Henrique De Oliveira Macedo,Larissa De Sá Lucena Macedo,INADIMPLENTE,31/03/2025,,(12) 99899-9999,segmento_nao_elegivel
+463,João Vitor De Souza Mesquita,Mariane Ignat,INADIMPLENTE,05/12/2025,,(12) 98112-7892  (12) 98157-7872,segmento_nao_elegivel
+464,Danillo Ferreira Da Silva,Renata Portella Bason,INADIMPLENTE,30/04/2026,25/06/2026,(12) 99683-9817,segmento_nao_elegivel
+465,Daniella Ferreira Da Silva,Renata Portella Bason,INADIMPLENTE,30/04/2026,25/06/2026,(12) 99683-9817,segmento_nao_elegivel
+466,Ana Alice Monteiro Da Cruz,Mariane Ignat,INADIMPLENTE,30/03/2026,,(12) 98857-1566,segmento_nao_elegivel
+467,Doralice Santos 4182,Giuliano Ferreira Queiroz,INADIMPLENTE,18/11/2022,,,telefone_invalido
+469,Rebeca Barreto Da Silva Alves,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 99762-5253,menos_de_6_meses
+472,Debora Serra Ferreira,Mariane Ignat,ADIMPLENTE,22/06/2026,20/07/2026,(12) 99160-7871,menos_de_6_meses
+475,Jéssica De Carvalho Barbosa,Mariane Ignat,ADIMPLENTE,15/06/2026,17/07/2026,(12) 98114-5453,menos_de_6_meses
+476,Vera Lucia Alves Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,03/06/2026,01/07/2026,(12) 98128-6233,segmento_nao_elegivel
+477,Camila De Souza Silva,Renata Portella Bason,INADIMPLENTE,09/05/2026,27/06/2026,(74) 98854-0483  (12) 98859-0521,segmento_nao_elegivel
+480,Flávia Cristina Vilella Ferreira,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98259-1744  (12) 98193-2167,menos_de_6_meses
+484,Leonardo Lima Dos Santos,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,27/06/2026,(12) 97412-5935,segmento_nao_elegivel
+485,Lauriceia Pereira De Oliveira,Marina Melo Maciel,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98814-8281,menos_de_6_meses
+486,Evelyn Rosa Sander,Mariane Ignat,ADIMPLENTE,10/01/2026,,(12) 98232-2598,menos_de_6_meses
+487,Soraia Tatiane Ferreira Rodrigues,Mariane Ignat,ADIMPLENTE,07/01/2026,,(12) 98321-7587,menos_de_6_meses
+489,Magali Beatriz Souza,Marina Melo Maciel,ADIMPLENTE,09/06/2026,18/07/2026,(12) 98896-5049  (12) 12988-9650,menos_de_6_meses
+490,Tainá Yasmin De Paula Correa,Tatiana De Almeida Lage Machado,ADIMPLENTE,20/05/2026,,(12) 98855-7489  (12) 99230-8934  (12) 99230-8934,menos_de_6_meses
+491,Vitoria Ysabella Correa Valadares,Mariane Ignat,INADIMPLENTE,26/02/2025,,(22) 99600-0989,segmento_nao_elegivel
+492,Felipe Pereira Da Costa,Renata Portella Bason,ADIMPLENTE,30/05/2026,30/06/2026,(12) 97406-1751  (12) 99203-5193,menos_de_6_meses
+493,Joana D´arc Da Silva,Erik Augusto Silva,ADIMPLENTE,11/06/2026,16/07/2026,(12) 99799-3141,menos_de_6_meses
+494,José Carlos Dos Santos,Não informado,INADIMPLENTE,,,,ultimo_atendimento_invalido
+495,Francisco Pallaoro Dal Piva,Karina Dos Santos Domingues Jardim,INADIMPLENTE,19/12/2022,,(12) 98114-4686,segmento_nao_elegivel
+497,Tainara Menezes Ramos,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,08/07/2026,(12) 98837-8550  (12) 12988-3785,segmento_nao_elegivel
+501,Juan Pereira Farias,Luiz Gustavo Teodoro,INADIMPLENTE,20/06/2026,18/07/2026,(12) 97412-2676,segmento_nao_elegivel
+502,Layanne Gabriele Arouck De Lima,Mariane Ignat,INADIMPLENTE,08/01/2026,,(12) 99260-2823  (12) 99607-5867,segmento_nao_elegivel
+504,Edinéia Carvalho De Souza,Brício De Moraes Mesquita,INADIMPLENTE,24/12/2022,,(12) 98708-0536,segmento_nao_elegivel
+505,Alex Sandro Da Conceição,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(16) 98177-7936,menos_de_6_meses
+506,Maria Lucia Carlota,Mariane Ignat,ADIMPLENTE,28/12/2022,,(12) 33076-109_,telefone_invalido
+508,Tayla Micaela Nascimento Fernandes,Erik Augusto Silva,ADIMPLENTE,18/06/2026,16/07/2026,(12) 99793-4367  (12) 99793-4367,menos_de_6_meses
+510,William,Karina Dos Santos Domingues Jardim,INADIMPLENTE,02/02/2023,,(12) 98838-0806,segmento_nao_elegivel
+514,Matheus De Souza Ferreira,Luiz Gustavo Teodoro,INADIMPLENTE,20/05/2026,29/06/2026,(12) 99711-2072  (12) 99226-6610,segmento_nao_elegivel
+515,Camila Aparecida De Andrade,Paula Cristine De Oliveira Esteves,INADIMPLENTE,29/05/2026,26/06/2026,(12) 99664-9761,segmento_nao_elegivel
+516,Bruna Evelyn Silva,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,18/07/2026,(12) 98235-0454  (12) 98235-0454,menos_de_6_meses
+520,Rosileia Cristiene De Oliveira,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99687-0398,menos_de_6_meses
+521,Adriana Luiza Antônio Dos Santos,Erik Augusto Silva,INADIMPLENTE,24/02/2025,,(12) 98134-9376,segmento_nao_elegivel
+522,Caroline Léa Da Silva Ferreira,Luiz Gustavo Teodoro,INADIMPLENTE,06/05/2026,,(12) 98134-9376,segmento_nao_elegivel
+523,Vera Lucia Souza Silva,Tainá Ribeiro De Moraes,ADIMPLENTE,16/01/2023,,,telefone_invalido
+525,Anderson Medeiros Neves,Tatiana De Almeida Lage Machado,ADIMPLENTE,09/06/2026,08/07/2026,(12) 98282-1017,menos_de_6_meses
+526,Leilane Milene De Morais,Mariane Ignat,ADIMPLENTE,05/06/2026,10/07/2026,(21) 97295-0759  (12) 97295-0759,menos_de_6_meses
+527,Pietra Borges Reis,Renata Portella Bason,INADIMPLENTE,29/05/2026,30/06/2026,(12) 99255-9824,segmento_nao_elegivel
+529,Allana Bezerra Lino Cardoso,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(12) 98306-8533,menos_de_6_meses
+531,Fabiana Silva Ramos,Gustavo Moraes Prado,ADIMPLENTE,14/03/2023,,,telefone_invalido
+539,Leticia Rios De Souza,Mariane Ignat,ADIMPLENTE,18/05/2026,,(75) 98284-3323  (75) 98284-3323,menos_de_6_meses
+541,Maria Luisa De Lima,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/06/2026,28/07/2026,(12) 98177-5097,menos_de_6_meses
+543,Camila De Carvalho Brasil Alexandrino,Marina Melo Maciel,ADIMPLENTE,09/06/2026,07/07/2026,(12) 98170-9874  (12) 12981-7098,menos_de_6_meses
+544,Natali De Souza E Silva,Tatiana De Almeida Lage Machado,ADIMPLENTE,24/06/2026,28/07/2026,(12) 98177-1856,menos_de_6_meses
+545,Anna Laura Diogo De Sousa,Marina Melo Maciel,ADIMPLENTE,09/06/2026,14/07/2026,(12) 98829-5167,menos_de_6_meses
+547,Tainara Vicente Dos Santos,Paula Cristine De Oliveira Esteves,ADIMPLENTE,29/05/2026,29/06/2026,(12) 99186-4299,menos_de_6_meses
+548,Richard Rodrigues De Amorim,Marina Melo Maciel,ADIMPLENTE,15/05/2026,26/06/2026,(12) 98258-1279,menos_de_6_meses
+551,Andreia Carla Da Silva,Renata Portella Bason,INADIMPLENTE,06/05/2026,25/06/2026,(12) 98253-8095,segmento_nao_elegivel
+554,Yasmin Lara Da Silva,Renata Portella Bason,INADIMPLENTE,26/05/2026,25/06/2026,(12) 98133-7843  (12) 98141-9062  (12) 98277-1311,segmento_nao_elegivel
+555,Maria Eduarda Ferreira Landim,Luiz Gustavo Teodoro,INADIMPLENTE,22/06/2026,25/07/2026,(12) 99189-0895  (12) 12991-8908,segmento_nao_elegivel
+558,Thiago Henrique Dos Reis,Marina Melo Maciel,ADIMPLENTE,09/06/2026,07/07/2026,(12) 99212-8400,menos_de_6_meses
+559,Larissa Mayara Cacique De Almeida,Mariane Ignat,ADIMPLENTE,10/04/2026,,(12) 98163-9676,menos_de_6_meses
+560,Keroli Suely Anjos dos Santos,Nicia Carrara,INADIMPLENTE,10/02/2023,,(12) 99631-1426,segmento_nao_elegivel
+561,Hemilin Graciana Dos Santos Soares,Mariane Ignat,ADIMPLENTE,10/04/2026,,(12) 98262-1248,menos_de_6_meses
+562,Mariana Sapha De Oliveira Rocha Nascimento,Tatiana De Almeida Lage Machado,ADIMPLENTE,28/05/2026,30/06/2026,(12) 98172-8449  (12) 98136-5107  (12) 99250-4422  (12) 99702-1246,menos_de_6_meses
+563,Ana Clara Camargo Peres Da Costa,Renata Portella Bason,INADIMPLENTE,26/05/2026,25/06/2026,(12) 98179-7945,segmento_nao_elegivel
+568,Vitória Helena Mathias De Oliveira,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 98258-2428,menos_de_6_meses
+575,Joyce Perla Santos Da Silva,Mariane Ignat,ADIMPLENTE,06/06/2026,04/07/2026,(12) 99612-7604,menos_de_6_meses
+579,Angela Viana Pontes,Renata Portella Bason,ADIMPLENTE,28/05/2026,25/06/2026,(11) 93044-7311,menos_de_6_meses
+580,Davi Rofi Fraga,Paula Cristine De Oliveira Esteves,ADIMPLENTE,05/06/2026,04/07/2026,(12) 99663-7352,menos_de_6_meses
+581,Thiago Farias Teixeira,Renata Portella Bason,INADIMPLENTE,20/06/2026,18/07/2026,(12) 99195-3825  (12) 98317-4612  (12) 98317-4612,segmento_nao_elegivel
+583,Monica Aparecida Dos Santos De Paula,Luiz Gustavo Teodoro,INADIMPLENTE,16/06/2026,27/06/2026,(12) 99144-8712,segmento_nao_elegivel
+584,Guilherme Dos Santos Corrêa,Luiz Gustavo Teodoro,ADIMPLENTE,26/05/2026,27/06/2026,(12) 99144-8712  (12) 99257-9734,menos_de_6_meses
+588,Rafaella Ferreira Lima,Erik Augusto Silva,ADIMPLENTE,21/05/2026,25/06/2026,(12) 98269-7708,menos_de_6_meses
+589,Fábio Gonçalves De Almeida,Marina Melo Maciel,INADIMPLENTE,26/07/2025,25/06/2026,(12) 98844-5073,segmento_nao_elegivel
+593,Monize Dos Santos Braga,Mariane Ignat,INADIMPLENTE,19/09/2025,,(12) 98109-1422,segmento_nao_elegivel
+594,José Felipe Morais,Alana Rebeca Chagas Machado,ADIMPLENTE,16/06/2026,15/07/2026,(12) 98829-7028,menos_de_6_meses
+596,Derlis Monike Freitas Nobre,Renata Portella Bason,ADIMPLENTE,17/03/2026,,(12) 99228-4735  (12) 98854-6676,menos_de_6_meses
+601,Naila Rafaela Da Silva,Erik Augusto Silva,INADIMPLENTE,11/06/2026,,(12) 98849-7493,segmento_nao_elegivel
+604,Marciel Santiago Feitoza,Luiz Gustavo Teodoro,ADIMPLENTE,22/05/2026,25/06/2026,(12) 98114-3185  (12) 99158-1280  (12) 92000-8092,menos_de_6_meses
+605,William Oliveira Santos,Renata Portella Bason,INADIMPLENTE,21/03/2026,,(12) 99749-9943  (12) 99749-9943,segmento_nao_elegivel
+609,Moisés Leopoldino Luiz Rosa,Mariane Ignat,INADIMPLENTE,28/03/2026,27/06/2026,(12) 99613-2826,segmento_nao_elegivel
+610,Geovanna Rodrigues Da Silva,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 98871-0546  (12) 98887-4047,menos_de_6_meses
+611,Deise Anyelle Da Silva Tavares,Luiz Gustavo Teodoro,INADIMPLENTE,14/03/2026,,(12) 99619-5355  (12) 99619-5355,segmento_nao_elegivel
+615,Bianca Alvarenga De Faria,Luiz Gustavo Teodoro,INADIMPLENTE,11/03/2026,,(12) 99654-0781  (12) 12996-5407,segmento_nao_elegivel
+618,Marcos Santos D Assunção,Mariane Ignat,ADIMPLENTE,22/05/2026,26/06/2026,(12) 99659-0101  (12) 99705-1044  (12) 99705-4410  (12) 12997-0544,menos_de_6_meses
+619,Ana Flavia Dos Santos Ferreira,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 99675-2808  (12) 99675-2808,menos_de_6_meses
+620,Sophia Gabrielly Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99657-9888  (12) 98283-7304,menos_de_6_meses
+621,Cleiderson Junio Lima,Marina Melo Maciel,INADIMPLENTE,13/06/2026,11/07/2026,(12) 99201-3641  (12) 99204-8317,segmento_nao_elegivel
+623,Thaíse Gabrielle Borges Bastista Da Silva,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98112-0687,menos_de_6_meses
+627,Pedro Henrique Silva De Oliveira,Luiz Gustavo Teodoro,INADIMPLENTE,23/05/2026,27/06/2026,(12) 99641-4756  (12) 99685-3826  (12) 12996-8538,segmento_nao_elegivel
+630,Neilane Dos Santos Paixão,Gustavo Moraes Prado,ADIMPLENTE,28/04/2023,,,telefone_invalido
+632,Junio Cesar,Tainá Ribeiro De Moraes,ADIMPLENTE,25/04/2023,,,telefone_invalido
+634,Kimberly Vitoria Da Silva Alves De Jesus,Mariane Ignat,INADIMPLENTE,09/01/2026,,(12) 98148-9923  (12) 98148-9923  (12) 98187-4844  (12) 98193-3100,segmento_nao_elegivel
+635,Rebeca Pereira Dos Santos,Marina Melo Maciel,ADIMPLENTE,20/06/2026,25/07/2026,(12) 98178-4998,menos_de_6_meses
+639,Ana Lucia Pereira Da Silva,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98707-4155,menos_de_6_meses
+640,Cristiane Santiago Santos,Tatiana De Almeida Lage Machado,INADIMPLENTE,29/04/2026,25/06/2026,(12) 98306-5815  (12) 12983-0658 (12) 98306-8515,segmento_nao_elegivel
+641,Drieli Costa Cutrim Rodrigues,Luiz Gustavo Teodoro,INADIMPLENTE,20/10/2025,,(12) 99659-4473  (12) 12996-5944,segmento_nao_elegivel
+644,Gabriela Da Silva França,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,25/07/2026,(12) 99654-1092  (12) 99620-6116,menos_de_6_meses
+645,Alisson Augusto Age,Mariane Ignat,INADIMPLENTE,15/08/2025,,(12) 99776-3403  (12) 98250-4879,segmento_nao_elegivel
+647,Moisés Alves Da Silva,Mariane Ignat,ADIMPLENTE,05/06/2026,06/07/2026,(12) 99774-2057,menos_de_6_meses
+649,Ingrid Maria Bueno Marcondes,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 99741-8971  (12) 99717-7622,menos_de_6_meses
+655,Camila Raquel Santos,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99757-7892,menos_de_6_meses
+657,Kauê Gabriel De Souza Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,06/04/2026,26/06/2026,(12) 98177-1856,segmento_nao_elegivel
+658,Julio Cesar Santos De Oliveira,Mariane Ignat,INADIMPLENTE,15/06/2026,04/07/2026,(12) 99768-6491,segmento_nao_elegivel
+664,Matheus Da Cunha Lima,Luiz Gustavo Teodoro,INADIMPLENTE,11/12/2025,,(12) 98810-8412  (12) 98182-2395,segmento_nao_elegivel
+665,Fernanda Santana Correia,Marina Melo Maciel,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99684-2805,menos_de_6_meses
+667,Vitor Lazaro Da Rosa,Não informado,ADIMPLENTE,20/05/2023,,(12) 39128-280_,telefone_invalido
+668,Ana Vitória Clementino,Marina Melo Maciel,ADIMPLENTE,09/06/2026,14/07/2026,(12) 99714-2811  (12) 99636-6142,menos_de_6_meses
+670,Natanael Da Silva Moura,Luiz Gustavo Teodoro,ADIMPLENTE,29/04/2026,25/06/2026,(35) 99966-8320,menos_de_6_meses
+671,Gil Alves Muniz,Não informado,INADIMPLENTE,23/04/2026,,(12) 98818-2963,menos_de_6_meses
+673,Marcia Margarete Santos Guedes,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98247-6374,menos_de_6_meses
+676,Gilmar Pereira Siqueira,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 98865-9341,menos_de_6_meses
+678,Joao Paulo Gonçalves,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99114-3524,menos_de_6_meses
+679,Isabela Alves De Godoi Souza,Giuliano Ferreira Queiroz,ADIMPLENTE,11/09/2023,,,telefone_invalido
+682,Ricardo Andrade De Souza,Renata Portella Bason,ADIMPLENTE,18/06/2026,28/07/2026,(12) 98208-4812,menos_de_6_meses
+683,Iniel Viana De Aragao,Fernando Kenji Batista Nakano,INADIMPLENTE,07/08/2023,,(12) 98128-8741,segmento_nao_elegivel
+686,Ana Maria De Souza Ramos,Giuliano Ferreira Queiroz,ADIMPLENTE,15/06/2026,25/06/2026,(12) 99200-4796,menos_de_6_meses
+687,Najara Diane Mesquita,Paula Cristine De Oliveira Esteves,INADIMPLENTE,12/05/2026,,(12) 99249-1285,segmento_nao_elegivel
+693,Mariah Sampaio Marchioro Pedra,Tatiana De Almeida Lage Machado,ADIMPLENTE,23/06/2026,29/07/2026,(12) 99627-4196  (12) 99146-7868,menos_de_6_meses
+694,Leandro Cesar Saraiva,Mariane Ignat,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98881-7055  (12) 98818-4163  (12) 98818-4163,menos_de_6_meses
+695,Douglas Goncalo Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,23/06/2026,22/07/2026,(12) 98297-6497  (12) 98297-6497  (12) 98818-4409  (12) 99715-7327,menos_de_6_meses
+698,Ana Clara Paiva De Oliveira Carvalho,Paula Cristine De Oliveira Esteves,INADIMPLENTE,27/04/2026,,(12) 98835-4755  (12) 98859-7062  (12) 98859-7062,segmento_nao_elegivel
+699,Misleide Vitoria Pereira De Souza,Luiz Gustavo Teodoro,INADIMPLENTE,26/05/2026,18/07/2026,(12) 98893-5211  (12) 12988-9352,segmento_nao_elegivel
+706,Evelyn Souza De Lima,Renata Portella Bason,ADIMPLENTE,16/06/2026,,(12) 99191-7709  (12) 99191-7709,menos_de_6_meses
+709,Ronaldo Jose Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,18/07/2026,(12) 98192-1612,menos_de_6_meses
+711,Anthony Nicolas Neves Gouveia,Marina Melo Maciel,INADIMPLENTE,19/05/2026,07/07/2026,(12) 99148-1468  (12) 98207-3306,segmento_nao_elegivel
+713,Raquel Dos Santos Ventura,Marina Melo Maciel,ADIMPLENTE,20/06/2026,,(12) 99605-6493,menos_de_6_meses
+714,Rodrigo Pereira Barrio,Erik Augusto Silva,INADIMPLENTE,16/04/2026,,(12) 99769-4301,segmento_nao_elegivel
+715,Aline Graziele Da Silva Dias,Erik Augusto Silva,ADIMPLENTE,08/06/2026,06/07/2026,(12) 99739-6370  (12) 98896-5638,menos_de_6_meses
+717,Erick Kaue Da Silva Neves,Marina Melo Maciel,ADIMPLENTE,02/04/2026,,(12) 98808-9140  (12) 99740-2576  (11) 93485-8200,menos_de_6_meses
+718,Rafael Custodio Roman,Não informado,INADIMPLENTE,,,(12) 99783-8229  (12) 99608-8272,ultimo_atendimento_invalido
+719,Vinicius Custodio Dos Santos Roman,Mariane Ignat,INADIMPLENTE,11/04/2026,04/07/2026,(12) 99608-8272  (12) 99783-8229,segmento_nao_elegivel
+721,Renata Silva Dos Santos,Renata Portella Bason,INADIMPLENTE,09/04/2026,30/06/2026,(12) 98827-1994  (12) 99259-1142,segmento_nao_elegivel
+726,William Wendell Silva De Oliveira,Mariane Ignat,INADIMPLENTE,15/06/2026,06/07/2026,(12) 99636-0566,segmento_nao_elegivel
+727,Dilma Campos De Moura,Ana Clara Rezeck De Moura,ADIMPLENTE,11/03/2026,,129982818152,menos_de_6_meses
+728,Denis Igor Silva Santos,Luiz Gustavo Teodoro,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99778-8355  (11) 91241-2693,menos_de_6_meses
+730,Leonardo Marchioro Pedra,Tainá Ribeiro De Moraes,ADIMPLENTE,17/08/2023,,,telefone_invalido
+736,Elisabete Cristina Goncalves,Luiz Gustavo Teodoro,ADIMPLENTE,23/05/2026,27/06/2026,(12) 98166-9126,menos_de_6_meses
+739,Gustavo Vinicius De Souza,Tainá Ribeiro De Moraes,INADIMPLENTE,10/02/2026,,(12) 99638-1692  (12) 98266-6422,menos_de_6_meses
+741,Gabriel Henrique Bertazzo Paes Carapinheiro Da Silva,Mariane Ignat,INADIMPLENTE,15/06/2026,13/07/2026,(12) 99667-4635,segmento_nao_elegivel
+742,Ingrid Carolina Barbosa Polidro Gomes,Renata Portella Bason,INADIMPLENTE,11/05/2026,30/06/2026,(12) 98214-2443,segmento_nao_elegivel
+743,Dinorah Dos Santos,Mariane Ignat,INADIMPLENTE,30/01/2026,29/06/2026,(12) 99729-8840,segmento_nao_elegivel
+744,João Paulo Elias Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,27/06/2026,(12) 98819-3262  (12) 98701-6151,segmento_nao_elegivel
+746,Rafael Da Costa,Tatiana De Almeida Lage Machado,INADIMPLENTE,24/06/2026,28/07/2026,(12) 98178-3059,segmento_nao_elegivel
+747,William Eduardo Machado,Alana Rebeca Chagas Machado,INADIMPLENTE,20/06/2026,27/06/2026,(12) 99717-5756,segmento_nao_elegivel
+750,MARCELE,Larissa Monteiro Saldanha Lopes,INADIMPLENTE,26/07/2023,,(12) 98162-4825,segmento_nao_elegivel
+751,Renan Gustavo Moreira Costa,Marina Melo Maciel,INADIMPLENTE,20/05/2026,30/06/2026,(12) 99618-7672,segmento_nao_elegivel
+756,Ygor Guimarães Ferreira Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,22/07/2026,(12) 99184-1780  (12) 97813-2758,menos_de_6_meses
+758,Maria Eduarda Barreto Da Silva,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98149-4599,menos_de_6_meses
+759,Janiel Da Silva Cavalcante,Ana Clara Rezeck De Moura,ADIMPLENTE,07/04/2026,,(12) 98811-7477,menos_de_6_meses
+760,Silvia Cristina Quirino,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(11) 97473-8364,menos_de_6_meses
+763,Sophia Gabriela Rosa Claudino,Renata Portella Bason,ADIMPLENTE,20/06/2026,26/06/2026,(12) 98129-5946  (12) 98136-8542  (12) 98136-8542,menos_de_6_meses
+764,Nicolas Gabriel Rosa Claudino,Renata Portella Bason,ADIMPLENTE,11/04/2026,26/06/2026,(12) 98129-5946  (12) 98136-8542,menos_de_6_meses
+766,Nilza Aparecida Moreira De Souza,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/01/2026,,(12) 99705-2188,menos_de_6_meses
+770,Debora Cristina Raimundo Dos Santos,Gustavo Moraes Prado,ADIMPLENTE,01/08/2024,,,telefone_invalido
+772,Maria Luiza Lemes Da Cruz,Tatiana De Almeida Lage Machado,INADIMPLENTE,13/05/2026,30/06/2026,(12) 99766-1192  (12) 98894-4192  (12) 12997-6611,segmento_nao_elegivel
+773,Elienai Pinho Monteiro,Gustavo Moraes Prado,ADIMPLENTE,15/09/2023,,,telefone_invalido
+775,Luiz Henrique Souza Dos Santos,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98899-4590  (12) 98704-0963,menos_de_6_meses
+782,Henrique Diemert De Araujo,Tatiana De Almeida Lage Machado,ADIMPLENTE,16/06/2026,14/07/2026,(12) 98101-6064,menos_de_6_meses
+783,Silvia Regina Gloria,Marina Melo Maciel,INADIMPLENTE,31/03/2026,27/06/2026,(12) 97410-9413,segmento_nao_elegivel
+785,Priscila Moreira Da Silva,Gustavo Moraes Prado,ADIMPLENTE,31/05/2024,,,telefone_invalido
+789,Gabriele Adriane Da Silva,Fernando Kenji Batista Nakano,ADIMPLENTE,28/08/2023,,,telefone_invalido
+790,Marcelo Henrique Camara De Souza,Fernando Kenji Batista Nakano,ADIMPLENTE,28/08/2023,,,telefone_invalido
+791,Emislaine Gomes Da Silva,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 99662-5137,menos_de_6_meses
+796,Deiviane Moreira Costa,Tatiana De Almeida Lage Machado,ADIMPLENTE,27/05/2026,30/06/2026,(12) 98129-6801,menos_de_6_meses
+797,Andréa Cristina Martins Ferreira Padilhas,Renata Portella Bason,INADIMPLENTE,15/01/2026,,(12) 99259-9748  (12) 98837-3745,segmento_nao_elegivel
+798,Maria Clara Ferreira De Moraes,Renata Portella Bason,INADIMPLENTE,15/01/2026,,(12) 99259-9748  (12) 98837-3745,segmento_nao_elegivel
+799,Maria Luiza Ferreira De Moraes,Renata Portella Bason,INADIMPLENTE,15/01/2026,,(12) 99259-9748  (12) 98837-3745  (12) 98183-9166,segmento_nao_elegivel
+802,Davi Samuel Rodrigues Pinheiro,Renata Portella Bason,INADIMPLENTE,18/06/2026,16/07/2026,(12) 98802-5544  (12) 98802-5544,segmento_nao_elegivel
+805,Wellington Ribeiro Oliveira,Erik Augusto Silva,INADIMPLENTE,08/06/2026,13/07/2026,(12) 99750-5890,segmento_nao_elegivel
+806,Miguel Nunes Carreiro,Marina Melo Maciel,INADIMPLENTE,17/06/2026,,(12) 99228-8129,segmento_nao_elegivel
+811,Kauã Henrique Dos Santos Moreira,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99795-1928  (12) 12997-9519,menos_de_6_meses
+813,Allan Richard Neves De Andrade,Marina Melo Maciel,ADIMPLENTE,20/06/2026,15/07/2026,(12) 97403-9746,menos_de_6_meses
+816,Jéssica Santos Da Conceição,Renata Portella Bason,INADIMPLENTE,22/05/2026,25/06/2026,(12) 98177-4886,segmento_nao_elegivel
+819,Washington Braga Mendes,Mariane Ignat,ADIMPLENTE,15/05/2026,,(12) 98848-9588,menos_de_6_meses
+822,Samuel Domingos Da Silva,Mariane Ignat,ADIMPLENTE,19/06/2026,20/07/2026,(12) 98217-1521  (12) 99651-7289,menos_de_6_meses
+823,Julia Da Costa Rocha,Tatiana De Almeida Lage Machado,INADIMPLENTE,13/05/2026,,(12) 99779-2185  (12) 99724-3268  (12) 99249-5814,segmento_nao_elegivel
+826,Roberto De Oliveira Silva,Não informado,ADIMPLENTE,29/09/2023,,(12) 39414-337_,telefone_invalido
+827,Priscila Souza Correa,Marina Melo Maciel,INADIMPLENTE,17/06/2026,22/07/2026,(12) 99643-4686  (12) 98815-3953  (12) 99643-4686,segmento_nao_elegivel
+828,Moisés Reis De Jesus,Renata Portella Bason,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99184-9381  (12) 99184-9381,menos_de_6_meses
+830,Ana Vitoria Coelho Reis,Renata Portella Bason,INADIMPLENTE,04/07/2025,,(12) 98190-6769,segmento_nao_elegivel
+832,Miguel Henrique Mauro Silva,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,07/02/2026,,(12) 99657-8110,menos_de_6_meses
+833,Maria Jose Da Silva Virginio,Tainá Ribeiro De Moraes,INADIMPLENTE,04/10/2023,,(12) 39074-977_,telefone_invalido
+834,Andreia Dos Santos Cruz,Renata Portella Bason,INADIMPLENTE,27/01/2026,,(12) 98704-5778  (12) 12987-0457,segmento_nao_elegivel
+835,Eduarda Sousa Wanderley,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98836-6719,menos_de_6_meses
+836,Victor Emanuel Coelho Ferreira,Mariane Ignat,INADIMPLENTE,29/05/2026,,(12) 99247-1811  (12) 98871-7634  (12) 98190-6769  (12) 98847-1811,segmento_nao_elegivel
+840,Natercio Guerra De Albuquerque Neto,Mariane Ignat,INADIMPLENTE,06/06/2026,04/07/2026,(12) 98301-5723  (12) 12981-4379 (12) 99785-2643  (12) 99217-2044,segmento_nao_elegivel
+842,Adrian Miguel Da Silva,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 99192-5729  (12) 12991-9257,menos_de_6_meses
+847,Maria Edilcivania Da Silva Soares,Marina Melo Maciel,ADIMPLENTE,24/06/2026,22/07/2026,(12) 98294-9579  (12) 12982-9495,menos_de_6_meses
+848,Marinna Francisca Gonçalves Dias Cruz,Renata Portella Bason,ADIMPLENTE,28/05/2026,26/06/2026,(12) 99179-0205  (12) 99793-0406,menos_de_6_meses
+851,Joyce Cristina Silva De Castro,Tatiana De Almeida Lage Machado,ADIMPLENTE,09/06/2026,07/07/2026,(12) 97412-7940,menos_de_6_meses
+852,Giovane Chagas,Luiz Gustavo Teodoro,INADIMPLENTE,13/06/2026,11/07/2026,(12) 99640-5856,segmento_nao_elegivel
+855,Rafaela Bertulani,Mariane Ignat,INADIMPLENTE,26/02/2026,,(12) 98124-3341,segmento_nao_elegivel
+856,Brian Calegarini Sato,Mariane Ignat,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98155-5006,menos_de_6_meses
+858,Barbara Alexandre,Mariane Ignat,INADIMPLENTE,06/02/2026,26/06/2026,(12) 99750-3528  (12) 98294-0746,segmento_nao_elegivel
+859,Igor Gabriel Miranda Morais,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98801-2604  (12) 98269-6472,menos_de_6_meses
+860,Melissa Souza Dantas,Renata Portella Bason,INADIMPLENTE,22/05/2026,26/06/2026,(12) 98803-1555  (12) 98889-9095,segmento_nao_elegivel
+861,Marlon Antônio Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,03/06/2026,01/07/2026,(12) 98292-3546,segmento_nao_elegivel
+863,Any Cristina Da Silva Oliveira,Fernando Kenji Batista Nakano,ADIMPLENTE,21/10/2023,,,telefone_invalido
+865,Beatriz Dias De Sousa,Renata Portella Bason,ADIMPLENTE,21/05/2026,,(12) 98189-8347  (12) 98136-4720,menos_de_6_meses
+867,Lucio Alberto Da Silva,Renata Portella Bason,ADIMPLENTE,28/05/2026,25/06/2026,(12) 98836-6171,menos_de_6_meses
+869,Viviane De Souza Astolfi Costa,Paula Cristine De Oliveira Esteves,INADIMPLENTE,11/05/2026,10/07/2026,(12) 98883-8515,segmento_nao_elegivel
+871,Sophya Cristina Sene Dos Santos,Renata Portella Bason,INADIMPLENTE,02/06/2026,02/07/2026,(12) 98253-1106  (12) 98845-6909  (12) 98845-6909  (12) 97407-9395,segmento_nao_elegivel
+872,Adriele Fernanda Ribeiro,Renata Portella Bason,ADIMPLENTE,25/06/2026,23/07/2026,(12) 98318-4544,menos_de_6_meses
+873,Meiremar França Silva,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 98150-8884,menos_de_6_meses
+874,Danilo Diogo De Morais,Renata Portella Bason,INADIMPLENTE,27/01/2026,,(12) 99250-3724,segmento_nao_elegivel
+877,José Garcia Marin,Renata Portella Bason,ADIMPLENTE,19/06/2026,16/07/2026,(19) 98366-3553  (12) 19983-6635,menos_de_6_meses
+880,Mickaely Pereira Rodrigues,Erik Augusto Silva,INADIMPLENTE,08/06/2026,06/07/2026,(12) 99172-8851,segmento_nao_elegivel
+884,Maria Cristina Feitosa De Barros Silva,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98848-8572  (12) 99256-8056  (11) 94025-9733,menos_de_6_meses
+885,Sergio Luis Silva,Alana Rebeca Chagas Machado,INADIMPLENTE,17/06/2026,,(12) 99640-0241,segmento_nao_elegivel
+887,Patriny Emiliany Lemos Barretto,Renata Portella Bason,ADIMPLENTE,29/05/2026,30/06/2026,(12) 99751-7153,menos_de_6_meses
+888,Roberto Bezerra De Oliveira,Luiz Gustavo Teodoro,INADIMPLENTE,16/05/2026,,(12) 98854-8052  (12) 98164-5860,segmento_nao_elegivel
+891,Daniel Ramos,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98805-5698  (12) 99797-9829  (12) 99797-9929  (12) 99797-9929,menos_de_6_meses
+893,Jhonata Trevas Campos,Renata Portella Bason,INADIMPLENTE,23/04/2026,,(12) 99772-4009,segmento_nao_elegivel
+898,Heitor Rafael Salvador,Tatiana De Almeida Lage Machado,ADIMPLENTE,26/05/2026,25/06/2026,(12) 99123-7680,menos_de_6_meses
+902,Alexandre Da  Cruz Correa,Marina Melo Maciel,ADIMPLENTE,23/06/2026,11/07/2026,(12) 99789-8360,menos_de_6_meses
+903,Samuel Henrique Nascimento Da Silva,Mariane Ignat,ADIMPLENTE,13/06/2026,18/07/2026,(12) 99740-4640  (12) 98704-0824,menos_de_6_meses
+904,Monica Gonzaga Oliveira,Mariane Ignat,INADIMPLENTE,22/05/2026,29/06/2026,(12) 97402-6177,segmento_nao_elegivel
+907,Charles Hudson Barbosa,Mariane Ignat,ADIMPLENTE,25/05/2026,29/06/2026,(12) 98252-8647,menos_de_6_meses
+908,Marcelo Alves Da Rosa,Tatiana De Almeida Lage Machado,ADIMPLENTE,03/06/2026,08/07/2026,(12) 99260-7317,menos_de_6_meses
+909,Anderlaine Antunes De Oliveira Buarque Moura,Renata Portella Bason,INADIMPLENTE,25/03/2025,,(62) 98175-1045  (12) 62981-7510 (12) 62817-5104,segmento_nao_elegivel
+911,Amanda Victória Guedes Silva,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99776-2111  (12) 99798-7012,menos_de_6_meses
+914,Kildery Sena Sousa,Renata Portella Bason,ADIMPLENTE,28/05/2026,30/06/2026,(12) 99731-4577  (16) 98833-4548  (12) 99799-4478,menos_de_6_meses
+916,Helton Antonio Ramos Silva,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98836-4881,menos_de_6_meses
+917,Isabeli Bianca Campos De  Lima,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98842-9751  (12) 12988-4297,menos_de_6_meses
+920,Estevan Magno Ferreira Silva,Renata Portella Bason,ADIMPLENTE,16/04/2026,26/06/2026,(12) 98248-3034  (12) 12982-4830,menos_de_6_meses
+921,Maria Eduarda Calisto Dos Santos,Luiz Gustavo Teodoro,ADIMPLENTE,13/06/2026,25/07/2026,(41) 99621-3691  (12) 99621-3691,menos_de_6_meses
+922,Samuel Rodrigues Sampaio,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 98128-8911,menos_de_6_meses
+924,Evilyn Emanuele Rodrigues Lelis,Renata Portella Bason,ADIMPLENTE,07/05/2026,27/06/2026,(12) 98321-5490,menos_de_6_meses
+925,Emerson Helio Moraes Dos Santos,Renata Portella Bason,INADIMPLENTE,14/05/2026,30/06/2026,(12) 98220-2093  (12) 12982-2020,segmento_nao_elegivel
+926,Emanuelly Victoria Barbosa Da Silva,Marina Melo Maciel,INADIMPLENTE,15/04/2026,,(12) 98217-6533  (12) 98217-6533,segmento_nao_elegivel
+928,Elaine Erondi Dos Santos Scherer,Tatiana De Almeida Lage Machado,ADIMPLENTE,23/06/2026,28/07/2026,(67) 99195-6614,menos_de_6_meses
+929,Guilherme Da Silva Rosa,Mariane Ignat,ADIMPLENTE,02/06/2026,03/07/2026,(12) 98130-7590,menos_de_6_meses
+932,Ana Carolina Alves Dos Santos,Renata Portella Bason,INADIMPLENTE,30/05/2026,27/06/2026,(12) 98803-0757,segmento_nao_elegivel
+934,Yasmin Aparecida  Da Silva Siqueira,Erik Augusto Silva,ADIMPLENTE,18/06/2026,13/07/2026,(12) 99754-9952,menos_de_6_meses
+935,Daniel Ramos De Moura,Renata Portella Bason,INADIMPLENTE,14/05/2026,,(12) 98894-9073  (12) 99688-9628,segmento_nao_elegivel
+937,Taina Goncalves Madruga,Mariane Ignat,ADIMPLENTE,19/06/2026,20/07/2026,(12) 98261-7801  (12) 98261-7801  (12) 12982-6178,menos_de_6_meses
+939,Evelin Cristina Da Luz,Renata Portella Bason,ADIMPLENTE,11/06/2026,10/07/2026,(12) 99660-5736,menos_de_6_meses
+941,Lara Dos Santos Lemes,Renata Portella Bason,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98266-1028  (12) 99642-7001,menos_de_6_meses
+942,Sinara Cristina Nogueira Cardoso,Renata Portella Bason,ADIMPLENTE,20/06/2026,10/07/2026,(77) 99183-7755,menos_de_6_meses
+945,Gleyson Silva De Sousa,Mariane Ignat,INADIMPLENTE,15/05/2026,13/07/2026,(12) 98271-2083,segmento_nao_elegivel
+946,Miguel De Freitas Sampaio,Mariane Ignat,INADIMPLENTE,22/06/2026,31/07/2026,(12) 98131-2177,segmento_nao_elegivel
+951,Anderson Roberto Consiglio Ramos,Mariane Ignat,INADIMPLENTE,01/06/2026,03/07/2026,(12) 98219-2119,segmento_nao_elegivel
+953,Tamires Ramos Lima,Luiz Gustavo Teodoro,ADIMPLENTE,26/05/2026,27/06/2026,(12) 99210-6737  (12) 98841-6411  (12) 98841-6411,menos_de_6_meses
+954,Celso Rodrigues Dos Santos,Fernando Kenji Batista Nakano,INADIMPLENTE,18/12/2023,,(12) 97407-9395,segmento_nao_elegivel
+955,Lucas Cabral De Oliveira E Souza,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99619-4544,menos_de_6_meses
+957,Mariana Guimarães,Renata Portella Bason,INADIMPLENTE,16/05/2026,27/06/2026,(12) 98199-2317  (11) 99806-5254,segmento_nao_elegivel
+958,Sandra Luiz De Araujo,Mariane Ignat,INADIMPLENTE,09/05/2026,26/06/2026,(12) 97850-5358,segmento_nao_elegivel
+959,Jéssica Lorrana Da Silva Cordeiro,Paula Cristine De Oliveira Esteves,INADIMPLENTE,06/03/2026,,(12) 98884-4923  (12) 98227-2247,segmento_nao_elegivel
+960,Sueli Felix Da Silva Santos,Renata Portella Bason,ADIMPLENTE,12/06/2026,16/07/2026,(12) 99685-9163  (14) 99907-7067  (12) 98817-1693,menos_de_6_meses
+961,Cristiane Gomes Ribeiro,Erik Augusto Silva,INADIMPLENTE,09/03/2026,25/06/2026,(12) 99776-6346,segmento_nao_elegivel
+962,Maria Evanilda Pereira Dos Santos,Mariane Ignat,ADIMPLENTE,06/06/2026,04/07/2026,(12) 99225-6189  (12) 12992-2561,menos_de_6_meses
+963,Erika Aparecida Dos Santos,Renata Portella Bason,INADIMPLENTE,08/05/2026,30/06/2026,(12) 99605-1420  (12) 99250-1427,segmento_nao_elegivel
+964,Igor Kauan Santos Ferreira,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(12) 98829-4629,menos_de_6_meses
+970,Ysake Lemes Haji,Mariane Ignat,ADIMPLENTE,15/06/2026,20/07/2026,(12) 99702-8725  (12) 99702-8725,menos_de_6_meses
+973,Eloá Martins,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99683-0150  (12) 99710-4820,menos_de_6_meses
+975,Maria Eduarda Guedes Dos Santos,Gustavo Moraes Prado,ADIMPLENTE,22/05/2026,,(12) 98238-9093,menos_de_6_meses
+976,Kathllen Lorrane Silva Santos,Mariane Ignat,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98803-0757  (12) 98221-3743  (12) 98167-2533,menos_de_6_meses
+977,Maria Das Dores Da Silva,Erik Augusto Silva,INADIMPLENTE,28/05/2026,25/06/2026,(12) 97813-9267,segmento_nao_elegivel
+981,Douglas De Freitas,Renata Portella Bason,ADIMPLENTE,20/06/2026,11/07/2026,(12) 98210-2901,menos_de_6_meses
+984,Luis Guilherme Santos Costa,Marina Melo Maciel,INADIMPLENTE,10/06/2026,08/07/2026,(12) 99247-5180  (12) 99116-4931,segmento_nao_elegivel
+987,Miriam Teodoro De Faria,Mariane Ignat,ADIMPLENTE,22/06/2026,18/07/2026,(12) 98140-2104,menos_de_6_meses
+988,Isabelly Pereira De Souza,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98253-9308  (12) 98253-9308,menos_de_6_meses
+989,Jacqueline Solange Aparecida Da Silva,Tainá Ribeiro De Moraes,ADIMPLENTE,19/02/2024,,,telefone_invalido
+990,Thaynan Saulo Nascimento De Souza,Mariane Ignat,INADIMPLENTE,01/06/2026,06/07/2026,(12) 99666-3680,segmento_nao_elegivel
+993,Rafael Lucas De Brito 11948738108,Renata Portella Bason,INADIMPLENTE,25/04/2024,,,segmento_nao_elegivel
+994,Juliana Estefane Ribeiro Da Silva,Renata Portella Bason,INADIMPLENTE,29/05/2026,30/06/2026,(12) 99123-2495,segmento_nao_elegivel
+995,Vitoria Correa De Lima,Renata Portella Bason,INADIMPLENTE,14/05/2026,,(12) 99707-9493  (12) 99658-6688,segmento_nao_elegivel
+998,Eliana Gomes Batista,Gustavo Moraes Prado,ADIMPLENTE,09/12/2024,,,telefone_invalido
+1002,Michelle Kenneth Da Silva Barbosa,Paula Cristine De Oliveira Esteves,INADIMPLENTE,08/06/2026,13/07/2026,(12) 98300-7622  (12) 98229-3961,segmento_nao_elegivel
+1003,Anna Julia De Melo Castro,Renata Portella Bason,ADIMPLENTE,16/04/2026,,(12) 98222-0549  (12) 98222-0549,menos_de_6_meses
+1005,Igor Henrique De Oliveira Domingues,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 99783-3854  (12) 99658-9582,menos_de_6_meses
+1008,Danilo Ramos De Souza,Marina Melo Maciel,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99253-8521,menos_de_6_meses
+1009,Andre Da Silva Tomaz,Não informado,INADIMPLENTE,,,(12) 98140-3458,ultimo_atendimento_invalido
+1011,Aline Aparecida Dos Santos,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,15/07/2026,(12) 98837-7763  (12) 99128-8733,menos_de_6_meses
+1012,Claudionice Souza Da Silva,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 99715-5422,menos_de_6_meses
+1014,Jessica Cristina Idelurde,Luiz Gustavo Teodoro,ADIMPLENTE,24/06/2026,15/07/2026,(12) 98238-6183  (12) 99153-7612,menos_de_6_meses
+1015,Miguel Joaquim Neves Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,18/07/2026,(12) 98321-0219,menos_de_6_meses
+1016,Lucimary Aparecida Neves,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,18/07/2026,(12) 98321-0219,menos_de_6_meses
+1017,Matheus Luiz De Sales,Marina Melo Maciel,INADIMPLENTE,23/06/2026,21/07/2026,(12) 98118-3209  (12) 99242-0031,segmento_nao_elegivel
+1019,Bruno Souza Nascimento,Renata Portella Bason,ADIMPLENTE,31/03/2026,,(12) 98261-1021  (12) 99153-1425,menos_de_6_meses
+1020,Higor Silva De Moraes,Renata Portella Bason,INADIMPLENTE,18/06/2026,,(12) 99709-8437,segmento_nao_elegivel
+1021,Mario Araujo,Mariane Ignat,INADIMPLENTE,09/05/2026,,(12) 98137-7525,segmento_nao_elegivel
+1022,Janaina Da Costa Souza,Marina Melo Maciel,INADIMPLENTE,30/05/2026,27/06/2026,(12) 99769-9017,segmento_nao_elegivel
+1023,Raisa Jesus Da Silva,Renata Portella Bason,ADIMPLENTE,21/05/2026,,(12) 98214-8876  (12) 99768-7278,menos_de_6_meses
+1024,José Gerlânio Lima Dos Santos,Renata Portella Bason,INADIMPLENTE,21/05/2026,30/06/2026,(12) 99719-0035,segmento_nao_elegivel
+1025,Luana Vitoria Marcos Paes,Luiz Gustavo Teodoro,INADIMPLENTE,03/06/2026,01/07/2026,(12) 99670-5120,segmento_nao_elegivel
+1026,Maria Aparecida Lemes,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/05/2026,,(12) 98245-6212,segmento_nao_elegivel
+1027,Mayra Alejandra Arcila Marin,Marina Melo Maciel,INADIMPLENTE,19/05/2026,25/06/2026,(12) 98860-0409,segmento_nao_elegivel
+1030,Julia Coutinho Monteiro De Almeida Buso Dos Santos,Mariane Ignat,ADIMPLENTE,13/04/2026,,(12) 98150-5537  (12) 98132-7869  (12) 12978-1345 (12) 97813-4543,menos_de_6_meses
+1031,Giovanna Alves Dos Santos,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98168-8948  (12) 99201-9494  (12) 99201-9494,menos_de_6_meses
+1033,Lidiana Niceia Alves Dos Santos,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98240-3648  (12) 99824-0364,menos_de_6_meses
+1034,Felipe Guilherme Sousa Lisboa Da Silva,Renata Portella Bason,ADIMPLENTE,24/06/2026,16/07/2026,(12) 99260-0088,menos_de_6_meses
+1035,Jailton Pereira Da Silva,Não informado,ADIMPLENTE,03/02/2026,,(12) 99192-5729,menos_de_6_meses
+1037,Crislaine Aparecida Bezerra,Gustavo Moraes Prado,INADIMPLENTE,22/02/2024,,,telefone_invalido
+1039,Beatriz Ribeiro Da Conceição,Gustavo Moraes Prado,INADIMPLENTE,,,(19) 98353-9607,ultimo_atendimento_invalido
+1042,Leticia Santos Rodrigues,Renata Portella Bason,ADIMPLENTE,07/05/2026,,(12) 98871-0218  (12) 98217-1115  (12) 98217-1115,menos_de_6_meses
+1043,Fabiano De Oliveira Costa,Renata Portella Bason,ADIMPLENTE,11/06/2026,10/07/2026,(12) 98193-9520,menos_de_6_meses
+1044,Thiago Henrique De Carvalho Consiglio Ramos,Mariane Ignat,INADIMPLENTE,25/05/2026,29/06/2026,(12) 99659-7059  (12) 99659-7059,segmento_nao_elegivel
+1046,Carla Beatriz Ribeiro Da Silva   (12) 99123-2495,Renata Portella Bason,INADIMPLENTE,30/04/2026,,,segmento_nao_elegivel
+1048,Diana Flavia Guimaraes,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98228-4233  (12) 98190-9980,menos_de_6_meses
+1052,Veronica Aparecida Domingues,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 99658-9582  (12) 99783-3854,menos_de_6_meses
+1053,Jefferson Manoel Serpa,Paula Cristine De Oliveira Esteves,ADIMPLENTE,16/06/2026,20/07/2026,(12) 98831-0734  (12) 98831-0734,menos_de_6_meses
+1054,Ana Laura Siles Serpa,Paula Cristine De Oliveira Esteves,ADIMPLENTE,16/06/2026,20/07/2026,(12) 98831-0734  (12) 99727-5701,menos_de_6_meses
+1055,Rosa Timoteo Lara,Gustavo Moraes Prado,ADIMPLENTE,11/03/2024,,,telefone_invalido
+1056,Bheatriz Emilly Da Silva Sousa,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99606-1297,menos_de_6_meses
+1057,Enzo Jony Silva Dos Reis,Alana Rebeca Chagas Machado,ADIMPLENTE,28/05/2026,,(12) 98878-9128,menos_de_6_meses
+1060,José Linhares Lopes,Renata Portella Bason,ADIMPLENTE,22/05/2026,30/06/2026,(12) 98142-8004,menos_de_6_meses
+1062,Francisco De Assis Da Silva Nascimento,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98840-0184  (12) 98194-2765,menos_de_6_meses
+1064,Yasmin Firmino Dos Santos,Marina Melo Maciel,INADIMPLENTE,16/05/2026,27/06/2026,(12) 98151-1133  (12) 12988-9053 (12) 98890-5302,segmento_nao_elegivel
+1065,William Gomes De Jesus,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(12) 98165-2175,menos_de_6_meses
+1067,Carlos Alberto Moreira Silva,Ana Clara Rezeck De Moura,ADIMPLENTE,18/04/2026,,(12) 98175-6202,menos_de_6_meses
+1068,Hermes Felipe Da Silva Mendes,Mariane Ignat,ADIMPLENTE,15/06/2026,10/07/2026,(12) 98279-4803,menos_de_6_meses
+1073,Lucas Goncalves Lemes,Erik Augusto Silva,INADIMPLENTE,18/06/2026,16/07/2026,(12) 99798-2360  (12) 99180-2290,segmento_nao_elegivel
+1076,Luana Ribeiro Borges,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(35) 99705-8188,menos_de_6_meses
+1080,Bianca Rodrigues Dos Santos,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99769-0888,menos_de_6_meses
+1083,Fisphilly Vikely Silva De Souza,Gustavo Moraes Prado,ADIMPLENTE,28/03/2024,,,telefone_invalido
+1084,Simone Cristina Da Costa,Marina Melo Maciel,ADIMPLENTE,12/05/2026,25/06/2026,(12) 98850-3626  (12) 12988-5036 (12) 98850-3626,menos_de_6_meses
+1085,Bianca Ribeiro Da Silva Santos,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98899-0134  (12) 98899-0134,menos_de_6_meses
+1086,Ricardo Da Silva Dos Santos,Mariane Ignat,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98224-9808,menos_de_6_meses
+1087,Yasmin Christine Lopes De Oliveira Silva,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98138-5169  (12) 99720-1332,menos_de_6_meses
+1088,Priscila Ribeiro  Mezzomo,Gustavo Moraes Prado,ADIMPLENTE,23/03/2024,,,telefone_invalido
+1089,Maria Gabriela Silva De Lima Campos Souza,Luiz Gustavo Teodoro,INADIMPLENTE,29/04/2026,22/07/2026,(12) 98127-3227  (12) 12981-2732,segmento_nao_elegivel
+1090,Priscila Theodoro Roque,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 93085-3315  (12) 99211-3281  (12) 99211-3281,menos_de_6_meses
+1092,Schaeder Rafael De Sousa Carvalho,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(12) 98177-0264  (12) 99637-5023  (12) 99637-5023,menos_de_6_meses
+1093,Helen Abud Jorge,Luiz Gustavo Teodoro,INADIMPLENTE,06/05/2026,,(12) 99231-9593,segmento_nao_elegivel
+1095,Larissa Rodrigues Araujo,Luiz Gustavo Teodoro,ADIMPLENTE,06/01/2026,,(12) 99213-7635,menos_de_6_meses
+1097,Laís Teles De Proença Santos,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(12) 98118-0889,menos_de_6_meses
+1099,Anesio Carlos Pereira,Ana Clara Rezeck De Moura,ADIMPLENTE,03/03/2026,,(12) 99189-2483,menos_de_6_meses
+1100,Brendha Talytha Barbosa Feliciano,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,27/06/2026,(12) 98247-3622  (12) 99768-4061,segmento_nao_elegivel
+1101,Ana Julia Pietra Gomes Da Silva,Ana Clara Rezeck De Moura,ADIMPLENTE,02/04/2024,,,telefone_invalido
+1105,Willians Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/06/2026,13/07/2026,(12) 99163-7828  (12) 99202-6544,segmento_nao_elegivel
+1106,Pietro Adriano Deodato Gomes,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98851-4906,menos_de_6_meses
+1108,Jean Luca Pereira Machado,Não informado,INADIMPLENTE,,,(67) 99194-1736,ultimo_atendimento_invalido
+1109,Raphael Nogueira Da Silva,Ana Clara Rezeck De Moura,ADIMPLENTE,10/04/2024,,,telefone_invalido
+1111,Arthur Richard Campos De Lima,Luiz Gustavo Teodoro,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98842-9751,menos_de_6_meses
+1112,Thaiane Menezes Pereira,Tatiana De Almeida Lage Machado,INADIMPLENTE,27/05/2026,30/06/2026,(12) 98114-0590,segmento_nao_elegivel
+1113,Tauani Beatriz Petrowski Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,01/11/2025,01/07/2026,(12) 99124-5799,possui_agendamento
+1115,Flavio Feitoza Dos Santos,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98259-2391,menos_de_6_meses
+1116,Pedro Henrique De Azevedo,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98141-4639,menos_de_6_meses
+1117,Aparecida Teles De Proença Santos,Gustavo Moraes Prado,INADIMPLENTE,10/11/2025,,,telefone_invalido
+1118,Ariane Caroline Dos Santos Leite,Mariane Ignat,INADIMPLENTE,18/04/2026,,(12) 99117-0328  (12) 99257-4641,segmento_nao_elegivel
+1120,Claudete Camilo Da Silva,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98216-8079,menos_de_6_meses
+1121,Isabelly Beatriz Gomes,Luiz Gustavo Teodoro,INADIMPLENTE,30/05/2026,27/06/2026,(12) 99799-6212,segmento_nao_elegivel
+1122,Alecxia Dos Santos De Brito,Mariane Ignat,INADIMPLENTE,19/06/2026,29/06/2026,(12) 98300-9068  (12) 98300-9068,segmento_nao_elegivel
+1125,Yasmin Simoes De Carvalho,Tatiana De Almeida Lage Machado,ADIMPLENTE,23/06/2026,14/07/2026,(12) 98865-9077  (12) 98110-1333  (12) 98266-7012,menos_de_6_meses
+1131,Mauro Nogueira,Gustavo Moraes Prado,ADIMPLENTE,25/04/2024,,(12) 3944-1248,telefone_invalido
+1134,Suelen De Cassia Miranda Dos Santos,Renata Portella Bason,ADIMPLENTE,05/06/2026,26/06/2026,(12) 98177-3689,menos_de_6_meses
+1135,Vitoria Machado Silva Gomes,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 99683-7932  (12) 99256-2156,menos_de_6_meses
+1136,Caique Cesar Candido,Renata Portella Bason,ADIMPLENTE,20/02/2026,,(35) 99147-8960,menos_de_6_meses
+1138,Romulo Augusto Da Silva Maia,Renata Portella Bason,ADIMPLENTE,17/04/2026,08/07/2026,(12) 99178-5811  (12) 99178-5841,menos_de_6_meses
+1139,Matheus Messias Leandro Lourenco,Renata Portella Bason,ADIMPLENTE,29/05/2026,30/06/2026,(12) 98168-0299  (12) 98168-0299,menos_de_6_meses
+1140,Maiara Cristina Da Silva Lopes De Oliveira,Gustavo Moraes Prado,ADIMPLENTE,09/05/2024,,,telefone_invalido
+1144,Kathellen Nicole Bento Da Silva,Renata Portella Bason,INADIMPLENTE,29/05/2026,30/06/2026,(12) 98177-8998  (12) 12981-7789 (12) 98177-8998,segmento_nao_elegivel
+1146,Greicy De Faria Moreira,Renata Portella Bason,ADIMPLENTE,12/06/2026,10/07/2026,(12) 99777-9647,menos_de_6_meses
+1147,Joao Vitor Costa Teixeira,Mariane Ignat,ADIMPLENTE,25/05/2026,26/06/2026,(12) 98816-5094,menos_de_6_meses
+1150,Taina Gabriela Gomes Honorato,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98122-6481,menos_de_6_meses
+1151,Isadora Cristina Gomes Honorato,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98122-6481,menos_de_6_meses
+1152,Claudia Thais Alves De Moura,Erik Augusto Silva,INADIMPLENTE,07/05/2026,,(12) 98303-4074,segmento_nao_elegivel
+1154,Luciana Aparecida Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,25/03/2026,,(12) 99798-5673,menos_de_6_meses
+1156,Kauan Eduardo Braz Da Rosa,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 99175-2205  (12) 98178-2877  (12) 98278-6985,menos_de_6_meses
+1157,Gilvan Brito Nascimento,Luiz Gustavo Teodoro,ADIMPLENTE,06/06/2026,01/07/2026,(12) 98873-4151,menos_de_6_meses
+1159,Sara De Jesus Nascimento,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 99740-1541  (12) 99645-2978  (12) 99645-2978,menos_de_6_meses
+1160,Gabriel De Jesus Nascimento,Renata Portella Bason,ADIMPLENTE,29/05/2026,27/06/2026,(12) 99740-1541  (12) 99715-7026  (12) 99715-7026,menos_de_6_meses
+1162,Laisa Vilhena Barbosa,Erik Augusto Silva,ADIMPLENTE,01/06/2026,02/07/2026,(14) 99822-5350,menos_de_6_meses
+1163,Gabriel Philip Sousa Leal Silva,Tatiana De Almeida Lage Machado,INADIMPLENTE,09/06/2026,08/07/2026,(11) 97126-9155,segmento_nao_elegivel
+1164,Adriana Lopes De Andrade,Ana Clara Rezeck De Moura,ADIMPLENTE,13/04/2026,,(12) 99721-4128,menos_de_6_meses
+1165,Vanessa Aparecida Sales Gomes,Mariane Ignat,ADIMPLENTE,18/05/2026,26/06/2026,(12) 99769-0514  (12) 12997-6905,menos_de_6_meses
+1170,Talyta Pereira,Renata Portella Bason,INADIMPLENTE,14/05/2026,,(12) 98115-1765  (12) 98306-2405  (12) 98306-2405,segmento_nao_elegivel
+1172,Grace Juliana Rodrigues Pereira,Renata Portella Bason,INADIMPLENTE,24/03/2026,,(12) 98124-3714,segmento_nao_elegivel
+1173,Janaina Ramos,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99224-9529,menos_de_6_meses
+1175,Giovanna Livia De Souza Franca,Marina Melo Maciel,ADIMPLENTE,09/06/2026,28/07/2026,(12) 98116-8412,menos_de_6_meses
+1176,Tatiele Da Trindade Pereira,Mariane Ignat,ADIMPLENTE,24/01/2026,,(12) 98869-6731,menos_de_6_meses
+1178,Nicole Beatriz Santos,Renata Portella Bason,INADIMPLENTE,15/05/2026,03/07/2026,(12) 98152-1214,segmento_nao_elegivel
+1182,Rogerio Kenny Morais De Souza,Renata Portella Bason,INADIMPLENTE,28/03/2026,,(12) 98208-8411  (12) 98220-9719,segmento_nao_elegivel
+1187,Priscila Campos De Lima,Dentista Avaliação,ADIMPLENTE,10/08/2024,,,telefone_invalido
+1188,Sara Cristina Santos Do Nascimento,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,25/07/2026,(12) 99700-1482  (12) 12997-0014,menos_de_6_meses
+1190,Roger Reis Silva,Luiz Gustavo Teodoro,INADIMPLENTE,09/05/2026,,(35) 99152-9526,segmento_nao_elegivel
+1191,Angelo De Oliveira Fabricio,Mariane Ignat,ADIMPLENTE,20/01/2026,,(12) 98122-4777,menos_de_6_meses
+1192,Guilherme Malta Santos,Mariane Ignat,INADIMPLENTE,08/05/2026,29/06/2026,(12) 99139-0653,segmento_nao_elegivel
+1194,Juliana Aparecida Dos Santos Moraes,Erik Augusto Silva,ADIMPLENTE,22/06/2026,23/07/2026,(12) 98824-9101,menos_de_6_meses
+1198,Davi Lucas Silva Rocha Santos,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,22/07/2026,(12) 99210-1507  (12) 99156-4574  (12) 12992-0074 (12) 99200-7480,menos_de_6_meses
+1199,Jose Antonio Da Silva Meireles,Renata Portella Bason,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99716-6252,menos_de_6_meses
+1200,Emerson Paulo José Vieira Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,14/03/2026,,(12) 99737-2925  (12) 99737-2925  (12) 99619-5355,segmento_nao_elegivel
+1201,Edinaldo Geraldo Kotaka Da Silva,Renata Portella Bason,ADIMPLENTE,18/06/2026,17/07/2026,(11) 99762-6852  (12) 99609-0109  (12) 97401-0096,menos_de_6_meses
+1205,Luana Maria De Andrade,Rodrigo Fernandes Cabral Pais Ferraz,ADIMPLENTE,08/01/2025,,,telefone_invalido
+1211,Gustavo Da Camara Pereira,Erik Augusto Silva,INADIMPLENTE,18/05/2026,,(11) 95650-1388  (12) 99714-1156,segmento_nao_elegivel
+1212,Grazielle Dos Santos Silva,Mariane Ignat,INADIMPLENTE,29/05/2026,29/06/2026,(12) 98850-7255,segmento_nao_elegivel
+1214,Miguel Arthur Mendonca Vergueiro,Renata Portella Bason,INADIMPLENTE,27/03/2026,,(12) 99703-4670  (12) 98876-9599,segmento_nao_elegivel
+1215,Josiane Guiler Padilha,Erik Augusto Silva,INADIMPLENTE,08/06/2026,06/07/2026,(12) 99668-7291,segmento_nao_elegivel
+1218,Ana Laura Ramos De Moura,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98861-7855,menos_de_6_meses
+1219,Iara Da Silva Soares,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 97812-0548,menos_de_6_meses
+1220,Beatriz Vitoria Da Rocha Pietraroia,Marina Melo Maciel,INADIMPLENTE,28/03/2026,,(12) 98158-9578,segmento_nao_elegivel
+1221,Edna Monique Alves De Lima,Marina Melo Maciel,ADIMPLENTE,23/06/2026,29/07/2026,(12) 98863-9811  (12) 12988-7775,menos_de_6_meses
+1222,Sildenir Vitoriano Fereira,Renata Portella Bason,ADIMPLENTE,05/06/2026,10/07/2026,(12) 99764-4789  (12) 12997-6447,menos_de_6_meses
+1223,Regiane Da Silva Do Espirito Santo,Renata Portella Bason,ADIMPLENTE,21/05/2026,26/06/2026,(12) 98818-3084  (12) 98818-3084,menos_de_6_meses
+1224,Yasmin Lima Lopes,Marina Melo Maciel,ADIMPLENTE,23/06/2026,29/07/2026,(12) 98863-9811  (12) 98877-7588,menos_de_6_meses
+1227,Wellington Gabriel Do Nascimento,Mariane Ignat,ADIMPLENTE,29/05/2026,03/07/2026,(12) 98283-2674  (12) 98269-1896,menos_de_6_meses
+1229,Julia Sangiovani Campos De Paula,Mariane Ignat,INADIMPLENTE,30/05/2026,,(12) 98881-3594,segmento_nao_elegivel
+1232,Daniel Oliveira Barbosa,Marina Melo Maciel,ADIMPLENTE,15/05/2026,,(12) 98122-6422  (87) 99616-3654  (12) 98122-6422,menos_de_6_meses
+1234,Sergio Rodrigues,Renata Portella Bason,INADIMPLENTE,06/02/2026,,(12) 98856-1600,segmento_nao_elegivel
+1237,Maria Eduarda Resende De Souza,Renata Portella Bason,INADIMPLENTE,05/06/2026,03/07/2026,(12) 99110-6029  (12) 99110-6029  (12) 98871-0942,segmento_nao_elegivel
+1240,Vanessa Rosa De Carvalho Moreira,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,15/07/2026,(12) 98248-3910  (12) 98248-3910,menos_de_6_meses
+1249,Rafaelly Caroline Da Silva,Marina Melo Maciel,INADIMPLENTE,15/04/2026,,(12) 99132-4828,segmento_nao_elegivel
+1251,Giovanna Soares Siqueira,Mariane Ignat,INADIMPLENTE,25/05/2026,29/06/2026,(12) 98139-3722  (12) 98840-4478,segmento_nao_elegivel
+1252,Alberto De Oliveira Silva,Marina Melo Maciel,INADIMPLENTE,25/04/2026,,(12) 98857-7867,segmento_nao_elegivel
+1253,Mariana Claro Martins,Erik Augusto Silva,ADIMPLENTE,25/05/2026,27/06/2026,(12) 99635-1217,menos_de_6_meses
+1254,Rodrigo Francisco Dionisio,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(11) 97119-5877,menos_de_6_meses
+1255,Keyla Cristina Candido,Renata Portella Bason,ADIMPLENTE,29/05/2026,30/06/2026,(12) 98281-5394  (12) 12982-8153,menos_de_6_meses
+1256,Victor Leonardo Cavalcante Costa,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98107-0531,menos_de_6_meses
+1258,Rhyanna Brunna Ferreira Bezerra,Marina Melo Maciel,ADIMPLENTE,16/05/2026,27/06/2026,(12) 99195-0168,menos_de_6_meses
+1259,Geovana Arantes Martins,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 98858-2371,menos_de_6_meses
+1263,Renato Miranda De Souza Barreto,Alana Rebeca Chagas Machado,ADIMPLENTE,30/05/2026,,(12) 98174-1369,menos_de_6_meses
+1264,Lucas De Oliveira Pinho,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,11/07/2026,(12) 98250-3839  (12) 98109-7841  (12) 98109-7841,menos_de_6_meses
+1265,Regiane De Jesus Nascimento,Mariane Ignat,ADIMPLENTE,05/06/2026,03/07/2026,(12) 99740-1541,menos_de_6_meses
+1267,Danyel Henrique Querino,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98173-6447,menos_de_6_meses
+1268,Matheus William Santos Rego Bettin,Ana Clara Rezeck De Moura,ADIMPLENTE,30/05/2026,,,menos_de_6_meses
+1269,Livia Gomes Mi Suk Kim,Renata Portella Bason,INADIMPLENTE,29/05/2026,27/06/2026,(12) 99782-9626,segmento_nao_elegivel
+1271,Maria Eduarda Pereira,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99687-0398  (12) 99216-1403,menos_de_6_meses
+1272,Jorge Henrique De Oliveira Martins,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98826-1071,menos_de_6_meses
+1274,Isabella De Freitas Viana,Marina Melo Maciel,ADIMPLENTE,22/04/2026,,(12) 98210-9663,menos_de_6_meses
+1276,Ana Leticia Souza Dos Santos,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98815-0989,menos_de_6_meses
+1277,Cauane Katara Henrique  De Assis,Renata Portella Bason,ADIMPLENTE,21/05/2026,,(12) 99258-9104  (12) 99208-7977  (12) 99168-5991  (12) 99179-5130,menos_de_6_meses
+1278,Shafira Dos Reis Clemente,Mariane Ignat,INADIMPLENTE,03/06/2026,04/07/2026,(12) 98229-6178  (12) 98204-8457,segmento_nao_elegivel
+1279,Viviane Ribeiro Da Silva,Tatiana De Almeida Lage Machado,ADIMPLENTE,27/05/2026,01/07/2026,(12) 99105-8298,menos_de_6_meses
+1280,João Victor Pereira Fernandes,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98295-7341  (12) 98805-1203  (12) 98805-1203,menos_de_6_meses
+1282,Guilherme Henrique De Melo Teixeira,Mariane Ignat,INADIMPLENTE,29/05/2026,26/06/2026,(12) 98165-9898,segmento_nao_elegivel
+1283,Janaina Rodrigues De Oliveira,Luiz Gustavo Teodoro,INADIMPLENTE,14/02/2026,,(12) 99150-5519,segmento_nao_elegivel
+1288,Maria Vitoria Padjan,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 99106-7163,menos_de_6_meses
+1289,Felipe Heitor Da Silva Camargo,Renata Portella Bason,ADIMPLENTE,13/06/2026,11/07/2026,(12) 98807-7304,menos_de_6_meses
+1291,Pedro Gabriel Germano Araújo Da Silva,Marina Melo Maciel,ADIMPLENTE,23/05/2026,25/06/2026,(12) 98816-1661,menos_de_6_meses
+1293,Clara Nunes,Mariane Ignat,INADIMPLENTE,25/05/2026,29/06/2026,(12) 99626-4406,segmento_nao_elegivel
+1295,Mikael Raimundo Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,15/07/2026,(12) 98894-2711,menos_de_6_meses
+1296,Vinicius De Oliveira Silva Lima,Mariane Ignat,INADIMPLENTE,18/05/2026,,(12) 98815-9134  (12) 99716-2860  (12) 98294-1318,segmento_nao_elegivel
+1297,Raul Soares Panizzon,Renata Portella Bason,INADIMPLENTE,28/05/2026,25/06/2026,(12) 98215-6119  (12) 98289-6112  (12) 12982-8961,segmento_nao_elegivel
+1298,Célio Junior De Souza Chagas,Marina Melo Maciel,ADIMPLENTE,30/05/2026,30/06/2026,(12) 98851-5432,menos_de_6_meses
+1299,Sueli Moreira Pereira,Luiz Gustavo Teodoro,INADIMPLENTE,18/05/2026,,(12) 98249-0958,segmento_nao_elegivel
+1300,Ana Luiza Fernandes Da Cruz,Luiz Gustavo Teodoro,INADIMPLENTE,03/06/2026,01/07/2026,(12) 98862-9687  (12) 98860-0520,segmento_nao_elegivel
+1302,Caio Luis Correa Silva,Mariane Ignat,ADIMPLENTE,20/06/2026,25/07/2026,(12) 98805-2453,menos_de_6_meses
+1303,Caleb Luis Correa Silva,Renata Portella Bason,ADIMPLENTE,20/06/2026,25/07/2026,(12) 98805-2453,menos_de_6_meses
+1304,Nivaldo Rafael Lisboa Dos Santos,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 99757-6578,menos_de_6_meses
+1306,Cleydejane Mascena Da Silva,Mariane Ignat,ADIMPLENTE,08/05/2026,10/07/2026,(12) 98174-7911,menos_de_6_meses
+1309,Jair Luis De Lima,Mariane Ignat,ADIMPLENTE,19/06/2026,24/07/2026,(12) 98177-7775,menos_de_6_meses
+1310,Barbara Leticia Pereira Gomes,Mariane Ignat,ADIMPLENTE,29/05/2026,26/06/2026,(12) 99679-9366  (12) 12996-7993,menos_de_6_meses
+1311,Caua Alves Florentino,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 98311-2134  (12) 98311-2134,menos_de_6_meses
+1312,Deivide Soares Ribeiro,Erik Augusto Silva,INADIMPLENTE,21/05/2026,02/07/2026,(12) 98107-4886,segmento_nao_elegivel
+1314,Gabriela Ribeiro Camargo De Oliveira,Mariane Ignat,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98304-6881,menos_de_6_meses
+1315,Andreza Vieira Do Nascimento,Mariane Ignat,INADIMPLENTE,01/06/2026,06/07/2026,(12) 97403-4646,segmento_nao_elegivel
+1316,Claudia Dos Reis Andrade,Marina Melo Maciel,ADIMPLENTE,23/06/2026,,(12) 99652-1102  (12) 99648-2430,menos_de_6_meses
+1317,Letícia Rafaelle Fatigatti De Oliveira,Renata Portella Bason,INADIMPLENTE,09/05/2026,,(12) 98103-2166,segmento_nao_elegivel
+1318,Daniel Jardim Morita,Renata Portella Bason,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99124-1251,menos_de_6_meses
+1320,Wanderlan De Lima Felix,Mariane Ignat,INADIMPLENTE,11/05/2026,26/06/2026,(12) 98174-7918,segmento_nao_elegivel
+1321,Rafaela Da Silva,Renata Portella Bason,ADIMPLENTE,25/06/2026,31/07/2026,(12) 97405-7372,menos_de_6_meses
+1322,Junio Alves Dos Santos,Tatiana De Almeida Lage Machado,INADIMPLENTE,13/05/2026,,(12) 98875-5345,segmento_nao_elegivel
+1323,Gerson Adriane Rocha,Paula Cristine De Oliveira Esteves,ADIMPLENTE,23/03/2026,27/06/2026,(12) 98227-3540,menos_de_6_meses
+1324,Matheus Felipe Do Carmo Sales Da Luz,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 98290-0673,menos_de_6_meses
+1325,Bruno Procopio De Oliveira,Luiz Gustavo Teodoro,INADIMPLENTE,05/06/2026,01/07/2026,(12) 98812-4941  (12) 98858-3394  (12) 98858-3394,segmento_nao_elegivel
+1327,Ana Beatriz Torres De Resende,Mariane Ignat,INADIMPLENTE,22/06/2026,13/07/2026,(12) 97406-4387,segmento_nao_elegivel
+1328,Jaciara Araújo Alves Da Rocha,Renata Portella Bason,ADIMPLENTE,16/04/2026,,(12) 99159-5396,menos_de_6_meses
+1329,Pamela Araujo Alves Da Rocha,Mariane Ignat,ADIMPLENTE,05/06/2026,10/07/2026,(12) 98861-8880,menos_de_6_meses
+1331,Isabella Santos Poli De Paiva,Marina Melo Maciel,ADIMPLENTE,28/05/2026,25/06/2026,(12) 98890-0017  (12) 98890-0017,menos_de_6_meses
+1337,Renan Miguel Nogueira Reno,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 98844-4702,menos_de_6_meses
+1340,Miguel Felipe Costa Alves,Renata Portella Bason,ADIMPLENTE,09/05/2026,25/06/2026,(12) 99684-0730,menos_de_6_meses
+1341,Matheus Vinicius Dos Santos,Mariane Ignat,ADIMPLENTE,29/05/2026,26/06/2026,(12) 98232-2598  (12) 99153-2348,menos_de_6_meses
+1345,David Cauã Freitas Da Silva,Mariane Ignat,ADIMPLENTE,13/04/2026,10/07/2026,(12) 98174-7911,menos_de_6_meses
+1346,Carlos Daniel Freitas Da Silva,Mariane Ignat,ADIMPLENTE,17/04/2026,10/07/2026,(12) 98174-7911,menos_de_6_meses
+1347,Grasiele Bonsucesso De Almeida,Renata Portella Bason,INADIMPLENTE,30/04/2026,26/06/2026,(12) 99752-6542  (12) 99752-6542,segmento_nao_elegivel
+1349,Bruno Barbosa Do Nascimento,Renata Portella Bason,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99249-8892,menos_de_6_meses
+1350,Mirella Cristo Kyriacopoulos,Luiz Gustavo Teodoro,ADIMPLENTE,20/05/2026,27/06/2026,(12) 98261-2334  (12) 98216-6351,menos_de_6_meses
+1351,Mariana De Sá Barbosa Domingos,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98102-8198  (12) 12981-0281,menos_de_6_meses
+1353,Nicolle Dayanna Garcia Arcila,Renata Portella Bason,ADIMPLENTE,09/05/2026,26/06/2026,(19) 98111-7363,menos_de_6_meses
+1354,Roniel Estevan Dos Santos,Luiz Gustavo Teodoro,ADIMPLENTE,15/06/2026,11/07/2026,(12) 99255-3363  (12) 99128-1940,menos_de_6_meses
+1355,Jusciene Alves De Jesus,Renata Portella Bason,INADIMPLENTE,21/05/2026,,(75) 99715-3936,segmento_nao_elegivel
+1356,Amanda Faleiro Cristofoleti,Mariane Ignat,INADIMPLENTE,05/06/2026,06/07/2026,(12) 98705-2959  (35) 99976-2648  (12) 12987-0529,segmento_nao_elegivel
+1358,Tiffany Santos Souza De Jesus,Renata Portella Bason,INADIMPLENTE,05/06/2026,03/07/2026,(12) 98843-3529,segmento_nao_elegivel
+1360,Samuel Bernardo Resende,Mariane Ignat,ADIMPLENTE,01/06/2026,03/07/2026,(12) 99673-5301  (12) 99745-6324,menos_de_6_meses
+1361,Alice Morais Santana,Renata Portella Bason,ADIMPLENTE,29/05/2026,27/06/2026,(12) 99716-6132,menos_de_6_meses
+1362,Eric Silva Campos Nogueira,Luiz Gustavo Teodoro,ADIMPLENTE,23/05/2026,27/06/2026,(12) 98260-4447,menos_de_6_meses
+1366,Isabelly Silva De Sousa,Marina Melo Maciel,INADIMPLENTE,14/04/2026,,(12) 99232-7851,segmento_nao_elegivel
+1368,Djaira Moreno Da Silva,Tatiana De Almeida Lage Machado,ADIMPLENTE,27/05/2026,30/06/2026,(12) 98838-2872,menos_de_6_meses
+1369,Francisco Daniel Gomes Amorim,Mariane Ignat,ADIMPLENTE,19/01/2026,,(88) 8840-4520 (12) 99619-2266,menos_de_6_meses
+1372,Maurício Borges Da Silva,Erik Augusto Silva,ADIMPLENTE,11/06/2026,16/07/2026,(12) 99614-4848  (12) 99614-4848,menos_de_6_meses
+1373,Magali De Fatima Siqueira,Luiz Gustavo Teodoro,ADIMPLENTE,13/06/2026,11/07/2026,(12) 98277-4224  (12) 98277-4224  (12) 98159-6702,menos_de_6_meses
+1375,Janaina De Morais Paula,Luiz Gustavo Teodoro,INADIMPLENTE,26/11/2025,30/06/2026,(12) 99669-5558,segmento_nao_elegivel
+1376,Bruna Rodrigues Alves,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 99777-7467,menos_de_6_meses
+1377,Karina Fernanda De Oliveira Deodato,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98851-4906,menos_de_6_meses
+1378,Claudemir Rocha Alves,Não informado,INADIMPLENTE,,,,ultimo_atendimento_invalido
+1379,Jose Norberto De Abreu,Ana Clara Rezeck De Moura,INADIMPLENTE,25/03/2026,,(12) 98857-9856  (12) 98291-1219,menos_de_6_meses
+1385,Beatriz Moraes Lopes Santos,Erik Augusto Silva,ADIMPLENTE,28/05/2026,29/06/2026,(12) 98800-2550,menos_de_6_meses
+1386,Thamilly Aparecida Rodrigues Santos,Erik Augusto Silva,ADIMPLENTE,28/05/2026,25/06/2026,(12) 98313-0598,menos_de_6_meses
+1387,Julia Moraes Lopes,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,18/07/2026,(12) 98800-2550,menos_de_6_meses
+1388,Maria Eduarda Fernandez De Gama,Renata Portella Bason,ADIMPLENTE,08/05/2026,26/06/2026,(12) 99672-1851,menos_de_6_meses
+1389,Niceia Bispo Dos Santos Miranda,Tatiana De Almeida Lage Machado,ADIMPLENTE,24/06/2026,29/07/2026,(12) 98820-8730,menos_de_6_meses
+1390,Luiz Henrique Soares Nunes,Erik Augusto Silva,INADIMPLENTE,12/02/2026,,(12) 98145-3625,segmento_nao_elegivel
+1392,Douglas Araujo,Mariane Ignat,ADIMPLENTE,18/12/2024,,,telefone_invalido
+1393,Wellington Da Silva Firmino,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 99632-4226,menos_de_6_meses
+1394,Isabelly Ferreira Soares,Renata Portella Bason,ADIMPLENTE,05/06/2026,10/07/2026,(12) 99764-4789,menos_de_6_meses
+1397,Maria Madalena Mangueira,Não informado,ADIMPLENTE,29/12/2025,,(12) 98831-2122,menos_de_6_meses
+1398,Raissa Nogueira Cardoso,Não informado,ADIMPLENTE,16/08/2025,,,telefone_invalido
+1402,Isadora Gabriela Mota,Mariane Ignat,INADIMPLENTE,02/06/2026,18/07/2026,(12) 98860-8009,segmento_nao_elegivel
+1404,Denise Araujo Ferreira,Renata Portella Bason,ADIMPLENTE,25/06/2026,23/07/2026,(12) 98130-4510,menos_de_6_meses
+1406,Edílson De Oliveira Zamboti,Marina Melo Maciel,INADIMPLENTE,11/06/2026,14/07/2026,(12) 99799-8993,segmento_nao_elegivel
+1407,Rafaela Macedo Da Cruz,Mariane Ignat,ADIMPLENTE,01/06/2026,29/06/2026,(11) 98316-7466  (12) 98316-7466,menos_de_6_meses
+1408,Elmer Da Silva Cordeiro,Renata Portella Bason,ADIMPLENTE,11/06/2026,10/07/2026,(12) 98190-5346,menos_de_6_meses
+1409,Kaua De Souza Brigagao,Erik Augusto Silva,ADIMPLENTE,06/01/2026,,(12) 98827-0848,menos_de_6_meses
+1410,Camilly Cristine Martello,Erik Augusto Silva,INADIMPLENTE,08/06/2026,06/07/2026,(12) 99766-3655  (12) 98814-4739,segmento_nao_elegivel
+1411,Miguel Fernandes Generoso,Renata Portella Bason,INADIMPLENTE,25/04/2026,,(12) 97898-4549,segmento_nao_elegivel
+1414,Pamela Oliveira De Sousa,Erik Augusto Silva,ADIMPLENTE,22/01/2026,,(12) 98297-5134  (12) 98297-5134,menos_de_6_meses
+1416,Adriele Fabia Da Conceição,Erik Augusto Silva,INADIMPLENTE,28/05/2026,27/06/2026,(12) 99647-5943  (12) 98709-3006  (12) 98709-3006  (12) 99138-7478,segmento_nao_elegivel
+1419,Karen Camila De Souza Scarpel,Erik Augusto Silva,ADIMPLENTE,23/04/2026,25/06/2026,(12) 99161-1563  (12) 99168-8643,menos_de_6_meses
+1420,Kauany Nascimento Pereira De Aquino,Tatiana De Almeida Lage Machado,INADIMPLENTE,04/02/2026,,(12) 98826-8751,segmento_nao_elegivel
+1421,Tatiane Nascimento,Não informado,INADIMPLENTE,04/02/2026,,(12) 98826-8751,menos_de_6_meses
+1422,Leonardo Rafael De Oliveira,Erik Augusto Silva,INADIMPLENTE,27/04/2026,,(12) 99662-3090,segmento_nao_elegivel
+1423,Elma De Lima Felix Dias,Luiz Gustavo Teodoro,INADIMPLENTE,06/05/2026,,(12) 98854-7822,segmento_nao_elegivel
+1424,Taina De Lima Felix Dias,Renata Portella Bason,INADIMPLENTE,18/04/2026,,(12) 98854-7822,segmento_nao_elegivel
+1425,Cicero Iran Bezerra Junior,Mariane Ignat,INADIMPLENTE,05/06/2026,10/07/2026,(12) 99764-4789,segmento_nao_elegivel
+1430,Cleison Anunciação Silva,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98815-5525,menos_de_6_meses
+1431,Murillo Reginaldo Claro Martins,Não informado,ADIMPLENTE,27/11/2024,,,telefone_invalido
+1433,Thiago Augusto Pereira Da Silva,Mariane Ignat,INADIMPLENTE,24/06/2026,18/07/2026,(12) 99731-7662,segmento_nao_elegivel
+1434,Manuele Fernanda Da Siilva,Não informado,INADIMPLENTE,26/10/2024,,,telefone_invalido
+1437,Esther De Souza Milla Faria,Tatiana De Almeida Lage Machado,INADIMPLENTE,10/03/2026,30/06/2026,(12) 98200-7642,segmento_nao_elegivel
+1439,Sarah Monique Dos Santos Silva,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 99621-9541  (12) 98804-9132  (12) 98804-9132  (12) 98804-9132,menos_de_6_meses
+1440,Vitoria Souza De Lima,Mariane Ignat,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98807-8645,menos_de_6_meses
+1442,Ana Beatriz Da Silva Ribeiro,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 99774-3206  (12) 99608-2053,menos_de_6_meses
+1443,Eduardo Dos Santos Filho,Erik Augusto Silva,ADIMPLENTE,17/06/2026,16/07/2026,(12) 98238-6696,menos_de_6_meses
+1447,Ana Carolina Santos Silva,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98819-7043,menos_de_6_meses
+1448,Marcelo Henrique Pereira De Faria,Mariane Ignat,ADIMPLENTE,19/06/2026,04/07/2026,(12) 98121-6464,menos_de_6_meses
+1452,Bruna Gabriela Custodio Mota,Mariane Ignat,INADIMPLENTE,02/06/2026,18/07/2026,(12) 98860-8009,segmento_nao_elegivel
+1453,Mariana Honorato Mariano,Luiz Gustavo Teodoro,INADIMPLENTE,12/06/2026,01/07/2026,(12) 98148-6877,segmento_nao_elegivel
+1454,Alecsander Soares De Lima,Não informado,ADIMPLENTE,06/11/2024,,,telefone_invalido
+1457,Thalles Leonardo Ferreira De Andrade Santos,Mariane Ignat,ADIMPLENTE,24/06/2026,24/07/2026,(12) 98806-5650  (12) 98806-5650,menos_de_6_meses
+1459,Samuel Vilas Boas Leite De Carvalho,Luiz Gustavo Teodoro,ADIMPLENTE,15/06/2026,01/07/2026,(12) 98881-7741  (12) 99672-7741,menos_de_6_meses
+1466,Faustiana Pereira De Oliveira Dos Reis,Paula Felicio Sousa Silva,ADIMPLENTE,16/03/2026,,(12) 98123-4623,menos_de_6_meses
+1467,Tayná Menezes Dos Santos,Renata Portella Bason,INADIMPLENTE,11/06/2026,10/07/2026,(79) 99875-5494,segmento_nao_elegivel
+1469,Gerliane Costa Da Silva,Marina Melo Maciel,ADIMPLENTE,05/05/2026,,(98) 98168-0855,menos_de_6_meses
+1471,Cicero Iran Alves Bezerra,Mariane Ignat,INADIMPLENTE,05/06/2026,10/07/2026,(12) 99764-4789,segmento_nao_elegivel
+1472,Camilly Martins Silva,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98300-3449  (12) 98304-6390  (12) 98304-6390,menos_de_6_meses
+1474,Bruna Ketelyn De Oliveira,Mariane Ignat,INADIMPLENTE,28/03/2026,,(12) 99686-7165  (12) 99256-8841,segmento_nao_elegivel
+1475,Maria De Fátima Do Nascimento,Mariane Ignat,INADIMPLENTE,05/06/2026,03/07/2026,(86) 98861-5615,segmento_nao_elegivel
+1476,Isabella Franco Lima,Marina Melo Maciel,ADIMPLENTE,13/06/2026,11/07/2026,(12) 99201-3641,menos_de_6_meses
+1478,Eliezer Fabiano Figueira,Tatiana De Almeida Lage Machado,INADIMPLENTE,15/06/2026,15/07/2026,(12) 98293-6808,segmento_nao_elegivel
+1479,Rayane Dos Santos,Mariane Ignat,INADIMPLENTE,20/08/2025,,(12) 98812-5445,segmento_nao_elegivel
+1482,Kamile Vitória Da Silva Siqueira,Não informado,ADIMPLENTE,23/12/2024,,,telefone_invalido
+1484,Karine Cristina De Moura,Erik Augusto Silva,INADIMPLENTE,28/11/2024,,(12) 99680-9387,segmento_nao_elegivel
+1486,Renata Rodrigues Martins,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98897-5746,menos_de_6_meses
+1489,Icilia Pereira Beserra,Renata Portella Bason,ADIMPLENTE,11/06/2026,23/07/2026,(12) 98858-5412,menos_de_6_meses
+1490,Cíntia Alves Dos Santos,Erik Augusto Silva,ADIMPLENTE,19/06/2026,20/07/2026,(12) 98148-2238  (12) 99184-5039,menos_de_6_meses
+1492,Adriana De Sousa Soares,Renata Portella Bason,INADIMPLENTE,20/05/2026,,(12) 98811-6801,segmento_nao_elegivel
+1494,Barbara Karoline Guedes Da Silva,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 98263-2140,menos_de_6_meses
+1495,Marineide Dos Reis Silva,Renata Portella Bason,ADIMPLENTE,28/05/2026,30/06/2026,(12) 99103-5717,menos_de_6_meses
+1496,Railson De Sousa,Marina Melo Maciel,INADIMPLENTE,26/06/2025,11/07/2026,(12) 98154-0404,segmento_nao_elegivel
+1497,Mariana Cristina Pereira Silva,Marina Melo Maciel,INADIMPLENTE,01/04/2026,,(12) 99647-1118,segmento_nao_elegivel
+1501,Alice Da Cruz Cunha,Erik Augusto Silva,ADIMPLENTE,18/05/2026,,(12) 98801-9491,menos_de_6_meses
+1503,Thelma Bernardo Belmiro,Luiz Gustavo Teodoro,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98824-6672,menos_de_6_meses
+1504,Luis Gusttavo De Oliveira Monteiro,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(12) 92004-4403,menos_de_6_meses
+1506,Letícia De Lima Guerra,Erik Augusto Silva,ADIMPLENTE,22/06/2026,13/07/2026,(12) 98304-5084,menos_de_6_meses
+1508,Dayana Vieira De Souza,Mariane Ignat,ADIMPLENTE,23/06/2026,24/07/2026,(12) 98156-9403,menos_de_6_meses
+1510,Nicoly Guerra Vieira De Souza,Renata Portella Bason,INADIMPLENTE,27/01/2026,,(12) 98124-1610  (12) 98117-1622,segmento_nao_elegivel
+1511,Resieri Dos Santos Corrêa De França,Mariane Ignat,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98115-9510,menos_de_6_meses
+1512,Rita De Cassia De Oliveira,Luiz Gustavo Teodoro,INADIMPLENTE,06/04/2026,,(12) 98245-6264  (12) 99149-7403  (12) 99149-7403,segmento_nao_elegivel
+1513,Lucilene Ferreira Da Silva,Erik Augusto Silva,INADIMPLENTE,18/06/2026,16/07/2026,(12) 99629-3936,segmento_nao_elegivel
+1514,Natalia De Oliveira Silva,Marina Melo Maciel,ADIMPLENTE,01/06/2026,25/06/2026,(12) 99663-8969,menos_de_6_meses
+1515,Hélio Bernardo De Almeida,Luiz Gustavo Teodoro,INADIMPLENTE,05/05/2026,,(12) 99769-2814,segmento_nao_elegivel
+1518,Marli Barbosa Rodrigues Pereira,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98155-8294,menos_de_6_meses
+1519,Luiz Miguel,Não informado,INADIMPLENTE,23/01/2026,,(12) 99213-1070,menos_de_6_meses
+1520,Nycollas Gabriel,Não informado,INADIMPLENTE,23/01/2026,,(12) 99213-1070,menos_de_6_meses
+1525,Isabella Dos Santos Gonçalves,Renata Portella Bason,INADIMPLENTE,09/06/2026,10/07/2026,(12) 98209-6653,segmento_nao_elegivel
+1527,James Brian Da Silva Lima,Marina Melo Maciel,INADIMPLENTE,23/06/2026,21/07/2026,(12) 99658-1481  (12) 12992-4700 (12) 99247-0023,segmento_nao_elegivel
+1529,Cristiano Castilho Da Silva,Marina Melo Maciel,INADIMPLENTE,09/03/2026,,(12) 98828-2986,segmento_nao_elegivel
+1531,Leisla Dos Santos Da Conceição,Mariane Ignat,INADIMPLENTE,08/05/2026,,(75) 99962-4580,segmento_nao_elegivel
+1532,Mikael Fernandes Paes,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98122-1051,menos_de_6_meses
+1536,Fernanda Gabriela Da Silva Pereira,Luiz Gustavo Teodoro,INADIMPLENTE,15/04/2026,27/06/2026,(12) 98839-4769,segmento_nao_elegivel
+1540,Thailane Da Cruz Rabelo,Renata Portella Bason,INADIMPLENTE,09/04/2026,,(12) 98702-8097,segmento_nao_elegivel
+1541,Maick Douglas Miranda Viana,Luiz Gustavo Teodoro,INADIMPLENTE,13/03/2026,,(12) 98203-4766,segmento_nao_elegivel
+1543,Franciele De Fatima Dos Santos Silva,Não informado,ADIMPLENTE,30/05/2026,,(12) 99663-5873,menos_de_6_meses
+1544,Jose Amauri Clemente Costa,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,02/04/2026,,(12) 99652-1434,menos_de_6_meses
+1546,Noah De Oliveira Silva,Não informado,ADIMPLENTE,13/02/2025,,,telefone_invalido
+1547,Bruna Marques Silva,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 99782-4145,menos_de_6_meses
+1548,Julio Cesar Vieira Sousa,Mariane Ignat,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98159-4517  (12) 99609-4425,menos_de_6_meses
+1551,Evandra Maria Da Silva De Sousa,Paula Cristine De Oliveira Esteves,INADIMPLENTE,03/06/2026,25/06/2026,(86) 98162-8199  (86) 98903-5760,segmento_nao_elegivel
+1553,Carlos Ramos Roso,Marina Melo Maciel,ADIMPLENTE,09/06/2026,14/07/2026,(12) 98294-7376  (12) 12982-9473,menos_de_6_meses
+1554,Emily Midian Flauzino Da Silva,Tatiana De Almeida Lage Machado,ADIMPLENTE,19/05/2026,30/06/2026,(12) 99222-4564,menos_de_6_meses
+1555,Isabela Silva Carvalho,Erik Augusto Silva,INADIMPLENTE,22/06/2026,23/07/2026,(12) 98109-7892  (12) 99700-7762,segmento_nao_elegivel
+1559,Tamara Cristina Moreira Mello,Não informado,ADIMPLENTE,16/03/2026,,(12) 98804-5995,menos_de_6_meses
+1560,Larissa Nunes Dos Santos,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98844-3565,menos_de_6_meses
+1561,Rodrigo Ferreira De Souza,Mariane Ignat,ADIMPLENTE,22/06/2026,17/07/2026,(12) 99742-5830,menos_de_6_meses
+1564,Deborah Layhana Alessandra Santana Oliveira,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,(11) 95499-6262,menos_de_6_meses
+1565,Ezequiel Ribeiro Lima,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,08/07/2026,(12) 97898-4608,menos_de_6_meses
+1566,Fabricio Bonsucesso Pereira,Renata Portella Bason,ADIMPLENTE,21/05/2026,04/07/2026,(35) 99752-5096,menos_de_6_meses
+1569,Janaína Gama Tenório,Renata Portella Bason,INADIMPLENTE,19/06/2026,10/07/2026,(82) 82261-302 (82) 98226-1302,segmento_nao_elegivel
+1571,Vitória Luiza Martins Da Silva,Renata Portella Bason,INADIMPLENTE,07/04/2026,,(12) 98704-5610,segmento_nao_elegivel
+1573,Manuella Aparecida Silva Zukas,Renata Portella Bason,INADIMPLENTE,08/05/2026,,(12) 98291-5588,segmento_nao_elegivel
+1574,Isabelly Rayssa De Amorim Paião,Erik Augusto Silva,INADIMPLENTE,11/06/2026,13/07/2026,(67) 99309-9693  (12) 98896-4480,segmento_nao_elegivel
+1575,Laila Dias Andreotti,Erik Augusto Silva,ADIMPLENTE,14/05/2026,,(12) 99706-8324,menos_de_6_meses
+1576,Ana Luisa Ribeiro Leodido,Renata Portella Bason,INADIMPLENTE,26/03/2026,,(12) 97812-3721  (12) 12978-1237,segmento_nao_elegivel
+1578,Flavio De Souza,Renata Portella Bason,INADIMPLENTE,02/06/2026,26/06/2026,(12) 99717-8609,segmento_nao_elegivel
+1581,Maria Eduarda Pereira Andrade,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98139-8280  (12) 98275-2950,menos_de_6_meses
+1582,Ivan Silva Pinheiro,Erik Augusto Silva,INADIMPLENTE,28/05/2026,29/06/2026,(94) 98812-5856,segmento_nao_elegivel
+1584,Anne Caroline Campos Costa Camargo,Luiz Gustavo Teodoro,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99733-9379,menos_de_6_meses
+1585,Maria Eduarda Cesario Teixeira,Erik Augusto Silva,ADIMPLENTE,18/06/2026,30/07/2026,(12) 98891-9963,menos_de_6_meses
+1586,Joao Victor Cesario Teixeira....,Erik Augusto Silva,ADIMPLENTE,18/06/2026,30/07/2026,(12) 98700-0155  (12) 98891-9963  (12) 98700-0155,menos_de_6_meses
+1587,Regiane Xavier Machado De Sousa,Não informado,ADIMPLENTE,04/02/2025,,,telefone_invalido
+1588,Debora Cristini Silva Oliveira,Mariane Ignat,INADIMPLENTE,01/06/2026,03/07/2026,(12) 98194-4677  (12) 98194-4677,segmento_nao_elegivel
+1591,Patricia Araujo Da Silva,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,01/02/2025,,,telefone_invalido
+1592,Adilson Henrique Fernandes,Renata Portella Bason,ADIMPLENTE,11/06/2026,10/07/2026,(12) 98709-8142,menos_de_6_meses
+1593,Pedro Henrique Soares Lima,Renata Portella Bason,INADIMPLENTE,08/02/2025,,(12) 98899-8030,segmento_nao_elegivel
+1596,Noah Silva Lima,Marina Melo Maciel,ADIMPLENTE,16/06/2026,14/07/2026,(12) 97402-7129  (12) 99166-2469,menos_de_6_meses
+1597,Vinicius Wesley De Melo Pordeus,Renata Portella Bason,INADIMPLENTE,30/05/2026,30/06/2026,(12) 99219-1222,segmento_nao_elegivel
+1598,Bernardo Costa Lemes,Mariane Ignat,INADIMPLENTE,27/04/2026,,(12) 99600-5397,segmento_nao_elegivel
+1599,Raul Jose Eklund De Oliveira,Paula Cristine De Oliveira Esteves,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98898-7005,menos_de_6_meses
+1603,Vitória Trombini Nunes,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98292-6645,menos_de_6_meses
+1605,Ana Clara Moreira Ramos,Mariane Ignat,INADIMPLENTE,30/05/2026,,(12) 99233-2728  (12) 97898-3781  (12) 97898-3781,segmento_nao_elegivel
+1607,Laura Bezerra Da Silva,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,(87) 9907-2561 (87) 99907-2561,menos_de_6_meses
+1608,Carla Dos Santos,Erik Augusto Silva,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98236-2014,menos_de_6_meses
+1612,Kauã Miguel De Jesus,Luiz Gustavo Teodoro,INADIMPLENTE,16/05/2026,27/06/2026,(12) 98855-2075,segmento_nao_elegivel
+1614,Jose Da Silva Filho,Renata Portella Bason,INADIMPLENTE,15/04/2026,,(12) 98875-8632,segmento_nao_elegivel
+1617,Erika Cristina Da Paz Nunes Lima,Luiz Gustavo Teodoro,INADIMPLENTE,17/06/2026,18/07/2026,(12) 98269-4870,segmento_nao_elegivel
+1619,Joao Paulo Macedo Dos Santos Rangel,Luiz Gustavo Teodoro,ADIMPLENTE,24/06/2026,22/07/2026,(12) 98109-5883,menos_de_6_meses
+1620,Abner Santos Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,12/06/2026,13/07/2026,(12) 98248-3956,segmento_nao_elegivel
+1621,Luciana Gobbo Dos Santos,Não informado,INADIMPLENTE,22/02/2025,,,telefone_invalido
+1622,Mariana Aparecida Alves,Marina Melo Maciel,INADIMPLENTE,27/05/2026,30/06/2026,(12) 99218-1269,segmento_nao_elegivel
+1625,Paloma Costa,Renata Portella Bason,ADIMPLENTE,20/06/2026,11/07/2026,(12) 99660-1454,menos_de_6_meses
+1626,Ana Caroline Mioni,Marina Melo Maciel,INADIMPLENTE,10/06/2026,15/07/2026,(12) 98113-1491,segmento_nao_elegivel
+1628,Ana Júlia Aparecida Da Silva Dos Santos,Renata Portella Bason,ADIMPLENTE,29/05/2026,30/06/2026,(12) 99633-2733,menos_de_6_meses
+1633,Ana Beatriz Dos Santos Grafanassi,Luiz Gustavo Teodoro,ADIMPLENTE,26/05/2026,,(12) 98855-2075  (12) 98818-1120,menos_de_6_meses
+1637,Gecieli Santos Gruber,Tatiana De Almeida Lage Machado,INADIMPLENTE,09/06/2026,07/07/2026,(12) 98179-2285,segmento_nao_elegivel
+1639,Valdir Fernandes Da Costa Junior,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,01/07/2026,(12) 99738-7257,menos_de_6_meses
+1640,Luiz Fernando Da Fonseca,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 99609-7996,menos_de_6_meses
+1641,Maria Alice Ferreira De Sousa Rodrigues,Marina Melo Maciel,INADIMPLENTE,09/06/2026,07/07/2026,(12) 98173-6887,segmento_nao_elegivel
+1642,Maria Luyza Mateus Rocha Kuramoto,Não informado,INADIMPLENTE,22/04/2026,,(12) 99212-4248,menos_de_6_meses
+1644,Beatriz De Paiva Sampaio,Mariane Ignat,ADIMPLENTE,29/05/2026,,(21) 98114-7240  (55) 98114-2740,menos_de_6_meses
+1645,Tatiane Bomfim Da Silva Costa,Marina Melo Maciel,INADIMPLENTE,23/06/2026,21/07/2026,(12) 98180-8447  (12) 99198-2260,segmento_nao_elegivel
+1648,Magali Delcarmem Carvalho Campanhao,Marina Melo Maciel,ADIMPLENTE,16/06/2026,15/07/2026,(12) 98224-9576,menos_de_6_meses
+1650,Lucio Nascimento Alvarenga,Erik Augusto Silva,INADIMPLENTE,21/05/2026,25/06/2026,(12) 98852-5795,segmento_nao_elegivel
+1651,Ana Luiza De Lima Da Silva,Erik Augusto Silva,INADIMPLENTE,27/04/2026,25/06/2026,(12) 98812-9102  (12) 98827-6834,segmento_nao_elegivel
+1653,Paulo Henrique Alves De Souza,Luiz Gustavo Teodoro,INADIMPLENTE,17/09/2025,,(12) 98831-5538,segmento_nao_elegivel
+1654,Luciano Pinheiro Dos Santos,Marina Melo Maciel,INADIMPLENTE,16/06/2026,14/07/2026,(12) 99603-5435  (12) 99603-5435,segmento_nao_elegivel
+1661,Ana Carolina Gouveia Regis,Renata Portella Bason,ADIMPLENTE,19/02/2026,,(12) 98814-0958  (12) 98897-4277,menos_de_6_meses
+1662,Rosângela Maria De Moraes,Mariane Ignat,INADIMPLENTE,19/06/2026,24/07/2026,(12) 98209-2979,segmento_nao_elegivel
+1663,Maria Eduarda Nicolau Rossi,Erik Augusto Silva,INADIMPLENTE,18/05/2026,,(12) 98305-4491,segmento_nao_elegivel
+1665,Márcia Maria Machado De Barros,Renata Portella Bason,ADIMPLENTE,20/05/2026,30/06/2026,(12) 99188-4761,menos_de_6_meses
+1666,A,Não informado,ADIMPLENTE,31/03/2025,,,telefone_invalido
+1668,Karinmy Do Nascimento Oliveira,Renata Portella Bason,ADIMPLENTE,20/06/2026,11/07/2026,(12) 99673-2525  (12) 99615-5112,menos_de_6_meses
+1669,Hugo Von Zuben De Valega Negrão,Renata Portella Bason,ADIMPLENTE,20/06/2026,26/06/2026,(12) 99126-2733,menos_de_6_meses
+1670,Gabriela Miranda Ribeiro,Renata Portella Bason,INADIMPLENTE,08/05/2026,,(12) 99133-1650  (12) 99138-3834  (12) 12991-3838,segmento_nao_elegivel
+1671,Maria Francisca Ferreira De Souza,Não informado,INADIMPLENTE,10/04/2026,,(12) 98159-4517,menos_de_6_meses
+1672,Fernando Firmo De Almeida,Marina Melo Maciel,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99133-8396,menos_de_6_meses
+1674,Jhonatan Mateus Dos Santos,Erik Augusto Silva,ADIMPLENTE,18/05/2026,,(12) 98291-6077  (12) 99202-0184,menos_de_6_meses
+1676,Cleberson Junior Eloi Bonfim Cantão,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(12) 99703-5809,menos_de_6_meses
+1678,Micaele Lopes Fianeze,Marina Melo Maciel,INADIMPLENTE,13/05/2026,,(12) 99741-9005,segmento_nao_elegivel
+1680,Maria Clara Siles Serpa,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98835-2748  (12) 99219-0529,menos_de_6_meses
+1682,Amanda Vaz Rodrigus Dos Santos,Renata Portella Bason,INADIMPLENTE,16/04/2026,,(12) 97409-3291,segmento_nao_elegivel
+1684,Bruna Stephanie Lima,Marina Melo Maciel,INADIMPLENTE,09/06/2026,18/07/2026,(12) 99169-5099,segmento_nao_elegivel
+1685,Luiz Gustavo Rodrigues Lima,Marina Melo Maciel,INADIMPLENTE,09/06/2026,18/07/2026,(12) 99169-5099,segmento_nao_elegivel
+1686,Gabriel Francisco Do Carmo,Marina Melo Maciel,ADIMPLENTE,19/05/2026,30/06/2026,(12) 98190-5995  (12) 99122-9921  (12) 99122-9921,menos_de_6_meses
+1688,Magali Silva Anastacio,Erik Augusto Silva,INADIMPLENTE,08/06/2026,13/07/2026,(11) 98310-5700,segmento_nao_elegivel
+1689,Alice Nunes Lima,Renata Portella Bason,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98807-0722,menos_de_6_meses
+1690,Paulo Henrique Cerqueira Silva,Mariane Ignat,INADIMPLENTE,18/05/2026,06/07/2026,(12) 98110-6714,segmento_nao_elegivel
+1692,Miguel Vieira De Lima,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,01/07/2026,(12) 98818-3599,menos_de_6_meses
+1693,Joana Darc Oliveira De Melo,Não informado,ADIMPLENTE,30/04/2026,,(21) 96901-9641,menos_de_6_meses
+1694,Maurilio Oliveira De Paula,Não informado,ADIMPLENTE,02/03/2026,,(12) 98836-5393,menos_de_6_meses
+1695,José Ricardo Duarte,Giuliano Ferreira Queiroz,ADIMPLENTE,,,(12) 99193-6788,ultimo_atendimento_invalido
+1696,Kaio Pedro Paulino Monteiro,Renata Portella Bason,ADIMPLENTE,20/06/2026,11/07/2026,(12) 98295-4025  (12) 98152-9638,menos_de_6_meses
+1697,Lucas Pinheiro Simões,Erik Augusto Silva,INADIMPLENTE,15/06/2026,13/07/2026,(12) 99735-6237  (12) 99621-8600,segmento_nao_elegivel
+1698,João Gabriel Cassiano Sousa,Renata Portella Bason,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99187-9100  (12) 99240-0658,menos_de_6_meses
+1699,Maria Raquel Pena Firme,Renata Portella Bason,INADIMPLENTE,14/03/2026,,(12) 99623-7338,segmento_nao_elegivel
+1700,Kauê Henrick Sousa Anastacio,Erik Augusto Silva,INADIMPLENTE,08/06/2026,06/07/2026,(11) 98310-5700  (12) 98231-5910,segmento_nao_elegivel
+1701,Marcos Henrique Da Silva Junior,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,16/06/2026,,(12) 99115-7237,menos_de_6_meses
+1703,Lucas Ferraz Miguel,Marina Melo Maciel,INADIMPLENTE,31/03/2026,,(12) 99750-6036,segmento_nao_elegivel
+1704,Otavio Rodrigues Dos Santos,Tatiana De Almeida Lage Machado,ADIMPLENTE,27/05/2026,,(12) 99777-1150  (12) 99634-0267,menos_de_6_meses
+1706,Julio Cesar Carvalho Do Nascimento,Mariane Ignat,INADIMPLENTE,23/05/2026,04/07/2026,(12) 97411-3424,segmento_nao_elegivel
+1707,Valdecir Correa,Não informado,ADIMPLENTE,06/02/2026,,(12) 98827-5422,menos_de_6_meses
+1708,Gabrielle Risia Alves Dos Santos,Marina Melo Maciel,INADIMPLENTE,17/06/2026,14/07/2026,(12) 98854-7942,segmento_nao_elegivel
+1709,Daniel Silva De Oliveira,Erik Augusto Silva,ADIMPLENTE,11/06/2026,16/07/2026,(12) 99796-5610,menos_de_6_meses
+1711,Lucas Gabriel Rocha De Sousa,Erik Augusto Silva,ADIMPLENTE,22/05/2026,27/06/2026,(12) 98832-7710,menos_de_6_meses
+1713,Ana Clara De Sousa Carvalho,Paula Cristine De Oliveira Esteves,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98177-0264,menos_de_6_meses
+1714,Juliana Sousa Gomes,Não informado,ADIMPLENTE,25/02/2026,,(12) 99637-5023  (12) 98177-0264,menos_de_6_meses
+1715,André Luiz De Lima,Renata Portella Bason,INADIMPLENTE,05/12/2025,,(12) 98217-7822,segmento_nao_elegivel
+1716,Ana Flavia Rocha De Lima,Marina Melo Maciel,ADIMPLENTE,09/06/2026,14/07/2026,(12) 98842-7019,menos_de_6_meses
+1718,Carlos Pinheiro Soares,Luiz Gustavo Teodoro,ADIMPLENTE,23/05/2026,27/06/2026,(12) 99661-8877,menos_de_6_meses
+1721,Luana De Paula Gonçalves,Marina Melo Maciel,ADIMPLENTE,20/06/2026,25/07/2026,(12) 98803-7422,menos_de_6_meses
+1723,Maria Luiza Nascimento Dos Santos,Mariane Ignat,ADIMPLENTE,20/06/2026,17/07/2026,(12) 98892-0416  (12) 98112-7647,menos_de_6_meses
+1724,Denize Maria Vieira Da Silva,Não informado,ADIMPLENTE,28/05/2026,,(12) 98853-1211,menos_de_6_meses
+1725,Alessandra Leonardo Dos Santos,Não informado,ADIMPLENTE,,,(12) 98892-0416,ultimo_atendimento_invalido
+1727,Maiara Aguiar Saldanha,Renata Portella Bason,ADIMPLENTE,14/05/2026,,(24) 99238-7640,menos_de_6_meses
+1728,Lucas Felipe Castilho Meireles,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99236-1988,menos_de_6_meses
+1730,Alessandra Honório Machado,Mariane Ignat,INADIMPLENTE,01/06/2026,03/07/2026,(12) 98184-4057,segmento_nao_elegivel
+1731,Ana Luiza H. Machado Guimarãe,Renata Portella Bason,ADIMPLENTE,28/05/2026,30/06/2026,(12) 98184-4057,menos_de_6_meses
+1733,Maria Gabriela Da Silva Santos Rosa,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/06/2026,07/07/2026,(12) 99783-6165,menos_de_6_meses
+1735,Anabeli Oliveira Rodrigues Da Silva Santos,Luiz Gustavo Teodoro,INADIMPLENTE,29/04/2026,,(12) 99248-3646,segmento_nao_elegivel
+1736,Julia Do Prado Mariana Oliveira,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 98152-1033  (12) 98166-8792,menos_de_6_meses
+1740,Isabela Dos Santos Silva,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99143-1448,menos_de_6_meses
+1741,Leandro Jose Dias Correia,Renata Portella Bason,INADIMPLENTE,29/05/2026,30/06/2026,(12) 98813-9714  (12) 12988-1397,segmento_nao_elegivel
+1742,Luiz Otavio Da Costa Junior,Mariane Ignat,INADIMPLENTE,19/06/2026,24/07/2026,(12) 99183-4002,segmento_nao_elegivel
+1747,Daniela Lopes Soares,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98116-0613  (12) 12981-1606 (12) 12988-2022,menos_de_6_meses
+1749,Carol Julia Oliveira Ramos,Paula Cristine De Oliveira Esteves,INADIMPLENTE,15/06/2026,03/07/2026,(12) 98708-4724  (12) 98235-2950  (12) 98270-5259  (12) 98270-5259,segmento_nao_elegivel
+1750,Claudia Silvia Dos Santos Calderan,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98825-4434,menos_de_6_meses
+1752,Fernando Garcia Oliveira Costa,Não informado,ADIMPLENTE,05/01/2026,,(12) 99729-2087,menos_de_6_meses
+1754,Richard Dos Santos Prado,Luiz Gustavo Teodoro,ADIMPLENTE,23/05/2026,27/06/2026,(12) 98108-8381  (12) 99676-1083,menos_de_6_meses
+1755,Iolanda Fatima De Oliveira,Renata Portella Bason,INADIMPLENTE,10/04/2026,,(12) 99660-5590,segmento_nao_elegivel
+1757,David Furtado Soares,Mariane Ignat,INADIMPLENTE,19/06/2026,17/07/2026,(11) 96023-5168,segmento_nao_elegivel
+1758,Adriana Magali Da Silva,Marina Melo Maciel,INADIMPLENTE,08/05/2026,,(12) 98850-0788,segmento_nao_elegivel
+1759,Thais Carla Serio Martins,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 98113-3988  (12) 98113-3988,menos_de_6_meses
+1760,Jéssica Da Silva Antônio,Luiz Gustavo Teodoro,INADIMPLENTE,04/11/2025,,(12) 99788-4550  (12) 99685-0944,segmento_nao_elegivel
+1761,Fernando Pereira De Oliveira,Não informado,ADIMPLENTE,13/04/2026,,(12) 99789-3127,menos_de_6_meses
+1762,Eliane Maria Da Silva,Mariane Ignat,ADIMPLENTE,29/05/2026,26/06/2026,(12) 99220-2195,menos_de_6_meses
+1764,Giovana Fernanda Oliveira Souza,Erik Augusto Silva,ADIMPLENTE,06/06/2026,06/07/2026,(12) 99737-2780,menos_de_6_meses
+1765,Paulo Ricardo Aparecido Alves Rocha Machado,Não informado,INADIMPLENTE,,,(11) 98961-4408,ultimo_atendimento_invalido
+1766,Lais Cavinato Fernandes Lima,Marina Melo Maciel,INADIMPLENTE,13/06/2026,11/07/2026,(12) 99192-4400,segmento_nao_elegivel
+1767,Nicolas Fernandes Paes (12) 98122-1051,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,,menos_de_6_meses
+1768,Enzo Da Silva Leonor,Renata Portella Bason,INADIMPLENTE,15/05/2026,26/06/2026,(12) 99726-1514,segmento_nao_elegivel
+1770,José Expedito Mendonça Da Silva,Marina Melo Maciel,INADIMPLENTE,28/04/2026,,(81) 99612-8910,segmento_nao_elegivel
+1772,Nathan Junio Guimaraes Santos,Tatiana De Almeida Lage Machado,INADIMPLENTE,24/02/2026,04/07/2026,(12) 98828-4499,segmento_nao_elegivel
+1775,Marcos Vinicius Fontes Moreira,Mariane Ignat,INADIMPLENTE,06/06/2026,06/07/2026,(12) 98844-3437  (12) 99631-3531  (12) 12920-0235,segmento_nao_elegivel
+1776,Laisa Victoria Aparecida Reis,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 98878-0568  (12) 98155-9079,menos_de_6_meses
+1779,Carlos Henrique Batista Campos,Renata Portella Bason,INADIMPLENTE,20/06/2026,18/07/2026,(12) 98114-1479,segmento_nao_elegivel
+1780,Rosangela Aparecida Fernandes,Marina Melo Maciel,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98141-2928,menos_de_6_meses
+1782,Ryan Da Silva Franco,Renata Portella Bason,ADIMPLENTE,26/05/2026,25/06/2026,(12) 98173-6015,menos_de_6_meses
+1783,Kelvin Donizete Pereira,Mariane Ignat,ADIMPLENTE,06/06/2026,04/07/2026,(12) 99155-7713,menos_de_6_meses
+1784,Paloma Ramos Pinheiro De Souza,Marina Melo Maciel,ADIMPLENTE,10/06/2026,01/07/2026,(12) 98217-5525  (12) 12982-1755,menos_de_6_meses
+1785,Letícia Camargo Leite,Renata Portella Bason,INADIMPLENTE,19/06/2026,17/07/2026,(12) 99220-0684,segmento_nao_elegivel
+1786,Gisele Goncalves Dos Santos,Renata Portella Bason,INADIMPLENTE,16/04/2026,,(12) 98110-1932,segmento_nao_elegivel
+1788,Beatriz Henrique Gonçalves,Não informado,ADIMPLENTE,19/05/2026,,(12) 98318-4544  (12) 98883-0597,menos_de_6_meses
+1789,Breno Alves Silva,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 99156-8098,menos_de_6_meses
+1790,Silvana Maria Da Silva,Marina Melo Maciel,ADIMPLENTE,26/05/2026,27/06/2026,(12) 98850-9985,menos_de_6_meses
+1794,Adilton De Oliveira Moraes,Marina Melo Maciel,INADIMPLENTE,20/06/2026,18/07/2026,(12) 98801-2604,segmento_nao_elegivel
+1795,Augusto Alves Dos Santos Gonçalves,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/06/2026,15/07/2026,(12) 99777-5506,menos_de_6_meses
+1796,Sophia Eduarda Flauzino De Oliveira,Luiz Gustavo Teodoro,ADIMPLENTE,19/05/2026,30/06/2026,(12) 99222-4564,menos_de_6_meses
+1797,Fabiana Beatriz Lima Da Silva,Marina Melo Maciel,INADIMPLENTE,12/05/2026,,(12) 98320-7277,segmento_nao_elegivel
+1798,Evelyn Suellen Da Silva,Renata Portella Bason,ADIMPLENTE,26/05/2026,26/06/2026,(12) 99685-9163,menos_de_6_meses
+1801,Nicolas Efraim Oliveira Mousinho,Erik Augusto Silva,INADIMPLENTE,15/06/2026,13/07/2026,(12) 99792-6649  (12) 99792-6649,segmento_nao_elegivel
+1805,Isabel Cristina Borges Miranda Alves,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98141-4639,menos_de_6_meses
+1806,Joao Henrique Da Cruz Santos,Luiz Gustavo Teodoro,ADIMPLENTE,30/05/2026,,(12) 99136-8117  (91) 98481-3178,menos_de_6_meses
+1808,Geovana Vitoria Martins Dos Santos,Renata Portella Bason,INADIMPLENTE,22/05/2026,25/06/2026,(12) 99630-9172,segmento_nao_elegivel
+1809,Lucas Gabriel Cunha De Souza,Tatiana De Almeida Lage Machado,INADIMPLENTE,03/06/2026,07/07/2026,(12) 99715-3152,segmento_nao_elegivel
+1810,Camila Leonardo Do Carmo,Renata Portella Bason,INADIMPLENTE,23/05/2026,27/06/2026,(12) 98816-6793,segmento_nao_elegivel
+1811,Isabela Vitoria Leonardo Do Carmo,Renata Portella Bason,ADIMPLENTE,23/05/2026,27/06/2026,(12) 98816-6793,menos_de_6_meses
+1812,Felipe Jonas Marcondes,Erik Augusto Silva,ADIMPLENTE,18/06/2026,13/07/2026,(12) 99219-2345,menos_de_6_meses
+1813,Natani Dias Dos Santos,Renata Portella Bason,ADIMPLENTE,18/06/2026,17/07/2026,(12) 98836-8360,menos_de_6_meses
+1814,Anderson Guedes Andrade,Não informado,ADIMPLENTE,23/06/2026,,(12) 98867-2404,menos_de_6_meses
+1815,Bruno Dos Santos Costa,Renata Portella Bason,ADIMPLENTE,11/06/2026,10/07/2026,(12) 99236-6723,menos_de_6_meses
+1819,Antonio Aprigio Neto,Erik Augusto Silva,ADIMPLENTE,24/06/2026,23/07/2026,(12) 98252-4934,menos_de_6_meses
+1820,Pedro Henrique Pires Oliveira,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99144-6888,menos_de_6_meses
+1821,Natalia Stephanie Da Costa Souza,Ana Clara Rezeck De Moura,ADIMPLENTE,15/04/2026,,(12) 98101-8953,menos_de_6_meses
+1822,Maria Clara Vinhas Santos,Mariane Ignat,INADIMPLENTE,25/05/2026,26/06/2026,(12) 99770-4519,segmento_nao_elegivel
+1824,Ludimila Andrade Firmino,Renata Portella Bason,INADIMPLENTE,18/06/2026,17/07/2026,(12) 99721-1849,segmento_nao_elegivel
+1830,Leonardo Marchioro Pedra,Ana Clara Rezeck De Moura,ADIMPLENTE,23/06/2026,,(12) 99627-4196,menos_de_6_meses
+1831,Gustavo Cesar Dias Bevilaqua,Não informado,ADIMPLENTE,01/04/2026,,(12) 99229-5389,menos_de_6_meses
+1832,Jucileide Alexandre Costa,Erik Augusto Silva,ADIMPLENTE,22/06/2026,13/07/2026,(85) 98117-6202,menos_de_6_meses
+1833,Ralison De Sousa Vieira,Renata Portella Bason,INADIMPLENTE,30/05/2026,27/06/2026,(12) 99686-5403,segmento_nao_elegivel
+1834,Guilherme Pimentel Saad De Faria,Renata Portella Bason,ADIMPLENTE,30/05/2026,25/06/2026,(12) 99789-5810,menos_de_6_meses
+1836,Daniel Christian Malagutti,Renata Portella Bason,ADIMPLENTE,30/05/2026,04/07/2026,(12) 98270-9779,menos_de_6_meses
+1838,Tiago Jordan De Lima,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(12) 98810-7269,menos_de_6_meses
+1841,Marcos Jose Da Silva,Marina Melo Maciel,ADIMPLENTE,23/06/2026,28/07/2026,(12) 98831-6350,menos_de_6_meses
+1842,Robson Matheus Ribeiro Da Silva,Erik Augusto Silva,INADIMPLENTE,21/05/2026,02/07/2026,(12) 99732-5905  (12) 99705-9821  (12) 99769-8792,segmento_nao_elegivel
+1843,Laura Caroline Da Silva,Marina Melo Maciel,INADIMPLENTE,23/05/2026,27/06/2026,(12) 99798-9104,segmento_nao_elegivel
+1844,Matheus Portes Dos Santos,Tatiana De Almeida Lage Machado,INADIMPLENTE,27/05/2026,,(12) 99717-9382,segmento_nao_elegivel
+1845,Erike Diego De Oliveira,Tatiana De Almeida Lage Machado,INADIMPLENTE,01/06/2026,07/07/2026,(12) 98896-2919  (12) 12988-9629,segmento_nao_elegivel
+1846,Tainara Da Silva Pirai,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,28/06/2025,,,telefone_invalido
+1847,Maria luzia Rodrigues Romeiro,Não informado,INADIMPLENTE,14/03/2026,,(12) 98306-2166,menos_de_6_meses
+1848,Anna Clara Serpa,Marina Melo Maciel,ADIMPLENTE,16/06/2026,14/07/2026,(12) 98188-4833,menos_de_6_meses
+1849,Doris Batista Costa,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,24/01/2026,,(12) 98120-0912,menos_de_6_meses
+1851,Gisele Nascimento De Castro,Mariane Ignat,INADIMPLENTE,25/05/2026,29/06/2026,(12) 99773-3264,segmento_nao_elegivel
+1855,Adriano Francisco De Santana,Renata Portella Bason,INADIMPLENTE,02/08/2025,,(12) 99110-5287,segmento_nao_elegivel
+1856,Guilherme Leal De Souza Costa,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,18/07/2026,(12) 98107-2720,menos_de_6_meses
+1858,João Victor Santana Levesten,Erik Augusto Silva,ADIMPLENTE,21/05/2026,,(12) 98138-9678  (12) 98828-9556,menos_de_6_meses
+1861,Letícia Ferreira Da Silva,Marina Melo Maciel,ADIMPLENTE,09/06/2026,18/07/2026,(11) 99942-5032,menos_de_6_meses
+1863,Carlos Henrique Oliveira De Sousa,Marina Melo Maciel,INADIMPLENTE,27/05/2026,,(12) 98210-6954,segmento_nao_elegivel
+1865,Fabricio Coelho De Lima,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 99192-3333  (12) 99134-9554,menos_de_6_meses
+1868,Mateus De Oliveira Melo,Marina Melo Maciel,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98886-6851  (12) 98886-0630,menos_de_6_meses
+1869,Layriane Romão De Souza,Tatiana De Almeida Lage Machado,INADIMPLENTE,19/05/2026,,(12) 99148-2510,segmento_nao_elegivel
+1870,Gustavo Henrique Sousa Barreto,Marina Melo Maciel,ADIMPLENTE,09/06/2026,07/07/2026,(12) 99794-1204,menos_de_6_meses
+1872,Vania Maria Cardoso,Não informado,ADIMPLENTE,20/02/2026,,(12) 98162-7657,menos_de_6_meses
+1873,Danielle Lucia Da Silva Claro,Renata Portella Bason,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98848-2709,menos_de_6_meses
+1875,Matheus Gonçalves Paes,Gabrielly Ferreira,INADIMPLENTE,23/07/2025,,(12) 98108-1975,segmento_nao_elegivel
+1876,Leticia Aparecida Claro Martins,Não informado,ADIMPLENTE,06/04/2026,,,menos_de_6_meses
+1881,Elias Henrique Sousa Gomes,Erik Augusto Silva,INADIMPLENTE,18/06/2026,16/07/2026,(12) 98222-2662  (12) 98213-7499,segmento_nao_elegivel
+1882,Miriã Cristina Sousa Gomes,Renata Portella Bason,INADIMPLENTE,18/06/2026,16/07/2026,(12) 98222-2662  (12) 98213-7499,segmento_nao_elegivel
+1883,Adrielly Soares De Andrade,Erik Augusto Silva,ADIMPLENTE,21/05/2026,29/06/2026,(12) 99105-0908,menos_de_6_meses
+1886,Antonio Esrael Chaves Gomes,Não informado,INADIMPLENTE,15/04/2026,,(12) 98213-7499,menos_de_6_meses
+1888,Cristhian Leite Da Silva,Marina Melo Maciel,ADIMPLENTE,26/05/2026,30/06/2026,(12) 98875-4074,menos_de_6_meses
+1892,Matheus Carvalho Da Conceição,Não informado,ADIMPLENTE,25/03/2026,,,menos_de_6_meses
+1893,Gessica Nogueira Cardoso,Mariane Ignat,ADIMPLENTE,20/06/2026,10/07/2026,(77) 99183-7755,menos_de_6_meses
+1896,Sabrina Macedo Pires,Mariane Ignat,ADIMPLENTE,18/06/2026,20/07/2026,(12) 99790-7005,menos_de_6_meses
+1897,Vander Martins,Mariane Ignat,INADIMPLENTE,22/06/2026,17/07/2026,(12) 99688-5793,segmento_nao_elegivel
+1898,Alexandre Fernandes De Souza,Renata Portella Bason,ADIMPLENTE,30/05/2026,11/07/2026,(19) 99731-5706,menos_de_6_meses
+1899,Joao Vitor Domingos Da Silva,Marina Melo Maciel,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99245-5225,menos_de_6_meses
+1900,Alice Gabriely Claro De Jesus,Mariane Ignat,ADIMPLENTE,22/06/2026,24/07/2026,(12) 99188-1213,menos_de_6_meses
+1902,Beatriz Ketely Oliveira Da Silva,Marina Melo Maciel,ADIMPLENTE,17/06/2026,22/07/2026,(12) 98229-7247,menos_de_6_meses
+1907,Thamyris Silvestre De Lima,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98224-0428,menos_de_6_meses
+1909,Barbara Oliveira Da Silva,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 99747-2484,menos_de_6_meses
+1910,Victor Eric De Andrade Nerez,Marina Melo Maciel,ADIMPLENTE,09/06/2026,07/07/2026,(12) 98189-4473,menos_de_6_meses
+1911,Beatriz Oliveira Da Silva,Marina Melo Maciel,INADIMPLENTE,01/06/2026,,(12) 99134-1416,segmento_nao_elegivel
+1912,Erica Carvalho Santos,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 98264-1420,menos_de_6_meses
+1914,Nicole,Não informado,INADIMPLENTE,,,(12) 99621-9966,ultimo_atendimento_invalido
+1915,Elenice Da Silva Batista Do Canto,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(14) 99186-9596,menos_de_6_meses
+1916,Angela Maria Baltazar Dos Santos,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 99620-0693,menos_de_6_meses
+1917,Gabrielle Taiane Luzia,Renata Portella Bason,ADIMPLENTE,23/05/2026,27/06/2026,(12) 99153-1906,menos_de_6_meses
+1918,Raimundo Nonato Quirino Dos Santos,Não informado,ADIMPLENTE,14/02/2026,,(12) 98852-1356,menos_de_6_meses
+1919,Sara Vitória Cunha Pereira,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98840-2380  (12) 99751-2252  (12) 99751-2252,menos_de_6_meses
+1920,Júlia Gabriele Da Silva Rosa,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98136-2837,menos_de_6_meses
+1921,Tamar Milena Santos Ferreira Silva,Mariane Ignat,ADIMPLENTE,22/06/2026,13/07/2026,(11) 97859-6040,menos_de_6_meses
+1923,Guinecir De Paula Pacheco Santana,Não informado,ADIMPLENTE,01/06/2026,,(12) 99126-0030  (12) 99138-1377,menos_de_6_meses
+1924,Gabriel Dos Santos Oliveira,Erik Augusto Silva,ADIMPLENTE,30/03/2026,27/06/2026,(12) 99127-0562,menos_de_6_meses
+1926,Gabriela Da Silva,Não informado,ADIMPLENTE,20/02/2026,,(12) 98169-8955,menos_de_6_meses
+1927,Antonio Carlos Malaquias Nunes,Renata Portella Bason,INADIMPLENTE,18/06/2026,16/07/2026,(12) 99799-8430,segmento_nao_elegivel
+1928,Alan Souza Dos Santos,Erik Augusto Silva,ADIMPLENTE,25/05/2026,25/06/2026,(12) 98704-8960,menos_de_6_meses
+1929,Taiara Cristina Claro Lemos,Luiz Gustavo Teodoro,ADIMPLENTE,05/06/2026,01/07/2026,(12) 98825-2679,menos_de_6_meses
+1931,Agatha Liz Dos Santos Silva,Luiz Gustavo Teodoro,INADIMPLENTE,29/05/2026,27/06/2026,(12) 98871-6447,segmento_nao_elegivel
+1934,Renata Portella Bason,Não informado,INADIMPLENTE,,,(12) 99207-2040,ultimo_atendimento_invalido
+1936,Paulo Henrique Da Silva,Erik Augusto Silva,ADIMPLENTE,22/06/2026,16/07/2026,(11) 97859-6040,menos_de_6_meses
+1937,Debora Diana De Faria,Marina Melo Maciel,ADIMPLENTE,16/06/2026,14/07/2026,(12) 99625-7256  (12) 99625-7256,menos_de_6_meses
+1938,Stephanie Isis Alvarenga Souza,Renata Portella Bason,ADIMPLENTE,26/05/2026,30/06/2026,(12) 98222-6179,menos_de_6_meses
+1939,Luiz Gustavo Teodoro,Não informado,ADIMPLENTE,,,(12) 98215-0186,ultimo_atendimento_invalido
+1941,Maiara Tatiana Da Silva,Não informado,INADIMPLENTE,22/04/2026,,(12) 98836-9922,menos_de_6_meses
+1942,Gustavo Henrique Da Silva,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98836-9922,menos_de_6_meses
+1945,Juniel De Jesus Alencar,Paula Cristine De Oliveira Esteves,INADIMPLENTE,13/03/2026,,(12) 99246-6977,segmento_nao_elegivel
+1948,Lara Victoria Caldeira,Marina Melo Maciel,ADIMPLENTE,27/05/2026,,(12) 99668-7060,menos_de_6_meses
+1949,Sérgio Lawan Gobbo De Faria,Erik Augusto Silva,INADIMPLENTE,13/04/2026,25/06/2026,(12) 99709-2276  (12) 99650-4081,segmento_nao_elegivel
+1952,Ana Julia Dos Santos Silva,Renata Portella Bason,ADIMPLENTE,12/06/2026,10/07/2026,(12) 98858-2346,menos_de_6_meses
+1953,Francisco Santos Ferreira,Renata Portella Bason,ADIMPLENTE,18/06/2026,17/07/2026,(86) 98111-6322,menos_de_6_meses
+1954,Marianne Dos Santos Moreira,Mariane Ignat,ADIMPLENTE,15/05/2026,26/06/2026,(12) 99601-4237,menos_de_6_meses
+1955,Sophia Alvarenga Thomazelli,Mariane Ignat,ADIMPLENTE,06/06/2026,04/07/2026,(12) 98811-9969,menos_de_6_meses
+1958,Ricardo Pereira Barbosa,Erik Augusto Silva,ADIMPLENTE,25/05/2026,30/07/2026,(12) 99649-7706,menos_de_6_meses
+1959,Antonio Hailton Coelho,Não informado,ADIMPLENTE,05/11/2025,,(12) 3913-1455,telefone_invalido
+1960,Maria Luiza Da Silva,Não informado,ADIMPLENTE,11/05/2026,,(12) 99736-1825  (12) 99779-0446  (12) 98134-9376,menos_de_6_meses
+1964,Kamila Pereira Dos Santos,Não informado,ADIMPLENTE,08/01/2026,,(12) 99203-6351,menos_de_6_meses
+1965,Victória Moreira Fernandes,Renata Portella Bason,ADIMPLENTE,06/06/2026,04/07/2026,(12) 98183-7513,menos_de_6_meses
+1966,Sueli Da Silva Oliveira,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(12) 99613-8267,menos_de_6_meses
+1967,Rosana Davi,Mariane Ignat,INADIMPLENTE,01/06/2026,06/07/2026,(12) 99643-8395,segmento_nao_elegivel
+1969,Marcos Vitor Cunha Ferreira,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/05/2026,,(86) 98878-1934,segmento_nao_elegivel
+1970,Arthur Melo,Marina Melo Maciel,ADIMPLENTE,23/06/2026,21/07/2026,(11) 97738-6127  (11) 96734-8569,menos_de_6_meses
+1971,Milena Soares Correa,Paula Cristine De Oliveira Esteves,INADIMPLENTE,28/05/2026,26/06/2026,(12) 97605-5283,segmento_nao_elegivel
+1974,Daniela Moraes Pereira,Marina Melo Maciel,ADIMPLENTE,16/06/2026,14/07/2026,(12) 98829-9967  (12) 3902-7277,menos_de_6_meses
+1977,Cristiane Aparecida Da Silva,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 99637-3936,menos_de_6_meses
+1978,Hyuana Leonarda Dos Santos De Moura,Paula Cristine De Oliveira Esteves,INADIMPLENTE,09/05/2026,,(12) 98848-2502,segmento_nao_elegivel
+1979,Renan Rodrigues Cunha,Mariane Ignat,INADIMPLENTE,29/05/2026,26/06/2026,(12) 98284-1802  (12) 99751-1207,segmento_nao_elegivel
+1980,Jenifer Daiane Ferreira Dos Santos,Renata Portella Bason,INADIMPLENTE,18/06/2026,16/07/2026,(12) 99729-4686,segmento_nao_elegivel
+1985,Catia Aparecida Fernandes Goncalves,Não informado,INADIMPLENTE,01/06/2026,,(12) 99230-1142,menos_de_6_meses
+1988,Diogo Da Silva Rocha,Marina Melo Maciel,ADIMPLENTE,13/06/2026,25/07/2026,(92) 99988-8643,menos_de_6_meses
+1990,Isadora Batista Costa,Marina Melo Maciel,ADIMPLENTE,13/06/2026,04/07/2026,(12) 98120-0912,menos_de_6_meses
+1991,Raira Ferreira Da Cruz,Renata Portella Bason,ADIMPLENTE,29/05/2026,25/06/2026,(12) 99110-8904  (12) 99110-8904,menos_de_6_meses
+1992,Maili Sousa Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,08/04/2026,,(12) 99637-5126,segmento_nao_elegivel
+1993,Andressa Da Silva Moraes,Erik Augusto Silva,INADIMPLENTE,15/06/2026,13/07/2026,(12) 98297-2622,segmento_nao_elegivel
+1994,Lívia Gabrielly Sales Da Silva,Tatiana De Almeida Lage Machado,ADIMPLENTE,26/05/2026,,(12) 98827-3074,menos_de_6_meses
+1995,Vanessa Cristina Machado,Marina Melo Maciel,ADIMPLENTE,23/05/2026,27/06/2026,(12) 99768-7679,menos_de_6_meses
+1996,Guiomar Jesus Dos Santos Pra Mim,Luiz Gustavo Teodoro,ADIMPLENTE,03/06/2026,01/07/2026,(12) 99791-8675,menos_de_6_meses
+1998,Andreza Aparecida Melquiades Dos Santos,Tatiana De Almeida Lage Machado,INADIMPLENTE,28/05/2026,30/06/2026,(12) 98804-3881,segmento_nao_elegivel
+1999,Victor Hugo Moreira Costa,Erik Augusto Silva,ADIMPLENTE,18/06/2026,20/07/2026,(12) 98129-6801,menos_de_6_meses
+2000,Anderson Dos Santos Silva,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98195-6158,menos_de_6_meses
+2003,Nataly Gabrielly Silva Ribeiro,Luiz Gustavo Teodoro,INADIMPLENTE,22/06/2026,22/07/2026,(12) 99687-7009,segmento_nao_elegivel
+2007,Rosana Cristina Dos Santos,Não informado,INADIMPLENTE,22/05/2026,,(12) 99208-1275,menos_de_6_meses
+2009,Adriana Rodrigues Do Nascimento,Marina Melo Maciel,ADIMPLENTE,10/06/2026,08/07/2026,(12) 98888-8577,menos_de_6_meses
+2010,Raphael Torres Melo,Erik Augusto Silva,INADIMPLENTE,11/06/2026,13/07/2026,(12) 98854-8133,segmento_nao_elegivel
+2011,Flavia Marcelle Araujo Cezario,Não informado,ADIMPLENTE,11/02/2026,,(12) 98891-9963,menos_de_6_meses
+2012,Ana Júlia Aparecida Alves Rodrigues,Mariane Ignat,ADIMPLENTE,15/05/2026,26/06/2026,(12) 98834-1146,menos_de_6_meses
+2013,Rafaela Moreno Dias Almeida,Erik Augusto Silva,ADIMPLENTE,22/06/2026,16/07/2026,(12) 98219-0447,menos_de_6_meses
+2014,Samuel Henrique Da Silva Viana,Tatiana De Almeida Lage Machado,INADIMPLENTE,09/06/2026,07/07/2026,(12) 98880-9103,segmento_nao_elegivel
+2015,Adriana Dos Santos Junqueira Pacheco,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,03/07/2026,(12) 98217-2088,menos_de_6_meses
+2016,Vitória Maria Viana Da Silva,Tatiana De Almeida Lage Machado,INADIMPLENTE,10/06/2026,08/07/2026,(22) 99740-4817  (92) 98238-6799,segmento_nao_elegivel
+2017,Pedro Divino De Souza,Não informado,ADIMPLENTE,15/04/2026,,(12) 98702-1151,menos_de_6_meses
+2018,Derek Ziming Xiao,Marina Melo Maciel,ADIMPLENTE,24/06/2026,29/07/2026,(12) 98259-1533,menos_de_6_meses
+2019,Ana Maria Cardoso Dos Santos,Mariane Ignat,ADIMPLENTE,15/06/2026,20/07/2026,(12) 99183-1894,menos_de_6_meses
+2020,Pedro Silas De Oliveira,Thays Oliveira Marques,INADIMPLENTE,26/09/2025,,(12) 99637-1278,segmento_nao_elegivel
+2021,João Carlos Santos Ferreira,Renata Portella Bason,INADIMPLENTE,05/12/2025,,(19) 99395-4588  (12) 99117-6390,segmento_nao_elegivel
+2022,Stefani Dos Santos Tavares,Não informado,ADIMPLENTE,17/10/2025,30/06/2026,(12) 98846-8675,possui_agendamento
+2024,Carlos Alberto Dos Santos,Erik Augusto Silva,ADIMPLENTE,17/06/2026,06/07/2026,(12) 98813-8432,menos_de_6_meses
+2025,Maria Luiza Da Silva,Renata Portella Bason,INADIMPLENTE,20/06/2026,11/07/2026,(12) 99610-9283,segmento_nao_elegivel
+2030,Ednei Benedito De Matos,Renata Portella Bason,ADIMPLENTE,25/06/2026,23/07/2026,(12) 98150-9534,menos_de_6_meses
+2032,João Pedro Arruda Santos,Luiz Gustavo Teodoro,INADIMPLENTE,22/06/2026,22/07/2026,(12) 98599-1269,segmento_nao_elegivel
+2033,Adriano Santos Da Silva,Luiz Gustavo Teodoro,INADIMPLENTE,17/06/2026,18/07/2026,(12) 98161-7671,segmento_nao_elegivel
+2034,Marlene Kazuko Nagazaki Rebelo,Tatiana De Almeida Lage Machado,ADIMPLENTE,24/06/2026,28/07/2026,(12) 98854-4634,menos_de_6_meses
+2035,Christopher Gobbo Silva,Erik Augusto Silva,ADIMPLENTE,11/06/2026,16/07/2026,(12) 99733-2516,menos_de_6_meses
+2036,Rhayra Yasmim Moraes,Erik Augusto Silva,ADIMPLENTE,11/06/2026,16/07/2026,(12) 99733-2516,menos_de_6_meses
+2037,Larissa Priscila Da Silva,Mariane Ignat,INADIMPLENTE,19/06/2026,17/07/2026,(12) 98273-7540,segmento_nao_elegivel
+2038,Stephanie Carolina Vieira Da Cruz,Tatiana De Almeida Lage Machado,ADIMPLENTE,20/05/2026,30/06/2026,(12) 98129-0937,menos_de_6_meses
+2039,Everton Arthur Dos Santos Silva,Erik Augusto Silva,ADIMPLENTE,01/06/2026,06/07/2026,(12) 98116-4666,menos_de_6_meses
+2041,Janaina Gobbo Silva,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99733-2516,menos_de_6_meses
+2042,Joao Da Silva Camargo,Não informado,ADIMPLENTE,11/02/2026,,(12) 98179-7945  (12) 99663-8265,menos_de_6_meses
+2044,Wellington De Araújo Marcos,Luiz Gustavo Teodoro,INADIMPLENTE,08/10/2025,,(12) 98861-5160,segmento_nao_elegivel
+2045,Elmes Francisco De Lima,Mariane Ignat,INADIMPLENTE,05/06/2026,03/07/2026,(12) 98204-8468,segmento_nao_elegivel
+2046,Jones De Morais,Paula Cristine De Oliveira Esteves,INADIMPLENTE,04/05/2026,,(12) 98807-2586,segmento_nao_elegivel
+2047,Luis Miguel Rodrigues Dos Santos,Marina Melo Maciel,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98163-0446  (12) 98877-4467,menos_de_6_meses
+2050,Isabela Dos Santos Silva,Erik Augusto Silva,ADIMPLENTE,08/06/2026,06/07/2026,(12) 98151-9469,menos_de_6_meses
+2051,Anderson Guilherme Lourenço Dos Santos,Luiz Gustavo Teodoro,INADIMPLENTE,03/06/2026,01/07/2026,(12) 98226-9672,segmento_nao_elegivel
+2054,Zilá Aparecida De Oliveira,Não informado,ADIMPLENTE,27/03/2026,,(12) 98224-0428,menos_de_6_meses
+2055,Mariana Moreira Pereira,Tatiana De Almeida Lage Machado,INADIMPLENTE,14/01/2026,,(98) 98536-2327,segmento_nao_elegivel
+2056,Eduardo Henrique Dos Santos Maciel,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98163-0446,menos_de_6_meses
+2057,Wallace Breno De Sousa Miranda,Marina Melo Maciel,INADIMPLENTE,10/06/2026,11/07/2026,(12) 97407-1675  (12) 99172-2808,segmento_nao_elegivel
+2058,Elisangela Aparecida De Assis,Renata Portella Bason,INADIMPLENTE,05/03/2026,30/06/2026,(12) 99249-5255,segmento_nao_elegivel
+2062,Erivania Alves Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,13/06/2026,11/07/2026,(12) 98317-0920,menos_de_6_meses
+2064,Renata Aparecida Da Costa,Marina Melo Maciel,INADIMPLENTE,05/05/2026,,(12) 98802-6605,segmento_nao_elegivel
+2066,Estefany Aparecida Correa De Oliveira,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99158-8595,menos_de_6_meses
+2068,José Carlos Dos Santos,Gabrielly Ferreira,ADIMPLENTE,10/06/2026,,(12) 99793-5068,menos_de_6_meses
+2070,Antonia Maria Paiva Barros,Paula Cristine De Oliveira Esteves,INADIMPLENTE,09/06/2026,13/07/2026,(12) 98128-6599,segmento_nao_elegivel
+2071,Gustavo Henrique De Oliveira Lins,Renata Portella Bason,ADIMPLENTE,30/05/2026,30/06/2026,(12) 98894-8840,menos_de_6_meses
+2073,Melyna Stephanie Almeida Rocha,Erik Augusto Silva,ADIMPLENTE,08/06/2026,06/07/2026,(12) 99152-6377,menos_de_6_meses
+2074,Julio Cesar Lima De Sousa,Mariane Ignat,ADIMPLENTE,20/06/2026,18/07/2026,(21) 98449-9059,menos_de_6_meses
+2080,Derick Oliveira Moreira Da Silva,Paula Cristine De Oliveira Esteves,ADIMPLENTE,13/06/2026,04/07/2026,(12) 98262-7241  (12) 98114-6186,menos_de_6_meses
+2081,Isaac Costa Batista De Souza,Marina Melo Maciel,INADIMPLENTE,16/06/2026,15/07/2026,(12) 98887-9896,segmento_nao_elegivel
+2083,Ana Claudia Bitencourt De Sousa,Tatiana De Almeida Lage Machado,INADIMPLENTE,20/06/2026,15/07/2026,(12) 98855-7045,segmento_nao_elegivel
+2084,Henrique Silva Barbosa,Renata Portella Bason,INADIMPLENTE,26/05/2026,26/06/2026,(12) 98272-6774,segmento_nao_elegivel
+2085,Raquel Firmo De Almeida,Mariane Ignat,ADIMPLENTE,23/05/2026,26/06/2026,(12) 99131-7445,menos_de_6_meses
+2087,Celia Fabiana De Souza Dos Santos,Marina Melo Maciel,INADIMPLENTE,26/05/2026,25/06/2026,(12) 98269-3021,segmento_nao_elegivel
+2089,Maria Ines De Paula Costa,Não informado,ADIMPLENTE,07/01/2026,,(12) 99641-1401,menos_de_6_meses
+2090,Gabriella Souza Benites,Erik Augusto Silva,INADIMPLENTE,11/06/2026,02/07/2026,(12) 99741-9915  (12) 99222-3913,segmento_nao_elegivel
+2091,Gabriel Carlos Costa De Melo,Mariane Ignat,INADIMPLENTE,04/05/2026,,(11) 99026-8917,segmento_nao_elegivel
+2093,Thauan Lopes Da Silva,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,10/07/2026,(12) 97602-2338,menos_de_6_meses
+2095,Daiane Aparecida Lima Costa,Paula Cristine De Oliveira Esteves,INADIMPLENTE,26/05/2026,26/06/2026,(12) 98120-6928,segmento_nao_elegivel
+2096,Marcia Regina Cassiano Machado,Não informado,ADIMPLENTE,09/03/2026,,(12) 98157-1592,menos_de_6_meses
+2097,Erika Patricia Nunes Da Cruz,Paula Cristine De Oliveira Esteves,ADIMPLENTE,29/05/2026,29/06/2026,(12) 98157-3306,menos_de_6_meses
+2098,Glausle Mariana Martins,Marina Melo Maciel,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99751-2830,menos_de_6_meses
+2099,Fernanda Da Silva Toledo,Renata Portella Bason,ADIMPLENTE,20/06/2026,23/07/2026,(16) 98801-9391,menos_de_6_meses
+2100,Bianca Da Silva Toledo,Renata Portella Bason,ADIMPLENTE,20/06/2026,23/07/2026,(16) 98801-9391,menos_de_6_meses
+2101,Nicolas De Oliveira Nunes,Não informado,ADIMPLENTE,10/11/2025,,,telefone_invalido
+2103,Paulo Mickael Sena,Não informado,ADIMPLENTE,06/11/2025,,,telefone_invalido
+2105,Kiara Cauanny Maia Santos,Renata Portella Bason,INADIMPLENTE,26/05/2026,30/06/2026,(71) 98403-3696,segmento_nao_elegivel
+2107,Jose William Bezerra De Oliveira,Não informado,ADIMPLENTE,28/02/2026,,(87) 9907-2561,menos_de_6_meses
+2108,Patricia Fernanda De Melo Oliveira,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98171-4088,menos_de_6_meses
+2111,Jaine Santos Da Conceicao,Renata Portella Bason,INADIMPLENTE,22/05/2026,25/06/2026,(73) 98883-2841,segmento_nao_elegivel
+2113,Arthur De Farias Sampaio,Renata Portella Bason,ADIMPLENTE,26/05/2026,30/06/2026,(21) 98337-2297,menos_de_6_meses
+2114,Giovani Carvalho Dos Santos,Paula Cristine De Oliveira Esteves,INADIMPLENTE,24/04/2026,,(12) 99671-4391,segmento_nao_elegivel
+2115,Stephanie Tamires Dos Santos,Mariane Ignat,INADIMPLENTE,05/06/2026,04/07/2026,(12) 98134-9883,segmento_nao_elegivel
+2116,Enzo Gabriel Galvao De Carvalho Dragone Gomes,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98893-3354,menos_de_6_meses
+2118,Solimar Martins Da Silva,Não informado,ADIMPLENTE,06/02/2026,,(21) 99581-1050,menos_de_6_meses
+2120,Luis Carlos Camillo,Não informado,INADIMPLENTE,13/01/2026,,(11) 99248-2691,menos_de_6_meses
+2121,Maria Auxiliadora Gomes,Não informado,ADIMPLENTE,15/01/2026,,(12) 99206-0253,menos_de_6_meses
+2124,Simone Ferreira Vicente,Não informado,INADIMPLENTE,,,(12) 99186-4299,ultimo_atendimento_invalido
+2125,Patricia Da Silva Alves,Mariane Ignat,INADIMPLENTE,14/04/2026,,(12) 98141-5226,segmento_nao_elegivel
+2127,Taina Santana Dos Santos,Não informado,INADIMPLENTE,,,(73) 8135-4744,ultimo_atendimento_invalido
+2128,Lucilene Mariana De Sousa,Mariane Ignat,INADIMPLENTE,15/05/2026,26/06/2026,(12) 98825-2683  (12) 99623-3454,segmento_nao_elegivel
+2129,Joilma Aragao Da Silva,Renata Portella Bason,ADIMPLENTE,26/05/2026,25/06/2026,(12) 98229-1832,menos_de_6_meses
+2130,Ana Paula De Sousa Soares,Marina Melo Maciel,ADIMPLENTE,08/06/2026,08/07/2026,(17) 99210-5647,menos_de_6_meses
+2131,Cintia Carolina Adao Nascimento Paiva,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(35) 99220-5810,menos_de_6_meses
+2133,Daniel Lopes De Moraes,Não informado,ADIMPLENTE,20/01/2026,,(12) 99749-7586,menos_de_6_meses
+2134,Isabelly Christina De Sousa Costa,Erik Augusto Silva,INADIMPLENTE,11/06/2026,16/07/2026,(12) 98177-3182  (12) 98197-1059,segmento_nao_elegivel
+2135,Lenilton De Sousa Santos,Erik Augusto Silva,ADIMPLENTE,11/06/2026,25/07/2026,(12) 98155-6499,menos_de_6_meses
+2138,Ana Karoline Dos Reis,Marina Melo Maciel,ADIMPLENTE,18/06/2026,04/07/2026,(12) 99150-7088,menos_de_6_meses
+2139,Anthony Gabriel De Lima Messias,Mariane Ignat,ADIMPLENTE,08/05/2026,26/06/2026,(12) 98262-9752  (12) 99222-8491,menos_de_6_meses
+2140,Yago Pietro Lopes De Paula,Renata Portella Bason,INADIMPLENTE,26/05/2026,25/06/2026,(12) 99779-0629,segmento_nao_elegivel
+2141,Raquel Karoline Oliveira De Souza,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/05/2026,,(12) 98177-4572,segmento_nao_elegivel
+2142,Márcio De Jesus Soares,Marina Melo Maciel,ADIMPLENTE,24/06/2026,15/07/2026,(12) 99713-1612,menos_de_6_meses
+2143,Joao Caetano Montovani,Não informado,ADIMPLENTE,26/12/2025,,(12) 99128-7465,menos_de_6_meses
+2144,Marina Lima Silveira,Não informado,ADIMPLENTE,04/02/2026,,(12) 99115-4211,menos_de_6_meses
+2147,Luciene Dos Santos Oliveira Pio,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98229-9918,menos_de_6_meses
+2150,Ana Beatriz Romano Filipo Pereira,Erik Augusto Silva,INADIMPLENTE,27/04/2026,,(12) 99740-4932,segmento_nao_elegivel
+2151,Jose Augusto Romano De Oliveira,Mariane Ignat,INADIMPLENTE,27/04/2026,,(12) 99740-4932  (12) 99752-1927,segmento_nao_elegivel
+2152,Felipe Messias,Marina Melo Maciel,ADIMPLENTE,10/06/2026,08/07/2026,(12) 98190-6047,menos_de_6_meses
+2153,Leandra Dos Santos Ferreira,Não informado,ADIMPLENTE,02/04/2026,,(12) 99616-5974,menos_de_6_meses
+2154,Nicoli Amparo Araujo,Marina Melo Maciel,ADIMPLENTE,10/06/2026,08/07/2026,(12) 98830-9151,menos_de_6_meses
+2156,Felipe Jose Da Conceição,Marina Melo Maciel,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98891-8675,menos_de_6_meses
+2159,Victor Gabriel Dos Santos Aguiar,Não informado,ADIMPLENTE,23/12/2025,,,telefone_invalido
+2160,Bethania Quetz Batista Pereira,Paula Cristine De Oliveira Esteves,INADIMPLENTE,01/06/2026,13/07/2026,(12) 98294-3681,segmento_nao_elegivel
+2162,Micaela Oliveira Da Silva,Marina Melo Maciel,ADIMPLENTE,24/06/2026,29/07/2026,(12) 98185-4625,menos_de_6_meses
+2164,Eduardo Cassahy Passos,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,13/07/2026,(12) 99733-2013,menos_de_6_meses
+2165,Alefe Aparecido Sérgio Dias,Não informado,ADIMPLENTE,,,(12) 98309-7469,ultimo_atendimento_invalido
+2167,Ana Julia Lemes,Marina Melo Maciel,ADIMPLENTE,30/05/2026,27/06/2026,(12) 99129-8362,menos_de_6_meses
+2169,Marcio Felipe Moreira Dos Santos,Mariane Ignat,ADIMPLENTE,05/06/2026,03/07/2026,(12) 99650-0877,menos_de_6_meses
+2170,José Daniel De Souza Silva,Marina Melo Maciel,INADIMPLENTE,26/05/2026,,(12) 98889-2430,segmento_nao_elegivel
+2171,Nicolas Oliveira Tome,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/05/2026,26/06/2026,(11) 94581-1928,menos_de_6_meses
+2174,Veronice Maria Dos Santos De Sousa,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(12) 98825-6351,menos_de_6_meses
+2175,Eduardo De Carvalho Pereira,Erik Augusto Silva,INADIMPLENTE,30/05/2026,27/06/2026,(87) 98126-0953,segmento_nao_elegivel
+2176,Joao Jose Ferreira Neto,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98133-8029,menos_de_6_meses
+2178,Vivian Carla Dos Santos Conti,Paula Cristine De Oliveira Esteves,ADIMPLENTE,25/05/2026,26/06/2026,(12) 99774-0834,menos_de_6_meses
+2180,Maria Williane Batista Da Silva,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,20/07/2026,(11) 97234-8247,menos_de_6_meses
+2181,Laila Maria Lins,Paula Cristine De Oliveira Esteves,INADIMPLENTE,19/05/2026,29/06/2026,(81) 98717-0279,segmento_nao_elegivel
+2182,Andreia Maria Sandoval,Erik Augusto Silva,ADIMPLENTE,18/06/2026,20/07/2026,(12) 99763-2538,menos_de_6_meses
+2183,Nicole Louise Leal Carneiro,Tatiana De Almeida Lage Machado,INADIMPLENTE,20/05/2026,,(12) 98206-2772  (12) 98167-2967,segmento_nao_elegivel
+2184,Ana Carla Soares Leite,Mariane Ignat,INADIMPLENTE,18/05/2026,26/06/2026,(12) 98111-8090,segmento_nao_elegivel
+2186,Thais Henrique Santos,Não informado,ADIMPLENTE,10/03/2026,,(12) 99258-9104,menos_de_6_meses
+2187,Leticia Borderolle Granja,Erik Augusto Silva,INADIMPLENTE,01/06/2026,06/07/2026,(12) 98262-8083,segmento_nao_elegivel
+2189,Marcos Vinicius De Lima,Paula Cristine De Oliveira Esteves,ADIMPLENTE,12/06/2026,03/07/2026,(12) 98185-1818,menos_de_6_meses
+2190,Esdras Mycael Ferreira Do Nascimento,Paula Cristine De Oliveira Esteves,ADIMPLENTE,18/05/2026,26/06/2026,(12) 98187-8884,menos_de_6_meses
+2191,Vallentyna,Não informado,INADIMPLENTE,,,(11) 72348-247_,ultimo_atendimento_invalido
+2192,Fabiana Xavier Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,25/07/2026,(11) 97267-9363,menos_de_6_meses
+2193,Anthony Augusto Lopes Marques,Erik Augusto Silva,ADIMPLENTE,01/06/2026,13/07/2026,(12) 99621-8087,menos_de_6_meses
+2194,Alexandre Medeiros De Moraes,Renata Portella Bason,ADIMPLENTE,11/06/2026,10/07/2026,(12) 98813-3234,menos_de_6_meses
+2195,Murilo Felipe De Oliveira Barroso,Erik Augusto Silva,INADIMPLENTE,08/06/2026,06/07/2026,(12) 99237-2736  (12) 99261-6258,segmento_nao_elegivel
+2196,Reginaldo Aparecido Nanni,Paula Cristine De Oliveira Esteves,INADIMPLENTE,05/06/2026,03/07/2026,(12) 99137-0368,segmento_nao_elegivel
+2197,Luis Felipe Moreira Martins,Não informado,ADIMPLENTE,10/01/2026,,(12) 98874-0884,menos_de_6_meses
+2198,Diego Rafael Dos Santos Ferreira,Não informado,ADIMPLENTE,27/12/2025,,(11) 96574-0384,menos_de_6_meses
+2199,Christiano Dias De Morais,Não informado,ADIMPLENTE,26/03/2026,,(12) 98817-8134,menos_de_6_meses
+2200,Ale Bianchi Silva Santos,Não informado,ADIMPLENTE,27/12/2025,,(11) 96574-0384,menos_de_6_meses
+2201,Jose Severino Crespo Duarte,Não informado,INADIMPLENTE,27/12/2025,,(12) 99793-4697,menos_de_6_meses
+2202,Vinicius Soares Costa Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,26/01/2026,,(12) 99221-0145,segmento_nao_elegivel
+2203,Pierre Francisco Guedes Ribeiro,Não informado,ADIMPLENTE,29/12/2025,,(12) 99761-4975,menos_de_6_meses
+2204,Rubia Da Silva Santos,Renata Portella Bason,ADIMPLENTE,27/05/2026,27/06/2026,(12) 99121-9988,menos_de_6_meses
+2205,Ronaldo Lira Pontes,Erik Augusto Silva,ADIMPLENTE,24/06/2026,20/07/2026,(12) 98875-6293,menos_de_6_meses
+2206,Levino Ronaldo Dos Santos,Não informado,INADIMPLENTE,05/01/2026,,(12) 99741-3130,menos_de_6_meses
+2207,Manoela Sousa Tavares,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,10/07/2026,(12) 98300-3843,menos_de_6_meses
+2208,Alex Kendrick Felix De Lima,Paula Cristine De Oliveira Esteves,INADIMPLENTE,18/05/2026,26/06/2026,(12) 98187-8884,segmento_nao_elegivel
+2209,Ana Carolina Aparecida Dos Santos,Renata Portella Bason,INADIMPLENTE,23/05/2026,,(12) 99758-8123,segmento_nao_elegivel
+2210,Alison Cezar De Souza,Não informado,ADIMPLENTE,15/01/2026,,(13) 97407-1007,menos_de_6_meses
+2211,Victor Henrique Rodrigues De Melo,Tatiana De Almeida Lage Machado,ADIMPLENTE,28/05/2026,30/06/2026,(12) 98820-2089,menos_de_6_meses
+2212,Luis Fernando Vitor Pinto,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98820-2089,menos_de_6_meses
+2213,Renan Vitor Dos Santos Balbino,Não informado,ADIMPLENTE,07/01/2026,,(12) 98312-4248,menos_de_6_meses
+2214,Fernanda Rodrigues De Oliveira,Tatiana De Almeida Lage Machado,ADIMPLENTE,27/01/2026,,(77) 99803-9689,menos_de_6_meses
+2215,Maria Eduarda Monteiro De Freitas,Tatiana De Almeida Lage Machado,INADIMPLENTE,03/06/2026,07/07/2026,(12) 98835-7715  (12) 99187-2136,segmento_nao_elegivel
+2216,Sara Ribeiro De Souza Oliveira Dos Santos,Não informado,ADIMPLENTE,15/01/2026,,(12) 99118-9607,menos_de_6_meses
+2217,Thiago Almeida Dos Santos,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98705-2125,menos_de_6_meses
+2218,Rian Macedo De Lima,Renata Portella Bason,ADIMPLENTE,20/06/2026,11/07/2026,(12) 99191-1276  (12) 99256-8252,menos_de_6_meses
+2219,Sergio Rodrigues Lira,Mariane Ignat,ADIMPLENTE,15/06/2026,04/07/2026,(12) 99611-5172,menos_de_6_meses
+2220,Elisson Ramos De Paula,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,09/01/2026,,(12) 98847-0840,menos_de_6_meses
+2221,Ivo De Jesus Faria,Tatiana De Almeida Lage Machado,INADIMPLENTE,05/05/2026,30/06/2026,(15) 99705-2239,segmento_nao_elegivel
+2222,Fabio Junior Dos Santos,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,16/01/2026,,,menos_de_6_meses
+2223,Valdir Aparecido Da Cruz Barbosa,Não informado,ADIMPLENTE,20/06/2026,04/07/2026,(11) 98132-1303,menos_de_6_meses
+2224,Amanda Gonzaga Dos Santos,Não informado,ADIMPLENTE,23/06/2026,,(12) 99775-4137,menos_de_6_meses
+2225,João Vitor De Morais,Ana Clara Rezeck De Moura,ADIMPLENTE,20/01/2026,,(12) 98202-5954,menos_de_6_meses
+2226,João Pedro Da Silva Nunes,Marina Melo Maciel,ADIMPLENTE,20/05/2026,30/06/2026,(12) 99178-3213,menos_de_6_meses
+2227,Paulo Eduardo Oliveira,Não informado,ADIMPLENTE,21/01/2026,,(12) 98273-3909,menos_de_6_meses
+2228,Carolina Hadaune Santos Leite,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/05/2026,26/06/2026,(12) 98831-1651,menos_de_6_meses
+2229,Maria Cecilia Oliveira Silva,Não informado,ADIMPLENTE,13/01/2026,,(12) 98857-7867,menos_de_6_meses
+2230,Marcello Kauan Batagioti,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98890-5695  (11) 94015-0841,menos_de_6_meses
+2231,Fabricio Marcolino Da Silva,Renata Portella Bason,ADIMPLENTE,30/05/2026,27/06/2026,(12) 98268-7320  (12) 98171-2992,menos_de_6_meses
+2232,Sandra Pereira Flauzino,Não informado,INADIMPLENTE,13/01/2026,,(12) 98857-5285,menos_de_6_meses
+2233,Bruno Lobo Alves,Paula Cristine De Oliveira Esteves,INADIMPLENTE,25/03/2026,,(12) 99630-6803  (12) 99742-1767,segmento_nao_elegivel
+2234,Matheus Da Silva Barros,Marina Melo Maciel,ADIMPLENTE,19/06/2026,21/07/2026,(12) 98117-7218,menos_de_6_meses
+2235,Bianca Da Silva Santos,Erik Augusto Silva,ADIMPLENTE,20/05/2026,,(12) 98136-6490,menos_de_6_meses
+2236,Stephanie Ziyi Xiao,Não informado,ADIMPLENTE,21/01/2026,,(12) 98259-1533,menos_de_6_meses
+2237,Eduardo Rocha Borgonove,Não informado,INADIMPLENTE,14/01/2026,,(12) 99226-9231,menos_de_6_meses
+2238,Beatriz De Oliveira,Não informado,ADIMPLENTE,19/01/2026,,(12) 99186-1755  (12) 99186-2755,menos_de_6_meses
+2239,Misael Dos Santos Couto,Tatiana De Almeida Lage Machado,ADIMPLENTE,02/06/2026,01/07/2026,(12) 98137-2305,menos_de_6_meses
+2240,Alexandre Donizete Da Silva,Não informado,ADIMPLENTE,14/02/2026,,(12) 99771-6688,menos_de_6_meses
+2241,Mayara Messias Coelho,Não informado,INADIMPLENTE,21/01/2026,,(12) 99118-3824,menos_de_6_meses
+2242,Elisabete Aparecida Dos Santos,Não informado,ADIMPLENTE,30/03/2026,,(12) 99673-7247,menos_de_6_meses
+2243,Tainara Nazario Biazetto,Tatiana De Almeida Lage Machado,ADIMPLENTE,03/06/2026,07/07/2026,(51) 99560-4215,menos_de_6_meses
+2244,Luana Fatima De Moura,Não informado,INADIMPLENTE,19/01/2026,,(12) 98141-8923,menos_de_6_meses
+2245,Tamara Freire Sodré,Ana Clara Rezeck De Moura,ADIMPLENTE,03/06/2026,,(21) 97981-4467,menos_de_6_meses
+2246,Douglas Da Silva Garcia,Não informado,ADIMPLENTE,23/01/2026,,(21) 97981-4467,menos_de_6_meses
+2247,Lucas Caique,Não informado,ADIMPLENTE,07/04/2026,,(86) 98903-5760,menos_de_6_meses
+2248,Isabella Aparecida Rodrigues,Renata Portella Bason,INADIMPLENTE,07/05/2026,03/07/2026,(12) 98213-0635,segmento_nao_elegivel
+2249,Francisco De Assis,Não informado,ADIMPLENTE,23/03/2026,,(12) 98887-5241,menos_de_6_meses
+2250,Samanta Jimenes Angarita,Não informado,INADIMPLENTE,21/01/2026,,(12) 99197-1321,menos_de_6_meses
+2251,Ariel Cardoso De Sousa,Renata Portella Bason,ADIMPLENTE,25/06/2026,23/07/2026,(91) 99200-2486,menos_de_6_meses
+2252,Juliana Gianini Pereira,Erik Augusto Silva,ADIMPLENTE,26/01/2026,,(12) 98239-9196,menos_de_6_meses
+2253,Diovane Oliveira Da Silva Zeferino,Mariane Ignat,ADIMPLENTE,19/06/2026,20/07/2026,(12) 99134-6506,menos_de_6_meses
+2254,Arthur Guilherme Ferreira,Erik Augusto Silva,ADIMPLENTE,08/06/2026,06/07/2026,(12) 99769-4847,menos_de_6_meses
+2255,Darlene Souza Xavier,Não informado,ADIMPLENTE,23/02/2026,,(11) 97646-1357,menos_de_6_meses
+2256,Jose Josias Da Silva Filho,Marina Melo Maciel,ADIMPLENTE,05/06/2026,04/07/2026,(12) 98254-9628,menos_de_6_meses
+2257,Yasmin Gabrielle De Sousa Veloso,Não informado,ADIMPLENTE,22/01/2026,,(12) 98106-6286,menos_de_6_meses
+2258,Kauan Felipe De Sousa Queres,Não informado,ADIMPLENTE,22/01/2026,,(12) 98106-6286,menos_de_6_meses
+2259,Eloisa Silva Ferreira,Marina Melo Maciel,ADIMPLENTE,24/06/2026,29/07/2026,(12) 99673-5887,menos_de_6_meses
+2260,Lohanny Isabelly Da Silva Santos,Mariane Ignat,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98851-2392,menos_de_6_meses
+2261,Luci Maria De Faria Santos,Não informado,ADIMPLENTE,09/02/2026,,(12) 98872-8120,menos_de_6_meses
+2262,Liara,Não informado,INADIMPLENTE,23/01/2026,,(12) 99681-2639,menos_de_6_meses
+2263,Nelson Alfredo Mejias Hernandez,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,30/01/2026,,(12) 98111-0911,menos_de_6_meses
+2264,Jossivaldo Santos Da Silva,Mariane Ignat,ADIMPLENTE,22/05/2026,26/06/2026,(12) 92000-6362,menos_de_6_meses
+2265,Letícia Stocco Silva,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,25/07/2026,(12) 98215-5848,menos_de_6_meses
+2266,Tatiana Cristina Lourenço Dias,Marina Melo Maciel,ADIMPLENTE,24/06/2026,29/07/2026,(12) 99716-9956,menos_de_6_meses
+2267,Eliane Cassimiro Sander,Marina Melo Maciel,ADIMPLENTE,09/06/2026,07/07/2026,(12) 98289-5837,menos_de_6_meses
+2268,Thomaz Da Camara Ferreira,Marina Melo Maciel,INADIMPLENTE,12/05/2026,,(11) 95650-1388,segmento_nao_elegivel
+2269,Francisco Das Chagas Faria Carvalho,Não informado,ADIMPLENTE,11/05/2026,,(12) 98155-7508  (12) 99794-5924,menos_de_6_meses
+2270,Jamile Barbosa Gonçalves,Paula Cristine De Oliveira Esteves,ADIMPLENTE,05/06/2026,26/06/2026,(74) 99929-6471,menos_de_6_meses
+2271,Naila Maria Germano,Não informado,ADIMPLENTE,15/04/2026,,(12) 99675-8956,menos_de_6_meses
+2272,Nicolas De Souza Santos,Marina Melo Maciel,ADIMPLENTE,16/06/2026,01/07/2026,(12) 99605-0549,menos_de_6_meses
+2273,Laisla Caroline Morais,Não informado,INADIMPLENTE,06/02/2026,,(12) 99250-3724,menos_de_6_meses
+2274,Thainara Silva De Oliveira Soares,Marina Melo Maciel,ADIMPLENTE,09/05/2026,27/06/2026,(18) 99600-3159,menos_de_6_meses
+2275,Lucas Amaral Landim Lima,Ana Clara Rezeck De Moura,ADIMPLENTE,07/03/2026,,(12) 99164-5882,menos_de_6_meses
+2276,Bruno William Vieira Sales,Não informado,ADIMPLENTE,02/02/2026,,(12) 98112-5963,menos_de_6_meses
+2277,Myguel Arcanjo Araujo De França,Paula Cristine De Oliveira Esteves,ADIMPLENTE,11/05/2026,26/06/2026,(11) 94107-6849,menos_de_6_meses
+2278,Luciene Pinheiro Dos Santos,Não informado,ADIMPLENTE,30/01/2026,,(12) 99715-0812,menos_de_6_meses
+2279,Victoria Fernandez Da Gama,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(12) 99672-1851  (12) 98156-2651,menos_de_6_meses
+2280,Josemar Cirilo Silva,Erik Augusto Silva,INADIMPLENTE,14/05/2026,25/06/2026,(12) 98868-7608,segmento_nao_elegivel
+2281,Sabrina Escala Lemos,Paula Cristine De Oliveira Esteves,ADIMPLENTE,13/06/2026,04/07/2026,(12) 99658-3134,menos_de_6_meses
+2282,Gabriel Rodrigo Da Silva Maia,Renata Portella Bason,ADIMPLENTE,19/06/2026,16/07/2026,(12) 98702-2114,menos_de_6_meses
+2283,Jamily Silva Araujo,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/06/2026,20/07/2026,(12) 98892-5275,segmento_nao_elegivel
+2284,Maria Antonia Batista Da Silva,Não informado,ADIMPLENTE,18/03/2026,,(12) 98288-3209,menos_de_6_meses
+2285,Jocirleide Araujo Da Silva,Renata Portella Bason,INADIMPLENTE,19/06/2026,17/07/2026,(12) 98892-5275,segmento_nao_elegivel
+2286,Luanna Alencar Araujo Silva,Renata Portella Bason,ADIMPLENTE,15/05/2026,30/06/2026,(12) 98297-7422,menos_de_6_meses
+2287,Cesar Ricardo De Paiva Mello,Não informado,ADIMPLENTE,27/02/2026,,(12) 99616-6016,menos_de_6_meses
+2288,Larissa De Oliveira Rosalino,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,20/07/2026,(12) 99114-0514,menos_de_6_meses
+2289,Eduarda Santos Jimenez,Mariane Ignat,ADIMPLENTE,19/06/2026,24/07/2026,(12) 98813-1011,menos_de_6_meses
+2290,Luciana Alves Ferreira,Não informado,ADIMPLENTE,02/02/2026,,(12) 98156-5433,menos_de_6_meses
+2291,Willamis Wellington Da Silva Pereira,Tatiana De Almeida Lage Machado,INADIMPLENTE,11/03/2026,,(12) 97814-9525  (12) 97814-9525,segmento_nao_elegivel
+2292,Emelly Cruz Ferreira Da Silva,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,10/07/2026,(12) 98146-3816  (12) 98146-3816,menos_de_6_meses
+2293,Isadora Manoele Miranda Moraes,Ana Clara Rezeck De Moura,ADIMPLENTE,03/02/2026,,(12) 99138-3834,menos_de_6_meses
+2294,Gabriela Mariano Alves Da Silva,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/05/2026,25/07/2026,(12) 99198-7986  (12) 99198-7986,segmento_nao_elegivel
+2295,Guilherme Henrique De Souza,Tatiana De Almeida Lage Machado,INADIMPLENTE,10/06/2026,08/07/2026,(12) 99120-9467,segmento_nao_elegivel
+2296,Cicera Jaqueline Gomes Dos Santos,Erik Augusto Silva,INADIMPLENTE,28/04/2026,,(88) 98148-2451  (88) 98885-1006,segmento_nao_elegivel
+2297,Paula Shek Yau,Não informado,ADIMPLENTE,08/05/2026,,(11) 96436-8000,menos_de_6_meses
+2298,Tiago Santana Da Silva,Não informado,INADIMPLENTE,06/02/2026,,(11) 94392-7429,menos_de_6_meses
+2299,Nycolas Da Silva Damasio,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(21) 96499-4475,menos_de_6_meses
+2300,Miguel Augusto Santos De Oliveira,Não informado,ADIMPLENTE,21/03/2026,,(12) 99781-4664,menos_de_6_meses
+2301,Joao Francisco Calvacante,Não informado,INADIMPLENTE,07/02/2026,,(12) 99789-2248,menos_de_6_meses
+2302,Silmara Rocha Costa,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(77) 99839-7963,menos_de_6_meses
+2303,Helen Karine Dos Santos Heredia,Paula Cristine De Oliveira Esteves,ADIMPLENTE,01/06/2026,03/07/2026,(12) 98233-0604  (12) 98233-0604,menos_de_6_meses
+2304,Jorge Luis Rios de Andrade,Mariane Ignat,ADIMPLENTE,15/06/2026,17/07/2026,(66) 99218-5902,menos_de_6_meses
+2305,Sophia De Abreu Quirino Santos,Renata Portella Bason,INADIMPLENTE,18/06/2026,16/07/2026,(12) 98109-5863  (12) 98109-5863,segmento_nao_elegivel
+2306,Vera Lucia Aparecida De Moraes,Não informado,INADIMPLENTE,12/06/2026,25/06/2026,(12) 99208-7901,menos_de_6_meses
+2307,Kaua Maximiano De Jesus,Não informado,ADIMPLENTE,12/02/2026,,(99) 99120-0422,menos_de_6_meses
+2308,Gabriela Cruz Dos Santos,Renata Portella Bason,INADIMPLENTE,18/06/2026,16/07/2026,(12) 98109-5863,segmento_nao_elegivel
+2309,Alisson Ferreira De Souza,Não informado,ADIMPLENTE,13/02/2026,,(15) 98129-2371,menos_de_6_meses
+2310,Ana Luisa Quirino,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,21/03/2026,,(11) 97225-0288,menos_de_6_meses
+2311,Marcos Vinícius Silva Paiva,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,13/07/2026,(11) 96481-2376  (12) 98133-9879,menos_de_6_meses
+2312,Angela Maria De Azevedo Souza,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,22/06/2026,,(12) 98801-8056,menos_de_6_meses
+2313,Jerusa Pereira Do Rosario,Renata Portella Bason,ADIMPLENTE,19/06/2026,17/07/2026,(12) 98150-1564,menos_de_6_meses
+2314,Eva Brandão Medeiros,Marina Melo Maciel,ADIMPLENTE,20/06/2026,18/07/2026,(12) 98867-0405  (12) 98867-0405  (12) 98843-4896,menos_de_6_meses
+2315,Rosineide Santos De Oliveira,Não informado,ADIMPLENTE,21/02/2026,,(12) 99768-6491,menos_de_6_meses
+2316,Pedro Henrique Jesus Araujo,Paula Cristine De Oliveira Esteves,ADIMPLENTE,13/06/2026,04/07/2026,(12) 98805-3036  (12) 98128-7495,menos_de_6_meses
+2317,Cleiton Alexandre De Souza,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,12/03/2026,,(19) 99533-3729,menos_de_6_meses
+2318,Daniella Melo,Não informado,ADIMPLENTE,21/02/2026,,(21) 96705-2227,menos_de_6_meses
+2319,Paula Roberta Martins,Renata Portella Bason,INADIMPLENTE,02/06/2026,02/07/2026,(12) 99636-2318,segmento_nao_elegivel
+2320,Sophia Vitoria Cabral De Souza,Não informado,ADIMPLENTE,04/03/2026,,(12) 98843-9879,menos_de_6_meses
+2321,Wilson Antonio Nunes De Oliveira,Não informado,ADIMPLENTE,05/03/2026,,(12) 98849-3946,menos_de_6_meses
+2322,Mariane De Brito Ventura,Não informado,ADIMPLENTE,20/03/2026,,,menos_de_6_meses
+2323,Elis Regina Dos Santos Sousa,Não informado,ADIMPLENTE,10/03/2026,,(99) 98123-8988,menos_de_6_meses
+2324,Juliana Maria Lima Siqueira,Mariane Ignat,ADIMPLENTE,16/06/2026,17/07/2026,(99) 98825-7564,menos_de_6_meses
+2325,Isabela Santos Paredes De Castro,Paula Cristine De Oliveira Esteves,ADIMPLENTE,25/05/2026,26/06/2026,(12) 98201-7512,menos_de_6_meses
+2326,Emanuel Fernandes Dos Santos,Tatiana De Almeida Lage Machado,INADIMPLENTE,10/06/2026,08/07/2026,(12) 98877-8683  (12) 98877-8683,segmento_nao_elegivel
+2327,Jaciel Oliveira Barbosa,Renata Portella Bason,ADIMPLENTE,20/06/2026,26/06/2026,(87) 98163-5431,menos_de_6_meses
+2328,Sara Correia Dos Santos,Não informado,ADIMPLENTE,02/04/2026,,(12) 98187-3090,menos_de_6_meses
+2329,Mariana Penides Oliveira Martins,Erik Augusto Silva,ADIMPLENTE,25/05/2026,25/06/2026,(12) 98255-6258,menos_de_6_meses
+2330,Antenor Lucas Borges Martins,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/05/2026,26/06/2026,(12) 99156-9919,menos_de_6_meses
+2331,Mariana Vitoria Goncalves Dos Santos,Mariane Ignat,INADIMPLENTE,19/05/2026,,(12) 98707-3627  (12) 98707-3627,segmento_nao_elegivel
+2332,Mary Hellen Benedito,Renata Portella Bason,INADIMPLENTE,15/05/2026,,(12) 98854-0233,segmento_nao_elegivel
+2333,Ana Paula Gonçalves Vieira,Tatiana De Almeida Lage Machado,INADIMPLENTE,16/06/2026,14/07/2026,(12) 99187-0875,segmento_nao_elegivel
+2334,Gustavo Jorge De Matos,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/03/2026,,(12) 99730-4844  (12) 99730-4844,menos_de_6_meses
+2335,Lucas Nogueira Bastos,Não informado,ADIMPLENTE,02/03/2026,,(12) 98266-2621,menos_de_6_meses
+2336,Mara Lucia Ramos De Paula,Renata Portella Bason,ADIMPLENTE,23/05/2026,27/06/2026,(12) 99181-1509,menos_de_6_meses
+2337,Werison Silva De Jesus,Não informado,INADIMPLENTE,07/03/2026,,(19) 98922-0685  (19) 98922-0685,menos_de_6_meses
+2338,Stephanie Campos Costa Camargo,Renata Portella Bason,ADIMPLENTE,12/06/2026,10/07/2026,(12) 99754-4762  (12) 99754-4762,menos_de_6_meses
+2339,Julia Steffany Barros De Assis,Não informado,ADIMPLENTE,30/04/2026,,(12) 98707-3820  (12) 98707-3820,menos_de_6_meses
+2340,Deyse Daiane De Oliveira Bezerra,Paula Cristine De Oliveira Esteves,INADIMPLENTE,11/05/2026,,(88) 99346-4464,segmento_nao_elegivel
+2341,Daiane Correa De Moraes,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99158-8595  (12) 98139-6235,menos_de_6_meses
+2342,Paulo Sergio De Lima,Não informado,ADIMPLENTE,07/03/2026,,(12) 98292-6998  (12) 98292-6998,menos_de_6_meses
+2343,Ana Claudia Aparecida De Almeida,Tatiana De Almeida Lage Machado,INADIMPLENTE,27/05/2026,,(12) 99601-5528,segmento_nao_elegivel
+2344,Cristiana Aparecida Manja,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,03/07/2026,(12) 99752-5530,menos_de_6_meses
+2345,Erika Aparecida de Souza,Não informado,INADIMPLENTE,07/03/2026,,(12) 99153-6738,menos_de_6_meses
+2346,Anderson Gabriel Ramos Kikuti De Paula,Renata Portella Bason,ADIMPLENTE,23/05/2026,27/06/2026,(12) 99123-5623,menos_de_6_meses
+2347,Pedro Luz Soares De Azevedo,Não informado,ADIMPLENTE,06/05/2026,,(12) 98127-3662,menos_de_6_meses
+2348,Gabriela Cristina Da Silva Montovani,Mariane Ignat,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98858-5308  (12) 98858-5308,menos_de_6_meses
+2349,Valentina Watanabe De Souza,Não informado,ADIMPLENTE,11/03/2026,,(12) 99156-4197,menos_de_6_meses
+2350,Lyvia Maria Silva De Lima,Não informado,INADIMPLENTE,28/04/2026,,(12) 99126-3621  (12) 98187-8884,menos_de_6_meses
+2351,Miguel Henrique Dos Santos Bastos,Luiz Gustavo Teodoro,ADIMPLENTE,20/06/2026,18/07/2026,(12) 99772-6031,menos_de_6_meses
+2352,Gesse Nunes Lima,Não informado,INADIMPLENTE,10/03/2026,,(12) 99701-2083  (12) 99701-2083,menos_de_6_meses
+2353,Caique Amorim De Andrade,Erik Augusto Silva,INADIMPLENTE,18/06/2026,13/07/2026,(12) 99663-1221,segmento_nao_elegivel
+2354,Suelen Coutinho Barbosa Da Silva,Ana Clara Rezeck De Moura,ADIMPLENTE,09/06/2026,,(12) 97850-5841,menos_de_6_meses
+2355,Thais Soares Leite,Luiz Gustavo Teodoro,INADIMPLENTE,03/06/2026,01/07/2026,(12) 99653-0049  (12) 99653-0049,segmento_nao_elegivel
+2356,Silvia Maria Rodrigues Nascimento,Mariane Ignat,INADIMPLENTE,02/06/2026,03/07/2026,(12) 99607-8875  (12) 99607-8875,segmento_nao_elegivel
+2357,Gabriela Pereira Sacilotti,Não informado,INADIMPLENTE,07/04/2026,,(12) 98270-2136,menos_de_6_meses
+2358,Geovanna Dias Da Costa,Tatiana De Almeida Lage Machado,ADIMPLENTE,23/06/2026,29/07/2026,(12) 98819-4763  (12) 98819-4763,menos_de_6_meses
+2359,Carlos Augusto Carvalho,Não informado,ADIMPLENTE,14/03/2026,,(12) 98861-3161,menos_de_6_meses
+2360,Tania Vieira Milerio,Erik Augusto Silva,INADIMPLENTE,25/06/2026,20/07/2026,(12) 98161-7671  (12) 98870-0620  (12) 99229-9722,segmento_nao_elegivel
+2361,Maria Vitória Camargo De Abreu,Paula Cristine De Oliveira Esteves,ADIMPLENTE,15/06/2026,13/07/2026,(12) 98843-6813,menos_de_6_meses
+2362,Karoline Lima Azevedo Ferreira,Paula Cristine De Oliveira Esteves,ADIMPLENTE,27/04/2026,26/06/2026,(12) 99232-3425,menos_de_6_meses
+2363,Elenilton Dos Reis Oliveira,Não informado,ADIMPLENTE,07/05/2026,,(12) 98214-3061  (12) 98214-3061,menos_de_6_meses
+2364,Mateus Alves Meneses,Luiz Gustavo Teodoro,INADIMPLENTE,07/05/2026,,(79) 99862-9940,segmento_nao_elegivel
+2365,Jonathan Guilherme Oliveira Alvarenga,Luiz Gustavo Teodoro,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99740-5959,menos_de_6_meses
+2366,Wesley Marcelo Prisner,Não informado,ADIMPLENTE,05/05/2026,,(12) 99715-6555,menos_de_6_meses
+2367,Cleide Cotrim Da Silva,Não informado,ADIMPLENTE,31/03/2026,,(77) 9848-9372 (77) 9848-9372,menos_de_6_meses
+2368,Daniel Henrique Santos De Souza,Paula Cristine De Oliveira Esteves,ADIMPLENTE,25/05/2026,26/06/2026,(12) 99704-3037,menos_de_6_meses
+2369,Lucas Mateus De Godoi Ribeiro,Não informado,INADIMPLENTE,18/03/2026,,(12) 98874-6408,menos_de_6_meses
+2370,Victor Ryan Sousa Vieira Silva,Renata Portella Bason,ADIMPLENTE,22/05/2026,26/06/2026,(12) 99782-5500,menos_de_6_meses
+2371,Sandra Regina Vicente Pereira,Não informado,INADIMPLENTE,15/04/2026,,(12) 98866-5962,menos_de_6_meses
+2372,Luan Cristiano Massarutti,Não informado,ADIMPLENTE,18/03/2026,,(12) 99256-6595,menos_de_6_meses
+2373,Gabriella Rayane Campos Costa,Mariane Ignat,INADIMPLENTE,30/05/2026,26/06/2026,(12) 98705-7129  (12) 98705-7129,segmento_nao_elegivel
+2374,Marcia Valeria Rodrigues Gomes Da Cruz,Paula Cristine De Oliveira Esteves,ADIMPLENTE,22/06/2026,20/07/2026,(12) 98812-4367,menos_de_6_meses
+2375,Ernandes Julio Amorim Da Silva,Erik Augusto Silva,INADIMPLENTE,06/04/2026,,(12) 99789-1112,segmento_nao_elegivel
+2376,Heitor Bruno De Santana,Não informado,ADIMPLENTE,26/03/2026,,(12) 98816-1661,menos_de_6_meses
+2377,Larissa Da Silva Oliveira Rodrigues,Marina Melo Maciel,INADIMPLENTE,22/04/2026,01/07/2026,(12) 98303-8496  (12) 98303-8496,segmento_nao_elegivel
+2378,Simone Aparecida Da Costa,Marina Melo Maciel,INADIMPLENTE,24/06/2026,21/07/2026,(12) 99766-5203  (12) 99766-5203,segmento_nao_elegivel
+2379,Eliane Cristina Da Silva,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 98178-0984  (12) 98178-0984,menos_de_6_meses
+2380,Gilberto Luis De Faria,Não informado,ADIMPLENTE,20/05/2026,,(12) 99163-1139  (12) 99163-1139,menos_de_6_meses
+2381,Miguel Virgilio Fontenele,Mariane Ignat,INADIMPLENTE,25/05/2026,,(11) 97043-4179  (11) 97043-4179,segmento_nao_elegivel
+2382,Ricardo Caxeado da Silva,Não informado,ADIMPLENTE,24/03/2026,,(12) 99621-0075,menos_de_6_meses
+2383,Marcelo Da Silva De Oliveira,Erik Augusto Silva,ADIMPLENTE,30/05/2026,27/06/2026,(11) 98217-1599  (11) 98217-1599,menos_de_6_meses
+2384,Edson Ferreira Dias,Paula Cristine De Oliveira Esteves,INADIMPLENTE,22/06/2026,20/07/2026,(12) 99166-9076,segmento_nao_elegivel
+2385,Rafaela Neves Dos Santos,Não informado,INADIMPLENTE,26/03/2026,,(12) 99146-5313,menos_de_6_meses
+2386,Claudio Erivonaldo De Oliveira,Não informado,ADIMPLENTE,15/06/2026,,(12) 98284-2831  (12) 98222-2946,menos_de_6_meses
+2387,Thyara De Souza Moura,Renata Portella Bason,INADIMPLENTE,02/06/2026,03/07/2026,(12) 99775-6322  (12) 99775-6322,segmento_nao_elegivel
+2388,Alice Sousa De Santana,Erik Augusto Silva,INADIMPLENTE,11/05/2026,,(12) 97814-1411,segmento_nao_elegivel
+2389,Jose Dos Santos,Não informado,ADIMPLENTE,10/06/2026,,(12) 99703-4269  (12) 98878-3766,menos_de_6_meses
+2390,Giovanna Lucia Da Silva Cassiano,Renata Portella Bason,INADIMPLENTE,28/05/2026,30/06/2026,(12) 98248-3909,segmento_nao_elegivel
+2391,Jose Dos Santos,Não informado,ADIMPLENTE,10/04/2026,,(12) 99641-0189,menos_de_6_meses
+2392,Samuel Henrique Batista,Não informado,ADIMPLENTE,18/04/2026,,(12) 98120-0912,menos_de_6_meses
+2393,Everton Luiz Fonseca Senne Dos Santos,Marina Melo Maciel,ADIMPLENTE,13/06/2026,18/07/2026,(12) 98142-6445  (12) 98142-6445,menos_de_6_meses
+2394,Ana Laura Gomes Peixoto Nascimento,Não informado,ADIMPLENTE,25/03/2026,,(12) 98212-8965,menos_de_6_meses
+2395,Pedro Henrique Dos Santos Ferreira,Renata Portella Bason,ADIMPLENTE,21/05/2026,25/06/2026,(12) 98801-9006,menos_de_6_meses
+2396,Tais Roberta De Oliveira,Marina Melo Maciel,INADIMPLENTE,24/04/2026,26/06/2026,(12) 99699-6089,segmento_nao_elegivel
+2397,Dario De Melo Batista,Luiz Gustavo Teodoro,INADIMPLENTE,20/05/2026,,(12) 99169-4004  (12) 99169-4004  (12) 98151-0953,segmento_nao_elegivel
+2398,Maya Guimaraes Palacio Thomaz,Marina Melo Maciel,ADIMPLENTE,10/06/2026,11/07/2026,(12) 98138-0950  (12) 98138-0950  (12) 98112-0948,menos_de_6_meses
+2399,Cristina Mercado Claros,Luiz Gustavo Teodoro,INADIMPLENTE,07/05/2026,,(59) 17440-4065,segmento_nao_elegivel
+2400,Naiara Aline Dos Santos Alves,Não informado,ADIMPLENTE,27/03/2026,,(12) 99795-2112,menos_de_6_meses
+2401,Hilda De Siqueira Simao,Não informado,ADIMPLENTE,08/06/2026,,(12) 99259-8234,menos_de_6_meses
+2402,Laiane Kelly Da Silva Barbosa,Renata Portella Bason,INADIMPLENTE,29/05/2026,30/06/2026,(12) 98107-9030,segmento_nao_elegivel
+2403,Igor Vinicius Da Silva Manso,Mariane Ignat,INADIMPLENTE,27/04/2026,,(12) 99684-7679,segmento_nao_elegivel
+2404,Maria Eduarda Moreira Da Silva,Marina Melo Maciel,ADIMPLENTE,27/05/2026,30/06/2026,(12) 98174-5020,menos_de_6_meses
+2405,Terezinha De Fatima Silva,Ana Clara Rezeck De Moura,ADIMPLENTE,02/06/2026,,(12) 99731-2076,menos_de_6_meses
+2406,Cristina Moreira Vespa,Não informado,INADIMPLENTE,31/03/2026,,(12) 98250-2370,menos_de_6_meses
+2407,Felipe Troni Lima,Renata Portella Bason,INADIMPLENTE,18/06/2026,28/07/2026,(12) 97408-4475,segmento_nao_elegivel
+2408,Catarina De Fatima Gomes Siqueira,Ana Clara Rezeck De Moura,ADIMPLENTE,03/06/2026,,(12) 99702-5416,menos_de_6_meses
+2409,Juliana Ruth Chagas,Marina Melo Maciel,ADIMPLENTE,10/06/2026,15/07/2026,(12) 99148-3262,menos_de_6_meses
+2410,Joao Guilherme Moraes Gomes,Paula Cristine De Oliveira Esteves,ADIMPLENTE,11/05/2026,26/06/2026,(12) 99672-1851,menos_de_6_meses
+2411,Maria Luiza Barbosa De Jesus,Erik Augusto Silva,INADIMPLENTE,06/04/2026,,(12) 99165-3256,segmento_nao_elegivel
+2412,Isabela Da Silva Ramos,Não informado,ADIMPLENTE,06/04/2026,,(12) 98127-0021,menos_de_6_meses
+2413,Fabiana Aparecida Dos Santos,Luiz Gustavo Teodoro,ADIMPLENTE,10/06/2026,08/07/2026,(12) 99134-7486  (12) 99134-7486,menos_de_6_meses
+2414,Vanessa Antonieta Isoton Ferreira,Marina Melo Maciel,ADIMPLENTE,20/06/2026,15/07/2026,(61) 98288-8505,menos_de_6_meses
+2415,Miguel da silva Serio,Não informado,ADIMPLENTE,18/04/2026,,(12) 98269-3302,menos_de_6_meses
+2416,Leonice Gomes Da Silva,Luiz Gustavo Teodoro,ADIMPLENTE,22/06/2026,22/07/2026,(12) 99628-7017  (12) 99628-7017,menos_de_6_meses
+2417,Jackson Lopes De Andrade,Ana Clara Rezeck De Moura,ADIMPLENTE,10/06/2026,,(12) 98290-8523,menos_de_6_meses
+2418,Maria Alessandra Felix Da Silva,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 99638-0262,menos_de_6_meses
+2419,Sandra Felix Da Silva,Não informado,ADIMPLENTE,10/04/2026,,(12) 99638-0206,menos_de_6_meses
+2420,Sara Kathleen De Lima,Não informado,ADIMPLENTE,13/04/2026,,(12) 98871-6531  (12) 98871-6531,menos_de_6_meses
+2421,Natali Beatriz Da Silva Oliveira,Renata Portella Bason,ADIMPLENTE,18/06/2026,16/07/2026,(12) 98841-3526,menos_de_6_meses
+2422,Andressa Maria Lisboa Da Silva,Mariane Ignat,INADIMPLENTE,11/05/2026,,(12) 97600-2821  (12) 97600-2821,segmento_nao_elegivel
+2423,Maria Eduarda Da Silva,Não informado,ADIMPLENTE,23/04/2026,,(12) 99148-2504  (12) 99148-2504,menos_de_6_meses
+2424,Marcelo Antonio De Sousa,Tatiana De Almeida Lage Machado,ADIMPLENTE,23/06/2026,28/07/2026,(12) 99221-9605,menos_de_6_meses
+2425,Joao Pedro Da Silva Santos,Não informado,ADIMPLENTE,23/04/2026,,(12) 98297-0375,menos_de_6_meses
+2426,Tamires Fernanda Dos Santos Gomes Procopio,Marina Melo Maciel,INADIMPLENTE,10/06/2026,15/07/2026,12982207244,segmento_nao_elegivel
+2427,Javier Eduardo Garcia Maciel,Não informado,ADIMPLENTE,12/05/2026,,(12) 12997-0737,menos_de_6_meses
+2428,Bruno Domingos De Paula Moraes,Erik Augusto Silva,INADIMPLENTE,27/04/2026,,(12) 99135-3042,segmento_nao_elegivel
+2429,Joana De Assis,Não informado,INADIMPLENTE,16/05/2026,,(12) 99230-2164,menos_de_6_meses
+2430,Emanuelle Brasilino,Erik Augusto Silva,ADIMPLENTE,15/06/2026,13/07/2026,12996737391,menos_de_6_meses
+2431,Bryan Henrique Da Silva Manso,Erik Augusto Silva,INADIMPLENTE,16/06/2026,13/07/2026,(12) 99612-6377,segmento_nao_elegivel
+2432,Rebeca Sousa Gomes,Não informado,ADIMPLENTE,23/04/2026,,(12) 98222-2662,menos_de_6_meses
+2433,Jonatha Santos Silva,Não informado,ADIMPLENTE,23/04/2026,,21972177958,menos_de_6_meses
+2434,Salete Gon�alves De Sousa Faria,Ana Clara Rezeck De Moura,ADIMPLENTE,23/06/2026,30/06/2026,(12) 99185-0859,menos_de_6_meses
+2435,Daniela Aparecida De Carvalho,Não informado,INADIMPLENTE,25/04/2026,,(12) 99779-4024  (12) 99779-4024,menos_de_6_meses
+2436,Maria Elloa Ferreira De Sousa,Erik Augusto Silva,INADIMPLENTE,20/05/2026,,(19) 99857-6295,segmento_nao_elegivel
+2437,David Vieira Ferreira,Renata Portella Bason,ADIMPLENTE,05/06/2026,03/07/2026,(12) 98189-4904  (12) 98189-4904,menos_de_6_meses
+2438,Antonio Wilson Araujo,Não informado,ADIMPLENTE,20/06/2026,01/07/2026,(12) 98143-5557,menos_de_6_meses
+2439,Ana Carolina De Paula Santos,Marina Melo Maciel,INADIMPLENTE,09/06/2026,14/07/2026,(12) 98701-6323  (12) 98701-6323,segmento_nao_elegivel
+2440,Pamela Stefane Souza Goncalves,Mariane Ignat,INADIMPLENTE,19/06/2026,17/07/2026,(12) 99194-6062  (12) 99194-6062,segmento_nao_elegivel
+2441,Wellington Jorge Pereira,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,15/06/2026,,(12) 99613-9251  (12) 99617-5371,menos_de_6_meses
+2442,Nelson Dos Santos Domingues,Não informado,ADIMPLENTE,22/06/2026,,(12) 98847-8236,menos_de_6_meses
+2443,Daniele Ramiro Vieira,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,29/05/2026,,(12) 98827-0848,menos_de_6_meses
+2444,Maria Gorette Marcondes Dos Santos,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,28/05/2026,,(12) 98873-9354,menos_de_6_meses
+2445,Igor Guerra Francisco,Tatiana De Almeida Lage Machado,ADIMPLENTE,02/06/2026,07/07/2026,(12) 99219-5569  (12) 99219-5569,menos_de_6_meses
+2446,Sonia Regina Da Silva Honorio,Ana Clara Rezeck De Moura,ADIMPLENTE,03/06/2026,,(12) 98252-1847,menos_de_6_meses
+2447,Julia Carvalho Alves,Tatiana De Almeida Lage Machado,ADIMPLENTE,10/06/2026,08/07/2026,(12) 98264-1420,menos_de_6_meses
+2448,Caio Cesar Vieira Theisen,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,08/05/2026,,(12) 98849-6246,menos_de_6_meses
+2449,Franciane Silva,Não informado,INADIMPLENTE,08/05/2026,,(12) 98260-9432,menos_de_6_meses
+2450,Aitana Garcia Maciel,Paula Cristine De Oliveira Esteves,ADIMPLENTE,08/06/2026,,(12) 98173-0574,menos_de_6_meses
+2451,Vanda Leandro Da Silva Camargo,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/06/2026,,(12) 99725-7815,menos_de_6_meses
+2452,Sergio Benedito Camargo,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,08/06/2026,25/06/2026,(12) 98890-1521,menos_de_6_meses
+2453,Aparecida Marta De Franca Figoreli,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/06/2026,,(12) 98853-8978,menos_de_6_meses
+2454,Carlos Alberto Dos Santos,Não informado,ADIMPLENTE,14/05/2026,,(12) 99639-1017,menos_de_6_meses
+2455,Marya Helloiza Oliveira Tavares De Campos,Paula Cristine De Oliveira Esteves,INADIMPLENTE,25/05/2026,,(12) 99260-0344  (12) 99260-0344,segmento_nao_elegivel
+2456,Elisa Ancelia Da Silva,Renata Portella Bason,ADIMPLENTE,18/06/2026,17/07/2026,(12) 98891-2128,menos_de_6_meses
+2457,Raquel Silva Serra,Não informado,ADIMPLENTE,14/05/2026,,(12) 97402-7129,menos_de_6_meses
+2458,Tiago Dos Reis,Não informado,INADIMPLENTE,08/06/2026,,(12) 98293-1364,menos_de_6_meses
+2459,Adilson Da Silva Oliveira,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,28/05/2026,,(12) 99181-7020  (12) 99181-3720,menos_de_6_meses
+2460,Angela De Lima E Silva,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,09/06/2026,06/07/2026,(12) 98846-8666  (12) 98846-8666,menos_de_6_meses
+2461,Luis Miguel Teixeira Da Silva,Não informado,ADIMPLENTE,08/06/2026,,(12) 98105-4607  (12) 98105-4607,menos_de_6_meses
+2462,Flaviana Auxiliadora Teixeira,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,29/05/2026,,(12) 98105-4607  (12) 98105-4607,menos_de_6_meses
+2463,Reginaldo Benedito Barreto,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/06/2026,,(12) 99656-0235,menos_de_6_meses
+2464,Joao Gabriel Lino Porto Pires,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,18/05/2026,,(12) 98857-5816,menos_de_6_meses
+2465,Clemilda Rosa De Souza Araujo,Não informado,ADIMPLENTE,20/05/2026,,(12) 98708-8136,menos_de_6_meses
+2466,Marcia Dias,Marina Melo Maciel,ADIMPLENTE,24/06/2026,22/07/2026,(12) 98152-2350  (12) 98152-2350,menos_de_6_meses
+2467,Felipe Fernandes Silva,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,18/06/2026,26/06/2026,(21) 98123-0743,menos_de_6_meses
+2468,Pietro Oliveira Silva,Renata Portella Bason,ADIMPLENTE,19/06/2026,16/07/2026,(11) 98674-2141  (12) 98111-5636,menos_de_6_meses
+2469,Andressa Goncalves Novaes,Não informado,INADIMPLENTE,26/05/2026,08/07/2026,(12) 98119-2526,menos_de_6_meses
+2470,Gilmar Alves De Freitas,Não informado,ADIMPLENTE,24/06/2026,01/07/2026,(12) 99224-0143,menos_de_6_meses
+2471,Andre Gabriel Barros De Souza,Não informado,INADIMPLENTE,20/05/2026,,(12) 99188-4761,menos_de_6_meses
+2472,Benedito Milton Ferreira,Não informado,ADIMPLENTE,21/05/2026,,(12) 98801-9006,menos_de_6_meses
+2473,Ragna Kelly Aquino De Souza,Tatiana De Almeida Lage Machado,ADIMPLENTE,17/06/2026,15/07/2026,(12) 99199-0566,menos_de_6_meses
+2474,Cremilda Albertina De Souza,Não informado,ADIMPLENTE,10/06/2026,,(12) 99738-7064,menos_de_6_meses
+2475,Luis Gonzaga Rosa,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,18/06/2026,,(12) 98182-1903,menos_de_6_meses
+2476,Jose Francisco Souza Lopes,Tatiana De Almeida Lage Machado,ADIMPLENTE,23/06/2026,14/07/2026,(12) 98146-1901  (12) 98146-1901,menos_de_6_meses
+2477,Debora Aparecida Rosa,Não informado,INADIMPLENTE,02/06/2026,,(12) 98836-9583,menos_de_6_meses
+2478,Jocileide Aragao,Não informado,INADIMPLENTE,26/05/2026,,(98) 98901-4304,menos_de_6_meses
+2479,Larissa Santos Gelo,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,28/05/2026,,(12) 98867-4713  (12) 98867-4713,menos_de_6_meses
+2480,Raissa Ariane Ventura Rodrigues,Não informado,ADIMPLENTE,01/06/2026,,(18) 99158-3551,menos_de_6_meses
+2481,Antonio Loren�o Garcia,Não informado,INADIMPLENTE,28/05/2026,,(12) 99783-6386,menos_de_6_meses
+2482,Claudinei Leite Diniz,Não informado,ADIMPLENTE,28/05/2026,,(12) 98212-4848,menos_de_6_meses
+2483,Anna Helena Lopes Da Silva Galdino,Paula Cristine De Oliveira Esteves,ADIMPLENTE,13/06/2026,04/07/2026,(12) 98827-4637  (12) 98827-4637,menos_de_6_meses
+2484,Bruna Pacheco Torres,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,08/06/2026,,(12) 99138-1377,menos_de_6_meses
+2485,Carla Cristina Lopes De Sousa,Tatiana De Almeida Lage Machado,INADIMPLENTE,03/06/2026,07/07/2026,(12) 98881-0519  (12) 98881-0519,segmento_nao_elegivel
+2486,Lucielma Da Silva Barros,Paula Cristine De Oliveira Esteves,ADIMPLENTE,01/06/2026,,(98) 9849-2483,menos_de_6_meses
+2487,Dalton Das Neves Baracho,Luiz Gustavo Teodoro,ADIMPLENTE,09/06/2026,01/07/2026,(81) 99324-8458,menos_de_6_meses
+2488,Nathaly Aparecida Rodrigues Araujo,Paula Cristine De Oliveira Esteves,ADIMPLENTE,18/06/2026,13/07/2026,(12) 98833-3773  (12) 98833-3773,menos_de_6_meses
+2489,Andressa Carla De Lima,Mariane Ignat,ADIMPLENTE,06/06/2026,04/07/2026,(12) 98286-3930  (12) 98286-3930,menos_de_6_meses
+2490,Anderson Acacio Alves Serra,Não informado,ADIMPLENTE,08/06/2026,,(12) 97402-2186,menos_de_6_meses
+2491,Carlos Alberto Santos De Jesus,Erik Augusto Silva,ADIMPLENTE,06/06/2026,16/07/2026,(12) 98118-2247,menos_de_6_meses
+2492,Rafael Franco De Paula,Paula Cristine De Oliveira Esteves,ADIMPLENTE,13/06/2026,,(12) 98816-1282,menos_de_6_meses
+2493,Almira Aparecida De Almeida Ribeiro,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/06/2026,,(12) 99606-1713,menos_de_6_meses
+2494,Valentina Vitoria Peron Da Silva,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,15/06/2026,,(12) 98151-7312,menos_de_6_meses
+2495,Jamile Nascimento Dos Santos,Tatiana De Almeida Lage Machado,ADIMPLENTE,16/06/2026,14/07/2026,(12) 98149-2972,menos_de_6_meses
+2496,Maria Luiza Silva Da Cruz,Não informado,ADIMPLENTE,16/06/2026,,(12) 99640-0241,menos_de_6_meses
+2497,Mario Cesar Do Prado,Não informado,INADIMPLENTE,17/06/2026,02/07/2026,(12) 98701-6323,menos_de_6_meses
+2498,Wanderlea Saraiva Rodrigues,Não informado,ADIMPLENTE,18/06/2026,03/07/2026,(12) 99181-7897,menos_de_6_meses
+2499,Francisca De Assis Nogueira Marques,Não informado,ADIMPLENTE,18/06/2026,29/06/2026,(12) 97404-8438,menos_de_6_meses
+2500,Emanuelle Berti De Andrade,Não informado,ADIMPLENTE,20/06/2026,,(12) 97403-9746,menos_de_6_meses
+2501,Sergio Graciano,Não informado,ADIMPLENTE,19/06/2026,,(12) 99172-2040,menos_de_6_meses
+2502,Cailane Roberto Dias,Não informado,ADIMPLENTE,22/06/2026,,(12) 98860-9805,menos_de_6_meses

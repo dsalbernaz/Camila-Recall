@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camila Recall - Centro Operacional MVP</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --line: rgba(255,255,255,0.08);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #14b8a6;
+      --accent-2: #22c55e;
+      --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(20,184,166,0.14), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(34,197,94,0.12), transparent 35%),
+        var(--bg);
+      color: var(--text);
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 44px;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .subtitle { color: var(--muted); margin: 0; }
+    .badge {
+      border: 1px solid rgba(20,184,166,0.35);
+      background: rgba(20,184,166,0.08);
+      color: #7dd3fc;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .outcome-strip {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .attention-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .dispatch-strip {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .queue-strip {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card, .table-card, .batch-card, .detail-card {
+      background: rgba(17,24,39,0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+    .card { padding: 18px; }
+    .attention-card {
+      padding: 18px;
+      background: rgba(17,24,39,0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+    .attention-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .attention-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+    }
+    .attention-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .dispatch-card {
+      padding: 18px;
+      background: rgba(17,24,39,0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+    .dispatch-toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: end;
+      margin-top: 12px;
+      margin-bottom: 14px;
+    }
+    .dispatch-list {
+      display: grid;
+      gap: 10px;
+    }
+    .dispatch-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .dispatch-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .dispatch-actions button {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .dispatch-log {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .dispatch-mode {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(20,184,166,0.18);
+      background: rgba(20,184,166,0.06);
+    }
+    .dispatch-mode.warn {
+      border-color: rgba(245,158,11,0.22);
+      background: rgba(245,158,11,0.08);
+    }
+    .dispatch-mode strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .outcome-hero {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 138px;
+    }
+    .outcome-kpis {
+      display: flex;
+      align-items: end;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .outcome-kpis strong {
+      font-size: 40px;
+      line-height: 1;
+    }
+    .outcome-kpis span {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+    .value {
+      margin-top: 8px;
+      font-size: 42px;
+      font-weight: 800;
+    }
+    .desc {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      align-items: end;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    input, select, button {
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+    button {
+      cursor: pointer;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      font-weight: 700;
+      border: none;
+    }
+    .table-card, .batch-card { overflow: hidden; }
+    .table-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      background: rgba(255,255,255,0.02);
+    }
+    .pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .pill.batch-latest {
+      background: rgba(34,197,94,0.16);
+      color: #86efac;
+    }
+    .seg-clinica { background: rgba(20,184,166,0.14); color: #5eead4; }
+    .seg-orto { background: rgba(245,158,11,0.14); color: #fcd34d; }
+    .status-pendente { background: rgba(59,130,246,0.14); color: #93c5fd; }
+    .status-em_atendimento_humano { background: rgba(245,158,11,0.14); color: #fcd34d; }
+    .status-respondido { background: rgba(20,184,166,0.14); color: #5eead4; }
+    .status-opt_out, .status-erro { background: rgba(239,68,68,0.14); color: #fca5a5; }
+    .pager {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+    }
+    .muted { color: var(--muted); }
+    .layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+    .lead-row { cursor: pointer; }
+    .lead-row:hover td { background: rgba(255,255,255,0.03); }
+    .detail-card {
+      margin-top: 16px;
+      padding: 18px;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 16px;
+      margin-bottom: 18px;
+    }
+    .detail-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .detail-item strong {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .detail-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .detail-actions .field select,
+    .detail-actions .field input { width: 100%; }
+    .detail-actions .field {
+      min-width: 0;
+    }
+    .attempt-card {
+      margin-bottom: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .attempt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr auto;
+      gap: 12px;
+      align-items: end;
+      margin-top: 12px;
+    }
+    .attempt-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .attempt-buttons button {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .followup-card {
+      margin-bottom: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .followup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr auto;
+      gap: 12px;
+      align-items: end;
+      margin-top: 12px;
+    }
+    .followup-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .followup-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+    }
+    .followup-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .event-list {
+      display: grid;
+      gap: 10px;
+      max-height: 260px;
+      overflow: auto;
+    }
+    .event-item {
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .queue-card {
+      padding: 18px;
+    }
+    .queue-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .queue-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .queue-stat {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .queue-stat strong {
+      display: block;
+      font-size: 28px;
+      margin-top: 6px;
+    }
+    .queue-list {
+      display: grid;
+      gap: 10px;
+    }
+    .queue-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      cursor: pointer;
+    }
+    .queue-item:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .queue-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+    .quick-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .quick-filter {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .quick-filter.active {
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: white;
+    }
+    .event-item .muted {
+      font-size: 12px;
+      margin-top: 6px;
+    }
+    @media (max-width: 960px) {
+      header, .layout, .queue-strip, .outcome-strip, .attention-strip, .dispatch-strip { grid-template-columns: 1fr; display: block; }
+      header { margin-bottom: 20px; }
+      .badge { display: inline-block; margin-top: 12px; }
+      .detail-grid, .detail-actions, .attempt-grid, .followup-grid, .queue-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Camila Recall</h1>
+        <p class="subtitle">Centro operacional MVP separado do Remarketing, lendo somente o schema <code>recall</code>.</p>
+      </div>
+      <div class="badge">Schema isolado: recall</div>
+    </header>
+
+    <section class="metrics" id="metricsGrid"></section>
+
+    <section class="outcome-strip" id="outcomeStrip"></section>
+
+    <section class="attention-strip">
+      <article class="attention-card">
+        <strong>Retornos atrasados</strong>
+        <div class="muted" style="margin-top:6px;">Casos que ja passaram do horario e precisam voltar para a fila humana.</div>
+        <div class="attention-list" id="attentionOverdue"></div>
+      </article>
+      <article class="attention-card">
+        <strong>Handoffs abertos</strong>
+        <div class="muted" style="margin-top:6px;">Conversas em atendimento humano que ainda nao foram resolvidas.</div>
+        <div class="attention-list" id="attentionHandoffs"></div>
+      </article>
+      <article class="attention-card">
+        <strong>Problemas de base</strong>
+        <div class="muted" style="margin-top:6px;">Telefones invalidados hoje para tratarmos a qualidade da base antes de escalar o recall.</div>
+        <div class="attention-list" id="attentionInvalidPhones"></div>
+      </article>
+    </section>
+
+    <section class="dispatch-strip">
+      <article class="dispatch-card">
+        <strong>Fila de disparo auditavel</strong>
+        <div class="muted" style="margin-top:6px;">Aqui comeca o motor do Recall: quem saiu da base pronta e entrou num lote operacional controlado.</div>
+        <div class="dispatch-mode" id="dispatchModeCard">
+          <strong id="dispatchModeTitle">Modo do motor: carregando...</strong>
+          <div class="muted" id="dispatchModeSummary">Verificando protecoes do piloto.</div>
+        </div>
+        <div class="dispatch-toolbar">
+          <div class="field">
+            <label>Qtd.</label>
+            <input id="dispatchLimit" type="number" min="1" max="100" value="20">
+          </div>
+          <div class="field">
+            <label>Etapa</label>
+            <select id="dispatchStage">
+              <option value="abertura">Abertura</option>
+              <option value="lembrete">Lembrete</option>
+            </select>
+          </div>
+          <label style="display:flex; gap:8px; align-items:center; margin-bottom:10px;">
+            <input id="dispatchLatestOnly" type="checkbox" checked>
+            <span>Somente ultimo lote</span>
+          </label>
+          <button id="btnGenerateDispatchQueue" type="button">Gerar fila</button>
+          <button id="btnExecuteDispatchBatch" type="button">Executar lote teste</button>
+        </div>
+        <div class="dispatch-list" id="dispatchQueueList"></div>
+      </article>
+
+      <article class="dispatch-card">
+        <strong>Resumo da fila</strong>
+        <div class="muted" style="margin-top:6px;">Acompanha o lote do dia antes de qualquer envio automatico.</div>
+        <div class="queue-stats" style="margin-top:14px;">
+          <div class="queue-stat">
+            <div class="label">Pendentes</div>
+            <strong id="dispatchPendingCount">0</strong>
+          </div>
+          <div class="queue-stat">
+            <div class="label">Reservados</div>
+            <strong id="dispatchReservedCount">0</strong>
+          </div>
+          <div class="queue-stat">
+            <div class="label">Processados</div>
+            <strong id="dispatchProcessedCount">0</strong>
+          </div>
+        </div>
+        <strong style="display:block; margin-top:10px;">Disparos executados hoje</strong>
+        <div class="dispatch-log" id="dispatchLogs"></div>
+      </article>
+    </section>
+
+    <section class="queue-strip">
+      <div class="queue-card">
+        <div class="queue-head">
+          <div>
+            <strong>Fila pronta para contato</strong>
+            <div class="muted" id="queueSummary">Carregando fila operacional...</div>
+          </div>
+          <div class="quick-filters">
+            <button class="quick-filter" id="quickReadyBtn" type="button">Somente prontos</button>
+            <button class="quick-filter" id="quickLatestBtn" type="button">Somente ultimo lote</button>
+          </div>
+        </div>
+        <div class="queue-stats">
+          <div class="queue-stat">
+            <div class="label">Prontos na base</div>
+            <strong id="queueReadyOverall">0</strong>
+          </div>
+          <div class="queue-stat">
+            <div class="label">Prontos no ultimo lote</div>
+            <strong id="queueReadyLatest">0</strong>
+          </div>
+          <div class="queue-stat">
+            <div class="label">Retornos ate hoje</div>
+            <strong id="queueFollowupsDue">0</strong>
+          </div>
+        </div>
+        <div class="queue-list" id="queueList"></div>
+        <div class="followup-list" id="followupList"></div>
+      </div>
+
+      <div class="queue-card">
+        <strong>Leitura operacional</strong>
+        <div class="muted" style="margin:10px 0 14px;">Esta onda organiza o trabalho humano antes da automacao. O objetivo aqui e responder rapidamente: o que entrou agora, o que esta pronto e quem precisa ser tratado primeiro.</div>
+        <div class="queue-list">
+          <div class="event-item">
+            <strong>1. Ultimo lote em destaque</strong>
+            <div class="muted">Ajuda o time a operar em cima da importacao mais recente sem misturar bases antigas.</div>
+          </div>
+          <div class="event-item">
+            <strong>2. Filtro de prontos</strong>
+            <div class="muted">Mostra apenas pendentes sem resposta, sem opt-out e sem handoff humano aberto.</div>
+          </div>
+          <div class="event-item">
+            <strong>3. Proximos da fila</strong>
+            <div class="muted">Prioriza coorte mais sensivel e ultimo atendimento mais antigo, para dar ritmo ao MVP.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="table-card">
+        <div class="table-head">
+          <div>
+            <strong>Leads Recall</strong>
+            <div class="muted" id="tableSummary">Carregando...</div>
+          </div>
+        </div>
+
+        <div class="filters">
+          <div class="field">
+            <label>Buscar</label>
+            <input id="searchInput" placeholder="Nome ou telefone">
+          </div>
+          <div class="field">
+            <label>Segmento</label>
+            <select id="segmentoSelect">
+              <option value="">Todos</option>
+              <option value="clinica_geral">Clinica geral</option>
+              <option value="ortodontia_adimplente">Ortodontia adimplente</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Coorte</label>
+            <select id="coorteSelect">
+              <option value="">Todas</option>
+              <option value="6-12m">6-12m</option>
+              <option value="1-2a">1-2a</option>
+              <option value="2-3a">2-3a</option>
+              <option value="3a+">3a+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Status</label>
+            <select id="statusSelect">
+              <option value="">Todos</option>
+              <option value="pendente">Pendente</option>
+              <option value="followup_due">Retorno ate hoje</option>
+              <option value="em_atendimento_humano">Em atendimento humano</option>
+              <option value="respondido">Respondido</option>
+              <option value="opt_out">Opt-out</option>
+              <option value="erro">Erro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Lote</label>
+            <select id="batchSelect">
+              <option value="">Todos</option>
+            </select>
+          </div>
+          <button id="refreshBtn">Atualizar</button>
+        </div>
+
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Telefone</th>
+                <th>Responsavel</th>
+                <th>Segmento</th>
+                <th>Coorte</th>
+                <th>Status</th>
+                <th>Ult. atendimento</th>
+                <th>Imports</th>
+              </tr>
+            </thead>
+            <tbody id="leadsBody"></tbody>
+          </table>
+        </div>
+
+        <div class="pager">
+          <button id="prevBtn">Anterior</button>
+          <div class="muted" id="pageInfo">Pagina 1</div>
+          <button id="nextBtn">Proxima</button>
+        </div>
+
+        <div class="detail-card">
+          <div class="table-head" style="padding:0 0 16px; border-bottom: none;">
+            <div>
+              <strong>Detalhe do Lead</strong>
+              <div class="muted" id="detailSummary">Clique em um lead para ver detalhes e acoes manuais.</div>
+            </div>
+          </div>
+
+          <div id="detailEmpty" class="muted">Nenhum lead selecionado.</div>
+
+          <div id="detailContent" style="display:none;">
+            <div class="detail-grid" id="detailGrid"></div>
+
+            <div class="detail-actions">
+              <div class="field">
+                <label>Status</label>
+                <select id="detailStatus">
+                  <option value="pendente">Pendente</option>
+                  <option value="em_atendimento_humano">Em atendimento humano</option>
+                  <option value="respondido">Respondido</option>
+                  <option value="opt_out">Opt-out</option>
+                  <option value="erro">Erro</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Meta error / anotacao</label>
+                <input id="detailMetaError" placeholder="Observacao curta">
+              </div>
+              <div class="field">
+                <label>Acoes rapidas</label>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <button id="btnOpenHandoff" type="button">Abrir handoff</button>
+                  <button id="btnResolveHandoff" type="button">Resolver handoff</button>
+                  <button id="btnSaveDetail" type="button">Salvar</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:14px; margin-bottom:16px; flex-wrap:wrap;">
+              <label><input type="checkbox" id="detailRespondeu"> Respondeu</label>
+              <label><input type="checkbox" id="detailOptOut"> Opt-out</label>
+            </div>
+
+            <div class="attempt-card">
+              <strong>Registrar tentativa</strong>
+              <div class="muted" style="margin-top:6px;">Use este bloco para marcar o resultado do contato manual sem depender de automacao.</div>
+              <div class="attempt-grid">
+                <div class="field">
+                  <label>Canal</label>
+                  <select id="attemptChannel">
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="telefone">Telefone</option>
+                    <option value="manual">Manual</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Resultado</label>
+                  <select id="attemptOutcome">
+                    <option value="sem_resposta">Sem resposta</option>
+                    <option value="respondeu">Respondeu</option>
+                    <option value="opt_out">Opt-out</option>
+                    <option value="handoff_humano">Handoff humano</option>
+                    <option value="telefone_invalido">Telefone invalido</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Observacao</label>
+                  <input id="attemptNotes" placeholder="Ex.: pediu retorno amanha">
+                </div>
+                <button id="btnRegisterAttempt" type="button">Registrar</button>
+              </div>
+              <div class="attempt-buttons">
+                <button id="btnQuickNoAnswer" type="button">Sem resposta</button>
+                <button id="btnQuickReplied" type="button">Respondeu</button>
+                <button id="btnQuickOptOut" type="button">Opt-out</button>
+                <button id="btnQuickHandoff" type="button">Handoff humano</button>
+              </div>
+            </div>
+
+            <div class="followup-card">
+              <strong>Agendar proxima acao</strong>
+              <div class="muted" style="margin-top:6px;">Use quando o lead precisar de retorno futuro, sem sair do radar operacional.</div>
+              <div class="followup-grid">
+                <div class="field">
+                  <label>Tipo</label>
+                  <select id="followupType">
+                    <option value="retorno_whatsapp">Retorno WhatsApp</option>
+                    <option value="retorno_telefone">Retorno telefone</option>
+                    <option value="revisar_manual">Revisar manual</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Quando</label>
+                  <input id="followupAt" type="datetime-local">
+                </div>
+                <div class="field">
+                  <label>Observacao</label>
+                  <input id="followupNotes" placeholder="Ex.: pediu retorno na sexta">
+                </div>
+                <button id="btnScheduleFollowup" type="button">Agendar</button>
+              </div>
+            </div>
+
+            <strong>Eventos recentes</strong>
+            <div class="event-list" id="detailEvents" style="margin-top:12px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="batch-card">
+        <div class="table-head">
+          <div>
+            <strong>Lotes Recall</strong>
+            <div class="muted">Ultimas importacoes auditadas</div>
+          </div>
+        </div>
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Lote</th>
+                <th>Elegiveis</th>
+                <th>Criado em</th>
+              </tr>
+            </thead>
+            <tbody id="batchesBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const API_URL = window.location.origin;
+    let currentPage = 1;
+    let totalPages = 1;
+    let selectedLeadId = null;
+    let onlyReady = false;
+    let latestBatchOnly = false;
+    let lastLoadedBatchId = '';
+    let dispatchConfig = null;
+
+    function metricCard(label, value, desc) {
+      return `
+        <article class="card">
+          <div class="label">${label}</div>
+          <div class="value">${value ?? 0}</div>
+          <div class="desc">${desc}</div>
+        </article>
+      `;
+    }
+
+    function outcomeCard(label, value, desc) {
+      return `
+        <article class="card">
+          <div class="label">${label}</div>
+          <div class="value">${value ?? 0}</div>
+          <div class="desc">${desc}</div>
+        </article>
+      `;
+    }
+
+    async function loadMetrics() {
+      const res = await fetch(`${API_URL}/api/recall/metrics`);
+      const m = await res.json();
+      const tentativasHoje = Number(m.tentativas_hoje || 0);
+      const respostasHoje = Number(m.respostas_hoje || 0);
+      const taxaResposta = tentativasHoje > 0
+        ? `${Math.round((respostasHoje / tentativasHoje) * 100)}%`
+        : '0%';
+
+      document.getElementById('metricsGrid').innerHTML = [
+        metricCard('Leads totais', m.total_leads, 'Base total hoje no schema recall'),
+        metricCard('Leads mapeados', m.leads_mapeados, 'Com origem_segmento preenchido'),
+        metricCard('Clinica geral', m.clinica_geral, 'Publico principal do recall'),
+        metricCard('Orto adimplente', m.ortodontia_adimplente, 'Excecao elegivel de ortodontia'),
+        metricCard('Pendentes', m.pendentes, 'Fila operacional atual'),
+        metricCard('Prontos p/ contato', m.pronto_contato, m.ultimo_lote_nome ? `Ultimo lote: ${m.ultimo_lote_nome}` : 'Sem lote identificado'),
+        metricCard('Handoffs abertos', m.handoff_aberto, 'Conversas humanas nao resolvidas'),
+        metricCard('Tentativas hoje', m.tentativas_hoje, 'Registros operacionais do dia'),
+        metricCard('Respostas hoje', m.respostas_hoje, 'Tentativas com resposta registrada'),
+        metricCard('Retornos hoje', m.retornos_hoje, 'Leads com proxima acao agendada para hoje'),
+        metricCard('Retornos atrasados', m.retornos_atrasados, 'Leads com proxima acao vencida'),
+        metricCard('Respondeu', m.respondeu, 'Leads que ja responderam'),
+        metricCard('Lotes', m.batches, m.ultimo_lote_em ? `Ultimo lote em ${new Date(m.ultimo_lote_em).toLocaleString('pt-BR')}` : 'Sem lote registrado')
+      ].join('');
+
+      document.getElementById('outcomeStrip').innerHTML = [
+        `
+          <article class="card outcome-hero">
+            <div>
+              <div class="label">Resultados de hoje</div>
+              <div class="desc">Leitura rapida da operacao para sabermos se o recall esta virando conversa, retorno ou problema de base.</div>
+            </div>
+            <div class="outcome-kpis">
+              <strong>${taxaResposta}</strong>
+              <span>taxa de resposta do dia</span>
+            </div>
+          </article>
+        `,
+        outcomeCard('Sem resposta', m.sem_resposta_hoje, 'Tentativas sem retorno ainda'),
+        outcomeCard('Respondeu', m.respostas_hoje, 'Conversas abertas no dia'),
+        outcomeCard('Handoff', m.handoffs_hoje, 'Casos enviados para humano'),
+        outcomeCard('Opt-out', m.opt_out_hoje, 'Pacientes que pediram saida'),
+        outcomeCard('Tel. invalido', m.telefone_invalido_hoje, 'Problemas de base para corrigir')
+      ].join('');
+      lastLoadedBatchId = m.ultimo_lote_id || '';
+    }
+
+    function getFilters() {
+      const params = new URLSearchParams();
+      params.set('page', currentPage);
+      params.set('pageSize', 25);
+      const search = document.getElementById('searchInput').value.trim();
+      const segmento = document.getElementById('segmentoSelect').value;
+      const coorte = document.getElementById('coorteSelect').value;
+      const status = document.getElementById('statusSelect').value;
+      const batchId = document.getElementById('batchSelect').value;
+      if (search) params.set('search', search);
+      if (segmento) params.set('segmento', segmento);
+      if (coorte) params.set('coorte', coorte);
+      if (status) params.set('status', status);
+      if (batchId) params.set('batchId', batchId);
+      if (onlyReady) params.set('onlyReady', 'true');
+      if (latestBatchOnly) params.set('latestBatchOnly', 'true');
+      if (status === 'followup_due') params.set('onlyFollowupDue', 'true');
+      return params.toString();
+    }
+
+    function statusClass(status) {
+      return `status-${status || 'pendente'}`;
+    }
+
+    function updateQuickFilterButtons() {
+      document.getElementById('quickReadyBtn').classList.toggle('active', onlyReady);
+      document.getElementById('quickLatestBtn').classList.toggle('active', latestBatchOnly);
+    }
+
+    async function loadLeads() {
+      const res = await fetch(`${API_URL}/api/recall/leads?${getFilters()}`);
+      const data = await res.json();
+      totalPages = data.totalPages || 1;
+      document.getElementById('pageInfo').textContent = `Pagina ${data.page} de ${totalPages}`;
+      document.getElementById('tableSummary').textContent = `${data.totalRows} leads encontrados`;
+
+      document.getElementById('leadsBody').innerHTML = data.leads.map((lead) => `
+        <tr class="lead-row" data-lead-id="${lead.id}">
+          <td>${lead.paciente_nome || ''}</td>
+          <td>${lead.telefone || ''}</td>
+          <td>${lead.dentista_responsavel || ''}</td>
+          <td><span class="pill ${lead.origem_segmento === 'clinica_geral' ? 'seg-clinica' : 'seg-orto'}">${lead.origem_segmento || 'nao_mapeado'}</span></td>
+          <td>${lead.coorte || ''}</td>
+          <td><span class="pill ${statusClass(lead.status)}">${lead.status || ''}</span></td>
+          <td>${lead.ultimo_atendimento ? new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR') : ''}</td>
+          <td>${lead.import_count ?? 0}</td>
+        </tr>
+      `).join('') || `<tr><td colspan="8" class="muted">Nenhum lead encontrado.</td></tr>`;
+
+      document.querySelectorAll('.lead-row').forEach((row) => {
+        row.addEventListener('click', () => {
+          selectedLeadId = row.getAttribute('data-lead-id');
+          loadLeadDetail(selectedLeadId);
+        });
+      });
+
+      document.getElementById('prevBtn').disabled = currentPage <= 1;
+      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+    }
+
+    async function loadBatches() {
+      const res = await fetch(`${API_URL}/api/recall/batches`);
+      const rows = await res.json();
+      document.getElementById('batchSelect').innerHTML = `<option value="">Todos</option>` + rows.map((row) => `
+        <option value="${row.id}">${row.lote_nome}</option>
+      `).join('');
+      document.getElementById('batchesBody').innerHTML = rows.map((row) => `
+        <tr>
+          <td>${row.lote_nome} ${row.id === lastLoadedBatchId ? '<span class="pill batch-latest">ultimo</span>' : ''}</td>
+          <td>${row.eligible_total ?? 0}</td>
+          <td>${row.created_at ? new Date(row.created_at).toLocaleString('pt-BR') : ''}</td>
+        </tr>
+      `).join('') || `<tr><td colspan="3" class="muted">Nenhum lote encontrado.</td></tr>`;
+    }
+
+    async function loadQueue() {
+      const res = await fetch(`${API_URL}/api/recall/queue`);
+      const data = await res.json();
+      document.getElementById('queueReadyOverall').textContent = data.readyOverall ?? 0;
+      document.getElementById('queueReadyLatest').textContent = data.readyLatestBatch ?? 0;
+      document.getElementById('queueFollowupsDue').textContent = data.followupsDue ?? 0;
+      document.getElementById('queueSummary').textContent = data.latestBatch?.lote_nome
+        ? `Ultimo lote: ${data.latestBatch.lote_nome}`
+        : 'Nenhum lote encontrado.';
+
+      document.getElementById('queueList').innerHTML = data.nextLeads.map((lead) => `
+        <div class="queue-item" data-lead-id="${lead.id}">
+          <div class="queue-item-top">
+            <strong>${lead.paciente_nome || 'Sem nome'}</strong>
+            <span class="pill ${lead.origem_segmento === 'clinica_geral' ? 'seg-clinica' : 'seg-orto'}">${lead.coorte || 'sem coorte'}</span>
+          </div>
+          <div>${lead.telefone || '-'}</div>
+          <div class="muted">
+            ${lead.origem_segmento || 'nao_mapeado'} • ${lead.dentista_responsavel || 'Sem responsavel'} • ${lead.ultimo_atendimento ? `Ult. atendimento ${new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR')}` : 'Sem data de atendimento'}
+          </div>
+        </div>
+      `).join('') || `<div class="muted">Nenhum lead pronto para contato no momento.</div>`;
+
+      document.querySelectorAll('.queue-item').forEach((item) => {
+        item.addEventListener('click', async () => {
+          selectedLeadId = item.getAttribute('data-lead-id');
+          await loadLeadDetail(selectedLeadId);
+        });
+      });
+
+      document.getElementById('followupList').innerHTML = data.nextFollowups.map((lead) => `
+        <div class="followup-item" data-lead-id="${lead.id}">
+          <div class="queue-item-top">
+            <strong>${lead.paciente_nome || 'Sem nome'}</strong>
+            <span class="pill ${lead.proxima_acao_em && new Date(lead.proxima_acao_em).getTime() < Date.now() ? 'status-erro' : 'status-em_atendimento_humano'}">${lead.proxima_acao_tipo || 'retorno'}</span>
+          </div>
+          <div>${lead.telefone || '-'}</div>
+          <div class="muted">
+            ${lead.proxima_acao_em ? `Agendado para ${new Date(lead.proxima_acao_em).toLocaleString('pt-BR')}` : 'Sem agendamento'} • ${lead.ultima_tentativa_resultado || 'Sem tentativa'}
+          </div>
+        </div>
+      `).join('') || `<div class="muted">Nenhum retorno agendado ate o momento.</div>`;
+
+      document.querySelectorAll('.followup-item').forEach((item) => {
+        item.addEventListener('click', async () => {
+          selectedLeadId = item.getAttribute('data-lead-id');
+          await loadLeadDetail(selectedLeadId);
+        });
+      });
+    }
+
+    function attentionItemHtml(title, subtitle, extra, leadId) {
+      return `
+        <div class="attention-item" data-lead-id="${leadId}">
+          <div class="queue-item-top">
+            <strong>${title}</strong>
+            <span class="muted">${extra || ''}</span>
+          </div>
+          <div class="muted">${subtitle || ''}</div>
+        </div>
+      `;
+    }
+
+    async function loadAttention() {
+      const res = await fetch(`${API_URL}/api/recall/attention`);
+      const data = await res.json();
+
+      document.getElementById('attentionOverdue').innerHTML = data.overdueFollowups.map((lead) =>
+        attentionItemHtml(
+          lead.paciente_nome || 'Sem nome',
+          `${lead.telefone || '-'} • ${lead.proxima_acao_tipo || 'retorno'}`,
+          lead.proxima_acao_em ? new Date(lead.proxima_acao_em).toLocaleString('pt-BR') : '',
+          lead.id
+        )
+      ).join('') || `<div class="muted">Nenhum retorno atrasado agora.</div>`;
+
+      document.getElementById('attentionHandoffs').innerHTML = data.openHandoffs.map((lead) =>
+        attentionItemHtml(
+          lead.paciente_nome || 'Sem nome',
+          `${lead.telefone || '-'} • ${lead.origem_segmento || 'sem segmento'}`,
+          lead.handoff_at ? new Date(lead.handoff_at).toLocaleString('pt-BR') : '',
+          lead.id
+        )
+      ).join('') || `<div class="muted">Nenhum handoff aberto no momento.</div>`;
+
+      document.getElementById('attentionInvalidPhones').innerHTML = data.invalidPhones.map((lead) =>
+        attentionItemHtml(
+          lead.paciente_nome || 'Sem nome',
+          `${lead.telefone || '-'} • telefone invalido`,
+          lead.created_at ? new Date(lead.created_at).toLocaleString('pt-BR') : '',
+          lead.id
+        )
+      ).join('') || `<div class="muted">Nenhum telefone invalido registrado hoje.</div>`;
+
+      document.querySelectorAll('.attention-item').forEach((item) => {
+        item.addEventListener('click', async () => {
+          selectedLeadId = item.getAttribute('data-lead-id');
+          await loadLeadDetail(selectedLeadId);
+        });
+      });
+    }
+
+    async function updateDispatchQueueItem(queueItemId, queueStatus) {
+      await fetch(`${API_URL}/api/recall/dispatch/queue/${queueItemId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ queue_status: queueStatus })
+      });
+      await loadDispatchQueue();
+    }
+
+    async function loadDispatchConfig() {
+      const res = await fetch(`${API_URL}/api/recall/dispatch/config`);
+      dispatchConfig = await res.json();
+
+      const card = document.getElementById('dispatchModeCard');
+      const title = document.getElementById('dispatchModeTitle');
+      const summary = document.getElementById('dispatchModeSummary');
+      const modeLabel = dispatchConfig.mode === 'dry_run' ? 'Dry-run protegido' : 'Envio real habilitado';
+      const protectionBits = [
+        `Janela: ${(dispatchConfig.timeWindows || []).join(', ') || 'nao configurada'}`,
+        `Max por rodada: ${dispatchConfig.maxSendsPerRun || 0}`,
+        `Destino teste: ${dispatchConfig.testDestinationPhone || 'nao definido'}`,
+        `Whitelist telefones: ${dispatchConfig.allowlistPhonesCount || 0}`,
+        `Whitelist leads: ${dispatchConfig.allowlistLeadIdsCount || 0}`,
+        `Meta configurado: ${dispatchConfig.metaConfigured ? 'sim' : 'nao'}`,
+        `Meta exclusivo Recall: ${dispatchConfig.metaDedicatedConfigured ? 'sim' : 'nao'}`,
+        `Abertura: ${dispatchConfig.templates?.abertura || 'pendente'}`,
+        `Lembrete: ${dispatchConfig.templates?.lembrete || 'pendente'}`,
+        `Chatwoot: ${dispatchConfig.chatwootConfigured ? 'sim' : 'nao'}`
+      ];
+
+      title.textContent = `Modo do motor: ${modeLabel}`;
+      summary.textContent = protectionBits.join(' • ');
+      card.classList.toggle('warn', dispatchConfig.mode !== 'dry_run');
+    }
+
+    async function executeDispatchQueueItem(queueItemId) {
+      const res = await fetch(`${API_URL}/api/recall/dispatch/execute/${queueItemId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(`Execucao bloqueada: ${data.reason || 'falha_desconhecida'}`);
+      }
+      await loadDispatchQueue();
+    }
+
+    async function executeDispatchBatch() {
+      const limit = document.getElementById('dispatchLimit').value;
+      const res = await fetch(`${API_URL}/api/recall/dispatch/execute-batch`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ limit })
+      });
+      const data = await res.json();
+      const blockedText = data.blocked ? ` e ${data.blocked} bloqueado(s)` : '';
+      alert(`Lote teste concluido: ${data.executed || 0} executado(s)${blockedText}.`);
+      await loadDispatchQueue();
+    }
+
+    async function loadDispatchQueue() {
+      const res = await fetch(`${API_URL}/api/recall/dispatch/queue`);
+      const data = await res.json();
+
+      document.getElementById('dispatchPendingCount').textContent = data.summary?.pendentes ?? 0;
+      document.getElementById('dispatchReservedCount').textContent = data.summary?.reservados ?? 0;
+      document.getElementById('dispatchProcessedCount').textContent = data.summary?.processados ?? 0;
+
+      document.getElementById('dispatchQueueList').innerHTML = data.items.map((item) => `
+        <div class="dispatch-item">
+          <div class="queue-item-top">
+            <strong>${item.paciente_nome || 'Sem nome'}</strong>
+            <span class="pill ${statusClass(item.queue_status)}">${item.queue_status}</span>
+          </div>
+          <div>${item.telefone || '-'} • ${item.origem_segmento || 'sem segmento'} • ${item.coorte || 'sem coorte'}</div>
+          <div class="muted">${item.motivo || '-'} • ${item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : ''}</div>
+          <div class="dispatch-actions">
+            <button type="button" data-queue-action="reservado" data-queue-id="${item.id}">Reservar</button>
+            <button type="button" data-queue-execute-id="${item.id}">Executar teste</button>
+            <button type="button" data-queue-action="processado" data-queue-id="${item.id}">Marcar processado</button>
+            <button type="button" data-queue-action="cancelado" data-queue-id="${item.id}">Cancelar</button>
+            <button type="button" data-queue-lead-id="${item.lead_id}">Abrir lead</button>
+          </div>
+        </div>
+      `).join('') || `<div class="muted">Nenhum item na fila de disparo ainda.</div>`;
+
+      document.querySelectorAll('[data-queue-action]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          await updateDispatchQueueItem(
+            button.getAttribute('data-queue-id'),
+            button.getAttribute('data-queue-action')
+          );
+        });
+      });
+
+      document.querySelectorAll('[data-queue-execute-id]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          await executeDispatchQueueItem(button.getAttribute('data-queue-execute-id'));
+        });
+      });
+
+      document.querySelectorAll('[data-queue-lead-id]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          selectedLeadId = button.getAttribute('data-queue-lead-id');
+          await loadLeadDetail(selectedLeadId);
+        });
+      });
+
+      const logsRes = await fetch(`${API_URL}/api/recall/dispatch/logs`);
+      const logs = await logsRes.json();
+      document.getElementById('dispatchLogs').innerHTML = logs.map((log) => `
+        <div class="event-item">
+          <div><strong>${log.paciente_nome || 'Sem nome'}</strong></div>
+          <div class="muted">${log.telefone || '-'} • ${log.created_at ? new Date(log.created_at).toLocaleString('pt-BR') : ''}</div>
+          <div class="muted">${log.payload?.motivo || 'dispatch_executado'} • ${log.payload?.executor || 'manual_mvp'}</div>
+        </div>
+      `).join('') || `<div class="muted">Nenhum disparo executado hoje.</div>`;
+    }
+
+    async function generateDispatchQueue() {
+      const limit = document.getElementById('dispatchLimit').value;
+      const latestOnly = document.getElementById('dispatchLatestOnly').checked;
+      const stage = document.getElementById('dispatchStage').value;
+      await fetch(`${API_URL}/api/recall/dispatch/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          limit,
+          latest_batch_only: latestOnly,
+          stage
+        })
+      });
+
+      await loadDispatchQueue();
+    }
+
+    function detailItem(label, value) {
+      return `<div class="detail-item"><strong>${label}</strong><span>${value ?? ''}</span></div>`;
+    }
+
+    async function loadLeadDetail(leadId) {
+      const res = await fetch(`${API_URL}/api/recall/leads/${leadId}`);
+      const data = await res.json();
+      const lead = data.lead;
+
+      document.getElementById('detailEmpty').style.display = 'none';
+      document.getElementById('detailContent').style.display = 'block';
+      document.getElementById('detailSummary').textContent = `${lead.paciente_nome} • ${lead.telefone}`;
+
+      document.getElementById('detailGrid').innerHTML = [
+        detailItem('Paciente', lead.paciente_nome),
+        detailItem('Telefone principal', lead.telefone),
+        detailItem('Telefone secundario', lead.telefone_secundario || '-'),
+        detailItem('Responsavel', lead.dentista_responsavel || '-'),
+        detailItem('Segmento', lead.origem_segmento || '-'),
+        detailItem('Coorte', lead.coorte || '-'),
+        detailItem('Ult. atendimento', lead.ultimo_atendimento ? new Date(lead.ultimo_atendimento).toLocaleDateString('pt-BR') : '-'),
+        detailItem('Situacao financeira', lead.situacao_financeira || '-'),
+        detailItem('Agendado raw', lead.agendado_raw || '-'),
+        detailItem('Imports', lead.import_count ?? 0),
+        detailItem('Tentativas', lead.tentativa_count ?? 0),
+        detailItem('Ult. tentativa', lead.ultima_tentativa_em ? new Date(lead.ultima_tentativa_em).toLocaleString('pt-BR') : '-'),
+        detailItem('Resultado ult. tentativa', lead.ultima_tentativa_resultado || '-'),
+        detailItem('Proxima acao', lead.proxima_acao_tipo || '-'),
+        detailItem('Quando voltar', lead.proxima_acao_em ? new Date(lead.proxima_acao_em).toLocaleString('pt-BR') : '-'),
+        detailItem('Ult. atualizacao', lead.updated_at ? new Date(lead.updated_at).toLocaleString('pt-BR') : '-'),
+        detailItem('Batch', lead.last_import_batch_id || '-')
+      ].join('');
+
+      document.getElementById('detailStatus').value = lead.status || 'pendente';
+      document.getElementById('detailMetaError').value = lead.meta_error || '';
+      document.getElementById('detailRespondeu').checked = !!lead.respondeu;
+      document.getElementById('detailOptOut').checked = !!lead.opt_out;
+      document.getElementById('attemptOutcome').value = 'sem_resposta';
+      document.getElementById('attemptNotes').value = '';
+      document.getElementById('followupType').value = lead.proxima_acao_tipo || 'retorno_whatsapp';
+      document.getElementById('followupAt').value = lead.proxima_acao_em
+        ? new Date(new Date(lead.proxima_acao_em).getTime() - new Date(lead.proxima_acao_em).getTimezoneOffset() * 60000).toISOString().slice(0, 16)
+        : '';
+      document.getElementById('followupNotes').value = '';
+
+      document.getElementById('detailEvents').innerHTML = data.events.map((event) => `
+        <div class="event-item">
+          <div><strong>${event.event_type}</strong></div>
+          <div class="muted">${new Date(event.created_at).toLocaleString('pt-BR')}</div>
+          <div class="muted">${JSON.stringify(event.payload)}</div>
+        </div>
+      `).join('') || `<div class="muted">Sem eventos recentes.</div>`;
+    }
+
+    async function saveLeadDetail(extra = {}) {
+      if (!selectedLeadId) return;
+      const payload = {
+        status: document.getElementById('detailStatus').value,
+        meta_error: document.getElementById('detailMetaError').value,
+        respondeu: document.getElementById('detailRespondeu').checked,
+        opt_out: document.getElementById('detailOptOut').checked,
+        ...extra
+      };
+
+      await fetch(`${API_URL}/api/recall/leads/${selectedLeadId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      await loadMetrics();
+      await loadQueue();
+      await loadLeads();
+      await loadBatches();
+      await loadLeadDetail(selectedLeadId);
+    }
+
+    async function registerAttempt(override = {}) {
+      if (!selectedLeadId) return;
+      const payload = {
+        channel: document.getElementById('attemptChannel').value,
+        outcome: document.getElementById('attemptOutcome').value,
+        notes: document.getElementById('attemptNotes').value.trim(),
+        ...override
+      };
+
+      await fetch(`${API_URL}/api/recall/leads/${selectedLeadId}/attempt`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      await refreshAll();
+      await loadLeadDetail(selectedLeadId);
+    }
+
+    async function scheduleFollowup() {
+      if (!selectedLeadId) return;
+      const scheduledFor = document.getElementById('followupAt').value;
+      if (!scheduledFor) return;
+
+      await fetch(`${API_URL}/api/recall/leads/${selectedLeadId}/followup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          next_action_type: document.getElementById('followupType').value,
+          scheduled_for: scheduledFor,
+          notes: document.getElementById('followupNotes').value.trim()
+        })
+      });
+
+      await refreshAll();
+      await loadLeadDetail(selectedLeadId);
+    }
+
+    async function refreshAll() {
+      await loadMetrics();
+      await loadDispatchConfig();
+      await loadAttention();
+      await loadDispatchQueue();
+      await loadQueue();
+      await loadLeads();
+      await loadBatches();
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', async () => {
+      currentPage = 1;
+      await refreshAll();
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage -= 1;
+        loadLeads();
+      }
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage += 1;
+        loadLeads();
+      }
+    });
+    document.getElementById('btnSaveDetail').addEventListener('click', () => saveLeadDetail());
+    document.getElementById('btnOpenHandoff').addEventListener('click', () => saveLeadDetail({
+      status: 'em_atendimento_humano',
+      handoff_open: true,
+      handoff_resolved: false
+    }));
+    document.getElementById('btnResolveHandoff').addEventListener('click', () => saveLeadDetail({
+      handoff_resolved: true
+    }));
+    document.getElementById('btnRegisterAttempt').addEventListener('click', () => registerAttempt());
+    document.getElementById('btnQuickNoAnswer').addEventListener('click', () => registerAttempt({
+      outcome: 'sem_resposta',
+      notes: document.getElementById('attemptNotes').value.trim()
+    }));
+    document.getElementById('btnQuickReplied').addEventListener('click', () => registerAttempt({
+      outcome: 'respondeu',
+      notes: document.getElementById('attemptNotes').value.trim()
+    }));
+    document.getElementById('btnQuickOptOut').addEventListener('click', () => registerAttempt({
+      outcome: 'opt_out',
+      notes: document.getElementById('attemptNotes').value.trim()
+    }));
+    document.getElementById('btnQuickHandoff').addEventListener('click', () => registerAttempt({
+      outcome: 'handoff_humano',
+      notes: document.getElementById('attemptNotes').value.trim()
+    }));
+    document.getElementById('btnScheduleFollowup').addEventListener('click', () => scheduleFollowup());
+    document.getElementById('btnGenerateDispatchQueue').addEventListener('click', () => generateDispatchQueue());
+    document.getElementById('btnExecuteDispatchBatch').addEventListener('click', () => executeDispatchBatch());
+    document.getElementById('quickReadyBtn').addEventListener('click', () => {
+      onlyReady = !onlyReady;
+      currentPage = 1;
+      updateQuickFilterButtons();
+      loadLeads();
+    });
+    document.getElementById('quickLatestBtn').addEventListener('click', () => {
+      latestBatchOnly = !latestBatchOnly;
+      currentPage = 1;
+      updateQuickFilterButtons();
+      loadLeads();
+    });
+
+    updateQuickFilterButtons();
+    refreshAll();
+  </script>
+</body>
+</html>

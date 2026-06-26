@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-06-25T14:33:22.132Z",
+  "as_of_date": "2026-06-25",
+  "total_rows": 2501,
+  "eligible_before_phone_validation": 1103,
+  "eligible_total": 1045,
+  "eligible_with_phone": 1045,
+  "excluded_total": 1456,
+  "breakdown": {
+    "clinica_geral": 900,
+    "ortodontia_adimplente": 145
+  },
+  "coortes": {
+    "6-12m": 371,
+    "1-2a": 257,
+    "2-3a": 225,
+    "3a+": 192
+  },
+  "excluded_reasons": {
+    "segmento_nao_elegivel": 478,
+    "menos_de_6_meses": 897,
+    "telefone_invalido": 58,
+    "ultimo_atendimento_invalido": 21,
+    "possui_agendamento": 2
+  }
+}

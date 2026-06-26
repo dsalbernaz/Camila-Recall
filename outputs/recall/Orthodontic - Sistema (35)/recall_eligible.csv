@@ -1,0 +1,1046 @@
+row_number,paciente_nome,nascimento,telefone_principal,telefone_secundario,telefones_raw,dentista_responsavel,situacao_financeira,ultimo_atendimento,agendado,origem_segmento,coorte
+4,Antonio Paulo Sousa Do Amarante,14/01/1968,5512982084582,,(12) 98208-4582,Luiz Gustavo Teodoro,ADIMPLENTE,2025-01-22,,ortodontia_adimplente,6-12m
+7,Valdeil Vicente,22/09/1972,5512982337571,,012981912874  (12) 98233-7571,Gustavo Moraes Prado,ADIMPLENTE,2024-08-19,,clinica_geral,1-2a
+8,Erick Su,27/11/2016,5512981552517,,(12) 98155-2517,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-16,,clinica_geral,3a+
+9,Noemia Froes,12/09/1959,5512988751437,,(12) 98875-1437,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-05-15,,clinica_geral,2-3a
+11,Michael De Oliveira Saito,27/10/1989,5512988378886,,(12) 98837-8886,Giuliano Ferreira Queiroz,ADIMPLENTE,2025-10-04,,clinica_geral,6-12m
+12,Victoria Yolanda De Oliveira,25/04/1998,5512996692217,,(12) 99669-2217  (12) 99669-2217,Anna Flavia Justino Aguiar,ADIMPLENTE,2024-12-04,,ortodontia_adimplente,1-2a
+14,Alzira Da Cruz,10/08/1961,5512991317151,5512982710900,(12) 99131-7151  (12) 98271-0900,Gustavo Moraes Prado,ADIMPLENTE,2024-06-04,,clinica_geral,1-2a
+15,Renata Regina Rosa,31/08/1983,5512997187674,5512981124701,(12) 99718-7674  (12) 99718-7674  (12) 98112-4701,Larissa De Sá Lucena Macedo,ADIMPLENTE,2024-03-26,,ortodontia_adimplente,1-2a
+16,Alana PatrÍcia Leonardo Dos Santos Silva,13/06/1994,5512983215269,,(12) 98321-5269,Alana Rebeca Chagas Machado,ADIMPLENTE,2025-05-15,,ortodontia_adimplente,6-12m
+18,Maria José,,5512981318931,,(12) 98131-8931,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-06-14,,clinica_geral,3a+
+19,Rita De Cássia Ribeiro Martins,19/05/1978,5512988195579,,(12) 98819-5579  (12) 98819-5579,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-05-10,,clinica_geral,3a+
+20,VÂNIA CARLA,,5567993037826,,(67) 99303-7826,Larissa De Sá Lucena Macedo,ADIMPLENTE,2021-05-06,,ortodontia_adimplente,3a+
+21,Indaiara Stefani Silva,17/03/1993,5512992142210,,(12) 99214-2210  (12) 99214-2210,Larissa De Sá Lucena Macedo,ADIMPLENTE,2021-11-23,,ortodontia_adimplente,3a+
+22,Gustavo Roberto De Paula Pinto,24/03/2000,5512991026662,,(12) 99102-6662,Brício De Moraes Mesquita,ADIMPLENTE,2021-05-10,,ortodontia_adimplente,3a+
+23,Leandro Blanque Garcia,10/08/1992,5512982693561,,(12) 98269-3561  (12) 98269-3561,Larissa De Sá Lucena Macedo,ADIMPLENTE,2021-12-09,,ortodontia_adimplente,3a+
+24,EDUARDO ALVES DA SILVA,21/11/1967,5512996339592,,(12) 99633-9592,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-07-13,,clinica_geral,3a+
+26,Joao Dos Santos Sousa,01/11/1960,5512991229925,,(12) 99122-9925,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-11-17,,clinica_geral,3a+
+29,Nelson Veloso,09/03/1951,5512992501414,,(12) 99250-1414,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-05-19,,clinica_geral,3a+
+30,Joyce De Fátima Da Silva Santos,29/05/2000,5512981808448,,(12) 98180-8448  (12) 98180-8448,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-05-20,,clinica_geral,3a+
+31,Gislandia Pereira Garcia De Castro,31/12/1969,5516997479899,,(16) 99747-9899,Não informado,ADIMPLENTE,2021-05-22,,clinica_geral,3a+
+32,Kaique Roberto Santos Do Carmo,27/10/2000,5512996323427,5512991142559,(12) 99632-3427  (12) 99114-2559,Luiz Gustavo Teodoro,ADIMPLENTE,2024-10-09,,ortodontia_adimplente,1-2a
+33,Jaqueline Rosa Dos Santos,10/04/1986,5512996072337,,(12) 99607-2337,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-10-06,,clinica_geral,2-3a
+34,Wallan Rodrigues De Carvalho Junior,20/09/1997,5512992131546,,(12) 99213-1546,Não informado,ADIMPLENTE,2021-05-25,,clinica_geral,3a+
+35,William Davison De Faria Dias,25/08/1987,5512988886885,,(12) 98888-6885,Larissa De Sá Lucena Macedo,ADIMPLENTE,2023-12-22,,ortodontia_adimplente,2-3a
+37,Eudo Alves Da Silva,14/03/1991,5512974076417,,(12) 97407-6417  (12) 97407-6417  (12) 12974-0764,Renata Portella Bason,ADIMPLENTE,2024-05-16,,ortodontia_adimplente,1-2a
+40,Mariana Araujo,22/02/2000,5512981083580,,(12) 98108-3580,André Luiz Reis De Oliveira,ADIMPLENTE,2021-07-17,,ortodontia_adimplente,3a+
+41,Estives Uoston Vargas Dos Santos,22/01/1993,5512997123185,,(12) 99712-3185,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-06-14,,clinica_geral,3a+
+45,Guilherme Henrique Da Silva Vieira,29/06/1995,5512982644168,,(12) 98264-4168,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-06-22,,clinica_geral,3a+
+46,Rafael Wallace Souza Oliveira,10/10/2006,5512988342208,,(12) 98834-2208  (12) 98834-2208,Larissa De Sá Lucena Macedo,ADIMPLENTE,2021-06-29,,ortodontia_adimplente,3a+
+48,Luiz Felipe Vargas,26/06/1996,5512982978809,,(12) 98297-8809,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-07-12,,clinica_geral,3a+
+49,Mark Dos Santos Vieira Caetano,29/06/1999,5512982806355,,(12) 98280-6355,Anna Flavia Justino Aguiar,ADIMPLENTE,2024-08-08,,ortodontia_adimplente,1-2a
+50,Maria Socorro Do Nascimento Silva,24/10/1977,5512991590481,,(12) 99159-0481,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-09-24,,clinica_geral,3a+
+51,Micaelly Cristinne Carvalho De Miranda,22/02/2010,5512991355619,,(12) 99135-5619  (12) 99135-5619,Natalia Dos Santos Silva,ADIMPLENTE,2025-01-23,,ortodontia_adimplente,6-12m
+52,Vanessa Ferreira Dalacqua,07/11/1982,5512983203529,,(12) 98320-3529  (12) 98320-3529,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-07-16,,clinica_geral,3a+
+53,Wagner Alan Honorio Bragion,01/11/1982,5512988110506,5512981665944,(12) 98811-0506  (12) 98166-5944,Não informado,ADIMPLENTE,2023-08-23,,clinica_geral,2-3a
+55,Geciele Sobrinho De Oliveira,02/02/1988,5512981651088,,(12) 98165-1088,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-03-07,,clinica_geral,3a+
+57,JOEL,,5512982609102,,(12) 98260-9102,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-07-29,,clinica_geral,3a+
+59,Lidiana Grzywacz,00/00/0000,5512987030444,,(12) 98703-0444  (12) 98703-0444,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-08-16,,clinica_geral,3a+
+60,Letícia Campos do Carmo,23/05/1981,5512996857985,,(12) 99685-7985,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-08-01,,clinica_geral,3a+
+63,Elisa Santos De Moura Sousa,23/07/2010,5512997067057,,(12) 99706-7057,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-08-13,,clinica_geral,3a+
+65,Cailane Stephanie Do Carmo,23/02/2003,5512982627350,,(12) 98262-7350,Mariane Ignat,ADIMPLENTE,2024-12-02,,ortodontia_adimplente,1-2a
+66,Vicente De Paula Amancio,03/09/1963,5512988548557,,(12) 98854-8557,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-08-17,,clinica_geral,3a+
+68,Robson Teixeira Messias Rodrigues,27/07/1983,5511987226507,,(11) 98722-6507,Giuliano Ferreira Queiroz,INADIMPLENTE,2021-08-16,,clinica_geral,3a+
+69,Lunie Barcellos Rossini,22/08/2003,5512982396455,,(12) 98239-6455,Larissa De Sá Lucena Macedo,ADIMPLENTE,2021-08-31,,ortodontia_adimplente,3a+
+70,Priscila Tagliamento Gonzaga,00/00/0000,5512997302660,,(12) 99730-2660,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-11-12,,clinica_geral,3a+
+73,Elaine Barbosa Resende,24/06/1992,5512997357278,,(12) 99735-7278,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-09-01,,clinica_geral,3a+
+74,Bárbara Michele Alves Souza,28/05/1994,5512996196664,5512997725915,(12) 99619-6664  (12) 99772-5915,Tainá Ribeiro De Moraes,INADIMPLENTE,2022-11-04,,clinica_geral,3a+
+75,Sofia Goes Alves,23/02/2014,5512988522496,,(12) 98852-2496  (12) 98852-2496,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-08-24,,clinica_geral,3a+
+77,Alessandra Dos Santos Medeiros,10/06/1983,5512988487481,,(12) 98848-7481  (12) 98848-7481,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-07-31,,ortodontia_adimplente,2-3a
+81,Julio Cesar Batista Vieira,10/09/1975,5512982073560,,(12) 98207-3560,Fernando Kenji Batista Nakano,ADIMPLENTE,2024-06-22,,ortodontia_adimplente,1-2a
+83,valeria,,5512997278055,,(12) 99727-8055  (12) 99727-8055,Giuliano Ferreira Queiroz,INADIMPLENTE,2021-09-21,,clinica_geral,3a+
+86,Margarida Francisca De Lima De Araujo,29/12/1960,5512981798915,,(12) 98179-8915,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-09-04,,clinica_geral,3a+
+89,Elaine Cristina Da Silva Candido,19/08/1993,5512997495477,,(12) 99749-5477  (12) 99749-5477,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-10-19,,clinica_geral,3a+
+90,Débora Amaro De Oliveira,09/08/1979,5512997425840,,(12) 99742-5840  (12) 99742-5840,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-12-12,,clinica_geral,3a+
+91,Rodrigo Otavio Da Silva Viana,25/07/1979,5567991528897,,(67) 99152-8897,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-09-16,,clinica_geral,3a+
+92,Angélica de Fatima Siqueira,27/12/1974,5512981898520,,(12) 98189-8520,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-05-22,,clinica_geral,2-3a
+93,Lilian Eduarda Cordeiro Pereira,21/02/1992,5512981996271,,(12) 98199-6271,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-09-11,,clinica_geral,3a+
+96,Elaine Cristina da Silva Rafael,04/10/1983,5512991237543,,(12) 99123-7543  (12) 99123-7543,Emerson Yuji Assakura,ADIMPLENTE,2022-06-15,,ortodontia_adimplente,3a+
+98,Daniele Gonzaga De Brito,21/09/1990,5512992471165,,(12) 99247-1165  (12) 99247-1165  (12) 12996-0950,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-09-30,,clinica_geral,3a+
+99,Juliana da Silva Rafael,25/09/1985,5512988178155,,(12) 98817-8155  (12) 98817-8155,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-04,,clinica_geral,3a+
+100,Rosinei Aparecida Marqueti,07/02/1970,5512997755554,,(12) 99775-5554,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-10-29,,clinica_geral,3a+
+101,Valmir De Andrade,17/11/1974,5512981606495,,(12) 98160-6495,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-13,,clinica_geral,3a+
+103,Jose Rodrigues Ribeiro Rocha,08/12/1960,5512992507660,5512981492593,(12) 99250-7660  (12) 99250-7660  (12) 98149-2593  (11) 97319-1535,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-02-17,,clinica_geral,2-3a
+106,Juliana Regina Ramos Dos Santos,28/02/1980,5512982001863,,(12) 98200-1863  (12) 98200-1863,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-14,,clinica_geral,3a+
+108,Jacqueline Fidelis Carvalho,11/06/1998,5512996071506,,(12) 99607-1506  (12) 99607-1506,Luiz Gustavo Teodoro,ADIMPLENTE,2025-07-07,,ortodontia_adimplente,6-12m
+111,Wandrey Montuani,09/08/1979,5512988159077,,(12) 98815-9077,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-10-30,,clinica_geral,3a+
+113,Maria Jose Fernandes De Souza,28/05/1967,5512988344892,,(12) 98834-4892,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-08-04,,clinica_geral,2-3a
+116,Mara Alves Da Silva,22/07/1969,5512981705607,,(12) 98170-5607  (12) 98170-5607,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-02,,clinica_geral,3a+
+117,Vânia Carla Ribeiro Ferreira,15/05/1978,5567993037826,,(67) 9303-7826,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-02-14,,clinica_geral,2-3a
+119,Lilian Regina Oliveira Faria,17/11/1979,5512988524797,,(12) 98852-4797,Anna Flavia Justino Aguiar,ADIMPLENTE,2023-08-14,,ortodontia_adimplente,2-3a
+120,Valdir Martins,00/00/0000,5512996207611,,(12) 99620-7611,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-10-07,,clinica_geral,3a+
+122,Allan Gustavo Braga,11/09/1990,5512981454296,,(12) 98145-4296,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-10-15,,clinica_geral,3a+
+123,Maria Conceição Cardoso Calaça,20/01/1966,5512981596790,,(12) 98159-6790,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-04-24,,clinica_geral,2-3a
+126,Olinto Alves Faria,05/04/1947,5511992415531,,(11) 99241-5531,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-08,,clinica_geral,3a+
+127,Ariane De Andrade Camargo,24/04/1991,5512996172594,,(12) 99617-2594,Giuliano Ferreira Queiroz,ADIMPLENTE,2025-04-17,,clinica_geral,6-12m
+128,Arielle Martins Dos Santos,15/08/2003,5512997076417,,(12) 99707-6417,Larissa De Sá Lucena Macedo,ADIMPLENTE,2022-08-09,,ortodontia_adimplente,3a+
+130,Jessica De Oliveira Silva,14/09/1990,5512996000459,,(12) 99600-0459  (12) 99600-0459,Larissa De Sá Lucena Macedo,ADIMPLENTE,2022-08-09,,ortodontia_adimplente,3a+
+131,Roni Luis Dos Santos,28/07/1974,5512996480160,5512996417400,(12) 99648-0160  (12) 99641-7400,Mariane Ignat,ADIMPLENTE,2023-07-15,,ortodontia_adimplente,2-3a
+132,Sonia Keffyny Lucena Xavier,06/02/2009,5512981155036,,(12) 98115-5036,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-01,,clinica_geral,3a+
+134,Cilene Alves De Oliveira Santos,24/07/1970,5512981144677,,(12) 98114-4677,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-11-06,,clinica_geral,3a+
+136,Marilene Liguori Cristal,09/12/1969,5512991269183,,(12) 99126-9183,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-11-19,,clinica_geral,3a+
+137,Jaiquele Coelho Santos,02/07/2000,5512996721893,,(12) 99672-1893  (12) 99672-1893  (12) 12996-7218,Luiz Gustavo Teodoro,ADIMPLENTE,2024-11-09,,ortodontia_adimplente,1-2a
+141,Rogério Dos Santos Gonçalves,28/07/1978,5512996626499,,(12) 99662-6499,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-11-06,,clinica_geral,3a+
+142,Cristiane Pereira Dos Anjos,03/06/1978,5512988345920,,(12) 98834-5920,Emerson Yuji Assakura,ADIMPLENTE,2021-11-10,,ortodontia_adimplente,3a+
+143,Isabelly Oliveira De Sousa,28/04/2014,5512992278740,,(12) 99227-8740,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-10-11,,clinica_geral,3a+
+144,Paulo Sergio Mendes,06/03/1969,5512997657814,,(12) 99765-7814,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-03-22,,clinica_geral,3a+
+146,Paulo Sergio Dantas Schweighofer,05/08/1977,5512988220634,,(12) 98822-0634,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-26,,clinica_geral,3a+
+147,Carolina Pereira Dos Santos,23/11/1997,5512991316944,,(12) 99131-6944,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-02,,clinica_geral,3a+
+148,Artur Shigeueyuki Kamioka,21/08/1995,5512982252902,,(12) 98225-2902,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-10-17,,clinica_geral,1-2a
+149,Ely Sebastião Furtado,03/02/1962,5512991032240,,(12) 3912-5582 (12) 99103-2240,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-01-08,,clinica_geral,3a+
+150,Vinicius Ferreira Silveira,09/02/1998,5567992118748,,(67) 99211-8748,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-01-12,,clinica_geral,3a+
+151,Margareth Maciel Marques Barbosa,19/01/1965,5512996279027,,(12) 99627-9027  (12) 99627-9027,Luiz Gustavo Teodoro,ADIMPLENTE,2023-02-10,,ortodontia_adimplente,2-3a
+152,Dilma De Fátima Cerqueira,27/01/0197,5512988085081,,(12) 98808-5081  (12) 98808-5081,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-01,,clinica_geral,3a+
+153,Jackson Andrade Dutra Amorim,30/01/1982,5512991829667,,(12) 99182-9667  (12) 99182-9667,Larissa De Sá Lucena Macedo,ADIMPLENTE,2022-08-09,,ortodontia_adimplente,3a+
+154,Francisco Vaz Magalhaes,21/12/1991,5512996089489,,(12) 99608-9489,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-10,,clinica_geral,3a+
+155,Julio Cesar Pereira,28/05/1993,5511991169806,,(11) 99116-9806,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-08,,clinica_geral,3a+
+156,Maria Helena Do Prado,16/12/1967,5512997500255,,(12) 99750-0255,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-15,,clinica_geral,3a+
+157,Fatima Regina Appolinario Fernandes,00/00/0000,5512997441732,,(12) 3931-3036 (12) 99744-1732,Gustavo Moraes Prado,ADIMPLENTE,2025-10-27,,clinica_geral,6-12m
+158,Maria Do Socorro Silva Vieira,00/00/0000,5512981274318,,(12) 98127-4318,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-24,,clinica_geral,3a+
+159,Francisco Maricelo Pinheiro,30/06/1983,5512982519640,,(12) 98251-9640,Mariane Ignat,ADIMPLENTE,2024-11-08,,ortodontia_adimplente,1-2a
+160,José Cordeiro Da Silva,05/03/1965,5512981859670,,(12) 98185-9670,Giuliano Ferreira Queiroz,INADIMPLENTE,2021-11-25,,clinica_geral,3a+
+161,Cíntia Aparecida Da Silva,23/05/1984,5512988996207,,(12) 98899-6207,Não informado,ADIMPLENTE,2024-07-19,,clinica_geral,1-2a
+163,Márcia Flavia Ribeiro,30/11/0001,5512997984084,,(12) 99798-4084,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-08,,clinica_geral,3a+
+164,Danielle Moraes Gomes Da Silva,24/10/1979,5512982055308,,(12) 98205-5308,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-17,,clinica_geral,3a+
+165,Caio Rocha De Jesus,13/10/1987,5511999102652,,(11) 99910-2652,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-14,,clinica_geral,3a+
+166,Luis Filipe Dos Santos,13/03/2007,5521990336764,5512981042756,(21) 99033-6764  (12) 98104-2756,Gustavo Moraes Prado,ADIMPLENTE,2023-11-07,,clinica_geral,2-3a
+167,José Arlindo Da Silva,04/06/1991,5589994601629,,(89) 9460-1629,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-18,,clinica_geral,3a+
+168,Julia Stephanie Nishiyama Vaz,05/03/2000,5512982627206,,(12) 98262-7206,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-19,,clinica_geral,3a+
+169,Joaquim Franco Hilario Cioffi,23/05/1962,5512997699610,,(12) 99769-9610,Giuliano Ferreira Queiroz,INADIMPLENTE,2023-12-08,,clinica_geral,2-3a
+170,Angelita Aparecida De Almeida,11/08/2002,5512991589290,,(12) 99158-9290,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-01-30,,clinica_geral,2-3a
+171,Cibele Silva Pereira Faria,25/03/1987,5512997702503,,(12) 99770-2503,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-10,,clinica_geral,3a+
+172,Leonardo Souza Da Silva,13/07/1982,5512997390810,,(12) 99739-0810,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-11,,clinica_geral,3a+
+173,Joseane Dos Santos Gama,20/10/1982,5512988405372,5512996648558,(12) 98840-5372  (12) 99664-8558,Giuliano Ferreira Queiroz,ADIMPLENTE,2025-10-16,,clinica_geral,6-12m
+174,Janis Joplin Santos Melo,24/04/1981,5512981077578,,(12) 98107-7578,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-12,,clinica_geral,3a+
+175,Karina Karen Beserra Da Mata,15/01/1992,5511986297485,,(11) 98629-7485,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-21,,clinica_geral,2-3a
+177,Hélida Maria Mendes De Andrade,10/05/1986,5521979319391,,(21) 97931-9391,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-11-29,,clinica_geral,3a+
+178,Roberto Souza Silva,13/07/1968,5512988298655,,(12) 98829-8655,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-03,,clinica_geral,3a+
+179,Maria Aparecida Da Silva Nogueira,10/07/1972,5512988838313,,(12) 98883-8313,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-16,,clinica_geral,3a+
+180,Juliana Franco Bebiano,28/07/1991,5512974023502,,(12) 97402-3502,Giuliano Ferreira Queiroz,ADIMPLENTE,2021-12-20,,clinica_geral,3a+
+181,Ketany Vitoria Rosa Dos Anjos,22/01/2010,5512996072337,,(12) 99607-2337  (12) 99607-2337,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-10-06,,clinica_geral,2-3a
+182,Itala Dos Santos Moreira,25/02/2002,5512996114343,,(12) 99611-4343  (12) 99611-4343,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-11-12,,clinica_geral,3a+
+183,Maria Jailde Rodrigues Da Silva,01/11/1967,5512988895570,,(12) 98889-5570,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-01-06,,clinica_geral,3a+
+185,Edson Da Silva Fernandes,21/03/1962,5512988873527,,(12) 3931-3036 (12) 98887-3527,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-12-12,,clinica_geral,1-2a
+186,Otavio Vinicius Cunha Antonio,11/03/2008,5512997683517,,(12) 99768-3517  (12) 12997-6835,Mariane Ignat,ADIMPLENTE,2024-07-12,,ortodontia_adimplente,1-2a
+187,Robson Bispo Santos,01/12/1980,5512981022704,,(12) 98102-2704,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-12,,clinica_geral,3a+
+188,Hugo Mateus Alves Dos Santos,28/06/2014,5512982535851,,(12) 98253-5851,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-05-14,,clinica_geral,3a+
+191,Elisabete Moreira,30/07/1956,5512988653002,,(12) 98865-3002,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-22,,clinica_geral,3a+
+192,Francisco Pereira Dos Santos,11/03/1975,5512988559920,5512996402933,(12) 98855-9920  (12) 99640-2933,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-06-18,,clinica_geral,1-2a
+194,Odilon Ramos Dos Santos Junior,12/10/1997,5511944921885,,(11) 94492-1885,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-01,,clinica_geral,3a+
+199,Ana Paula Bezerra LeÃo,15/07/1979,5512992395900,,(12) 99239-5900,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-16,,clinica_geral,3a+
+200,Claudia Rodrigues,31/08/1980,5512997082243,,(12) 99708-2243  (12) 99708-2243,Erik Augusto Silva,ADIMPLENTE,2025-12-04,,ortodontia_adimplente,6-12m
+202,Deivid Gomes Vieira,22/02/2005,5512997186130,5512991641965,(12) 99718-6130  (12) 99164-1965,Não informado,ADIMPLENTE,2024-11-14,,clinica_geral,1-2a
+203,Laura Isabel Bueno Barbosa,11/09/2013,5512996750044,,(12) 99675-0044,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-22,,clinica_geral,3a+
+206,Yan Wenxiu,,5512981552517,,(12) 98155-2517,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-07,,clinica_geral,3a+
+207,Diego Willians Ignacio De Souza,29/05/1999,5512997100576,5512996284663,(12) 99710-0576  (12) 99628-4663,Mariane Ignat,ADIMPLENTE,2024-11-13,,ortodontia_adimplente,1-2a
+208,Maria Graciele Vicente Da Silva Lopes,08/03/1993,5512982297036,,(12) 98229-7036,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-08,,clinica_geral,3a+
+209,Cleusa De Santana Matias,13/07/1970,5512988522027,,(12) 98852-2027,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-10-02,,clinica_geral,2-3a
+213,Aline Soares Almeida,11/11/1992,5511964318989,,(11) 96431-8989,Não informado,ADIMPLENTE,2023-01-30,,clinica_geral,2-3a
+214,Maria Ines Dias Marciano,30/11/0001,5512988949146,5512981233249,(12) 98894-9146  (12) 98123-3249,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-09-12,,clinica_geral,2-3a
+216,Patrícia Americano Silva,28/01/1977,5512996038170,,(12) 99603-8170  (12) 99603-8170,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-07-26,,ortodontia_adimplente,2-3a
+218,Luiz Guilherme Furtado Fabiano,20/07/2016,5512982663698,,(12) 98266-3698,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-02-25,,clinica_geral,3a+
+219,Maria Francisca Da Silva Guedes,16/10/1977,5512981645742,,(12) 98164-5742,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-08,,clinica_geral,3a+
+220,Antonio Clarete Tavares,18/06/1965,5512981725352,5512988657952,(12) 98172-5352  (12) 98865-7952,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-08,,clinica_geral,3a+
+223,Cristóvão Vicente,29/11/1959,5512988539435,,(12) 98853-9435,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-13,,clinica_geral,3a+
+228,Valdenora Diniz Santana,16/07/1966,5512988185045,,(12) 98818-5045,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-04,,clinica_geral,3a+
+229,Maria Vanda Pereira D. Amaral,22/01/1956,5512988154826,,(12) 98815-4826,Giuliano Ferreira Queiroz,ADIMPLENTE,2025-12-09,,clinica_geral,6-12m
+230,Ana Maria Ribeiro,03/09/1976,5512996142935,5535997545817,(12) 99614-2935  (35) 99754-5817  (12) 99600-7955,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-05-16,,clinica_geral,3a+
+231,Denicker Barreto,19/07/1979,5512983005227,,(12) 98300-5227,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-08,,clinica_geral,3a+
+234,Jessica Vitoria Caixeta,27/02/1997,5512981140976,5512981476620,(12) 98114-0976  (12) 98147-6620,Não informado,ADIMPLENTE,2022-03-12,,clinica_geral,3a+
+235,Anderson Fernando Da Silva,21/07/1978,5512988506744,,(12) 98850-6744,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-12,,clinica_geral,3a+
+236,Lucas Da Silva Pires,01/11/2000,5512981253529,,(12) 98125-3529,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-05-25,,clinica_geral,3a+
+237,Luiz Felipe Carneiro Valerio,02/04/1987,5512982738418,,(12) 98273-8418,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-15,,clinica_geral,3a+
+238,Eliene Lima Silva,12/10/1988,5512988999052,,(12) 98899-9052,Mariane Ignat,ADIMPLENTE,2025-12-19,,ortodontia_adimplente,6-12m
+239,Jose Augusto Gonçalves,28/08/1956,5512997082759,,(12) 99708-2759,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-09-21,,clinica_geral,2-3a
+241,Helena Gabriel Do Nascimento,05/12/1953,5511978039920,,(11) 97803-9920,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-05-20,,clinica_geral,3a+
+243,Jailton Jesus De Lima,20/10/1973,5516997370340,,(16) 99737-0340,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-19,,clinica_geral,3a+
+244,Thiago Murilo Alvarenga Cendrette,21/02/1988,5512974031032,,(12) 97403-1032,Alana Rebeca Chagas Machado,ADIMPLENTE,2025-05-09,,ortodontia_adimplente,6-12m
+245,Herick Gustavo De Almeida Silva,01/09/1998,5512983215269,,(12) 98321-5269,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-03-23,,clinica_geral,3a+
+246,Melissa Mikaely Crinitti Martins,28/03/2009,5512981972466,,(12) 98197-2466,Luiz Gustavo Teodoro,ADIMPLENTE,2025-09-29,,ortodontia_adimplente,6-12m
+248,Gildete Maria Francisca,05/09/1953,5512981282056,,(12) 98128-2056,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-10-18,,clinica_geral,1-2a
+249,Adeílson Ribeiro Dos Santos,00/00/0000,5512997756543,,(12) 99775-6543,Não informado,ADIMPLENTE,2022-04-02,,clinica_geral,3a+
+250,Marcia Marinho Da Costa Rosa,03/12/1974,5581973318654,,(81) 97331-8654,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-13,,clinica_geral,3a+
+251,Damiana Santana Da Rocha,01/03/1989,5512988129934,,(12) 98812-9934,Gustavo Moraes Prado,INADIMPLENTE,2023-03-17,,clinica_geral,2-3a
+252,Maria Aparecida De Jesus,02/04/1956,5512981356294,,(12) 98135-6294,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-14,,clinica_geral,2-3a
+253,Gabrielle Nathane Dos Santos Pinheiro,02/04/1997,5512988500682,,(12) 98850-0682,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-08,,clinica_geral,3a+
+254,Maria Constancia Da Silva,28/01/1960,5512988531730,,(12) 98853-1730,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-07-10,,clinica_geral,1-2a
+255,Heloisa Calisto Dos Santos,02/04/2018,5541996213691,,(41) 99621-3691,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-28,,clinica_geral,3a+
+256,Doralice De Azevedo Santos,15/02/1978,5512981582737,5512981828150,(12) 98158-2737  (12) 98182-8150,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-03-31,,clinica_geral,3a+
+257,Nicolas Victor Da Silva,13/02/2005,5512981120521,5512981443821,(12) 98112-0521  (12) 98144-3821,Natalia Dos Santos Silva,ADIMPLENTE,2023-04-08,,ortodontia_adimplente,2-3a
+258,Antonio Marcos Ferreira,17/03/1986,5512981647870,,(12) 98164-7870,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-27,,clinica_geral,3a+
+259,Mayane Caroline Bentes Nascimento,22/12/1992,5591991415246,,(91) 99141-5246,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-04-08,,clinica_geral,3a+
+262,Cintia Cardial De Oliveira,12/05/1969,5512991705358,,(12) 99170-5358,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-09-28,,clinica_geral,3a+
+264,Flavio Rodrigues Da Silva,16/06/1991,5512988080142,,(12) 98808-0142,Beatriz Franco Marques,ADIMPLENTE,2025-02-21,,ortodontia_adimplente,6-12m
+266,Lorraine Brandão,01/12/1987,5512991075157,,(12) 99107-5157,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-08,,clinica_geral,3a+
+268,Fabricio Dos Santos Leite,16/12/1986,5512988003810,,(12) 98800-3810  (12) 12988-0038,Larissa De Sá Lucena Macedo,ADIMPLENTE,2025-04-26,,ortodontia_adimplente,6-12m
+271,João Luiz Dos Santos,31/12/1966,5512988350520,,(12) 98835-0520,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-06-19,,clinica_geral,2-3a
+272,Joao Wythor Fernandes Barreira,13/09/2004,5511984058017,,(11) 98405-8017,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-05-23,,clinica_geral,3a+
+273,Andréa Cristina Salustiano Da Silva,15/10/1966,5512981818242,,(12) 98181-8242,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-11,,clinica_geral,3a+
+274,Marcos Daniel Silva,20/05/1988,5512988493441,,(12) 98849-3441,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-08,,clinica_geral,3a+
+278,Wilson Soares,10/04/1966,5512999719217,5533999719217,(12) 99971-9217  (33) 99971-9217,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-06-04,,clinica_geral,3a+
+279,Eliana De Fatima Moraes Da Costa,11/10/1965,5512988905245,,(12) 98890-5245,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-22,,clinica_geral,3a+
+280,Marcio Andre De Oliveira Faria,05/07/1978,5512974011009,,(12) 97401-1009,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-09-15,,clinica_geral,3a+
+281,Graziela Aparecida Sepulvene Dias,24/07/1976,5511951449800,,(11) 95144-9800,Giuliano Ferreira Queiroz,INADIMPLENTE,2024-05-08,,clinica_geral,1-2a
+282,Ana Maria Correia Rodrigues,31/01/1951,5512997744241,,(12) 99774-4241,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-26,,clinica_geral,3a+
+283,Lucineia Soares Da Paz,01/11/1975,5512981506782,,(12) 98150-6782,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-26,,clinica_geral,3a+
+284,Vanessa Léda Damasceno,15/10/1977,5561992170872,,(61) 99217-0872,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-02,,clinica_geral,3a+
+285,Rodolfo Edson Areias,17/04/1972,5512988430851,,(12) 98843-0851,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-26,,clinica_geral,3a+
+286,Rodolfo Isaias José,28/09/1967,5512988522027,5512988069983,(12) 98852-2027  (12) 98806-9983,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-08-19,,clinica_geral,3a+
+288,Valter Martins Da Purificação,02/05/1970,5571992828850,,(71) 99282-8850,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-04-23,,clinica_geral,3a+
+289,Raul Henrique Mascarenha De Assis,13/09/1992,5512991409591,,(12) 99140-9591,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-01,,clinica_geral,3a+
+293,Vinicius Vilas Boas,26/03/1996,5512991909125,,(12) 99190-9125,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-05-09,,clinica_geral,2-3a
+294,Lucas Davi Dos Santos,17/06/1980,5512996731849,5512982803891,(12) 99673-1849  (12) 98280-3891  (12) 98816-8854,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-08-03,,clinica_geral,2-3a
+295,Susielen Priscila Teixeira,06/08/1988,5512996731849,5512988042758,(12) 99673-1849  (12) 98804-2758,Paula Felicio Sousa Silva,ADIMPLENTE,2025-11-05,,ortodontia_adimplente,6-12m
+296,Ezequiel Ribeiro Dos Santos,25/09/1967,5512981437353,,(12) 98143-7353,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-12-05,,clinica_geral,6-12m
+297,Amanda Pereira Oliveira,09/08/1995,5512988447517,,(12) 98844-7517,Brício De Moraes Mesquita,ADIMPLENTE,2022-05-11,,ortodontia_adimplente,3a+
+298,David Gonçalves Da Silva,03/01/1975,5512988059690,,(12) 98805-9690,Fernando Kenji Batista Nakano,ADIMPLENTE,2024-01-08,,ortodontia_adimplente,1-2a
+299,Vanessa Aparecida Dos Santos Oliveira Berti,07/04/1979,5512991864547,,(12) 99186-4547,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-09,,clinica_geral,3a+
+300,Saulo De Oliveira Lima Sobrinho,25/05/2007,5512988360519,5512988342429,(12) 98836-0519  (12) 98834-2429,Luiz Gustavo Teodoro,ADIMPLENTE,2025-08-30,,ortodontia_adimplente,6-12m
+307,Claudina De Jesus Araujo Valadão,13/08/1947,5512982427050,,(12) 98242-7050,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-11-11,,clinica_geral,3a+
+308,Silvia Andrea Floriano,00/00/0000,5512988760104,,(12) 98876-0104,Giuliano Ferreira Queiroz,ADIMPLENTE,2025-04-04,,clinica_geral,6-12m
+309,Victoria Elis Lobo,18/07/1999,5512997312438,,(12) 99731-2438,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-06-12,,clinica_geral,2-3a
+311,Gilvania Francisca Essa Prudente,25/03/1981,5512996567600,,(12) 99656-7600,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-02,,clinica_geral,3a+
+318,Alice Emanuelly Souza De Lima,16/04/2018,5512982611021,,(12) 98261-1021,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-09-20,,clinica_geral,3a+
+320,Lenon Robert dos Santos Miranda,14/01/1990,5512996596302,,(12) 99659-6302,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-16,,clinica_geral,3a+
+321,Jociele Gama Da Paz,09/06/1988,5512988405372,5512997067460,(12) 98840-5372  (12) 99706-7460,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-10-11,,clinica_geral,3a+
+322,Michaelle Ezequiel Dos Santos,14/07/1999,5512997638501,5512992182239,(12) 99763-8501  (12) 99218-2239  (12) 12992-1822,Alana Rebeca Chagas Machado,ADIMPLENTE,2025-02-26,,ortodontia_adimplente,6-12m
+324,Rodrigo De Fatima Claro,11/02/1991,5512997814336,,(12) 99781-4336,Giuliano Ferreira Queiroz,ADIMPLENTE,2025-06-09,,clinica_geral,6-12m
+325,Luzia Lacerda De Amurim,06/02/1965,5512982048018,,(12) 98204-8018,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-18,,clinica_geral,3a+
+326,Juliet Dos Santos,28/05/1994,5535984651551,5512978132074,(35) 98465-1551  (12) 97813-2074,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-07-22,,clinica_geral,2-3a
+327,José Carlos Dos Santos,09/04/1961,5512997896673,,(12) 99789-6673,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-06-14,,clinica_geral,3a+
+332,Sulani Cardial De Oliveira Silva,19/03/1990,5512991705358,,(12) 99170-5358,Giuliano Ferreira Queiroz,INADIMPLENTE,2023-01-19,,clinica_geral,2-3a
+333,Miguel Da Silva Fidêncio Santos,01/09/2013,5512992046975,,(12) 99204-6975,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-06-20,,clinica_geral,3a+
+335,Calcidia Pereira De Jesus,27/04/1960,5512981653432,,(12) 98165-3432  (12) 98165-3432,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-06-24,,clinica_geral,3a+
+339,Gabriel Henrique Balbino Ribeiro,31/08/2013,5512982071318,,(12) 98207-1318,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-06-30,,clinica_geral,3a+
+340,Jonatas Aparecido Santos,26/09/1996,5512996053558,,(12) 99605-3558,Gustavo Moraes Prado,ADIMPLENTE,2023-06-20,,clinica_geral,2-3a
+341,Geny Gonçalves Barreto Duarte,14/10/1950,5512997772801,5512997581229,(12) 99777-2801  (12) 99758-1229,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-10-01,,clinica_geral,6-12m
+344,Brenda Pereira Batista,01/11/1997,5512981750784,5512988434284,(12) 98175-0784  (12) 98843-4284,Natalia Dos Santos Silva,ADIMPLENTE,2025-12-13,,ortodontia_adimplente,6-12m
+345,Luis Gustavo Dona Cavaresi,00/00/0000,5512981270353,,(12) 98127-0353,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-10,,clinica_geral,3a+
+346,Helen Daiane Cruz Ferreira,00/00/0000,5512981004875,,(12) 98100-4875,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-07,,clinica_geral,3a+
+349,Ellen Nobre Da Silva De Paula,20/11/1990,5512987068447,5512988365393,(12) 98706-8447  (12) 98836-5393,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-07-18,,clinica_geral,3a+
+350,Cleusa,00/00/0000,5512997607781,,(12) 99760-7781,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-07-09,,clinica_geral,3a+
+352,Damiao Pereira Dos Santos Nacimento,10/02/1970,5512981834597,5512988514272,(12) 98183-4597  (12) 98851-4272,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-07-21,,clinica_geral,3a+
+354,Leide Dayane Vieira,00/00/0000,5541995931464,,(41) 95931-464_,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-07-18,,clinica_geral,3a+
+358,Cosmira Santana Da Rocha De Jesus,01/03/1989,5512988354799,5512996452508,(12) 98835-4799  (12) 99645-2508,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-14,,clinica_geral,3a+
+361,Mailson Barroso Leal,29/09/1989,5511942030047,,(11) 94203-0047,Brício De Moraes Mesquita,ADIMPLENTE,2022-10-01,,ortodontia_adimplente,3a+
+363,Valentina Celesty Rocha Rodrigues,08/06/2018,5512997107298,,(12) 99710-7298,Tainá Ribeiro De Moraes,INADIMPLENTE,2022-07-14,,clinica_geral,3a+
+365,João Flavio dos Santos,06/05/1963,5512988676530,,(12) 98867-6530,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-07-23,,clinica_geral,3a+
+369,Juliana Paranhos De Souza,26/06/1986,5512997095634,,(12) 99709-5634,Não informado,ADIMPLENTE,2022-07-19,,clinica_geral,3a+
+370,Fabiano De Moura Santos,26/04/1982,5512988760104,,(12) 98876-0104,Não informado,ADIMPLENTE,2022-08-24,,clinica_geral,3a+
+371,Thierry Bragion,27/06/1981,5512988110506,,(12) 98811-0506,Karina Dos Santos Domingues Jardim,ADIMPLENTE,2022-10-04,,ortodontia_adimplente,3a+
+372,Luis Rodrigues Ferreira,05/10/1969,5512997084154,,(12) 99708-4154,Karina Dos Santos Domingues Jardim,ADIMPLENTE,2023-02-11,,ortodontia_adimplente,2-3a
+376,Adriano Ribeiro de Moraes,21/01/1971,5512997410862,,(12) 99741-0862,Não informado,ADIMPLENTE,2022-08-01,,clinica_geral,3a+
+377,Daiel Rodrigues Da Silva Machado,00/00/0000,5512991799727,,(12) 99179-9727,Tainá Ribeiro De Moraes,INADIMPLENTE,2022-08-02,,clinica_geral,3a+
+378,Leide Daiane Carrias Da Silva Pimentel,08/11/1987,5512983035126,,(12) 98303-5126,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-08-30,,clinica_geral,3a+
+379,Danilo Pereira Batista,17/09/1993,5512988505256,,(12) 98850-5256,Não informado,ADIMPLENTE,2025-11-04,,clinica_geral,6-12m
+380,Elisete Alves de Castro,29/06/1963,5512982914745,,(12) 98291-4745,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-08-04,,clinica_geral,3a+
+382,Meire da Silva,,5512996751128,,(12) 99675-1128,Não informado,ADIMPLENTE,2022-10-31,,clinica_geral,3a+
+383,Rodrigo Gabriel Garcia Resende,03/04/1986,5512981598296,,(12) 98159-8296,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-12-08,,clinica_geral,3a+
+384,Sarah Manuele Toledo Del Duck Nogueira,01/10/2002,5512981768697,,(12) 98176-8697,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-09-06,,clinica_geral,3a+
+385,Rodrigo Vieira Santos,07/09/1994,5512988505821,,(12) 98850-5821,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-01-08,,clinica_geral,1-2a
+386,Andre Rodolfo dos Santos,17/02/1966,5512991164891,,(12) 99116-4891,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-08-26,,clinica_geral,3a+
+388,Maria do Espirito Santo Gomes da Silva,26/07/1979,5512996524549,,(12) 99652-4549,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-11-10,,clinica_geral,3a+
+390,Rafael Caprini Heplingum Barbosa dos Santos,27/04/2011,5512988354885,,(12) 98835-4885,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-08-15,,clinica_geral,3a+
+391,Alice Mucheironi Lopes,15/06/2016,5512997770293,,(12) 99777-0293,Não informado,ADIMPLENTE,2022-08-10,,clinica_geral,3a+
+392,Raissa Leticia Souto De Oliveira,06/06/1997,5512988830840,,(12) 98883-0840,Não informado,ADIMPLENTE,2024-08-21,,clinica_geral,1-2a
+393,Fabiana Rosa Dos Santos Silva,24/03/1981,5512988178017,,(12) 98817-8017,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-12-08,,clinica_geral,3a+
+394,Diogo Vinicius Dos Santos,29/12/1994,5512974029131,,(12) 97402-9131,Não informado,ADIMPLENTE,2022-08-31,,clinica_geral,3a+
+396,Livia Gregotti Bernardelli dos Santos,30/01/2002,5512988649391,,(12) 98864-9391,Brício De Moraes Mesquita,ADIMPLENTE,2023-04-25,,ortodontia_adimplente,2-3a
+397,Elicarla Gama Da Silva,11/07/1992,5512997173592,,(12) 99717-3592,Não informado,ADIMPLENTE,2022-12-22,,clinica_geral,3a+
+401,Giovana Camily Silva,20/09/2005,5512991233151,,(12) 99123-3151,Não informado,ADIMPLENTE,2022-12-01,,clinica_geral,3a+
+403,Rafael Henrique De Lima Souza,01/03/1983,5512981395484,,(12) 98139-5484,Karina Dos Santos Domingues Jardim,ADIMPLENTE,2025-01-27,,ortodontia_adimplente,6-12m
+404,Margarida Alves Soares,12/07/1966,5512981853800,5512981840707,(12) 98185-3800  (12) 98184-0707  (12) 99249-0654,Não informado,ADIMPLENTE,2024-02-20,,clinica_geral,1-2a
+406,FELIPE,,5512996183308,,(12) 99618-3308,Não informado,INADIMPLENTE,2022-08-24,,clinica_geral,3a+
+407,Adão Rui Gomes Barboza,10/12/1964,5512988463481,,(12) 98846-3481,Mariane Ignat,ADIMPLENTE,2025-06-03,,ortodontia_adimplente,6-12m
+408,Marina Andrade Alves,06/05/1966,5512988090228,,(12) 98809-0228,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-11-30,,clinica_geral,3a+
+409,Adriana Dos Santos Gabriel Da Rosa,19/05/1976,5512991735099,,(12) 99173-5099,Não informado,INADIMPLENTE,2022-08-31,,clinica_geral,3a+
+411,Silvana Schneider De Matos,14/01/1986,5592984261133,5512997548469,(92) 98426-1133  (12) 99754-8469  (12) 98711-3344,Alana Rebeca Chagas Machado,ADIMPLENTE,2024-01-24,,ortodontia_adimplente,1-2a
+413,Isabeli Luiza Santos Oliveira,22/05/2014,5512982949644,,(12) 98294-9644,Não informado,ADIMPLENTE,2022-10-17,,clinica_geral,3a+
+419,Thaylla Vitoria Angelo da Silva Santos,11/11/2015,5512982253372,,(12) 98225-3372,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-09-15,,clinica_geral,3a+
+425,Rodrigo Cesar Gonçalves Pereira,13/05/1982,5512991978121,,(12) 99197-8121,Marina Melo Maciel,ADIMPLENTE,2025-06-30,,ortodontia_adimplente,6-12m
+427,Anahy Kauane Fernandes Da Silva,16/03/2010,5512981812117,5512982532186,(12) 98181-2117  (12) 98253-2186,Anna Flavia Justino Aguiar,ADIMPLENTE,2023-03-09,,ortodontia_adimplente,2-3a
+430,Vinicius Freire Do Prado,29/08/1991,5512982658578,,(12) 98265-8578,Não informado,ADIMPLENTE,2022-10-17,,clinica_geral,3a+
+434,Wanda Aparecida Domingos Da Silva,00/00/0000,5512996013054,,(12) 99601-3054,Não informado,ADIMPLENTE,2022-10-17,,clinica_geral,3a+
+435,Margarida Santa Da Silva,06/01/1947,5512996009089,,(12) 99600-9089,Não informado,ADIMPLENTE,2024-07-10,,clinica_geral,1-2a
+436,Mariana Campos Pereira Silva,10/03/1987,5512988366563,,(12) 98836-6563,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-10-15,,clinica_geral,3a+
+438,Rafael Da Silva Fernandes,30/07/1999,5512982131441,,(12) 98213-1441,Não informado,ADIMPLENTE,2022-10-17,,clinica_geral,3a+
+440,Graciela Dos Santos Oliveira,10/07/1983,5512997973902,,(12) 99797-3902,Tainá Ribeiro De Moraes,INADIMPLENTE,2022-12-01,,clinica_geral,3a+
+444,Cinthia Danielle Feitosa Silva Pereira,00/00/0000,5512982632778,,(12) 98263-2778,Karina Dos Santos Domingues Jardim,ADIMPLENTE,2022-11-11,,ortodontia_adimplente,3a+
+445,Julio Cesar Pereira Junior,00/00/0000,5512982632778,,(12) 98263-2778,Karina Dos Santos Domingues Jardim,ADIMPLENTE,2022-11-01,,ortodontia_adimplente,3a+
+446,Andrea Maria Santiago Pinto,15/11/1968,5512997587291,,(12) 99758-7291,Não informado,ADIMPLENTE,2022-10-28,,clinica_geral,3a+
+448,Francisco Nunes De Almeida,25/04/1952,5512997883836,,(12) 99788-3836,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-12-07,,clinica_geral,3a+
+449,Juliana Cibele Da Silva,00/00/0000,5512997923920,,(12) 99792-3920,Karina Dos Santos Domingues Jardim,ADIMPLENTE,2023-06-01,,ortodontia_adimplente,2-3a
+451,Kaua Alves Da Silva,28/10/2009,5512982577240,,(12) 98257-7240,Renata Portella Bason,ADIMPLENTE,2025-10-31,,ortodontia_adimplente,6-12m
+452,Lucas Rian Oliveira  Da Silva,13/10/2012,5512981793119,,(12) 98179-3119,Gustavo Moraes Prado,ADIMPLENTE,2025-02-10,,clinica_geral,6-12m
+453,Mateus Davi Da Silva De Oliveira,05/01/2018,5512997196939,,(12) 99719-6939,Luiz Gustavo Teodoro,ADIMPLENTE,2022-11-16,,ortodontia_adimplente,3a+
+454,Maria Laura De Lima Delfino,17/05/2003,5512988455093,,(12) 98845-5093,Brício De Moraes Mesquita,ADIMPLENTE,2022-12-05,,ortodontia_adimplente,3a+
+455,Myrella Victoria De Lima,20/06/2016,5512996875245,,(12) 99687-5245,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-11-08,,clinica_geral,3a+
+456,Reinaldo Costa Lima,25/01/1989,5512982962501,,(12) 98296-2501,Renata Portella Bason,ADIMPLENTE,2025-11-01,,ortodontia_adimplente,6-12m
+457,Deise Barbosa Dos Santos,18/10/1976,5512988354885,,(12) 98835-4885,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-03-13,,clinica_geral,2-3a
+458,Paulo Macario Dos Santos,00/00/0000,5512988328402,,(12) 98832-8402,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-08-17,,clinica_geral,2-3a
+459,Bruno Gonçalves Dos Santos,31/10/1995,5512991270799,,(12) 99127-0799,Tainá Ribeiro De Moraes,INADIMPLENTE,2022-11-10,,clinica_geral,3a+
+461,Maria Luzia Dias Virgem,13/12/1975,5512992416338,,(12) 99241-6338,Giuliano Ferreira Queiroz,INADIMPLENTE,2022-11-23,,clinica_geral,3a+
+462,Carlos Gabriel Dias Dos Anjos,11/09/2000,5512981428857,,(12) 98142-8857,Brício De Moraes Mesquita,ADIMPLENTE,2022-11-16,,ortodontia_adimplente,3a+
+468,Gislaine Gonçalves Da Conceição,09/05/1992,5524998664640,,(24) 99866-4640,Nicia Carrara,ADIMPLENTE,2023-02-14,,ortodontia_adimplente,2-3a
+470,Fábio Henrique Pereira Salles,04/02/1982,5512982993249,,(12) 98299-3249,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-05-21,,clinica_geral,1-2a
+471,Rosivaldo Dos Santos Souza,03/11/2002,5575999167979,,(75) 99916-7979,Não informado,ADIMPLENTE,2023-01-05,,clinica_geral,2-3a
+473,Simone Ferreira Bastos,27/06/1980,5512997651873,,(12) 99765-1873,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-12-03,,clinica_geral,3a+
+474,Manoel Crescencio Marques,23/07/1948,5512982276664,,(12) 39221-033_ (12) 98227-6664,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-26,,clinica_geral,2-3a
+478,Luis Eduardo Fornitano Graciano,05/12/2004,5512981252977,,(12) 98125-2977,Giuliano Ferreira Queiroz,ADIMPLENTE,2022-12-17,,clinica_geral,3a+
+479,Jéssica Cristiane Oliveira Dos Santos Bueno,11/09/1991,5512991180534,,(12) 99118-0534  (12) 99118-0534,Mariane Ignat,ADIMPLENTE,2025-01-13,,ortodontia_adimplente,6-12m
+481,Rafaelly Silva Costa,28/02/2002,5511934054740,,(11) 93405-4740,Brício De Moraes Mesquita,ADIMPLENTE,2023-01-21,,ortodontia_adimplente,2-3a
+482,Marcio De Santana,29/07/1972,5512981943469,,(12) 98194-3469,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-12-26,,clinica_geral,2-3a
+483,Leonardo Ferreira Xavier,01/01/2013,5512997056887,,(12) 99705-6887,Não informado,ADIMPLENTE,2022-12-12,,clinica_geral,3a+
+488,Raphaella Maria Prado Mamede Da Cruz,26/12/1989,5511988421608,,(11) 98842-1608,Não informado,ADIMPLENTE,2024-07-25,,clinica_geral,1-2a
+496,Davi Manoel Eudocio,05/10/2003,5512988579160,,(12) 98857-9160,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-12-19,,clinica_geral,3a+
+498,Adriano Cesar De Araujo Negreiros,28/04/1982,5512981806770,,(12) 98180-6770,Não informado,ADIMPLENTE,2022-12-19,,clinica_geral,3a+
+499,Paulo Roberto de Paulo Pulcine,12/01/1955,5512997198109,,(12) 99719-8109,Tainá Ribeiro De Moraes,ADIMPLENTE,2022-12-26,,clinica_geral,2-3a
+500,Ana Clara Diniz Pereira,09/08/2014,5512982893738,,(12) 98289-3738,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-05,,clinica_geral,2-3a
+503,Jessé Cardoso Da Silva,27/03/1978,5512992536219,,(12) 99253-6219,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-06-05,,clinica_geral,2-3a
+507,Marilia Caproni dos Reis,09/12/1959,5512997793495,5512982225883,(12) 99779-3495  (12) 98222-5883,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-03-04,,clinica_geral,1-2a
+509,Valter Aparecido Da Silva Veiga,12/05/1983,5512996244349,,(12) 99624-4349,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-01-09,,clinica_geral,2-3a
+511,Talita De Souza Dias,23/04/1998,5512983209714,5512981971712,(12) 98320-9714  (12) 98197-1712,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-10,,clinica_geral,2-3a
+512,Bruna Aparecida De Oliveira,24/03/1988,5512992306021,,(12) 99230-6021,Erik Augusto Silva,ADIMPLENTE,2025-01-30,,ortodontia_adimplente,6-12m
+513,Wesley Junior De Souza Da Paz,26/02/1993,5512981293888,,(12) 98129-3888,Gustavo Moraes Prado,INADIMPLENTE,2023-01-19,,clinica_geral,2-3a
+517,Bruno César Gerônimo Estecopar,00/00/0000,5512992029376,,(12) 99202-9376,Mariane Ignat,ADIMPLENTE,2023-01-13,,ortodontia_adimplente,2-3a
+518,Arnaldo Brum,28/01/1970,5512983157176,,(12) 98315-7176,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-16,,clinica_geral,2-3a
+519,Bianca Martins,00/00/0000,5512996196472,,(12) 99619-6472,Luiz Gustavo Teodoro,ADIMPLENTE,2023-01-11,,ortodontia_adimplente,2-3a
+524,José Antonio De Oliveira,10/02/1953,5512982931214,,(12) 98293-1214,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-05-08,,clinica_geral,2-3a
+528,Mauro Cesar Serpa,09/01/1977,5512996790535,,(12) 99679-0535,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-02-16,,clinica_geral,2-3a
+530,Francisca Mariana Souza Neto,27/07/1988,5511975282137,,(11) 97528-2137,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-23,,clinica_geral,2-3a
+532,Julia Terra Oliveira,01/07/2011,5512997754968,,(12) 99775-4968,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-11-13,,clinica_geral,2-3a
+533,Kezia Souza Oliveira,24/09/1998,5512982571362,5512988035754,(12) 98257-1362  (12) 98803-5754,Giuliano Ferreira Queiroz,ADIMPLENTE,2024-02-27,,clinica_geral,1-2a
+534,Sandro,00/00/0000,5512974049824,,(12) 97404-9824,Larissa De Sá Lucena Macedo,ADIMPLENTE,2023-01-19,,ortodontia_adimplente,2-3a
+535,Thais Vinhas Nunes,12/10/1998,5512997866276,,(12) 99786-6276,Luiz Gustavo Teodoro,ADIMPLENTE,2023-03-03,,ortodontia_adimplente,2-3a
+536,Greice Kelly Dos Santos Amaral Gois,11/11/1987,5512982696152,,(12) 98269-6152,Gustavo Moraes Prado,INADIMPLENTE,2023-01-20,,clinica_geral,2-3a
+537,Junior César Monteiro,21/03/1998,5512996009931,5512996247804,(12) 99600-9931  (12) 99624-7804,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-24,,clinica_geral,2-3a
+538,João Bosco De Paula,31/08/1961,5512982312573,,(12) 98231-2573,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-02-02,,clinica_geral,2-3a
+540,Cristian Cleiton Costa Dos Santos,24/08/1979,5512996736392,,(12) 99673-6392,Ana Clara Rezeck De Moura,INADIMPLENTE,2025-09-09,,clinica_geral,6-12m
+542,Micaele Guedes Ribeiro,12/06/1990,5512997614975,,(12) 99761-4975  (12) 12997-6149,Mariane Ignat,ADIMPLENTE,2025-07-18,,ortodontia_adimplente,6-12m
+546,Felipe Marques De Oliveira,01/09/1988,5512991092016,,(12) 99109-2016,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-01-30,,clinica_geral,2-3a
+549,Leonardo Thales Da Silva,20/09/1996,5512988898205,,(12) 98889-8205,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-02-17,,clinica_geral,2-3a
+550,Djair Porfirio Oliveira Da Silva,16/04/1997,5582981501003,,(82) 98150-1003,Paula Cristine De Oliveira Esteves,ADIMPLENTE,2025-11-28,,ortodontia_adimplente,6-12m
+552,Rosemilda Ferreira,03/06/1956,5512997624265,,(12) 99762-4265,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-04-06,,clinica_geral,2-3a
+553,Ariana Dos Santos Gusmão,28/04/1986,5512987069067,,(12) 98706-9067,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-02-08,,clinica_geral,2-3a
+556,Isabel Aparecida Ferreira,01/09/1962,5512988153163,,(12) 98815-3163,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-04-17,,clinica_geral,2-3a
+557,José Teodoro Salome,01/04/1957,5512991478584,,(12) 99147-8584,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-02-17,,clinica_geral,2-3a
+564,Grazielle Nascimento Silva,29/08/1999,5512988012034,,(12) 98801-2034,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-02-25,,clinica_geral,2-3a
+565,Hilda Maria Moreira,23/12/1960,5512981246259,,(12) 98124-6259,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-14,,clinica_geral,2-3a
+566,Rafael Vinicius Machado da Costa,06/07/1989,5512996506025,,(12) 99650-6025,Gustavo Moraes Prado,ADIMPLENTE,2023-02-18,,clinica_geral,2-3a
+567,Grace Albano Da Silva,13/01/1980,5512981661013,,(12) 98166-1013,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-13,,clinica_geral,2-3a
+569,JOSÉ CARLOS,,5512988505968,,(12) 98850-5968,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-02-17,,clinica_geral,2-3a
+570,Jéssica De Souza Rodrigues,25/09/1998,5512992590552,,(12) 99259-0552,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-10,,clinica_geral,2-3a
+571,Paloma Andreza Lopes Dos Santos,06/04/1995,5512981944164,,(12) 98194-4164,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-20,,clinica_geral,2-3a
+572,Júlia Maria Vale Pinheiro,02/09/1978,5524993157684,,(24) 99315-7684,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-07-03,,ortodontia_adimplente,2-3a
+573,Lucas Gabriel Santos,00/00/0000,5512974128760,,(12) 97412-8760,Gustavo Moraes Prado,ADIMPLENTE,2023-07-19,,clinica_geral,2-3a
+574,Rodrigo De Lima E Silva,15/07/1981,5512981760502,,(12) 98176-0502,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-08-31,,clinica_geral,2-3a
+576,Adriana De Fátima Bento,18/01/1981,5512981739900,,(12) 98173-9900,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-04-22,,clinica_geral,2-3a
+577,Sandro Lucio Pereira Da Silva,19/05/1998,5512997288208,,(12) 99728-8208,Mariane Ignat,ADIMPLENTE,2025-03-12,,ortodontia_adimplente,6-12m
+578,Adriano Da Costa Viana,20/12/1991,5512974099153,,(12) 97409-9153,Gustavo Moraes Prado,ADIMPLENTE,2023-06-20,,clinica_geral,2-3a
+582,Jurandir Mariote Carvalho,09/06/1957,5512991886531,5511914104469,(12) 99188-6531  (11) 91410-4469  (12) 99188-6531,Ana Clara Rezeck De Moura,INADIMPLENTE,2025-09-17,,clinica_geral,6-12m
+585,Micaele Vieira Barbosa Souza,31/08/2004,5512988873728,,(12) 98887-3728,Mariane Ignat,ADIMPLENTE,2025-07-18,,ortodontia_adimplente,6-12m
+586,Sophia Barbosa De Oliveira,08/05/2013,5512988354885,,(12) 98835-4885,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-13,,clinica_geral,2-3a
+587,Cleude Rodrigues De Souza,26/04/1980,5512982329908,,(12) 98232-9908,Luiz Gustavo Teodoro,ADIMPLENTE,2025-06-28,,ortodontia_adimplente,6-12m
+590,Carlos Belmiro Dos Santos,14/03/1957,5512981650461,,(12) 98165-0461,Gustavo Moraes Prado,ADIMPLENTE,2023-03-31,,clinica_geral,2-3a
+591,Marcia Gomes Da Silva,09/04/1985,5512997946147,,(12) 99794-6147,Gustavo Moraes Prado,ADIMPLENTE,2023-08-23,,clinica_geral,2-3a
+592,Silvia Aparecida Barbosa,22/08/1974,5512991169842,,(12) 99116-9842,Luiz Gustavo Teodoro,ADIMPLENTE,2024-09-17,,ortodontia_adimplente,1-2a
+595,Roselene Alves Da Silva,22/11/1987,5512982532186,,(12) 98253-2186,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-02-08,,clinica_geral,6-12m
+597,Carmelita Dos Santos Da Silva,15/07/1961,5512981222826,,(12) 98122-2826,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-03-20,,clinica_geral,2-3a
+598,Milena Braz Da Silva,05/05/2013,5512983063252,,(12) 98306-3252,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-06-03,,clinica_geral,2-3a
+599,Valdirene Felix Dos Santos De Jesus,02/02/1969,5512996266657,,(12) 99626-6657,Mariane Ignat,ADIMPLENTE,2023-07-17,,ortodontia_adimplente,2-3a
+600,Alessandra Bianca Silva Pereira,03/07/2001,5512981570242,,(12) 98157-0242,Gustavo Moraes Prado,ADIMPLENTE,2023-03-21,,clinica_geral,2-3a
+602,Yuri Santos Vieira,17/08/2000,5512996029687,,(12) 99602-9687,Larissa De Sá Lucena Macedo,ADIMPLENTE,2023-03-24,,ortodontia_adimplente,2-3a
+603,Rosiane Santos Silva,17/09/1972,5512978123868,,(12) 97812-3868,Gustavo Moraes Prado,ADIMPLENTE,2023-11-21,,clinica_geral,2-3a
+606,Pericles David Pereira,06/04/1980,5512997514109,,(12) 99751-4109,Gustavo Moraes Prado,ADIMPLENTE,2023-03-30,,clinica_geral,2-3a
+607,Dalva Maria De Souza Alves,04/05/1949,5512996645953,,(12) 99664-5953  (12) 3902-1538,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-04-11,,clinica_geral,1-2a
+608,Vivian Martins Dos Santos,27/02/2000,5512998699472,,(12) 99869-9472,Não informado,ADIMPLENTE,2023-04-01,,clinica_geral,2-3a
+612,Karina Alves De Moura,20/04/1988,5512988167723,,(12) 98816-7723,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-04-10,,clinica_geral,2-3a
+613,Kethelyn Laysla De Sousa,13/08/2005,5512982214193,,(12) 98221-4193,Gustavo Moraes Prado,ADIMPLENTE,2023-04-11,,clinica_geral,2-3a
+614,Elaine Cristina Prado,19/03/1977,5512996804558,,(12) 99680-4558,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-05-03,,clinica_geral,1-2a
+616,Inês Castilho Alvarenga Figueiredo,16/10/1961,5512981112639,,(12) 98111-2639,Luiz Gustavo Teodoro,ADIMPLENTE,2024-10-09,,ortodontia_adimplente,1-2a
+617,Guilherme Lima Dos Santos,19/08/2013,5512992444405,,(12) 99244-4405,Não informado,ADIMPLENTE,2023-04-28,,clinica_geral,2-3a
+622,Aline Cristina Franco Coelho,19/11/1990,5512992013641,,(12) 99201-3641,Tainá Ribeiro De Moraes,INADIMPLENTE,2024-12-09,,clinica_geral,1-2a
+624,Jackson Tavares Veiga,28/01/1989,5512992451218,,(12) 99245-1218,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-04-27,,clinica_geral,2-3a
+625,Silvana Santana Alvarenga,31/10/1969,5512981385130,,(12) 98138-5130,Gustavo Moraes Prado,ADIMPLENTE,2025-02-11,,clinica_geral,6-12m
+626,Rafaela De Moura Santos,00/00/0000,5512988053542,,(12) 98805-3542,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-05-09,,clinica_geral,2-3a
+628,Barbara Rodrigues Martins,09/12/2005,5512991909282,,(12) 99190-9282,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-07-17,,clinica_geral,2-3a
+629,Antonia Cenci Garcia,27/11/2011,5512997555446,,(12) 99755-5446,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-10-09,,clinica_geral,2-3a
+631,Zelia Aparecida Da Silva,14/01/1963,5512988134650,,(12) 98813-4650,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-04-26,,clinica_geral,2-3a
+633,José Carlos Pinto De Siqueira,13/05/1976,5512996758963,,(12) 99675-8963,Gustavo Moraes Prado,ADIMPLENTE,2023-06-07,,clinica_geral,2-3a
+636,Janete Vitorine Soares,28/01/1966,5512988648021,,(12) 98864-8021,Gustavo Moraes Prado,ADIMPLENTE,2023-04-27,,clinica_geral,2-3a
+637,Maria Aparecida Santos Oliveira,15/11/1940,5512991864547,,(12) 99186-4547,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-04-29,,clinica_geral,2-3a
+638,Claudia Marcolina De Freitas,26/03/1970,5512981878010,,(12) 98187-8010,Gustavo Moraes Prado,ADIMPLENTE,2025-07-01,,clinica_geral,6-12m
+642,Moisés Siqueira Simao,01/02/1975,5512992598234,,(12) 99259-8234,Gustavo Moraes Prado,INADIMPLENTE,2025-10-22,,clinica_geral,6-12m
+643,Fernanda Da Silva Moraes,20/04/1985,5512982600421,,(12) 98260-0421,Luiz Gustavo Teodoro,ADIMPLENTE,2023-06-21,,ortodontia_adimplente,2-3a
+646,Mauricio Ocho Tamayo,12/04/1978,5512991555938,,(12) 99155-5938,Não informado,ADIMPLENTE,2023-05-04,,clinica_geral,2-3a
+648,Bruna Flavia Cardoso Messias,14/02/1992,5512996100045,,(12) 99610-0045,Gustavo Moraes Prado,ADIMPLENTE,2023-06-19,,clinica_geral,2-3a
+650,Brian Henrique Dos Santos Ferraz,13/03/2005,5512997826638,,(12) 99782-6638,Anna Flavia Justino Aguiar,ADIMPLENTE,2023-05-11,,ortodontia_adimplente,2-3a
+651,Francisco José De Souza,25/06/1980,5512982687121,,(12) 98268-7121,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-05-18,,clinica_geral,2-3a
+652,Angela Lucia Bezerra,15/12/1983,5512991244592,,(12) 99124-4592,Mariane Ignat,ADIMPLENTE,2023-05-19,,ortodontia_adimplente,2-3a
+653,Claudenice Maria Da Silva,18/11/1986,5512988482687,,(12) 98848-2687,Giuliano Ferreira Queiroz,INADIMPLENTE,2024-10-23,,clinica_geral,1-2a
+654,Glaucia Dos Santos De Jesus,05/12/1999,5512982933497,,(12) 98293-3497,Anna Flavia Justino Aguiar,ADIMPLENTE,2023-06-05,,ortodontia_adimplente,2-3a
+656,Evelyn Danielle Da Silva,25/04/1994,5512997238149,,(12) 99723-8149,Mariane Ignat,ADIMPLENTE,2025-10-11,,ortodontia_adimplente,6-12m
+659,Shirlene Aparecida Ferreira,05/05/1978,5512996167339,,(12) 99616-7339,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-07-17,,clinica_geral,2-3a
+660,Ana Maria Louzada Amorim,13/08/1972,5512996564298,,(12) 99656-4298,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-06-05,,clinica_geral,2-3a
+661,Leonardo Braga De Brito,04/02/2002,5512997172492,,(12) 99717-2492,Luiz Gustavo Teodoro,ADIMPLENTE,2025-05-20,,ortodontia_adimplente,6-12m
+662,Hector Bezerra Gimack,04/04/2012,5512991244592,,(12) 99124-4592,Alana Rebeca Chagas Machado,ADIMPLENTE,2023-06-07,,ortodontia_adimplente,2-3a
+663,Claudete De Jesus Silva,02/07/1969,5512981021261,,(12) 98102-1261,Luiz Gustavo Teodoro,ADIMPLENTE,2023-06-03,,ortodontia_adimplente,2-3a
+666,Pedro José Dos Santos,12/01/1984,5512988872311,,(12) 98887-2311,Anna Flavia Justino Aguiar,ADIMPLENTE,2025-07-26,,ortodontia_adimplente,6-12m
+669,Clodoaldo Alves De Jesus,16/05/1983,5512991681257,,(12) 99168-1257,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-01-08,,clinica_geral,1-2a
+672,Laysa Souza Cavalcante,13/04/2002,5512997346355,,(12) 99734-6355,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-06-05,,clinica_geral,2-3a
+674,Anabela Maria Oliveira Santana Soares,28/06/1999,5512997031061,,(12) 99703-1061,Não informado,ADIMPLENTE,2023-06-02,,clinica_geral,2-3a
+675,Tuane Luara Eugenio,25/08/1994,5512982131725,,(12) 98213-1725,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-06-20,,clinica_geral,2-3a
+677,Nilda Nogueira,11/06/1973,5512992513343,,(12) 99251-3343,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-06-14,,ortodontia_adimplente,2-3a
+680,Joana De Freitas Alves,19/02/1963,5512988572178,,(12) 98857-2178,Gustavo Moraes Prado,ADIMPLENTE,2023-06-06,,clinica_geral,2-3a
+681,Alfeu Gertrudes Da Mota,16/11/1970,5512982063574,,(12) 98206-3574,Luiz Gustavo Teodoro,ADIMPLENTE,2023-06-07,,ortodontia_adimplente,2-3a
+684,Samuel Levi Dos Santos Marques Felix,07/04/2015,5512988973161,,(12) 98897-3161,Giuliano Ferreira Queiroz,ADIMPLENTE,2023-06-09,,clinica_geral,2-3a
+685,Elenalva Silva Dos Santos,08/07/1975,5512987015507,,(12) 98701-5507,Luiz Gustavo Teodoro,ADIMPLENTE,2023-10-09,,ortodontia_adimplente,2-3a
+688,Camila Vitoria Da Silva,16/04/2009,5512988482687,,(12) 98848-2687,Gustavo Moraes Prado,INADIMPLENTE,2023-07-07,,clinica_geral,2-3a
+689,Eliane Da Silva Viveiros,07/03/2003,5512978137561,,(12) 97813-7561,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-07-24,,clinica_geral,2-3a
+690,Domingos Jose Dos Santos,21/04/1963,5512996276856,,(12) 99627-6856,Não informado,ADIMPLENTE,2023-06-30,,clinica_geral,2-3a
+691,Ivone Preto Alves Azevedo,19/08/1964,5512996047377,,(12) 99604-7377,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-09-21,,clinica_geral,2-3a
+692,Andrea Helena Ferreira,00/00/0000,5512982748606,,(12) 98274-8606,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-07-28,,ortodontia_adimplente,2-3a
+696,Weverton,00/00/0000,5512988482687,,(12) 98848-2687,Gustavo Moraes Prado,INADIMPLENTE,2023-06-23,,clinica_geral,2-3a
+697,Lindalva Gabriel Pereira Santos,17/02/1959,5512974017209,,(12) 97401-7209,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-09-18,,clinica_geral,2-3a
+700,Etevaldo Cosme Martins,27/03/1989,5562982154753,,(62) 98215-4753,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-06-28,,clinica_geral,2-3a
+701,ANTÔNIO SERGIO,,5512988775761,,(12) 98877-5761,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-14,,clinica_geral,2-3a
+702,Sheila Viana,16/09/2002,5512997080090,,(12) 99708-0090,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-07-04,,ortodontia_adimplente,2-3a
+703,Daniele Da Silva Santos,12/10/1994,5512974111472,,(12) 97411-1472,Não informado,ADIMPLENTE,2024-10-18,,clinica_geral,1-2a
+704,Viviane Rainha De Moura,04/09/2023,5512978131915,,(12) 97813-1915,Não informado,ADIMPLENTE,2023-10-10,,clinica_geral,2-3a
+705,Glaidson Henrique Tamanhão Souza,06/06/1998,5512997317377,,(12) 99731-7377,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-27,,clinica_geral,2-3a
+707,Ricardo Aparecido Alves,07/01/1961,5512997048880,,(12) 99704-8880  (12) 3902-1538,Fernando Kenji Batista Nakano,ADIMPLENTE,2024-03-11,,ortodontia_adimplente,1-2a
+708,Maria Orlando Rosa,14/05/1950,5512997559917,,(12) 99755-9917,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-08-31,,clinica_geral,2-3a
+710,Guida Mariana Da Costa,14/10/1999,5512981039336,,(12) 98103-9336,Gustavo Moraes Prado,ADIMPLENTE,2024-02-15,,clinica_geral,1-2a
+712,Jaime Pereira Dos Anjos,13/07/1981,5512997260895,,(12) 99726-0895,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-09-21,,clinica_geral,2-3a
+716,Maria Selma De Andrade,13/12/1962,5512996871011,,(12) 99687-1011,Não informado,ADIMPLENTE,2023-08-14,,clinica_geral,2-3a
+720,Francisco De Assis Nunes Ferreira,28/01/1957,5512988033367,,(12) 98803-3367,Não informado,ADIMPLENTE,2023-07-10,,clinica_geral,2-3a
+722,Ana Claudia Teodozio Da Silva,18/03/1986,5512996661486,,(12) 99666-1486,Luiz Gustavo Teodoro,ADIMPLENTE,2024-03-23,,ortodontia_adimplente,1-2a
+723,Maurilyo,00/00/0000,5512996653385,,(12) 99665-3385,Gustavo Moraes Prado,ADIMPLENTE,2023-07-14,,clinica_geral,2-3a
+724,João Eduardo Faustino Soares,13/03/2005,5512996212781,,(12) 99621-2781,Gustavo Moraes Prado,ADIMPLENTE,2023-09-19,,clinica_geral,2-3a
+725,Joelito Alves De Carvalho,04/03/1949,5512981255068,,(12) 98125-5068,Não informado,ADIMPLENTE,2025-08-21,,clinica_geral,6-12m
+729,Fabiana Elenice Costa De Santana,27/04/1981,5512988434748,,(12) 98843-4748,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-07-21,,clinica_geral,2-3a
+731,Beatriz Alvarenga Brandino,20/03/2003,5512982538403,,(12) 98253-8403,Gustavo Moraes Prado,ADIMPLENTE,2025-05-27,,clinica_geral,6-12m
+732,Alair Gomes De Castro,18/11/1954,5512981079170,,(12) 98107-9170,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-16,,clinica_geral,2-3a
+733,Antônio Paulo Borges,,5512981940014,,(12) 98194-0014,Tainá Ribeiro De Moraes,INADIMPLENTE,2023-07-17,,clinica_geral,2-3a
+734,Valdirene Da Silva Ibiapina,13/01/1980,5512996653385,,(12) 99665-3385,Gustavo Moraes Prado,ADIMPLENTE,2023-07-14,,clinica_geral,2-3a
+735,Antonia Ivonete Marques Sobrinho,04/11/1967,5512981107274,,(12) 98110-7274,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-12-19,,clinica_geral,2-3a
+737,Cibele Rodrigues Dos Santos,12/03/1967,5512981560574,,(12) 98156-0574,Gustavo Moraes Prado,INADIMPLENTE,2023-07-24,,clinica_geral,2-3a
+738,Elidinalva Miranda Da Silva,21/11/1984,5512991972365,,(12) 99197-2365,Gustavo Moraes Prado,ADIMPLENTE,2023-07-25,,clinica_geral,2-3a
+740,Dinalva Alves De Jesus,04/03/1983,5512981441596,,(12) 98144-1596,Gustavo Moraes Prado,ADIMPLENTE,2023-08-15,,clinica_geral,2-3a
+745,Simoní Santana Silva,07/08/1997,5573998501215,,(73) 99850-1215,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-23,,clinica_geral,2-3a
+748,Simoni Pereira Da Silva,17/08/1975,5512981735130,,(12) 98173-5130,Gustavo Moraes Prado,INADIMPLENTE,2025-12-17,,clinica_geral,6-12m
+749,José Donizeti Dos Santos,26/06/1966,5512997869727,,(12) 99786-9727,Gustavo Moraes Prado,ADIMPLENTE,2023-08-08,,clinica_geral,2-3a
+752,Jaqueline Nogueira Da Silva,19/11/1986,5544998068429,,(44) 99806-8429,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-08-09,,clinica_geral,2-3a
+753,Manoela Medeiros,05/07/2015,5512988487481,,(12) 98848-7481,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-08-07,,ortodontia_adimplente,2-3a
+754,Andreia AraÚjo Lima,22/09/1997,5511930884433,,(11) 93088-4433,Gustavo Moraes Prado,ADIMPLENTE,2023-10-04,,clinica_geral,2-3a
+755,Paulo Souza De Andrade,12/08/1955,5512981040049,,(12) 98104-0049,Gustavo Moraes Prado,ADIMPLENTE,2023-08-16,,clinica_geral,2-3a
+757,Francielle Da Mota Carvalho,01/07/2004,5512988505532,,(12) 98850-5532,Gustavo Moraes Prado,ADIMPLENTE,2023-08-07,,clinica_geral,2-3a
+761,Jucelei Xavier Da Silva,21/09/1979,5512996329937,,(12) 99632-9937,Gustavo Moraes Prado,ADIMPLENTE,2023-08-15,,clinica_geral,2-3a
+762,Gislene Prado Dos Santos,02/07/1978,5512996661579,,(12) 99666-1579,Gustavo Moraes Prado,ADIMPLENTE,2023-08-08,,clinica_geral,2-3a
+765,Marlene Gomes Ferreira,15/01/1971,5512981836164,,(12) 98183-6164,Gustavo Moraes Prado,ADIMPLENTE,2024-03-14,,clinica_geral,1-2a
+767,José Daniel Vinent Fernandez,16/06/2016,5512997720470,,(12) 99772-0470,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-08-11,,ortodontia_adimplente,2-3a
+768,Alcides Fortunato Silva,30/10/1956,5512981520413,,(12) 98152-0413,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-08-09,,clinica_geral,2-3a
+769,Lucimar Dos Santos,27/06/1973,5512992209206,5512982801222,(12) 99220-9206  (12) 98280-1222,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-09-10,,clinica_geral,1-2a
+771,Sabrina Felix Ferreira De Lima,14/03/2004,5512988537217,,(12) 98853-7217,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-08-21,,clinica_geral,2-3a
+774,Aloisio Ferreira De Oliveira,20/02/1968,5512991475983,,(12) 99147-5983,Gustavo Moraes Prado,ADIMPLENTE,2023-10-31,,clinica_geral,2-3a
+776,Edilson Pereira dos Santos,06/12/1975,5512987031388,,(12) 98703-1388,Gustavo Moraes Prado,INADIMPLENTE,2023-08-21,,clinica_geral,2-3a
+777,Nikolas Marcos Pereira dos Santos,09/04/2007,5512987031388,,(12) 98703-1388,Gustavo Moraes Prado,INADIMPLENTE,2023-08-21,,clinica_geral,2-3a
+778,Lincoln Gustavo Pereira dos Santos,06/02/2009,5512987031388,,(12) 98703-1388,Gustavo Moraes Prado,INADIMPLENTE,2023-08-21,,clinica_geral,2-3a
+779,Jerfferson Angelo Alves Pinheiro,07/04/1984,5512991989188,,(12) 99198-9188,Gustavo Moraes Prado,ADIMPLENTE,2023-09-15,,clinica_geral,2-3a
+780,Maria Francisca Ferreira De Sousa,20/05/1969,5512981594517,,(12) 98159-4517,Gustavo Moraes Prado,ADIMPLENTE,2023-09-01,,clinica_geral,2-3a
+781,Claudia Donizeti Rosa Pereira,13/07/1973,5512996391655,,(12) 99639-1655,Gustavo Moraes Prado,INADIMPLENTE,2023-08-23,,clinica_geral,2-3a
+784,Ismael Costa,16/07/1996,5512991890320,,(12) 99189-0320,Gustavo Moraes Prado,ADIMPLENTE,2023-08-22,,clinica_geral,2-3a
+786,Jose Carlos De Siqueira,19/10/1948,5512988145826,,(12) 98814-5826,Gustavo Moraes Prado,ADIMPLENTE,2023-10-04,,clinica_geral,2-3a
+787,Carlos Diego Do Nascimento Siqueira,15/11/1985,5512997203765,,(12) 99720-3765,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-10-04,,clinica_geral,2-3a
+788,Cesar Augusto Frez De Almeida,17/08/1987,5512997655827,,(12) 99765-5827,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-09-04,,ortodontia_adimplente,2-3a
+792,Laira Gonçalves Braz,23/10/1999,5512997660758,,(12) 99766-0758,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-06-25,,clinica_geral,1-2a
+793,Sergio Jose Dos Santos,13/11/1975,5512981435806,,(12) 98143-5806,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-08-31,,ortodontia_adimplente,2-3a
+794,Fabiana Helena Brandão De Oliveira,10/03/1985,5512988225546,,(12) 98822-5546,Gustavo Moraes Prado,ADIMPLENTE,2023-09-01,,clinica_geral,2-3a
+795,Danielle Caroline Silva Silvério,05/06/1999,5512988990135,,(12) 98899-0135,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-09-14,,ortodontia_adimplente,2-3a
+800,Vilma De Sales Araujo,17/08/1974,5512982391758,,(12) 98239-1758,Gustavo Moraes Prado,ADIMPLENTE,2023-10-23,,clinica_geral,2-3a
+801,Isabela Maciel Santiago Ribeiro,21/04/2006,5512988164735,,(12) 98816-4735,Gustavo Moraes Prado,ADIMPLENTE,2023-09-12,,clinica_geral,2-3a
+803,Geraldo Galdino Ferreira,18/04/1952,5512988800872,,(12) 98880-0872,Gustavo Moraes Prado,ADIMPLENTE,2023-09-14,,clinica_geral,2-3a
+804,Maria De Lourdes Alves Da Silva,20/03/1968,5512982142452,,(12) 98214-2452,Gustavo Moraes Prado,INADIMPLENTE,2023-09-11,,clinica_geral,2-3a
+807,Carlos Vitor Pereira Bastos Da Silva,26/06/1986,5512981869570,,(12) 98186-9570,Gustavo Moraes Prado,ADIMPLENTE,2023-09-13,,clinica_geral,2-3a
+808,Cicero Jose Da Silva,02/05/1963,5512997406328,,(12) 99740-6328,Gustavo Moraes Prado,ADIMPLENTE,2023-09-12,,clinica_geral,2-3a
+809,Ivone Lopes Gali,23/12/1943,5512992393247,,(12) 39394-680_ (12) 99239-3247,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-06,,clinica_geral,2-3a
+810,Bruno De Morais Alves,07/06/1992,5512982676009,,(12) 98267-6009,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-10-16,,ortodontia_adimplente,2-3a
+812,Claudia Filomena Vieira Do Nascimento,19/12/1970,5512996371113,5512999637111,(12) 99637-1113  (12) 99963-7111,Tainá Ribeiro De Moraes,INADIMPLENTE,2025-02-24,,clinica_geral,6-12m
+814,Julia Vitoria Moreira Santos,23/03/2012,5512974065393,,(12) 97406-5393,Gustavo Moraes Prado,ADIMPLENTE,2023-09-16,,clinica_geral,2-3a
+815,Rafael Moreira Rangel,19/10/1983,5512974063963,,(12) 97406-3963  (12) 97406-3963,Gustavo Moraes Prado,ADIMPLENTE,2024-05-08,,clinica_geral,1-2a
+817,Guilherme De Jesus Silva,17/10/2011,5512992097795,,(12) 99209-7795,Gustavo Moraes Prado,ADIMPLENTE,2023-09-29,,clinica_geral,2-3a
+818,Carlos Humberto Vargas Murillo,28/12/1987,5511943754164,,(11) 94375-4164  (11) 94375-4164,Marina Melo Maciel,ADIMPLENTE,2025-11-27,,ortodontia_adimplente,6-12m
+820,Priscila De Oliveira Mariano,01/05/1995,5512988449549,,(12) 98844-9549,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-10-11,,clinica_geral,2-3a
+821,Thiego Espencer Barros De Andrade,28/07/1989,5512981759949,,(12) 98175-9949,Gustavo Moraes Prado,ADIMPLENTE,2025-11-03,,clinica_geral,6-12m
+824,Ana Beatriz Bezerra Laurindo,21/11/2002,5512981795936,,(12) 98179-5936,Não informado,ADIMPLENTE,2023-10-02,,clinica_geral,2-3a
+825,Nataniel Henrique Soares De Oliveira,14/11/2004,5512988179752,,(12) 98817-9752,Gustavo Moraes Prado,ADIMPLENTE,2023-09-27,,clinica_geral,2-3a
+829,Wallace Araujo Oliveira,22/05/2017,5511930884433,,(11) 93088-4433,Gustavo Moraes Prado,INADIMPLENTE,2023-10-03,,clinica_geral,2-3a
+831,Caio Gabriel Dias Bessa,09/08/2007,5512992416338,,(12) 99241-6338,Não informado,INADIMPLENTE,2023-10-03,,clinica_geral,2-3a
+837,Tatiele Simões Tomaz,07/08/1994,5583981746804,,(83) 98174-6804,Não informado,ADIMPLENTE,2023-10-06,,clinica_geral,2-3a
+838,Adilson De Oliveira,24/05/1967,5512988483535,,(12) 98848-3535,Gustavo Moraes Prado,ADIMPLENTE,2024-01-13,,clinica_geral,1-2a
+839,João Augusto Rodrigues De Moura,17/06/1997,5512987057337,,(12) 98705-7337,Não informado,ADIMPLENTE,2023-10-17,,clinica_geral,2-3a
+841,Gabriela De Oliveira Da Silva Coelho,19/10/1992,5512991925729,,(12) 99192-5729,Gustavo Moraes Prado,ADIMPLENTE,2023-11-28,,clinica_geral,2-3a
+843,Jailton Pereira Da Silva,07/06/1973,5512982351467,,(12) 98235-1467,Gustavo Moraes Prado,ADIMPLENTE,2024-02-22,,clinica_geral,1-2a
+844,Jacivania Pereira De Lima,06/01/1996,5512988378145,,(12) 98837-8145,Gustavo Moraes Prado,ADIMPLENTE,2023-12-14,,clinica_geral,2-3a
+845,Eberton Jose Moreira De Faria,22/06/1982,5512988070782,,(12) 98807-0782,Gustavo Moraes Prado,INADIMPLENTE,2023-10-11,,clinica_geral,2-3a
+846,Francisco Jose De Almeida,28/12/1971,5512982717969,,(12) 98271-7969,Luiz Gustavo Teodoro,ADIMPLENTE,2023-10-11,,ortodontia_adimplente,2-3a
+849,Marcia Santos Da Silva,19/11/1971,5512981560744,,(12) 98156-0744,Não informado,ADIMPLENTE,2025-04-09,,clinica_geral,6-12m
+850,Fernanda Heloise Barros Andrade,16/08/2000,5512997717912,,(12) 99771-7912,Não informado,ADIMPLENTE,2025-10-28,,clinica_geral,6-12m
+853,Francisco De Assis Da Silva,07/02/1956,5512981476297,,(12) 98147-6297,Gustavo Moraes Prado,ADIMPLENTE,2023-12-07,,clinica_geral,2-3a
+854,Marcos Vinicius Dias Gomes,11/03/1988,5512991062861,,(12) 99106-2861,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-10-16,,ortodontia_adimplente,2-3a
+857,Nicolli Da Rocha Barbosa,16/08/2003,5524988585731,,(24) 98858-5731,Gustavo Moraes Prado,ADIMPLENTE,2023-10-24,,clinica_geral,2-3a
+862,Maria Dos Remédios Pereira Da Silva,00/00/0000,5512988540466,,(12) 98854-0466,Gustavo Moraes Prado,INADIMPLENTE,2023-10-21,,clinica_geral,2-3a
+864,Joao Victor Ferreira Dos Santos,28/12/1987,5512988075800,,(12) 98807-5800,Gustavo Moraes Prado,ADIMPLENTE,2024-01-31,,clinica_geral,1-2a
+866,Rafael Lima Gouvea,11/02/1986,5512996026786,,(12) 99602-6786,Giuliano Ferreira Queiroz,INADIMPLENTE,2023-10-31,,clinica_geral,2-3a
+868,Laide De Oliveira,12/05/1973,5512991925729,,(12) 99192-5729,Gustavo Moraes Prado,ADIMPLENTE,2023-12-14,,clinica_geral,2-3a
+870,Francisco Gomes Da Silva,06/03/1974,5512982890739,,(12) 98289-0739,Gustavo Moraes Prado,INADIMPLENTE,2023-10-25,,clinica_geral,2-3a
+875,Ariana Cristina Norberto De Andrade,30/11/1997,5512981871242,,(12) 98187-1242,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-27,,clinica_geral,2-3a
+876,Diego Lima De Oliveira,28/08/1990,5512978120938,5512991568944,(12) 97812-0938  (12) 99156-8944,Luiz Gustavo Teodoro,ADIMPLENTE,2024-12-20,,ortodontia_adimplente,1-2a
+878,Nair Campos Dos Santos,23/11/1951,5512997529278,,(12) 99752-9278,Gustavo Moraes Prado,ADIMPLENTE,2025-09-03,,clinica_geral,6-12m
+879,Miguel Henrique Souza Moraes,01/08/2013,5512982577240,,(12) 98257-7240,Não informado,ADIMPLENTE,2023-10-30,,clinica_geral,2-3a
+881,Maria Aparecida Da Silva Dias,25/01/1955,5512988275529,,(12) 98827-5529,Gustavo Moraes Prado,ADIMPLENTE,2023-11-17,,clinica_geral,2-3a
+882,Willian Cassiano Machado,26/06/2001,5512981571592,,(12) 98157-1592,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-12-04,,ortodontia_adimplente,2-3a
+883,Leticia Fernanda Da Silva Perin,05/03/1999,5512982363529,,(12) 98236-3529,Não informado,ADIMPLENTE,2024-01-22,,clinica_geral,1-2a
+886,Vagner Joaquim Nogueira,10/03/1973,5512996211359,5524988231821,(12) 99621-1359  (24) 98823-1821,Gustavo Moraes Prado,ADIMPLENTE,2023-11-11,,clinica_geral,2-3a
+889,Rayane Silva  Davila,28/02/2003,5512988904826,,(12) 98890-4826  (12) 98890-4826,Alana Rebeca Chagas Machado,ADIMPLENTE,2025-05-31,,ortodontia_adimplente,6-12m
+890,Luciana De Assis,18/11/1993,5512982969055,,(12) 98296-9055,Gustavo Moraes Prado,ADIMPLENTE,2025-07-07,,clinica_geral,6-12m
+892,Edna Mariano Da Silva,15/06/1959,5512987072823,,(12) 98707-2823,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-01-22,,clinica_geral,1-2a
+894,Elisangela Rodrigues De Lima Santos,03/12/1981,5588982337543,,(88) 8233-7543,Gustavo Moraes Prado,ADIMPLENTE,2023-12-04,,clinica_geral,2-3a
+895,Simone Dinalva Da Conceição Paz,06/06/1987,5512992144259,,(12) 99214-4259,Gustavo Moraes Prado,ADIMPLENTE,2023-11-10,,clinica_geral,2-3a
+896,Maitê Dias Gomes De Almeida,06/03/1997,5512981300233,5512981317408,(12) 98130-0233  (12) 98131-7408,Gustavo Moraes Prado,ADIMPLENTE,2023-11-14,,clinica_geral,2-3a
+897,Ednilson Moreira,13/05/1981,5512996325431,,(12) 99632-5431,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-01-22,,clinica_geral,1-2a
+899,Carlos Da Conceição,12/09/1974,5512991189083,,(12) 99118-9083,Gustavo Moraes Prado,ADIMPLENTE,2023-12-08,,clinica_geral,2-3a
+900,Jessonita Batista De Oliveira,18/08/1963,5512981943212,,(12) 98194-3212,Fernando Kenji Batista Nakano,ADIMPLENTE,2024-09-10,,ortodontia_adimplente,1-2a
+901,Ester Germano,00/00/0000,5512996330332,,(12) 99633-0332,Lucas Piccolo Ribeiro,ADIMPLENTE,2024-03-16,,ortodontia_adimplente,1-2a
+905,Daniel Severino,10/05/1952,5512982114338,,(12) 98211-4338,Gustavo Moraes Prado,ADIMPLENTE,2024-01-29,,clinica_geral,1-2a
+906,Luis Roberto Chaves Da Silva,27/09/1968,5512981856570,,(12) 98185-6570,Renata Portella Bason,ADIMPLENTE,2023-11-21,,ortodontia_adimplente,2-3a
+910,Beatriz Aparecida Da Silva Santos,21/03/1984,5512997267070,,(12) 99726-7070,Renata Portella Bason,ADIMPLENTE,2023-12-02,,ortodontia_adimplente,2-3a
+912,Idemara De Lima Soares,23/09/1966,5512988227151,,(12) 98822-7151,Renata Portella Bason,ADIMPLENTE,2023-11-24,,ortodontia_adimplente,2-3a
+913,Celio Venancio Da Silva,06/12/1976,5562992813618,,(62) 99281-3618,Renata Portella Bason,ADIMPLENTE,2023-11-23,,ortodontia_adimplente,2-3a
+915,Lara Santos Medeiros,11/04/2016,5512981040441,5512981690450,(12) 98104-0441  (12) 98169-0450,Gustavo Moraes Prado,ADIMPLENTE,2023-12-19,,clinica_geral,2-3a
+918,Maurilia Das Graças Silva Cordeiro,08/09/1964,5512988220083,,(12) 98822-0083,Gustavo Moraes Prado,ADIMPLENTE,2023-12-01,,clinica_geral,2-3a
+919,Marcos Antonio Salvo,14/06/1978,5512988770790,,(12) 98877-0790,Tainá Ribeiro De Moraes,ADIMPLENTE,2023-11-27,,clinica_geral,2-3a
+923,Marcos Antonio Dos Reis,00/00/0000,5588982337543,,(88) 82337-543_,Gustavo Moraes Prado,ADIMPLENTE,2023-12-09,,clinica_geral,2-3a
+927,Patricia Valeria De Souza,11/06/1979,5512992376757,,(12) 99237-6757,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-04-24,,clinica_geral,1-2a
+930,Marcus Vinicius Santos Russo,18/04/1988,5512981167253,,(12) 98116-7253,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-06-21,,clinica_geral,1-2a
+931,Beatriz Da Silva,10/05/1973,5512983033692,,(12) 98303-3692,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-01-17,,clinica_geral,1-2a
+933,Edivan Silva De Jesus,08/02/2002,5573999429725,,(73) 9942-9725 (73) 99942-9725,Gustavo Moraes Prado,ADIMPLENTE,2023-12-12,,clinica_geral,2-3a
+936,Taissa Rafaella Alves Barbosa,12/06/2005,5512988992946,,(12) 98899-2946,Não informado,INADIMPLENTE,2025-09-11,,clinica_geral,6-12m
+938,Silvia Maria Ferreira,12/04/1981,5512997200821,,(12) 99720-0821,Ana Clara Rezeck De Moura,INADIMPLENTE,2025-12-02,,clinica_geral,6-12m
+940,Sophia Buarque De Oliveira,08/03/2012,5562981751045,,(62) 98175-1045,Gustavo Moraes Prado,ADIMPLENTE,2023-12-22,,clinica_geral,2-3a
+943,Elidia Donizeti Da Silva Santos,18/12/1969,5512997312133,,(12) 99731-2133,Fernando Kenji Batista Nakano,ADIMPLENTE,2024-10-18,,ortodontia_adimplente,1-2a
+944,Vinicius Homens Martins,06/04/1987,5512987018355,,(12) 98701-8355,Gustavo Moraes Prado,ADIMPLENTE,2023-12-12,,clinica_geral,2-3a
+947,Wladimir De Oliveira Gaiozo,25/07/1969,5512981711061,,(12) 98171-1061,Não informado,ADIMPLENTE,2025-12-10,,clinica_geral,6-12m
+948,Maria Jose Ribeiro,26/04/1944,5512991293285,,(12) 99129-3285,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-10-15,,clinica_geral,6-12m
+949,Sonia Cristina Moreira Rangel,14/08/1965,5512981648159,,(12) 98164-8159,Gustavo Moraes Prado,ADIMPLENTE,2023-12-15,,clinica_geral,2-3a
+950,Pedro Castelo Menescal,29/04/1997,5512996426609,,(12) 99642-6609,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-12-14,,ortodontia_adimplente,2-3a
+952,Manuela Andrade,26/01/2012,5512996172594,,(12) 99617-2594,Gustavo Moraes Prado,INADIMPLENTE,2023-12-22,,clinica_geral,2-3a
+956,Thereza Rodrigues De Almeida,30/10/1938,5512996017058,,(12) 99601-7058,Fernando Kenji Batista Nakano,ADIMPLENTE,2023-12-18,,ortodontia_adimplente,2-3a
+965,Michael Bruno Da Silva,17/10/1989,5512981386016,5512988305028,(12) 98138-6016  (12) 98830-5028,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-01-27,,clinica_geral,1-2a
+966,Laura Monteiro Rezende,04/10/1987,5512988313778,,(12) 98831-3778,Gustavo Moraes Prado,ADIMPLENTE,2024-05-31,,clinica_geral,1-2a
+967,Pietro Luca Silva Marques,17/07/2009,5512982546525,,(12) 98254-6525,Não informado,ADIMPLENTE,2023-12-29,,clinica_geral,1-2a
+968,Joao Guilherme Gato,19/04/2012,5512997709210,,(12) 99770-9210  (12) 3966-5310,Gustavo Moraes Prado,ADIMPLENTE,2023-12-29,,clinica_geral,1-2a
+969,Diana Carina Rufino,25/05/1987,5512992413705,5512978138721,(12) 99241-3705  (12) 97813-8721,Gustavo Moraes Prado,ADIMPLENTE,2025-05-27,,clinica_geral,6-12m
+971,Luiz Felipe  De Almeida Silva,27/05/2003,5512996755447,,(12) 99675-5447,Gustavo Moraes Prado,INADIMPLENTE,2024-01-09,,clinica_geral,1-2a
+972,Nicole Stephanie Ribeiro Gonçalves,10/09/2003,5577988679194,,(77) 98867-9194,Gustavo Moraes Prado,ADIMPLENTE,2024-01-22,,clinica_geral,1-2a
+974,Maria De Lourdes Carrasedo,12/01/1957,5512982629072,,(12) 98262-9072,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-04-08,,clinica_geral,1-2a
+978,Jose Teodoro Salomé,01/04/1957,5512991478584,,(12) 99147-8584,Gustavo Moraes Prado,ADIMPLENTE,2025-01-08,,clinica_geral,6-12m
+979,Sandra Valéria Rodrigues,14/10/1968,5512997937240,,(12) 99793-7240,Tainá Ribeiro De Moraes,ADIMPLENTE,2024-01-11,,clinica_geral,1-2a
+980,Carlos Vicente Rojas Gomez,19/02/2001,5521983934763,,(21) 98393-4763,Gustavo Moraes Prado,ADIMPLENTE,2024-01-13,,clinica_geral,1-2a
+982,Simone De Lima Silva,13/01/2002,5512987087483,,(12) 98708-7483,Larissa Monteiro Saldanha Lopes,ADIMPLENTE,2024-05-21,,ortodontia_adimplente,1-2a
+983,Davi Mucheironi Lopes,07/07/2015,5512997770293,,(12) 99777-0293,Gustavo Moraes Prado,INADIMPLENTE,2024-01-15,,clinica_geral,1-2a
+985,Ramon Reck,19/03/1979,5512997623706,,(12) 99762-3706,Gustavo Moraes Prado,INADIMPLENTE,2024-01-16,,clinica_geral,1-2a
+986,Maria Lucia Rodrigues Sampaio,02/04/1980,5512981288911,,(12) 98128-8911,Não informado,ADIMPLENTE,2024-11-27,,clinica_geral,1-2a
+991,João Pedro Rosso Duarte,06/04/2007,5512988422514,,(12) 98842-2514,Natalia Dos Santos Silva,ADIMPLENTE,2024-01-18,,ortodontia_adimplente,1-2a
+992,Francele Ribeiro De Oliveira,24/02/1981,5512996439148,,(12) 99643-9148,Gustavo Moraes Prado,ADIMPLENTE,2024-04-08,,clinica_geral,1-2a
+996,Debora Helena Miranda Lupianhas,24/06/1987,5512991629825,,(12) 99162-9825,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-01-18,,clinica_geral,1-2a
+997,Cibele Cristina Chagas,06/06/1982,5512981288649,,(12) 98128-8649,Gustavo Moraes Prado,ADIMPLENTE,2024-01-26,,clinica_geral,1-2a
+999,João Pedro Fernandes Silva,24/08/2007,5512981782807,,(12) 98178-2807,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-10-13,,clinica_geral,6-12m
+1000,Silvana Rosana De Longhi,20/02/1977,5512982701515,,(12) 98270-1515,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-08-14,,clinica_geral,1-2a
+1001,Gabriele Vitória Silva Machado,20/10/1987,5512992273723,,(12) 99227-3723,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-09-06,,clinica_geral,1-2a
+1004,Claudia Valeria Dellu,25/01/1969,5512981000537,,(12) 98100-0537,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-04-09,,clinica_geral,1-2a
+1006,Geraldo Alves Trindade,08/01/1953,5512997686958,,(12) 99768-6958,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-01-25,,clinica_geral,1-2a
+1007,Rodolfo De Morais,27/09/1966,5512982554493,5512992283698,(12) 98255-4493  (12) 99228-3698,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-02-27,,clinica_geral,1-2a
+1010,Rebeca Andrade De Carvalho,08/04/2006,5512988632693,5512992116229,(12) 98863-2693  (12) 99211-6229,Gustavo Moraes Prado,ADIMPLENTE,2024-04-01,,clinica_geral,1-2a
+1013,Fabiana Cristina Gonçalves,06/09/1978,5512982281019,,(12) 98228-1019,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-02-15,,clinica_geral,1-2a
+1018,Severino Cordeiro Ramos Neto,13/11/1955,5512982099862,,(12) 98209-9862,Gustavo Moraes Prado,ADIMPLENTE,2024-02-07,,clinica_geral,1-2a
+1028,Asdrubal Alexandro Morales Ayala,01/01/1979,5512988711015,,(12) 98871-1015,Larissa Monteiro Saldanha Lopes,ADIMPLENTE,2024-04-04,,ortodontia_adimplente,1-2a
+1029,Jennifer Martins Dos Santos,06/04/1997,5512981125098,,(12) 98112-5098,Não informado,ADIMPLENTE,2024-03-05,,clinica_geral,1-2a
+1032,Antonio Carlos Frutuoso,04/11/2010,5512981120491,,(12) 98112-0491,Gustavo Moraes Prado,ADIMPLENTE,2024-05-16,,clinica_geral,1-2a
+1036,Laudson Nunes Galvao Da Cunha,19/12/1984,5512991799251,,(12) 99179-9251,Gustavo Moraes Prado,ADIMPLENTE,2024-02-22,,clinica_geral,1-2a
+1038,Victor Alexander,00/00/0000,5544999767537,,(44) 9976-7537,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-03-26,,clinica_geral,1-2a
+1040,Marlene Andraus Dos Santos,00/00/0000,5512982387301,,(12) 98238-7301,Gustavo Moraes Prado,INADIMPLENTE,2024-03-08,,clinica_geral,1-2a
+1041,Claudia De Carvalho Santos,01/12/1981,5512988045523,,(12) 98804-5523,Não informado,ADIMPLENTE,2024-04-26,,clinica_geral,1-2a
+1045,Sandy Aguiar,,5512988319712,,(12) 98831-9712,Gustavo Moraes Prado,ADIMPLENTE,2024-03-01,,clinica_geral,1-2a
+1047,Thaís Christina Campos Possatto Rocha,08/03/2004,5512974120639,,(12) 97412-0639  (12) 97412-0639,Gustavo Moraes Prado,ADIMPLENTE,2024-03-18,,clinica_geral,1-2a
+1049,Rosa Maria Da Silva,02/10/1982,5512997782775,,(12) 99778-2775,Gustavo Moraes Prado,ADIMPLENTE,2024-02-29,,clinica_geral,1-2a
+1050,Carina Campos Possatto,30/03/1979,5512974120639,,(12) 97412-0639,Gustavo Moraes Prado,ADIMPLENTE,2025-03-13,,clinica_geral,6-12m
+1051,Fábio Roberto Campos Possatto,25/06/2019,5512974120639,,(12) 97412-0639,Gustavo Moraes Prado,ADIMPLENTE,2024-03-08,,clinica_geral,1-2a
+1058,Erick Michel Silva Dos Santos,30/08/1988,5512988030846,,(12) 98803-0846,Gustavo Moraes Prado,INADIMPLENTE,2024-09-06,,clinica_geral,1-2a
+1059,Thelma Cristina  Da Silva Ferreira,22/10/1984,5512983195887,,(12) 98319-5887,Não informado,ADIMPLENTE,2024-03-07,,clinica_geral,1-2a
+1061,Eny Aparecida Ribeiro Pereira,06/12/1981,5512982805206,,(12) 98280-5206,Gustavo Moraes Prado,ADIMPLENTE,2024-03-07,,clinica_geral,1-2a
+1063,Cleide De Fátima De Sousa Do Nascimento,08/08/1971,5512981758769,,(12) 98175-8769,Gustavo Moraes Prado,ADIMPLENTE,2024-03-08,,clinica_geral,1-2a
+1066,Michelle Aparecida Goomes Oricilde Lima,29/05/1981,5512981694344,,(12) 98169-4344,Gustavo Moraes Prado,INADIMPLENTE,2025-03-10,,clinica_geral,6-12m
+1069,Luciano Rodolfo Souza,01/08/1990,5512981127618,,(12) 98112-7618,Não informado,ADIMPLENTE,2024-03-14,,clinica_geral,1-2a
+1070,Mariana Rodrigues Dos Santos,14/12/1993,5512992111111,,(12) 99211-1111,Gustavo Moraes Prado,ADIMPLENTE,2025-06-30,,clinica_geral,6-12m
+1071,Rafaela Freire Sarmento,11/12/1989,5519999775184,,(19) 99977-5184,Não informado,ADIMPLENTE,2024-12-09,,clinica_geral,1-2a
+1072,Lara Aparecida Monteiro Dos Santos,12/06/1997,5512983120727,,(12) 98312-0727,Não informado,ADIMPLENTE,2024-03-14,,clinica_geral,1-2a
+1074,Cecilia Celeste Barreto,13/04/1981,5512981494599,,(12) 98149-4599,Gustavo Moraes Prado,ADIMPLENTE,2024-03-27,,clinica_geral,1-2a
+1075,Julia Aparecida Cunha Da Silva,10/11/1995,5512996631278,,(12) 99663-1278,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-03-27,,clinica_geral,1-2a
+1077,Geane Souza Dos Santos,21/02/1986,5512991027564,,(12) 9102-7564 (12) 99102-7564,Marina Melo Maciel,ADIMPLENTE,2025-12-16,,ortodontia_adimplente,6-12m
+1078,Maria Santa Da Silva,12/04/1974,5512992608880,,(12) 99260-8880,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-10-30,,clinica_geral,1-2a
+1079,Claudio Ramos,11/11/1961,5512982283653,,(12) 98228-3653,Gustavo Moraes Prado,ADIMPLENTE,2025-08-26,,clinica_geral,6-12m
+1081,Geovani Lopes,27/02/1965,5512992608880,,(12) 99260-8880,Não informado,ADIMPLENTE,2024-08-29,,clinica_geral,1-2a
+1082,Ana Julia Alves Firmino,15/11/2020,5512996598841,5512997827044,(12) 99659-8841  (12) 99782-7044,Gustavo Moraes Prado,ADIMPLENTE,2024-03-25,,clinica_geral,1-2a
+1091,Ezequias Carlos De Jesus,01/01/1975,5512988503626,,(12) 98850-3626,Não informado,ADIMPLENTE,2024-05-16,,clinica_geral,1-2a
+1094,Almir Rodrigues,02/03/1960,5512997206762,,(12) 99720-6762,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-11-12,,clinica_geral,1-2a
+1096,Kardec Gonzaga,28/06/1957,5512988548626,,(12) 98854-8626,Não informado,ADIMPLENTE,2024-12-20,,clinica_geral,1-2a
+1098,Lucia Helena Ribeiro Leandro,03/08/1984,5512988627779,,(12) 98862-7779,Marina Melo Maciel,ADIMPLENTE,2025-03-13,,ortodontia_adimplente,6-12m
+1102,Ana Karolina Costa Pereira,21/03/2009,5512996760623,,(12) 99676-0623,Não informado,ADIMPLENTE,2024-07-01,,clinica_geral,1-2a
+1103,Thiago Henrique Dos Santos Camargo,10/02/1987,5512981464158,,(12) 98146-4158,Gustavo Moraes Prado,ADIMPLENTE,2024-04-11,,clinica_geral,1-2a
+1104,Rosangela Aparecida Ramos Martins,07/07/1984,5512983061563,,(12) 98306-1563,Não informado,INADIMPLENTE,2024-07-20,,clinica_geral,1-2a
+1107,Letícia De Lima Campos Antunes,03/06/2000,5512981627862,,(12) 98162-7862,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-04-09,,clinica_geral,1-2a
+1110,Elcio Henrique Da Silva,27/07/1994,5512991842584,,(12) 99184-2584,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-04-15,,clinica_geral,1-2a
+1114,Eliene Souza Dos Santos,12/05/1997,5512988927714,,(12) 98892-7714,Gustavo Moraes Prado,ADIMPLENTE,2024-04-12,,clinica_geral,1-2a
+1119,Lucilene Vieira Sousa,28/06/1984,5512988162558,5512996173013,(12) 98816-2558  (12) 99617-3013,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-04-18,,clinica_geral,1-2a
+1123,Suelen Souza de Castro,,5512988058359,,(12) 98805-8359,Não informado,ADIMPLENTE,2024-04-20,,clinica_geral,1-2a
+1124,Maria Luiza Azevedo do Rosário,14/10/2004,5551993903308,,(51) 99390-3308,Marina Melo Maciel,ADIMPLENTE,2025-05-20,,ortodontia_adimplente,6-12m
+1126,Anne Karoline Valente Sanches,06/01/1999,5512981539405,,(12) 98153-9405,Mariane Ignat,ADIMPLENTE,2024-07-11,,ortodontia_adimplente,1-2a
+1127,Jose Welson De Oliveira,14/11/1972,5512982405214,,(12) 98240-5214,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-08-17,,clinica_geral,1-2a
+1128,David Henrique Da Silva Gomes,20/03/1990,5512988422730,,(12) 98842-2730,Renata Portella Bason,ADIMPLENTE,2024-04-26,,ortodontia_adimplente,1-2a
+1129,Ivone Pereira Santos,15/12/1980,5512981493953,,(12) 98149-3953,Não informado,ADIMPLENTE,2024-05-08,,clinica_geral,1-2a
+1130,Jaime Rodrigues,21/11/1945,5512991261362,,(12) 99126-1362,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-09-05,,clinica_geral,6-12m
+1132,Jucelio Damiao Dos Santos,18/07/1983,5512981248434,,(12) 98124-8434,Gustavo Moraes Prado,ADIMPLENTE,2024-05-07,,clinica_geral,1-2a
+1133,Rodrigo Rocha,05/03/1983,5512974102787,,(12) 97410-2787,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-04-24,,clinica_geral,1-2a
+1137,Jamily Larissa Paula Dos Santos,30/10/2005,5512981014870,,(12) 98101-4870,Gustavo Moraes Prado,ADIMPLENTE,2024-04-25,,clinica_geral,1-2a
+1141,Silvano Alves Dos Santos,26/07/1980,5512988994590,,(12) 98899-4590,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-07-10,,clinica_geral,1-2a
+1142,Salete Lucindo Da Silva,29/01/1959,5512997678041,,(12) 99767-8041,Gustavo Moraes Prado,ADIMPLENTE,2024-12-17,,clinica_geral,1-2a
+1143,Emerson Pereira Da Rocha,06/01/1973,5512991869147,,(12) 99186-9147,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-05-14,,clinica_geral,1-2a
+1145,Hanssen De Souza Perussi,25/06/1996,5512996489646,,(12) 99648-9646,Gustavo Moraes Prado,ADIMPLENTE,2024-05-03,,clinica_geral,1-2a
+1148,Sthéfany De Cássia Coimbra Mendes,24/02/1998,5512981340139,,(12) 98134-0139,Gustavo Moraes Prado,ADIMPLENTE,2024-05-06,,clinica_geral,1-2a
+1149,Dieferson Isaque Barros Silva,10/01/2002,5512988478946,,(12) 98847-8946,Gustavo Moraes Prado,ADIMPLENTE,2024-05-11,,clinica_geral,1-2a
+1153,Silvany Rosa Da Silva,10/06/1993,5512982642196,,(12) 98264-2196,Não informado,ADIMPLENTE,2024-05-09,,clinica_geral,1-2a
+1155,Valtencir Vaz Da Costa,23/04/1980,5512988153118,,(12) 98815-3118,Gustavo Moraes Prado,ADIMPLENTE,2024-07-08,,clinica_geral,1-2a
+1158,Maria Dos Remedios Pereira Da Silva,30/07/1982,5512988540466,,(12) 98854-0466,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-06-11,,clinica_geral,1-2a
+1161,Fernanda Alves De Oliveira,,5512981076242,,(12) 98107-6242,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-05-14,,clinica_geral,1-2a
+1166,Camille Sousa Leal Silva,,5511971269155,,(11) 97126-9155,Não informado,INADIMPLENTE,2024-05-25,,clinica_geral,1-2a
+1167,Liz Sousa Leal Silva,,5511971269155,,(11) 97126-9155,Não informado,INADIMPLENTE,2024-05-25,,clinica_geral,1-2a
+1168,Raimundo Esmeraldo Diniz,12/05/1973,5512991889630,5512992538751,(12) 99188-9630  (12) 99253-8751,Não informado,ADIMPLENTE,2024-12-17,,clinica_geral,1-2a
+1169,Romeu Ribeiro Dos Santos,03/06/1978,5512988172976,,(12) 98817-2976,Não informado,ADIMPLENTE,2024-09-02,,clinica_geral,1-2a
+1171,Jose Sandi De Oliveira,18/04/1958,5512981120887,,(12) 98112-0887,Não informado,ADIMPLENTE,2024-07-29,,clinica_geral,1-2a
+1174,Eduardo Paulino Da Silva,05/10/1983,5512996661486,,(12) 99666-1486,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-05-25,,clinica_geral,1-2a
+1177,Simone Cristina De Souza Da Silva,30/12/1974,5512988930805,,(12) 98893-0805,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-05-21,,clinica_geral,1-2a
+1179,Francisco Raimundo Da Silva,29/07/1961,5512992227471,,(12) 99222-7471,Não informado,ADIMPLENTE,2024-05-28,,clinica_geral,1-2a
+1180,Katleen Oliveira De Lima,27/03/1986,5512982421055,,(12) 98242-1055,Não informado,ADIMPLENTE,2024-05-22,,clinica_geral,1-2a
+1181,Diego Wesley Da Cunha,07/03/1988,5512991554323,,(12) 99155-4323,Não informado,ADIMPLENTE,2025-05-08,,clinica_geral,6-12m
+1183,Thiago De Souza Sarmento,25/03/1983,5519999775184,5512981530500,(19) 99977-5184  (12) 98153-0500,Não informado,INADIMPLENTE,2024-12-12,,clinica_geral,1-2a
+1184,Dilton Cesar Leite Fortunato,21/09/1993,5512981494124,,(12) 98149-4124,Não informado,INADIMPLENTE,2024-05-23,,clinica_geral,1-2a
+1185,Cleide Aparecida Bantim De Lima,27/10/1978,5512997827823,,(12) 99782-7823,Não informado,INADIMPLENTE,2024-05-29,,clinica_geral,1-2a
+1186,Edna De Lima Ribeiro,16/12/1983,5512991726505,,(12) 99172-6505,Não informado,ADIMPLENTE,2024-08-09,,clinica_geral,1-2a
+1189,Thiago Davi,24/01/2014,5512997304920,,(12) 99730-4920,Não informado,INADIMPLENTE,2024-07-08,,clinica_geral,1-2a
+1193,Daise Aparecida De Oliveira,29/09/1978,5512991337868,,(12) 99133-7868,Não informado,ADIMPLENTE,2024-11-06,,clinica_geral,1-2a
+1195,Rafael Augusto Pereira Dos Santos,21/03/1993,5512991553264,,(12) 99155-3264,Gustavo Moraes Prado,ADIMPLENTE,2024-06-07,,clinica_geral,1-2a
+1196,Eduarda Alves Vieira,31/12/2005,5575998543372,,(75) 9854-3372,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-07-30,,clinica_geral,1-2a
+1197,Alvaro Elias De Souza Nogueira,02/08/1998,5512992082269,,(12) 99208-2269,Não informado,ADIMPLENTE,2024-06-13,,clinica_geral,1-2a
+1202,Francisca Karene Felix,29/11/1994,5588981386937,,(88) 8138-6937,Gustavo Moraes Prado,ADIMPLENTE,2024-06-21,,clinica_geral,1-2a
+1203,Lucas Da Silva Almeida Marinho,21/08/1991,5512988348210,,(12) 98834-8210,Gustavo Moraes Prado,ADIMPLENTE,2024-06-14,,clinica_geral,1-2a
+1204,Rafaele Eloah,31/01/2016,5512991243194,,(12) 99124-3194,Não informado,INADIMPLENTE,2024-06-29,,clinica_geral,1-2a
+1206,Joao Mendes Pereira,29/01/1962,5512988580711,,(12) 98858-0711,Não informado,ADIMPLENTE,2024-06-15,,clinica_geral,1-2a
+1207,Vanessa Goulart Arantes,07/09/1983,5512997375918,,(12) 99737-5918,Gustavo Moraes Prado,ADIMPLENTE,2024-07-08,,clinica_geral,1-2a
+1208,Marcos Diego Dos Santos Oliveira,11/10/1997,5516996002780,,(16) 99600-2780,Não informado,ADIMPLENTE,2024-08-20,,clinica_geral,1-2a
+1209,Diego Henrique Silva Guimaraes,07/08/1987,5531984636758,5512988621708,(31) 8463-6758 (12) 98862-1708,Não informado,ADIMPLENTE,2024-12-21,,clinica_geral,1-2a
+1210,Silvio Cezar Do Nascimento,01/08/1968,5512988807767,,(12) 98880-7767,Gustavo Moraes Prado,ADIMPLENTE,2024-12-23,,clinica_geral,1-2a
+1213,Sabrina Pereira De Souza Silva,07/04/1987,5512996406635,,(12) 99640-6635,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-06-19,,clinica_geral,1-2a
+1216,Carmina Correa De Sousa,03/03/1966,5512997010699,,(12) 99701-0699,Não informado,ADIMPLENTE,2025-05-22,,clinica_geral,6-12m
+1217,Gilcelia Ismeralda Da Conceicao Da Silva,01/05/1983,5512997911057,,(12) 99791-1057,Não informado,ADIMPLENTE,2024-10-30,,clinica_geral,1-2a
+1225,Eni Do Canto Torres,23/04/1953,5512991720843,,(12) 99172-0843,Não informado,ADIMPLENTE,2024-07-01,,clinica_geral,1-2a
+1226,Cristina Dantas Pedroso,20/06/1977,5511993342128,,(11) 99334-2128,Não informado,INADIMPLENTE,2025-11-05,,clinica_geral,6-12m
+1228,Rosemary Da Silva Alves,29/04/1970,5512982143692,,(12) 98214-3692,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-09-11,,clinica_geral,1-2a
+1230,Ana Joana Da Costa Goncalves,18/08/1979,5512992581126,,(12) 99258-1126,Não informado,ADIMPLENTE,2024-07-23,,clinica_geral,1-2a
+1231,Eliana De Fatima Moreira,24/12/1961,5512982821002,,(12) 98282-1002,Não informado,ADIMPLENTE,2024-07-19,,clinica_geral,1-2a
+1233,Sidneia Luiza Silverio Marques,21/01/1999,5512991283378,,(12) 99128-3378,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-07-16,,clinica_geral,1-2a
+1235,Felipe Da Conceicao Matias,02/08/1993,5512988071575,,(12) 98807-1575,Gustavo Moraes Prado,INADIMPLENTE,2024-07-08,,clinica_geral,1-2a
+1236,Luis Amorim Santos,10/05/1999,5573998203781,,(73) 99820-3781,Gustavo Moraes Prado,ADIMPLENTE,2024-07-23,,clinica_geral,1-2a
+1238,Dilene Campos Lorenconi,19/07/1969,5512978122092,,(12) 97812-2092,Gustavo Moraes Prado,ADIMPLENTE,2024-07-12,,clinica_geral,1-2a
+1239,Rodolfo Donizetti Francisco,13/08/1965,5512982625149,,(12) 98262-5149,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-07-10,,clinica_geral,1-2a
+1241,Tatiana Rodrigues Dos Santos Nogueira,29/03/1982,5512996642955,,(12) 99664-2955,Gustavo Moraes Prado,ADIMPLENTE,2024-07-26,,clinica_geral,1-2a
+1242,Regina Ramos Ferreira,09/01/1979,5512982862910,,(12) 98286-2910,Gustavo Moraes Prado,INADIMPLENTE,2024-07-11,,clinica_geral,1-2a
+1243,Milena Santiago Claro de Oliveira,,5512982991367,,(12) 98299-1367,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2024-11-20,,clinica_geral,1-2a
+1244,Domenica Suelen Cardoso,16/06/1999,5512996226046,,(12) 99622-6046,Não informado,ADIMPLENTE,2024-07-12,,clinica_geral,1-2a
+1245,Maria Fabiana Soares Martins,14/07/1978,5512997031970,,(12) 99703-1970,Não informado,ADIMPLENTE,2024-07-16,,clinica_geral,1-2a
+1246,Luis Henrique Salomão Vieira,17/01/1998,5512991460943,,(12) 99146-0943,Não informado,ADIMPLENTE,2025-02-19,,clinica_geral,6-12m
+1247,Daniely Dias Mota Paes,21/09/1997,5512997786466,,(12) 99778-6466,Gustavo Moraes Prado,ADIMPLENTE,2024-10-04,,clinica_geral,1-2a
+1248,Viviane Aparecida Da Silva,03/02/1987,5512988612466,,(12) 98861-2466,Não informado,ADIMPLENTE,2024-07-17,,clinica_geral,1-2a
+1250,Valentina Barbosa Fonseca,23/02/2018,5514998225350,,(14) 99822-5350,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-07-30,,clinica_geral,1-2a
+1257,Douglas Cristiano Dos Santos Severino,05/08/1990,5512996753001,,(12) 99675-3001,Não informado,ADIMPLENTE,2025-01-23,,clinica_geral,6-12m
+1260,Gabriela Da Silva Nobrega,29/07/1998,5512981463055,,(12) 98146-3055,Não informado,ADIMPLENTE,2024-07-31,,clinica_geral,1-2a
+1261,Erica Fernanda Dos Santos,30/04/1994,5512997973617,,(12) 99797-3617,Não informado,ADIMPLENTE,2024-07-31,,clinica_geral,1-2a
+1262,Alisson Luis Rangel Fernandes,27/02/1988,5512997579610,,(12) 99757-9610,Gustavo Moraes Prado,INADIMPLENTE,2024-07-26,,clinica_geral,1-2a
+1266,Claudia Aparecida Gonçalves Marchiono,15/05/1971,5512991454344,,(12) 99145-4344,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-02-13,,clinica_geral,6-12m
+1270,Marina Leticia Azevedo De Oliveira,02/11/2001,5512981865052,,(12) 98186-5052,Não informado,INADIMPLENTE,2025-10-18,,clinica_geral,6-12m
+1273,Maria Judith De Paula Vieira,29/04/1954,5512988262449,,(12) 98826-2449,Não informado,ADIMPLENTE,2024-07-29,,clinica_geral,1-2a
+1275,Simone Ferreira Vicente,21/01/1974,5512981185014,,(12) 98118-5014,Não informado,ADIMPLENTE,2024-08-05,,clinica_geral,1-2a
+1281,Alexander Dos Santos Ferreira,26/02/2003,5512988898506,,(12) 98889-8506,Gustavo Moraes Prado,ADIMPLENTE,2024-08-02,,clinica_geral,1-2a
+1284,Maria Edna Da Silva,09/08/1966,5512996518064,,(12) 99651-8064,Não informado,ADIMPLENTE,2024-12-02,,clinica_geral,1-2a
+1285,Juliana Andrade Dos Santos,30/11/1992,5512997692866,,(12) 99769-2866,Não informado,ADIMPLENTE,2024-09-09,,clinica_geral,1-2a
+1286,Gabriela Fernanda Braz,25/05/2011,5512982888050,,(12) 98288-8050,Gustavo Moraes Prado,ADIMPLENTE,2024-08-05,,clinica_geral,1-2a
+1287,Cleide Rodrigues Dos Santos,11/08/1985,5512982653372,,(12) 98265-3372,Não informado,ADIMPLENTE,2024-08-08,,clinica_geral,1-2a
+1290,Fernando Dos Santos Rocha,25/12/1977,5511994261782,,(11) 99426-1782,Natalia Dos Santos Silva,ADIMPLENTE,2024-08-06,,ortodontia_adimplente,1-2a
+1292,Ramon Zucoli Eugenio,29/05/2001,5512997250163,,(12) 99725-0163,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-08-06,,clinica_geral,1-2a
+1294,Fernanda Guardia Da Silva,01/12/1988,5512991537464,,(12) 99153-7464,Não informado,ADIMPLENTE,2024-08-07,,clinica_geral,1-2a
+1301,Maria Julia Moreira Basilio,18/03/2017,5512988465948,,(12) 98846-5948,Não informado,ADIMPLENTE,2024-08-12,,clinica_geral,1-2a
+1305,Angela Maria Da Silva,30/05/1961,5512988641391,,(12) 98864-1391,Não informado,ADIMPLENTE,2024-09-03,,clinica_geral,1-2a
+1307,Camila Vitória Souza Chagas,04/12/2009,5512988515432,,(12) 98851-5432,Não informado,INADIMPLENTE,2024-11-20,,clinica_geral,1-2a
+1308,Diogo Henrique Ferreira Da Silva,30/09/2005,5512982269256,,(12) 98226-9256,Não informado,ADIMPLENTE,2024-08-12,,clinica_geral,1-2a
+1313,Cicero Moreira Da Silva,09/01/1968,5512997548583,,(12) 99754-8583,Não informado,ADIMPLENTE,2024-08-16,,clinica_geral,1-2a
+1319,Isabel Andrade Garcez Silva,31/10/2003,5512981356923,,(12) 98135-6923,Não informado,ADIMPLENTE,2025-03-27,,clinica_geral,6-12m
+1326,Maria Clara Silva De Queiroz,20/07/2002,5512981804859,,(12) 98180-4859,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-08-20,,clinica_geral,1-2a
+1330,Valmir Domingos De Oliveira,17/08/1950,5511987616321,,(11) 98761-6321,Não informado,ADIMPLENTE,2024-12-17,,clinica_geral,1-2a
+1332,Jaqueline De Oliveira Da Costa,10/11/1972,5512982681487,,(12) 98268-1487,Não informado,INADIMPLENTE,2024-08-21,,clinica_geral,1-2a
+1333,Patricia Santos Faria,19/03/1981,5512988042491,,(12) 98804-2491,Não informado,INADIMPLENTE,2024-08-26,,clinica_geral,1-2a
+1334,Leandro Silva Novais,06/12/1984,5512981444522,,(12) 98144-4522,Não informado,ADIMPLENTE,2024-08-21,,clinica_geral,1-2a
+1335,Fernanda Gama Touguinhó,31/10/1992,5512981914668,,(12) 98191-4668,Não informado,ADIMPLENTE,2025-01-29,,clinica_geral,6-12m
+1336,Paulo Cardoso Pereira,02/06/1981,5512991804381,,(12) 99180-4381,Gustavo Moraes Prado,ADIMPLENTE,2024-08-23,,clinica_geral,1-2a
+1338,Helio Pires Miranda,06/05/1990,5512988025836,,(12) 98802-5836,Não informado,ADIMPLENTE,2024-08-26,,clinica_geral,1-2a
+1339,Lenira Maria Do Nascimento,27/10/1955,5512982271388,,(12) 98227-1388,Não informado,ADIMPLENTE,2025-06-07,,clinica_geral,6-12m
+1342,Rosa Maria Da Silva Rufino,08/02/1969,5512988963989,,(12) 98896-3989,Não informado,ADIMPLENTE,2024-09-05,,clinica_geral,1-2a
+1343,Hudson Gabriel Barros Marciano De Sousa,01/11/2001,5512996528756,,(12) 99652-8756,Não informado,ADIMPLENTE,2024-08-28,,clinica_geral,1-2a
+1344,Ana Leonarda Quaresma Dos Santos,26/10/1998,5512981441551,,(12) 98144-1551,Não informado,ADIMPLENTE,2024-08-31,,clinica_geral,1-2a
+1348,Arlete Jane Dos Santos Coelho,21/05/1973,5512991878050,,(12) 99187-8050  (12) 99187-8050,Não informado,ADIMPLENTE,2024-09-09,,clinica_geral,1-2a
+1352,Henrique Augusto Dos Santos,15/02/1959,5512974065393,,(12) 97406-5393,Não informado,ADIMPLENTE,2024-11-30,,clinica_geral,1-2a
+1357,Erika Alves Silva,24/12/2003,5512982207574,,(12) 98220-7574,Não informado,ADIMPLENTE,2024-09-14,,clinica_geral,1-2a
+1359,Flavia Maria Da Silva Ribeiro,21/04/1991,5512997504932,,(12) 99750-4932,Gustavo Moraes Prado,ADIMPLENTE,2024-09-09,,clinica_geral,1-2a
+1363,Robson Rodrigues De Jesus,17/02/2000,5511957719125,,(11) 95771-9125,Não informado,ADIMPLENTE,2025-11-06,,clinica_geral,6-12m
+1364,Raimunda Pereira Da Silva,31/08/1998,5512982962501,5598985706617,(12) 98296-2501  (98) 98570-6617,Não informado,INADIMPLENTE,2025-08-26,,clinica_geral,6-12m
+1365,Tatiana Dias Dos Santos,18/08/1993,5512981724761,,(12) 98172-4761,Não informado,ADIMPLENTE,2024-09-11,,clinica_geral,1-2a
+1367,Francisco Das Chagas De Carvalho,05/04/1971,5512981420805,,(12) 98142-0805,Não informado,ADIMPLENTE,2024-10-04,,clinica_geral,1-2a
+1370,Enzo Silva De Sousa Teodoro,20/11/2016,5512988774701,,(12) 98877-4701,Não informado,ADIMPLENTE,2024-09-12,,clinica_geral,1-2a
+1371,Davi Miguel Fernandes Vilas Boas,13/07/2018,5512981136904,,(12) 98113-6904,Gustavo Moraes Prado,ADIMPLENTE,2024-10-09,,clinica_geral,1-2a
+1374,Maria Lucrecia Da Silva,22/05/2005,5512981487670,,(12) 98148-7670,Gustavo Moraes Prado,INADIMPLENTE,2024-09-27,,clinica_geral,1-2a
+1380,Andressa Dos Santos Machado,13/06/2000,5512981346281,,(12) 98134-6281,Não informado,ADIMPLENTE,2024-09-20,,clinica_geral,1-2a
+1381,José Gomes De Oliveira,17/01/1977,5519996755583,,(19) 99675-5583,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-09-21,,clinica_geral,1-2a
+1382,Edinalva Da Silva Sebastiao,24/09/1976,5512988881270,,(12) 98888-1270,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-09-24,,clinica_geral,1-2a
+1383,Valter Jorge Dos Santos,13/09/1978,5512981487232,,(12) 98148-7232,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-11-09,,clinica_geral,1-2a
+1384,Emanoel Da Costa,06/09/1975,5512988442473,,(12) 98844-2473,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-10-14,,clinica_geral,1-2a
+1391,Jayne Vieira Sales,08/11/1993,5512987019212,,(12) 98701-9212,Não informado,ADIMPLENTE,2025-01-14,,clinica_geral,6-12m
+1395,Lucilei Dos Santos,16/10/1967,5512997826638,,(12) 99782-6638,Não informado,ADIMPLENTE,2025-06-18,,clinica_geral,6-12m
+1396,Walter Pinder,30/04/1947,5512981329882,,(12) 98132-9882,Não informado,ADIMPLENTE,2025-02-04,,clinica_geral,6-12m
+1399,Neuza De Fatima Silveira,24/04/1962,5512983215689,,(12) 98321-5689,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-12-17,,clinica_geral,1-2a
+1400,Julio Cesar Cardoso Do Nascimento,18/01/1984,5512988629561,,(12) 98862-9561,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-10-21,,clinica_geral,1-2a
+1401,Luana Da Costa Viana,22/02/1994,5512997743278,,(12) 99774-3278,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-10-08,,clinica_geral,1-2a
+1403,Maryory Guarin Isaza,13/05/1970,5512981162749,,(12) 98116-2749,Gustavo Moraes Prado,ADIMPLENTE,2024-10-18,,clinica_geral,1-2a
+1405,Ana Leticia Sousa Santos,29/05/1994,5586988943807,,(86) 98894-3807,Não informado,ADIMPLENTE,2025-06-12,,clinica_geral,6-12m
+1412,Jessica Cristina Silva Barreto,10/05/1991,5512997247787,,(12) 99724-7787,Gustavo Moraes Prado,ADIMPLENTE,2025-01-09,,clinica_geral,6-12m
+1413,Benedita Aparecida De Souza,25/09/1973,5512996841892,,(12) 99684-1892,Não informado,ADIMPLENTE,2025-03-17,,clinica_geral,6-12m
+1415,Maria Lucia Dos Santos,03/08/1978,5512981521214,,(12) 98152-1214,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-03-17,,clinica_geral,6-12m
+1417,João Lucas Araujo Dos Santos,01/12/2015,5512982366879,5512982366870,(12) 98236-6879  (12) 98236-6870,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-10-15,,clinica_geral,1-2a
+1418,Celson Alan De Jesus Feitosa,07/04/1986,5512991400227,,(12) 99140-0227,Não informado,ADIMPLENTE,2024-10-16,,clinica_geral,1-2a
+1426,Graziela Cristina De Carvalho,20/12/1978,5512981020900,,(12) 98102-0900,Não informado,ADIMPLENTE,2025-09-12,,clinica_geral,6-12m
+1427,Luiz Fernandes Da Silva,05/11/1967,5512988330315,5512988166556,(12) 98833-0315  (12) 98816-6556,Não informado,ADIMPLENTE,2024-12-23,,clinica_geral,1-2a
+1428,Eliene Alves Da Silva,20/06/1976,5512997192533,,(12) 99719-2533,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-10-22,,clinica_geral,1-2a
+1429,Lucimara De Oliveira Carvalho,05/01/1975,5512981437196,,(12) 98143-7196  (12) 98143-7196,Não informado,ADIMPLENTE,2025-07-08,,clinica_geral,6-12m
+1432,Ruth Maria Castilho,14/02/1967,5512978507286,,(12) 97850-7286,Não informado,ADIMPLENTE,2025-03-25,,clinica_geral,6-12m
+1435,Márcia Lúcia Leal Campos,08/05/1982,5512997339379,,(12) 99733-9379,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-11-29,,clinica_geral,6-12m
+1436,Joao Alberto Dos Santos Filho,16/12/1960,5512991127205,,(12) 99112-7205,Não informado,ADIMPLENTE,2024-11-01,,clinica_geral,1-2a
+1438,Nayara Ferreira Ribeiro,30/11/1997,5512992707164,,(35) 19270-7164,Não informado,ADIMPLENTE,2024-11-13,,clinica_geral,1-2a
+1441,Jose Rodrigo Da Silva,10/10/1959,5512988454398,,(12) 98845-4398,Não informado,INADIMPLENTE,2024-10-29,,clinica_geral,1-2a
+1444,Gabriela Da Silva,26/11/1998,5512997511040,,(12) 99751-1040,Não informado,ADIMPLENTE,2024-11-07,,clinica_geral,1-2a
+1445,Roberta Helena Da Silva Santos,27/09/2000,5512988070790,,(12) 98807-0790,Ana Clara Rezeck De Moura,INADIMPLENTE,2024-11-26,,clinica_geral,1-2a
+1446,Gustavo Do Prado,24/10/1998,5512996196184,,(12) 99619-6184,Não informado,ADIMPLENTE,2025-12-10,,clinica_geral,6-12m
+1449,Jose Raymundo Alves,30/09/1954,5512997706744,,(12) 99770-6744,Não informado,ADIMPLENTE,2024-11-12,,clinica_geral,1-2a
+1450,Josenilton Venancio Dos Santos,29/06/1994,5512997882342,,(12) 99788-2342,Não informado,INADIMPLENTE,2024-11-22,,clinica_geral,1-2a
+1451,Marcia Cassiano De Souza Chagas,28/03/1983,5512996400861,,(12) 99640-0861,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-12-07,,clinica_geral,1-2a
+1455,Elaine Oliveira Silva,27/07/1978,5512997661192,,(12) 99766-1192,Não informado,INADIMPLENTE,2024-12-04,,clinica_geral,1-2a
+1456,Emily Vitória Quina Sant’ana,29/10/2003,5512992329253,,(12) 99232-9253,Não informado,ADIMPLENTE,2024-11-25,,clinica_geral,1-2a
+1458,Beatriz Ribeiro Dos Reis Ferreira,30/03/1973,5512987018355,,(12) 98701-8355,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-08-06,,clinica_geral,6-12m
+1460,Manuela Batista Camargo,22/04/2011,5512981120687,,(12) 98112-0687,Não informado,ADIMPLENTE,2024-11-14,,clinica_geral,1-2a
+1461,Domithilla Pithizer,23/01/1994,5532998169292,,(32) 99816-9292,Não informado,ADIMPLENTE,2024-11-18,,clinica_geral,1-2a
+1462,Milena Vilas Boas Viana Leite De Carvalho,26/02/1988,5512988817741,,(12) 98881-7741,Gustavo Moraes Prado,ADIMPLENTE,2024-11-27,,clinica_geral,1-2a
+1463,Raimunda Da Silva Carvalho,08/12/1987,5512988959404,,(12) 98895-9404,Erik Augusto Silva,ADIMPLENTE,2024-12-03,,ortodontia_adimplente,1-2a
+1464,Vitor Da Silva Cavalcante,09/10/2013,5512988959404,,(12) 98895-9404,Paula Felicio Sousa Silva,ADIMPLENTE,2024-11-18,,ortodontia_adimplente,1-2a
+1465,Romulo Flavio Antunes Marques,07/08/1992,5569993050310,,(69) 99305-0310,Não informado,ADIMPLENTE,2025-02-08,,clinica_geral,6-12m
+1468,Alex Duarte,01/05/1998,5512988736410,,(12) 98873-6410,Não informado,ADIMPLENTE,2024-11-21,,clinica_geral,1-2a
+1470,Iago Dias Bezerra,07/07/2006,5512997490693,,(12) 99749-0693,Renata Portella Bason,ADIMPLENTE,2025-09-26,,ortodontia_adimplente,6-12m
+1473,Alessandra Aparecida Dos Santos,11/02/1974,5512982114338,,(12) 98211-4338,Não informado,ADIMPLENTE,2024-11-21,,clinica_geral,1-2a
+1477,Vinicius De Souza Bueno,21/08/2007,5512997016510,,(12) 99701-6510,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-12-28,,clinica_geral,6-12m
+1480,Wellyngton Costa,22/02/1975,5512981610210,,(12) 98161-0210,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-02-12,,clinica_geral,6-12m
+1481,Jucelia Porto Silva,04/07/1964,5512988272388,,(12) 98827-2388,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-05-27,,clinica_geral,6-12m
+1483,Laudemira De Sousa Nascimento,11/03/1974,5512981507416,,(12) 98150-7416,Não informado,ADIMPLENTE,2024-11-29,,clinica_geral,1-2a
+1485,Jucineia Pinto Dos Santos,08/02/1981,5512981756042,,(12) 98175-6042,Não informado,INADIMPLENTE,2024-11-29,,clinica_geral,1-2a
+1487,Janaina Santos Rosa,14/10/1983,5512997078002,,(12) 99707-8002,Não informado,ADIMPLENTE,2025-02-04,,clinica_geral,6-12m
+1488,Luiz Ivan De Alcantara Araujo,30/03/1998,5583998130702,,(83) 99813-0702,Não informado,ADIMPLENTE,2024-12-02,,clinica_geral,1-2a
+1491,João Paulo Araujo Da Silva,23/01/2016,5512991498269,,(12) 99149-8269,Não informado,ADIMPLENTE,2025-01-11,,clinica_geral,6-12m
+1493,Roberta Luane Ferreira De Sousa,08/10/1997,5512988116801,,(12) 98811-6801,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2024-12-19,,clinica_geral,1-2a
+1498,Jeferson Mendes Dos Santos,25/12/1997,5512997320945,,(12) 99732-0945,Não informado,ADIMPLENTE,2025-02-17,,clinica_geral,6-12m
+1499,Manuela Freire,07/04/2011,5512999999999,,(12) 99999-9999,Não informado,ADIMPLENTE,2024-12-12,,clinica_geral,1-2a
+1500,Carlos Antônio Cassiano De Pontes,08/04/1953,5512988093240,5512988888514,(12) 98809-3240  (12) 98888-8514,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2024-12-12,,clinica_geral,1-2a
+1502,Aline Aparecida Silva Gonzaga,10/01/1995,5512981401399,,(12) 98140-1399,Erik Augusto Silva,ADIMPLENTE,2024-12-16,,ortodontia_adimplente,1-2a
+1505,Josiane Santos De Oliveira Monteiro,08/02/1986,5512982194391,,(12) 98219-4391,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-01-06,,clinica_geral,6-12m
+1507,Mariana Pinto Dos Santos,10/05/1998,5512983175304,,(12) 98317-5304,Não informado,INADIMPLENTE,2024-12-12,,clinica_geral,1-2a
+1509,Danizio Aparecido Da Costa,02/10/1959,5512997870456,,(12) 99787-0456,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2024-12-16,,clinica_geral,1-2a
+1516,Claudio De Jesus,06/05/1977,5514996457441,,(14) 99645-7441,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-09-13,,clinica_geral,6-12m
+1517,Yasmim Costa Da Silva Ribeiro,14/04/2021,5512991203178,,(12) 99120-3178  (12) 99120-3178,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-05-07,,clinica_geral,6-12m
+1521,Jeferson Do Nascimento  Almeida,18/03/1987,5512981828525,,(12) 98182-8525,Alana Rebeca Chagas Machado,ADIMPLENTE,2025-02-04,,ortodontia_adimplente,6-12m
+1522,Julia Ramos Dos Santos,20/12/2016,5512988755345,,(12) 98875-5345,Ana Clara Rezeck De Moura,ADIMPLENTE,2024-12-28,,clinica_geral,6-12m
+1523,Celia Maria Dias,17/10/1948,5512997033901,,(12) 99703-3901,Não informado,ADIMPLENTE,2025-01-06,,clinica_geral,6-12m
+1524,Valdete Alves De Paula,08/03/1959,5512991876649,5512981234386,(12) 99187-6649  (12) 98123-4386,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-08-25,,clinica_geral,6-12m
+1526,Emily Mariana Rosa Santos,22/05/2001,5512996503417,,(12) 99650-3417,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-01-06,,clinica_geral,6-12m
+1528,Ana Beatriz Da Costa Ozóri,21/04/2007,5512982719473,,(12) 98271-9473,Não informado,INADIMPLENTE,2025-01-09,,clinica_geral,6-12m
+1530,Rayssa Mel Evangelista Da Silva,25/01/2006,5512996052731,,(12) 99605-2731,Renata Portella Bason,ADIMPLENTE,2025-09-26,,ortodontia_adimplente,6-12m
+1533,Carla Cristina Gonçalves Teixeira,29/10/1973,5512981046673,,(12) 98104-6673,Marina Melo Maciel,ADIMPLENTE,2025-02-05,,ortodontia_adimplente,6-12m
+1534,Maria Jose Dos Santos Siqueira,12/10/1970,5512987035100,,(12) 98703-5100,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-05-29,,clinica_geral,6-12m
+1535,Levidã Eudir Sansevero Lisboa,16/04/2020,5512982144419,,(12) 98214-4419,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-01-08,,clinica_geral,6-12m
+1537,Vanusa Quaresma Bitencourt,30/05/1968,5512982858685,,12982858685,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-11-19,,clinica_geral,6-12m
+1538,Daniela Chagas Moreira,29/06/1982,5515997289494,,(15) 99728-9494,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-01-13,,clinica_geral,6-12m
+1539,Daniele Dos Santos Batista,12/08/1992,5512997413366,,(12) 99741-3366,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-01-09,,clinica_geral,6-12m
+1542,Ruth Aparecida Candido Dos Santos,29/11/1952,5512997989414,,(12) 99798-9414,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-01-14,,clinica_geral,6-12m
+1545,Bruna Pereira De Moraes,12/07/1996,5512996168352,,(12) 99616-8352,Não informado,ADIMPLENTE,2025-02-11,,clinica_geral,6-12m
+1549,Douglas Felipe Viana,19/11/1987,5512982990881,,(12) 98299-0881,Não informado,ADIMPLENTE,2025-01-17,,clinica_geral,6-12m
+1550,Benedito Alves,20/10/1937,5512992420473,5512992560184,(00) 00000-0000 (12) 99242-0473  (12) 99256-0184  (12) 98822-4535,Não informado,ADIMPLENTE,2025-06-20,,clinica_geral,6-12m
+1552,Roger Alves De Lira,26/02/1993,5512981873260,,(12) 98187-3260,Não informado,ADIMPLENTE,2025-01-27,,clinica_geral,6-12m
+1556,Maria Gabriela Silva,08/12/1996,5512996848543,,(12) 99684-8543,Não informado,ADIMPLENTE,2025-01-17,,clinica_geral,6-12m
+1557,Luiz Henrique Do Nascimento,17/03/2011,5512996848543,,(12) 99684-8543,Não informado,ADIMPLENTE,2025-01-15,,clinica_geral,6-12m
+1558,Gabriela Medeiro,06/10/2002,5512978122721,,(12) 97812-2721,Não informado,ADIMPLENTE,2025-01-16,,clinica_geral,6-12m
+1562,Rosemberg Silveira,12/12/1957,5512991525265,,(12) 99152-5265,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-05-03,,clinica_geral,6-12m
+1563,Flavia Gonçalves Santos,22/06/1976,5512981454451,,(12) 98145-4451,Não informado,INADIMPLENTE,2025-02-06,,clinica_geral,6-12m
+1567,Catia Dos Santos,15/01/1979,5511975098540,,(11) 97509-8540,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-01-21,,clinica_geral,6-12m
+1568,Jessica Aparecida Ramos,04/02/1992,5512981690355,,(12) 98169-0355  (12) 98169-0355,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-04-08,,clinica_geral,6-12m
+1570,Andreia Aparecida Dos Santos,09/06/1977,5512996676483,,(12) 99667-6483,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-01-21,,clinica_geral,6-12m
+1572,Rayanne Mykaele Pereira Sales,06/08/1995,5512988461403,,(12) 98846-1403,Não informado,ADIMPLENTE,2025-01-30,,clinica_geral,6-12m
+1577,Quesia Aleixo Correia Oliveira,16/05/1973,5512988375608,5512988947211,(12) 98837-5608  (12) 98894-7211,Não informado,INADIMPLENTE,2025-01-24,,clinica_geral,6-12m
+1579,José Antônio Da Paz,18/05/1956,5512988487071,,(12) 98848-7071,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-02-27,,clinica_geral,6-12m
+1580,Ana Clara Rosendo Da Silva,14/07/2008,5512996744557,,(12) 99674-4557,Não informado,ADIMPLENTE,2025-01-29,,clinica_geral,6-12m
+1583,Isaura De Lourdes De Abreu,14/09/1948,5512982911219,,(12) 98291-1219,Não informado,ADIMPLENTE,2025-04-29,,clinica_geral,6-12m
+1589,Vitória Gabriele Nascimento Barroso,12/07/2006,5512988111203,,(12) 98811-1203,Não informado,ADIMPLENTE,2025-02-04,,clinica_geral,6-12m
+1590,Leandro Augusto Lima,27/06/2007,5512981042608,5512988584670,(12) 98104-2608  (12) 98858-4670  (12) 98297-3835,Não informado,INADIMPLENTE,2025-06-02,,clinica_geral,6-12m
+1594,Isac Aref Alameddine Pereira Lauar,09/03/1982,5512988069306,,(12) 98806-9306,Beatriz Franco Marques,ADIMPLENTE,2025-02-05,,ortodontia_adimplente,6-12m
+1595,Vitor Hugo De Sousa,23/02/2006,5512981721064,,(12) 98172-1064,Não informado,INADIMPLENTE,2025-02-07,,clinica_geral,6-12m
+1600,Felipe Yuri Domingos Da Silva,24/01/2015,5512981850298,,(12) 98185-0298,Beatriz Franco Marques,ADIMPLENTE,2025-02-07,,ortodontia_adimplente,6-12m
+1601,Raimundo Nonato Barata Da Silva,26/04/1987,5512981680715,,(12) 98168-0715,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-03-20,,clinica_geral,6-12m
+1602,Eduardo Henrique Teodoro De Amorim,29/02/2000,5511966294673,,(11) 96629-4673,Não informado,INADIMPLENTE,2025-02-10,,clinica_geral,6-12m
+1604,Liandra Caroline Da Silva,11/12/1999,5512982466397,,(12) 98246-6397,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-02-12,,clinica_geral,6-12m
+1606,Claudia Aparecida Dos Santos Brazil,22/09/1993,5512974071160,,(12) 97407-1160,Erik Augusto Silva,ADIMPLENTE,2025-02-13,,ortodontia_adimplente,6-12m
+1609,Agatha Vieira Carvalho,03/03/2017,5512981583555,,(12) 98158-3555,Não informado,ADIMPLENTE,2025-02-25,,clinica_geral,6-12m
+1610,Edvaldo Aparecido De Arruda,24/09/1968,5512983130550,,(12) 98313-0550,Beatriz Franco Marques,ADIMPLENTE,2025-05-14,,ortodontia_adimplente,6-12m
+1611,Keila De Jesus Azevedo,19/06/1998,5575992203622,,(75) 99220-3622,Não informado,ADIMPLENTE,2025-02-26,,clinica_geral,6-12m
+1613,Paulo Souza De Oliveira,17/04/1999,5512981107876,,(12) 98110-7876,Não informado,ADIMPLENTE,2025-10-17,,clinica_geral,6-12m
+1615,Igor Aparecido De Sousa Rosa,13/08/2002,5512997750806,,(12) 99775-0806,Não informado,ADIMPLENTE,2025-03-20,,clinica_geral,6-12m
+1616,Heine Liseth Pacheco,06/01/1969,5512982969448,,(12) 98296-9448,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-12-04,,clinica_geral,6-12m
+1618,Lilian Alves Pinheiro Dos Santos,06/12/1979,5512996221225,,(12) 99622-1225,Não informado,INADIMPLENTE,2025-02-17,,clinica_geral,6-12m
+1623,Ismael Carlos Da Silva,20/12/1998,5512934853827,,(12) 93485-3827,Não informado,ADIMPLENTE,2025-02-27,,clinica_geral,6-12m
+1624,Guilherme Moraes De Oliveira,26/02/1994,5512981866748,,(12) 98186-6748,Não informado,ADIMPLENTE,2025-02-24,,clinica_geral,6-12m
+1627,Edimar De Faria Carlos,09/09/1987,5512983193364,5512981639676,(12) 98319-3364  (12) 98163-9676,Não informado,INADIMPLENTE,2025-05-29,,clinica_geral,6-12m
+1629,Matheus De Lima Marques Da Silva,15/08/2007,5512991063822,,(12) 99106-3822,Não informado,ADIMPLENTE,2025-03-25,,clinica_geral,6-12m
+1630,Maria Eduarda De Almeida,05/01/2007,5512988041927,,(12) 98804-1927,Não informado,ADIMPLENTE,2025-02-25,,clinica_geral,6-12m
+1631,Balbina Silva Dos Santos,14/11/1961,5512997187991,,(12) 99718-7991,Não informado,INADIMPLENTE,2025-02-24,,clinica_geral,6-12m
+1632,Arthur Cesar Léo Bernardes Tomaz,15/09/2009,5512997450249,,(12) 99745-0249,Não informado,INADIMPLENTE,2025-02-24,,clinica_geral,6-12m
+1634,Malana Gomes De Jesus,10/04/1994,5512981486645,,(12) 98148-6645,Não informado,ADIMPLENTE,2025-02-26,,clinica_geral,6-12m
+1635,Lidiane Dos Santos Silva,15/02/1989,5512981784907,,(12) 98178-4907,Não informado,INADIMPLENTE,2025-02-25,,clinica_geral,6-12m
+1636,Fabio De Jesus Santana,05/05/1986,5512982320703,,(12) 98232-0703,Não informado,ADIMPLENTE,2025-03-22,,clinica_geral,6-12m
+1638,Luiz Teodoro De Assis,07/05/1953,5512999999999,,(12) 99999-9999,Não informado,ADIMPLENTE,2025-02-27,,clinica_geral,6-12m
+1643,Marlene Da Costa Arruda,02/09/1970,5512996411321,,(12) 99641-1321,Não informado,ADIMPLENTE,2025-03-08,,clinica_geral,6-12m
+1646,Claudinei Roberto Batista,28/08/1966,5512988116958,,(12) 98811-6958,Não informado,ADIMPLENTE,2025-03-13,,clinica_geral,6-12m
+1647,Flavio Norberto De Siqueira Junior,08/04/2003,5514991429694,,(14) 99142-9694,Não informado,ADIMPLENTE,2025-03-25,,clinica_geral,6-12m
+1649,Cauane Andrade Da Silva Nicacio,21/03/2005,5512982205756,,(12) 98220-5756,Não informado,ADIMPLENTE,2025-03-11,,clinica_geral,6-12m
+1652,Alcides Fortunato Silva,30/10/1956,5512981520413,,(12) 98152-0413,Não informado,ADIMPLENTE,2025-07-17,,clinica_geral,6-12m
+1655,Davi Antonio Dos Santos,10/06/1981,5512982766333,,(12) 98276-6333,Não informado,INADIMPLENTE,2025-03-15,,clinica_geral,6-12m
+1656,Osmando De Jesus,24/11/1964,5512992144207,,(12) 99214-4207,Não informado,ADIMPLENTE,2025-03-22,,clinica_geral,6-12m
+1657,Fernanda Sabrina Da Fonseca,16/03/1985,5512982597239,,(12) 98259-7239,Não informado,ADIMPLENTE,2025-03-31,,clinica_geral,6-12m
+1658,Fatima Bueno Olímpio,17/03/1978,5512997209931,,(12) 99720-9931,Não informado,ADIMPLENTE,2025-03-18,,clinica_geral,6-12m
+1659,Suelem Fernandes Gubert,23/08/1983,5511978424067,,(11) 97842-4067,Não informado,ADIMPLENTE,2025-03-18,,clinica_geral,6-12m
+1660,Ana Santana Bispo,16/10/1942,5512996748374,5512982616036,(12) 99674-8374  (12) 98261-6036,Não informado,ADIMPLENTE,2025-10-21,,clinica_geral,6-12m
+1664,Vinicius Oliveira Luz,23/03/2009,5512988134051,,(12) 98813-4051,Não informado,ADIMPLENTE,2025-03-24,,clinica_geral,6-12m
+1667,Ezequiel Nobre De Paula,28/01/2015,5512987068447,,(12) 98706-8447,Não informado,ADIMPLENTE,2025-04-05,,clinica_geral,6-12m
+1673,Paulo Mariano,22/10/1965,5512988656617,,(12) 98865-6617,Não informado,INADIMPLENTE,2025-08-07,,clinica_geral,6-12m
+1675,Vinicius De Souza Ribeiro,15/09/2016,5512981903117,,(12) 98190-3117,Mariane Ignat,ADIMPLENTE,2025-03-29,,ortodontia_adimplente,6-12m
+1677,Natalia Silva Ribeiro,20/12/1987,5579998534875,,(79) 99853-4875,Não informado,ADIMPLENTE,2025-10-06,,clinica_geral,6-12m
+1679,Alvaro Augusto Nogueira Vicente,25/03/1992,5512981623246,,(12) 98162-3246,Não informado,INADIMPLENTE,2025-03-31,,clinica_geral,6-12m
+1681,Aline Ribeiro De Faria,17/08/1984,5512997183190,,(12) 99718-3190,Não informado,ADIMPLENTE,2025-04-01,,clinica_geral,6-12m
+1683,Daniel Santana Gonçalves,16/01/1982,5592991678808,,(92) 99167-8808,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-04-02,,clinica_geral,6-12m
+1687,Gilmar Santos Da Silva,25/06/1977,5512999999999,,(12) 99999-9999,Não informado,INADIMPLENTE,2025-04-03,,clinica_geral,6-12m
+1691,Catharina Louise Fernandes Oliveira,16/06/2016,5512982846083,,(12) 98284-6083,Marina Melo Maciel,ADIMPLENTE,2025-06-25,,ortodontia_adimplente,6-12m
+1702,Vitoria Katlin Marciano Ribeiro Santos,06/09/2002,5512982713992,,(12) 98271-3992,Não informado,INADIMPLENTE,2025-04-17,,clinica_geral,6-12m
+1705,Giselia Fernandes Da Silva De Araujo,15/08/1990,5512981690435,,(12) 98169-0435,Não informado,ADIMPLENTE,2025-05-21,,clinica_geral,6-12m
+1710,Rafael Oliveira Dos Santos,29/11/1988,5512991754462,,(12) 99175-4462,Não informado,ADIMPLENTE,2025-11-19,,clinica_geral,6-12m
+1712,Manoel Messias Cardoso,29/12/1970,5512988079636,,(12) 98807-9636,Não informado,ADIMPLENTE,2025-07-28,,clinica_geral,6-12m
+1717,Franciele Sendreto Da Silva Conceição,28/01/2000,5512981992464,,(12) 98199-2464,Não informado,ADIMPLENTE,2025-04-17,,clinica_geral,6-12m
+1719,Miria De Souza França,05/09/1982,5512981168412,,(12) 98116-8412,Não informado,INADIMPLENTE,2025-04-28,,clinica_geral,6-12m
+1720,Antonio Da Silva Santos,20/03/1972,5512988030757,,(12) 98803-0757,Não informado,ADIMPLENTE,2025-04-26,,clinica_geral,6-12m
+1722,Lara Marina Cruz Lino,18/05/1984,5511952872548,,(11) 95287-2548,Não informado,ADIMPLENTE,2025-04-17,,clinica_geral,6-12m
+1726,Leni Da Silva Barboza,04/07/1965,5512996575709,,(12) 99657-5709,Não informado,INADIMPLENTE,2025-06-10,,clinica_geral,6-12m
+1729,Maria Veronica Coelho Ferreira,09/02/1948,5512988576599,,(12) 98857-6599,Não informado,ADIMPLENTE,2025-06-10,,clinica_geral,6-12m
+1732,Juan Jesner Da Silva Pereira,06/01/1995,5512981558701,,(12) 98155-8701,Erik Augusto Silva,ADIMPLENTE,2025-07-22,,ortodontia_adimplente,6-12m
+1734,Jovenilça Vieira Dos Reis,10/12/1988,5512996602658,,(12) 99660-2658,Não informado,ADIMPLENTE,2025-08-22,,clinica_geral,6-12m
+1737,Edilson Da Silva Andrade,26/11/1971,5512992281490,,(12) 99228-1490,Não informado,ADIMPLENTE,2025-05-02,,clinica_geral,6-12m
+1738,Joana Mara Borges Galdino,30/10/1966,5512988481045,,(12) 98848-1045,Não informado,INADIMPLENTE,2025-12-03,,clinica_geral,6-12m
+1739,Manuela Pereira Dos Santos,17/01/2015,5512988501048,,(12) 98850-1048,Não informado,INADIMPLENTE,2025-04-30,,clinica_geral,6-12m
+1743,Karla Raquel Faria Dos Santos,01/08/1998,5512988431797,,(12) 98843-1797,Não informado,ADIMPLENTE,2025-12-04,,clinica_geral,6-12m
+1744,Henrique da Silva,04/02/2008,5512988552075,,(12) 98855-2075,Não informado,INADIMPLENTE,2025-04-30,,clinica_geral,6-12m
+1745,Ismael Diógene De Araujo Nascimento,07/11/1999,5534997234136,,(34) 9723-4136 (34) 99723-4136,Não informado,ADIMPLENTE,2025-10-09,,clinica_geral,6-12m
+1746,Marisa Mello,18/03/2002,5567981162849,,(67) 98116-2849,Não informado,INADIMPLENTE,2025-05-12,,clinica_geral,6-12m
+1748,Carlos De Moraes,03/06/1964,5512997567961,,(12) 99756-7961,Não informado,ADIMPLENTE,2025-05-12,,clinica_geral,6-12m
+1751,João Pedro Reis Gonçalves Silva,07/02/2006,5512981097269,,(12) 98109-7269,Não informado,ADIMPLENTE,2025-05-19,,clinica_geral,6-12m
+1753,Fausto Geronimo,19/08/1954,5512981730328,,(12) 98173-0328,Não informado,ADIMPLENTE,2025-05-05,,clinica_geral,6-12m
+1756,Rosangela De Oliveira Da Silva,15/08/1989,5512988149426,,(12) 98814-9426,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-05-06,,clinica_geral,6-12m
+1763,Magarethe De Fátima Alves,25/02/1971,5512988883827,,(12) 98888-3827,Não informado,ADIMPLENTE,2025-05-27,,clinica_geral,6-12m
+1769,Sueli Aparecida Da Silva,03/10/1967,5512996822215,,(12) 99682-2215,Não informado,INADIMPLENTE,2025-05-10,,clinica_geral,6-12m
+1771,Tamires De Fátima Ramos,03/01/1993,5512981270021,,(12) 98127-0021,Não informado,INADIMPLENTE,2025-05-16,,clinica_geral,6-12m
+1773,João Gabriel Pereira Dos Santos,31/08/2003,5512982858548,,(12) 98285-8548,Não informado,ADIMPLENTE,2025-05-26,,clinica_geral,6-12m
+1774,Gabriel Altino Batista,30/09/1994,5512981303252,,(12) 98130-3252,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-05-16,,clinica_geral,6-12m
+1777,Ronaldo Labate Uchoas,28/10/1969,5512996575709,5512996794480,(12) 99657-5709  (12) 99679-4480,Ana Clara Rezeck De Moura,INADIMPLENTE,2025-05-14,,clinica_geral,6-12m
+1778,Luis Carlos Firmino,11/09/1964,5512997075905,,(12) 99707-5905,Não informado,ADIMPLENTE,2025-10-20,,clinica_geral,6-12m
+1781,Fabio Elias Sarmento Primocena,18/09/1972,5511915823845,,(11) 91582-3845,Não informado,ADIMPLENTE,2025-05-15,,clinica_geral,6-12m
+1787,Dominique Romero Marcondes,16/05/1982,5512997993092,,(12) 99799-3092,Não informado,INADIMPLENTE,2025-05-22,,clinica_geral,6-12m
+1791,Mauricio Amorim Da Silva,03/08/1996,5512997816063,,(12) 99781-6063,Não informado,ADIMPLENTE,2025-07-14,,clinica_geral,6-12m
+1792,Samuel Ribeiro De Souza De Jesus Ferreira,05/04/2000,5512981863229,,(12) 98186-3229,Não informado,INADIMPLENTE,2025-05-23,,clinica_geral,6-12m
+1793,Elisa Cristina Bernardo Viana,01/07/1972,5512981242675,,(12) 98124-2675,Não informado,ADIMPLENTE,2025-05-28,,clinica_geral,6-12m
+1799,Maria Do Socorro Da Silva,04/01/1960,5512982378365,,(12) 98237-8365,Não informado,INADIMPLENTE,2025-05-28,,clinica_geral,6-12m
+1800,Gustavo Do Nascimento Camilo,18/11/1995,5512982813128,,(12) 98281-3128,Não informado,ADIMPLENTE,2025-06-04,,clinica_geral,6-12m
+1802,Vitoria Aparecida Dos Santos,28/07/2003,5512981972607,,(12) 98197-2607,Não informado,ADIMPLENTE,2025-06-06,,clinica_geral,6-12m
+1803,Henrique Kalebe Castilho De Sousa Faria Bandeira,21/09/2019,5512991024930,,(12) 99102-4930,Não informado,ADIMPLENTE,2025-06-03,,clinica_geral,6-12m
+1804,Leandro Junio De Faria Bandeira,27/01/1988,5512991024930,,(12) 99102-4930,Não informado,ADIMPLENTE,2025-06-03,,clinica_geral,6-12m
+1807,Lindomar Rodrigues Sampaio,,5512991812918,,(12) 99181-2918,Não informado,INADIMPLENTE,2025-06-04,,clinica_geral,6-12m
+1816,Yasmin Nunes Ribeiro,15/02/2008,5512988642306,,(12) 98864-2306,Não informado,ADIMPLENTE,2025-07-08,,clinica_geral,6-12m
+1817,Edna Alana Araujo Da Silva,18/03/1982,5512981373969,,(12) 98137-3969,Não informado,ADIMPLENTE,2025-06-30,,clinica_geral,6-12m
+1818,Luiza Elena Tavares De Carvalho,21/08/1953,5512997666480,,(12) 99766-6480,Não informado,ADIMPLENTE,2025-07-31,,clinica_geral,6-12m
+1823,João Antonio Da Silva Filho,18/06/1975,5512987047994,,(12) 98704-7994,Não informado,ADIMPLENTE,2025-06-10,,clinica_geral,6-12m
+1825,Antonio Andriano Neto,13/07/1951,5512981779677,,(12) 98177-9677,Não informado,ADIMPLENTE,2025-06-13,,clinica_geral,6-12m
+1826,Jose Ronaldo Dos Santos Lima,01/01/1979,5512982524144,,(12) 98252-4144,Não informado,ADIMPLENTE,2025-06-14,,clinica_geral,6-12m
+1827,Thais Vieira Guimaraes,02/04/1987,5512981538373,,(12) 98153-8373,Thays Oliveira Marques,ADIMPLENTE,2025-06-27,,ortodontia_adimplente,6-12m
+1828,Natália De Oliveira Cabral,09/10/1993,5512991844688,,(12) 99184-4688,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-06-30,,clinica_geral,6-12m
+1829,Sandro Gonçalves Dos Santos,22/05/1971,5512997932380,,(12) 99793-2380,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-06-17,,clinica_geral,6-12m
+1835,Caique Rafael Miranda Ribeiro,05/05/1995,5512996408409,,(35) 19640-8409,Não informado,ADIMPLENTE,2025-06-18,,clinica_geral,6-12m
+1837,Tais Almeida Santos,24/10/2000,5512991587485,5512996394026,(12) 99158-7485  (12) 99639-4026,Não informado,ADIMPLENTE,2025-06-20,,clinica_geral,6-12m
+1839,Daniel Rodrigo Santos De Oliveira,31/01/1991,5512982345166,,(12) 98234-5166,Não informado,INADIMPLENTE,2025-06-30,,clinica_geral,6-12m
+1840,Pedro Lucas De Oliveira Soares,06/04/2007,5512988508994,,(12) 98850-8994,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-06-24,,clinica_geral,6-12m
+1850,Agatha Emanuely,08/04/2016,5512982158120,,(12) 98215-8120,Não informado,ADIMPLENTE,2025-07-02,,clinica_geral,6-12m
+1852,Stephanie Umbelino Bispo Da Silva,10/01/1997,5513997599797,,(13) 99759-9797,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-08-18,,clinica_geral,6-12m
+1853,José Aparecido Alves,04/04/1956,5512997123749,,(12) 99712-3749,Não informado,ADIMPLENTE,2025-07-11,,clinica_geral,6-12m
+1854,Lucelia Alexandre Santos,03/08/1984,5512982156844,,(12) 98215-6844,Não informado,ADIMPLENTE,2025-07-05,,clinica_geral,6-12m
+1857,Tadeu Barbosa De Lima,26/01/1973,5512983069100,,(12) 98306-9100,Não informado,INADIMPLENTE,2025-08-07,,clinica_geral,6-12m
+1859,Josefa da Silva Ferreira dos Santos,08/01/1967,5512981655054,,(12) 98165-5054,Não informado,ADIMPLENTE,2025-11-21,,clinica_geral,6-12m
+1860,Ana Clara Cristina,10/01/2000,5512982723921,,(12) 98272-3921,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-08-07,,clinica_geral,6-12m
+1862,Cristina Pereira Do Vale,23/03/1988,5512996668717,,(12) 99666-8717,Não informado,ADIMPLENTE,2025-07-16,,clinica_geral,6-12m
+1864,Tiago Furtado Marcondes Cabral,22/08/1978,5512988138492,,(12) 98813-8492,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-07-16,,clinica_geral,6-12m
+1866,Viviane Emiliano Almada,10/01/1983,5512982113668,,(12) 98211-3668,Ana Clara Rezeck De Moura,ADIMPLENTE,2025-10-25,,clinica_geral,6-12m
+1867,Gilson Dos Santos Santana,23/02/1991,5512997719459,,(12) 99771-9459,Não informado,ADIMPLENTE,2025-07-16,,clinica_geral,6-12m
+1871,Maria De Lourdes Nunes Vieira,14/11/1972,5512988710491,,(12) 98871-0491,Não informado,ADIMPLENTE,2025-07-22,,clinica_geral,6-12m
+1874,Valério De Alcântara Santana,22/08/1982,5512982842032,,(12) 98284-2032,Não informado,ADIMPLENTE,2025-09-09,,clinica_geral,6-12m
+1877,Rosa Donizetti Machado,19/10/1967,5521970065429,5521970056429,(21) 97006-5429  (21) 97005-6429,Não informado,ADIMPLENTE,2025-09-11,,clinica_geral,6-12m
+1878,Ana Claudia Silva Alves Meira,09/04/2000,5512982895416,,(12) 98289-5416,Não informado,ADIMPLENTE,2025-10-02,,clinica_geral,6-12m
+1879,Romildo Pereira De Jesus,08/04/1977,5512982719869,,(12) 98271-9869,Não informado,ADIMPLENTE,2025-07-22,,clinica_geral,6-12m
+1880,Luiza Beatriz Silva Alves Meira,04/01/2007,5512981856922,,(12) 98185-6922,Não informado,ADIMPLENTE,2025-08-05,,clinica_geral,6-12m
+1884,Jose Franscisco De Oliveira,08/10/1953,5512997062030,,(12) 99706-2030,Não informado,ADIMPLENTE,2025-10-09,,clinica_geral,6-12m
+1885,Matheus Ramos Lopes Moreira,12/03/2011,5512981613404,,(12) 98161-3404,Não informado,ADIMPLENTE,2025-07-24,,clinica_geral,6-12m
+1887,Lauriele Oliveira De Jesus,07/02/2001,5512996178383,,(12) 99617-8383,Não informado,ADIMPLENTE,2025-07-24,,clinica_geral,6-12m
+1889,Daiana Maira Pereira Da Silva,03/02/1985,5512991906063,,(12) 99190-6063,Não informado,INADIMPLENTE,2025-07-25,,clinica_geral,6-12m
+1890,Maria Odete Pereira Dos Santos Nascimento,10/01/1980,5512996223818,,(12) 99622-3818,Não informado,ADIMPLENTE,2025-07-31,,clinica_geral,6-12m
+1891,Karina Pacheco De Santana,20/02/1998,5512981754700,,(12) 98175-4700,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-08-09,,clinica_geral,6-12m
+1894,Vivian Pereira,17/11/1987,5512992605504,,(12) 99260-5504,Não informado,INADIMPLENTE,2025-07-30,,clinica_geral,6-12m
+1895,Arnaldo Paz Dias,24/04/1979,5512992009414,,(12) 99200-9414,Não informado,ADIMPLENTE,2025-07-31,,clinica_geral,6-12m
+1901,Lucas Bessa,28/02/1999,5512982604707,,(12) 98260-4707,Não informado,ADIMPLENTE,2025-08-01,,clinica_geral,6-12m
+1903,Francisco Lucival Ferreira Da Silva,22/03/1984,5512988606927,,(12) 98860-6927,Não informado,ADIMPLENTE,2025-08-08,,clinica_geral,6-12m
+1904,Maria Cristina Monteiro,17/07/1954,5512981281896,,(12) 98128-1896,Não informado,ADIMPLENTE,2025-09-25,,clinica_geral,6-12m
+1905,Pierry Kyriacopoulos,06/06/2017,5512982612334,,(12) 98261-2334,Não informado,ADIMPLENTE,2025-08-04,,clinica_geral,6-12m
+1906,Maria De Fatima Nunes De Miranda,01/08/1961,5512997203650,,(12) 99720-3650,Não informado,ADIMPLENTE,2025-08-06,,clinica_geral,6-12m
+1908,Tainara Cristina Silva Ribeiro,28/04/1996,5512991203178,,(12) 99120-3178,Não informado,ADIMPLENTE,2025-08-08,,clinica_geral,6-12m
+1913,José Vitor Miranda,29/01/1998,5512996207149,,(12) 99620-7149,Não informado,INADIMPLENTE,2025-08-20,,clinica_geral,6-12m
+1922,Karla Ferreira Santanna Santos,22/01/1973,5512981164724,,(12) 98116-4724,Não informado,ADIMPLENTE,2025-11-24,,clinica_geral,6-12m
+1925,Maria Júlia Antunes De Souza,12/05/1997,5512991887459,,(12) 99188-7459,Não informado,ADIMPLENTE,2025-08-19,,clinica_geral,6-12m
+1930,Anna Helena Rodriguez De Jesus,07/03/2017,5512992566581,,(12) 99256-6581,Não informado,ADIMPLENTE,2025-08-13,,clinica_geral,6-12m
+1932,Odisseis Ferreira Poça,16/06/1969,5541991060273,,(41) 99106-0273,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-08-18,,clinica_geral,6-12m
+1933,Elias Amorim Dos Santos,06/12/1973,5541991060273,,(41) 99106-0273,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-08-18,,clinica_geral,6-12m
+1935,Maria Isabel De Paula Santos,03/03/1946,5512988807710,,(12) 98880-7710,Não informado,ADIMPLENTE,2025-12-02,,clinica_geral,6-12m
+1940,Vanderlei Luiz Alves Da Silva,22/03/1982,5512988249842,,(12) 98824-9842,Não informado,INADIMPLENTE,2025-08-25,,clinica_geral,6-12m
+1943,Lenice De Fatima Quirino,15/05/1967,5512992516827,,(12) 99251-6827,Não informado,ADIMPLENTE,2025-09-06,,clinica_geral,6-12m
+1944,Wiliam Quintino De Sousa Filho,07/09/1979,5512997484054,,(12) 99748-4054,Não informado,ADIMPLENTE,2025-08-26,,clinica_geral,6-12m
+1946,Wanessa Da Silva Machado,02/02/2005,5571996174395,,(71) 99617-4395,Não informado,ADIMPLENTE,2025-08-20,,clinica_geral,6-12m
+1947,Aleandra Lopes Araujo,22/03/1964,5512982616036,,(12) 98261-6036,Não informado,ADIMPLENTE,2025-10-14,,clinica_geral,6-12m
+1950,Roger Luiz Pereira Gomes De Costa,24/07/1995,5512981534333,,(12) 98153-4333,Não informado,INADIMPLENTE,2025-08-20,,clinica_geral,6-12m
+1951,Sarah,,5512992175356,,(12) 99217-5356,Não informado,INADIMPLENTE,2025-08-20,,clinica_geral,6-12m
+1956,Carlos Laercio Fauze Dos Santos Thomazelli,12/11/1985,5512988119969,,(12) 98811-9969,Não informado,ADIMPLENTE,2025-08-30,,clinica_geral,6-12m
+1957,Daniel Aparecido Marçal,01/12/1998,5512997820227,,(12) 99782-0227,Não informado,INADIMPLENTE,2025-08-25,,clinica_geral,6-12m
+1961,Ana Livia Do Nascimento Morgado,06/12/2013,5512982897845,,(12) 98289-7845,Não informado,ADIMPLENTE,2025-10-10,,clinica_geral,6-12m
+1962,Derly Rodrigues Fernandes,29/11/1968,5512988351140,,(12) 98835-1140,Não informado,INADIMPLENTE,2025-09-15,,clinica_geral,6-12m
+1963,Luciana Rocha De Almeida,23/12/1981,5512982533762,,(12) 98253-3762,Não informado,INADIMPLENTE,2025-08-26,,clinica_geral,6-12m
+1968,Francisco De Assis,28/05/1983,5512982092711,,(12) 98209-2711,Não informado,INADIMPLENTE,2025-10-14,,clinica_geral,6-12m
+1972,Maria De Fátima Gabriela Pereira Santos,22/02/2003,5512981962916,,(12) 98196-2916,Não informado,ADIMPLENTE,2025-09-23,,clinica_geral,6-12m
+1973,Paulo Roberto Carvalho Da Cruz,05/06/1988,5511955993346,,(11) 95599-3346,Não informado,ADIMPLENTE,2025-08-30,,clinica_geral,6-12m
+1975,Johnatan Alexander Gomez Monitoya,20/03/1992,5541992821965,,(41) 99282-1965,Não informado,ADIMPLENTE,2025-09-08,,clinica_geral,6-12m
+1976,Zulmira Barboza De Lima,08/08/1948,5512983069100,,(12) 98306-9100,Não informado,ADIMPLENTE,2025-09-04,,clinica_geral,6-12m
+1981,Gabryel Faria,21/12/2002,5512981928594,,(12) 98192-8594,Não informado,INADIMPLENTE,2025-09-03,,clinica_geral,6-12m
+1982,Regiane,,5512982910396,,(12) 98291-0396,Não informado,INADIMPLENTE,2025-09-04,,clinica_geral,6-12m
+1983,Cristiana Ramos De Sousa Gomes,20/06/1990,5512982222662,,(12) 98222-2662,Não informado,ADIMPLENTE,2025-09-08,,clinica_geral,6-12m
+1984,Graziele De Fatima Moreira,13/06/1990,5512988120945,,(12) 98812-0945,Não informado,ADIMPLENTE,2025-10-10,,clinica_geral,6-12m
+1986,Marcela Gutierrez Martinelli Alves,10/02/2001,5512981661626,,(12) 98166-1626,Não informado,ADIMPLENTE,2025-10-16,,clinica_geral,6-12m
+1987,Wallacy Kaue De Sousa Morais,24/12/2013,5512992266326,,(12) 99226-6326,Não informado,INADIMPLENTE,2025-09-04,,clinica_geral,6-12m
+1989,Marcos Vinicius Evaristo,05/01/1968,5512983131918,,(12) 98313-1918,Não informado,ADIMPLENTE,2025-11-29,,clinica_geral,6-12m
+1997,Ricardo Severino Da Silva,28/11/1989,5512987119487,,(12) 98711-9487,Não informado,INADIMPLENTE,2025-09-16,,clinica_geral,6-12m
+2001,Emanuelly Fernanda Neves Dos Santos,31/12/2016,5512981529961,,(12) 98152-9961,Não informado,ADIMPLENTE,2025-12-01,,clinica_geral,6-12m
+2002,Victoria Suchocka,30/05/1965,5512982312573,,(12) 98231-2573,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-09-24,,clinica_geral,6-12m
+2004,Sabrina Aparecida Nogueria Rodrigues,23/08/1989,5512997771150,,(12) 99777-1150,Não informado,ADIMPLENTE,2025-11-13,,clinica_geral,6-12m
+2005,Ester Batista Eleuterio De Oliveira,28/03/1979,5512976041648,,(12) 97604-1648,Não informado,INADIMPLENTE,2025-09-16,,clinica_geral,6-12m
+2006,Raissa Leticia Souto de Oliveira,06/06/1997,5512982908252,,(12) 98290-8252,Não informado,ADIMPLENTE,2025-09-16,,clinica_geral,6-12m
+2008,Cristhian,,5512991250471,,(12) 99125-0471,Não informado,INADIMPLENTE,2025-10-29,,clinica_geral,6-12m
+2023,Ana Paula Rodrigues,23/06/1989,5512992272536,,(12) 99227-2536,Não informado,INADIMPLENTE,2025-10-13,,clinica_geral,6-12m
+2026,Luiz Paulo Dos Santos Cardoso,14/04/1987,5512997728875,,(12) 99772-8875,Não informado,INADIMPLENTE,2025-09-27,,clinica_geral,6-12m
+2027,Jiancan Xiao,11/12/1953,5512982591533,,(12) 98259-1533,Não informado,ADIMPLENTE,2025-09-29,,clinica_geral,6-12m
+2028,Elza Maria Da Mota Costa,30/07/1951,5512982976969,,(12) 98297-6969,Não informado,ADIMPLENTE,2025-11-18,,clinica_geral,6-12m
+2029,Laura Maria De Oliveira,30/12/1971,5512997206190,,(12) 99720-6190,Não informado,ADIMPLENTE,2025-10-27,,clinica_geral,6-12m
+2031,Maria Vágna Gomes Medeiros,03/01/1994,5512981066810,,(12) 98106-6810,Não informado,INADIMPLENTE,2025-09-29,,clinica_geral,6-12m
+2040,Andreza Aparecida De Camargo,09/06/1992,5512988378886,,(12) 98837-8886,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-10-25,,clinica_geral,6-12m
+2043,Fernanda Silva Ferreira Soares,28/08/1987,5512988539363,,(12) 98853-9363,Não informado,ADIMPLENTE,2025-10-17,,clinica_geral,6-12m
+2048,Tarcizio Alves De Oliveira,27/01/1979,5571981804840,,(71) 98180-4840,Gabrielly Ferreira,ADIMPLENTE,2025-10-09,,ortodontia_adimplente,6-12m
+2049,Gerson De Oliveira Santos,07/09/1978,5571986218580,,(71) 98621-8580,Gabrielly Ferreira,ADIMPLENTE,2025-10-09,,ortodontia_adimplente,6-12m
+2052,Elerzianie Aparecida,01/11/1975,5512992341289,,(12) 99234-1289,Não informado,INADIMPLENTE,2025-10-11,,clinica_geral,6-12m
+2053,Manoel Carlos Pereira Correia,30/01/2004,5511913672434,,(11) 91367-2434,Não informado,ADIMPLENTE,2025-10-21,,clinica_geral,6-12m
+2059,Gabriela De Lima Pereira,20/01/1997,5586999204326,,(86) 99920-4326,Não informado,ADIMPLENTE,2025-10-14,,clinica_geral,6-12m
+2060,Leandro Augusto De Almeida Santos,07/03/1991,5512981210840,,(12) 98121-0840,Não informado,ADIMPLENTE,2025-10-14,,clinica_geral,6-12m
+2061,Rafaela De Oliveira Santos,20/06/1991,5512982087803,,(12) 98208-7803,Não informado,INADIMPLENTE,2025-10-14,,clinica_geral,6-12m
+2063,ADEMIR DONIZETTI CAMARO,,5512988216321,,(12) 98821-6321,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-10-15,,clinica_geral,6-12m
+2065,Oseias Macedo De Sousa,08/10/2007,5512992188127,,(12) 99218-8127,Não informado,ADIMPLENTE,2025-11-01,,clinica_geral,6-12m
+2067,Phietro Lopes Pinheiro Dos Santos De Oliveira,23/07/2008,5512991840707,,(12) 99184-0707,Não informado,INADIMPLENTE,2025-10-30,,clinica_geral,6-12m
+2069,Fabio Junior Oliveira Martins,12/06/1995,5512992199617,,(12) 99219-9617,Não informado,ADIMPLENTE,2025-10-20,,clinica_geral,6-12m
+2072,Jessica Luana De Carvalho,07/04/1992,5512992534863,,(12) 99253-4863,Não informado,ADIMPLENTE,2025-10-23,,clinica_geral,6-12m
+2075,Maria Lucrecia Da Silva,22/05/2005,5512981487670,,(12) 98148-7670,Não informado,INADIMPLENTE,2025-11-08,,clinica_geral,6-12m
+2076,Gisele Ribeiro Teofilo Da Silva,26/02/2004,5512987072496,,(12) 98707-2496,Não informado,ADIMPLENTE,2025-11-19,,clinica_geral,6-12m
+2077,Elaine Cristina Dos Santos Lemes,26/10/1985,5512991895730,,(12) 99189-5730,Não informado,INADIMPLENTE,2025-11-24,,clinica_geral,6-12m
+2078,Lilian Arantes Martins,18/10/1975,5512988263325,,(12) 98826-3325,Não informado,ADIMPLENTE,2025-10-27,,clinica_geral,6-12m
+2079,Jessé Freire De Oliveira,23/10/2025,5512982192427,,(12) 98219-2427,Não informado,ADIMPLENTE,2025-10-30,,clinica_geral,6-12m
+2082,Leila Aline Silva Batista Costa,13/07/1985,5512981200912,,(12) 98120-0912,Não informado,ADIMPLENTE,2025-10-27,,clinica_geral,6-12m
+2086,Fabricio Vitor Ferreira Granja,21/02/1998,5512988645926,,(12) 98864-5926,Não informado,INADIMPLENTE,2025-10-31,,clinica_geral,6-12m
+2088,Rafaela De Cassia Amancio,24/01/1988,5512997232171,,(12) 99723-2171,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-12-04,,clinica_geral,6-12m
+2092,Murillo Batista Do Canto,13/07/2016,5514991868596,,(14) 99186-8596,Não informado,ADIMPLENTE,2025-11-06,,clinica_geral,6-12m
+2094,Gisele Bertazzo Paes,09/08/1985,5512996674635,,(12) 99667-4635,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-12-15,,clinica_geral,6-12m
+2102,Danilo Augusto Gomes Vieira,02/09/1991,5512997339379,,(12) 99733-9379,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-11-29,,clinica_geral,6-12m
+2104,Jessica Rosa de Oliveira,,5512996015036,,(12) 99601-5036,Gustavo Cesar Dias Bevilaqua,INADIMPLENTE,2025-11-12,,clinica_geral,6-12m
+2106,Ester Da Cunha Silva,24/12/1971,5512988505560,,(12) 98850-5560,Não informado,ADIMPLENTE,2025-11-05,,clinica_geral,6-12m
+2109,Jose William,06/03/2018,5587999072561,,(87) 99907-2561,Não informado,INADIMPLENTE,2025-11-07,,clinica_geral,6-12m
+2110,Wallace Teles De Proença Santos,11/11/2006,5512982152457,,(12) 98215-2457,Não informado,ADIMPLENTE,2025-11-08,,clinica_geral,6-12m
+2112,Maria Jocassia Arao Candido,27/04/1995,5512982200635,,(12) 98220-0635,Não informado,ADIMPLENTE,2025-11-26,,clinica_geral,6-12m
+2117,Piter Pereira De Andrade Domingos,29/10/1986,5512997290628,,(12) 99729-0628  (12) 99729-0628,Não informado,ADIMPLENTE,2025-11-14,,clinica_geral,6-12m
+2119,Edmara,,5512981349883,,(12) 98134-9883,Não informado,INADIMPLENTE,2025-12-06,,clinica_geral,6-12m
+2122,Romulo Castro,30/03/1993,5512974060300,,(12) 97406-0300,Luiz Gustavo Teodoro,ADIMPLENTE,2025-11-26,,ortodontia_adimplente,6-12m
+2123,André,,5512988723032,,(12) 98872-3032,Não informado,INADIMPLENTE,2025-11-18,,clinica_geral,6-12m
+2126,Mayara Silva Dos Santos,06/08/1992,5512982286324,,(12) 98228-6324,Não informado,INADIMPLENTE,2025-11-28,,clinica_geral,6-12m
+2132,Yusha Su,27/05/1990,5512982591533,,(12) 98259-1533,Não informado,ADIMPLENTE,2025-11-25,,clinica_geral,6-12m
+2136,Wladimir Peres Sanches Junior,20/10/1998,5512981421345,,(12) 98142-1345,Gustavo Cesar Dias Bevilaqua,ADIMPLENTE,2025-12-20,,clinica_geral,6-12m
+2137,Lucas Silva Alves Meira,25/05/2002,5512981323645,5512987070996,(12) 98132-3645  (12) 98707-0996,Não informado,ADIMPLENTE,2025-12-03,,clinica_geral,6-12m
+2145,Kely Dalila De Aquino Ferreira Lico,15/07/1986,5511998579061,,(11) 99857-9061,Não informado,ADIMPLENTE,2025-11-27,,clinica_geral,6-12m
+2146,Gabriel Alves Da Silva,21/06/2003,5512981710230,,(12) 98171-0230,Não informado,INADIMPLENTE,2025-12-03,,clinica_geral,6-12m
+2148,Katia Dos Santos Curcio,05/03/1971,5512981292224,,(12) 98129-2224,Não informado,ADIMPLENTE,2025-12-15,,clinica_geral,6-12m
+2149,Luziane Nunes Da Silva,06/05/1983,5512997090935,,(12) 99709-0935,Não informado,ADIMPLENTE,2025-12-03,,clinica_geral,6-12m
+2155,Emilly Riihanna Oliveira Da Silva,20/05/2015,5512996820162,,(12) 99682-0162,Não informado,INADIMPLENTE,2025-12-08,,clinica_geral,6-12m
+2157,Rodrigo Baesso Silva,01/03/1987,5512991552565,,(12) 99155-2565,Não informado,INADIMPLENTE,2025-12-02,,clinica_geral,6-12m
+2158,Maria Augusta Da Conceicao Medeiros,17/03/2007,5512982633901,,(12) 98263-3901,Não informado,ADIMPLENTE,2025-12-05,,clinica_geral,6-12m
+2161,Caio Henrique Santana De Araujo,11/03/1994,5512997692756,,(12) 99769-2756,Não informado,ADIMPLENTE,2025-12-05,,clinica_geral,6-12m
+2163,Joao Victor Mendes Santos,08/03/2004,5512997174592,,(12) 99717-4592,Não informado,ADIMPLENTE,2025-12-09,,clinica_geral,6-12m
+2166,Karla Danielly Evangelista Medeiros,15/08/2014,5512997815445,,(12) 99781-5445,Não informado,INADIMPLENTE,2025-12-09,,clinica_geral,6-12m
+2168,Leoni Alves Fortunato,22/08/1976,5512996374150,,(12) 99637-4150,Não informado,ADIMPLENTE,2025-12-19,,clinica_geral,6-12m
+2172,Kleber Christopher Diniz Da Silva,25/06/1987,5512981494599,,(12) 98149-4599,Não informado,ADIMPLENTE,2025-12-23,,clinica_geral,6-12m
+2173,Everton,,5512982594481,,(12) 98259-4481,Não informado,INADIMPLENTE,2025-12-20,,clinica_geral,6-12m
+2177,Natacha Estefani Da Guia Quaresma,28/10/2001,5512982402612,,(12) 98240-2612,Não informado,ADIMPLENTE,2025-12-15,,clinica_geral,6-12m
+2179,Luiz Henrique Oliveira De Matos,08/07/2006,5512988288045,,(12) 98828-8045,Não informado,ADIMPLENTE,2025-12-19,,clinica_geral,6-12m
+2185,Sergio Henrique Fagundes,04/04/2000,5512981696699,,(12) 98169-6699,Não informado,INADIMPLENTE,2025-12-17,,clinica_geral,6-12m
+2188,Fernanda Helen Mauro,27/12/1996,5512988036156,,(12) 98803-6156,Não informado,ADIMPLENTE,2025-12-22,,clinica_geral,6-12m
