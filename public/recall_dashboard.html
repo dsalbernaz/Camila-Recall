@@ -568,7 +568,140 @@
       </section>
     </div>
 
-    <!-- TAB 3: LOTES -->
+    <!-- TAB 3: AGENTE -->
+    <div id="tab-agente" class="tab-pane hidden flex flex-col gap-gutter">
+      <section class="flex flex-col gap-base">
+        <h2 class="font-headline-lg text-headline-lg mb-base text-on-surface font-bold">Simulador do Agente</h2>
+        <p class="font-body-md text-on-surface-variant text-sm">Teste como a Camila responderia a uma mensagem — sem gravar no banco nem chamar o Chatwoot.</p>
+      </section>
+
+      <!-- Input -->
+      <section class="bg-surface-container-lowest rounded-2xl p-6 border border-border-light shadow-sm flex flex-col gap-5">
+        <h3 class="font-headline-sm text-headline-sm font-bold">Entrada da Simulação</h3>
+
+        <div class="flex flex-col gap-1">
+          <label class="text-[9px] text-outline font-bold uppercase tracking-wider">MENSAGEM DO PACIENTE *</label>
+          <textarea id="simMessage" rows="3" placeholder="Ex: quero sim, já tenho dentista, não preciso por ora..." class="w-full bg-surface border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all resize-none font-body-md"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1">
+            <label class="text-[9px] text-outline font-bold uppercase tracking-wider">NOME DO PACIENTE (lead simulado)</label>
+            <input id="simPatientName" type="text" placeholder="Ex: Maria" value="Paciente Teste" class="w-full bg-surface border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label class="text-[9px] text-outline font-bold uppercase tracking-wider">ID DE LEAD REAL (opcional)</label>
+            <input id="simLeadId" type="text" placeholder="UUID do lead — deixe vazio para simular" class="w-full bg-surface border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all font-mono">
+          </div>
+        </div>
+
+        <div class="bg-surface p-4 rounded-xl border border-border-light flex flex-col gap-3">
+          <h4 class="text-xs font-bold text-on-surface">Contexto histórico da conversa</h4>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="flex flex-col gap-1">
+              <label class="text-[9px] text-outline font-bold uppercase">Não reconhece (qtd)</label>
+              <input id="simHistoryNaoReconhece" type="number" min="0" max="5" value="0" class="bg-surface-container-lowest border-border-light rounded-xl p-2 text-sm text-center focus:ring-2 focus:ring-secondary">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-[9px] text-outline font-bold uppercase">Quer info (qtd)</label>
+              <input id="simHistoryQuerInfo" type="number" min="0" max="5" value="0" class="bg-surface-container-lowest border-border-light rounded-xl p-2 text-sm text-center focus:ring-2 focus:ring-secondary">
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="text-[9px] text-outline font-bold uppercase">Aceites (qtd)</label>
+              <input id="simHistoryAceite" type="number" min="0" max="5" value="0" class="bg-surface-container-lowest border-border-light rounded-xl p-2 text-sm text-center focus:ring-2 focus:ring-secondary">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <label class="inline-flex items-center gap-2 text-xs font-bold text-on-surface cursor-pointer select-none">
+            <input type="checkbox" id="simOptOut" class="rounded border-border-light text-secondary focus:ring-0">
+            Lead em opt-out
+          </label>
+          <label class="inline-flex items-center gap-2 text-xs font-bold text-on-surface cursor-pointer select-none">
+            <input type="checkbox" id="simHandoffAberto" class="rounded border-border-light text-secondary focus:ring-0">
+            Handoff humano em aberto
+          </label>
+          <label class="inline-flex items-center gap-2 text-xs font-bold text-on-surface cursor-pointer select-none">
+            <input type="checkbox" id="simLabelIaOff" class="rounded border-border-light text-secondary focus:ring-0">
+            Label ia_off ativo
+          </label>
+        </div>
+
+        <button id="btnSimulate" type="button" class="w-full md:w-auto md:ml-auto flex items-center justify-center gap-2 bg-secondary text-on-secondary px-8 py-3 rounded-xl font-label-caps text-xs font-bold hover:opacity-90 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-sm">psychology</span>
+          SIMULAR RESPOSTA DA CAMILA
+        </button>
+      </section>
+
+      <!-- Result -->
+      <section id="simResultSection" style="display:none;" class="flex flex-col gap-4">
+
+        <!-- Classification badge row -->
+        <div class="bg-surface-container-lowest rounded-2xl p-5 border border-border-light shadow-sm flex flex-col gap-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h3 class="font-headline-sm text-headline-sm font-bold">Resultado</h3>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[9px] font-bold uppercase text-outline">Determinístico:</span>
+              <span id="simDetIntent" class="inline-block px-2 py-0.5 bg-surface-container text-on-surface-variant border border-border-light rounded text-[9px] font-bold tracking-wider">—</span>
+              <span class="text-[9px] font-bold uppercase text-outline ml-2">Final:</span>
+              <span id="simFinalIntent" class="inline-block px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[9px] font-bold tracking-wider">—</span>
+              <span id="simLlmBadge" class="hidden inline-block px-2 py-0.5 bg-amber-50 text-status-warning border border-amber-100 rounded text-[9px] font-bold tracking-wider">LLM</span>
+            </div>
+          </div>
+
+          <!-- Reply bubble -->
+          <div id="simReplyWrap" class="flex flex-col gap-1">
+            <label class="text-[9px] text-outline font-bold uppercase tracking-wider">Mensagem da Camila</label>
+            <div id="simReplyMessage" class="bg-secondary-container text-on-secondary-container rounded-2xl rounded-tl-sm p-4 text-sm leading-relaxed whitespace-pre-wrap max-w-lg"></div>
+          </div>
+
+          <!-- Private note -->
+          <div id="simPrivateNoteWrap" class="hidden flex flex-col gap-1">
+            <label class="text-[9px] text-outline font-bold uppercase tracking-wider">Nota privada (para o humano)</label>
+            <div id="simPrivateNote" class="bg-surface-container p-3 rounded-xl border border-border-light text-xs text-on-surface-variant italic whitespace-pre-wrap"></div>
+          </div>
+
+          <!-- Labels + flags -->
+          <div class="flex flex-wrap gap-2 items-center">
+            <span class="text-[9px] text-outline font-bold uppercase">Labels:</span>
+            <span id="simLabels" class="text-xs text-on-surface-variant">—</span>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="bg-surface p-3 rounded-xl border border-border-light text-center">
+              <p class="text-[9px] text-outline font-bold uppercase mb-1">Status</p>
+              <p id="simStatus" class="text-xs font-bold text-on-surface">—</p>
+            </div>
+            <div class="bg-surface p-3 rounded-xl border border-border-light text-center">
+              <p class="text-[9px] text-outline font-bold uppercase mb-1">Handoff</p>
+              <p id="simHandoff" class="text-xs font-bold text-on-surface">—</p>
+            </div>
+            <div class="bg-surface p-3 rounded-xl border border-border-light text-center">
+              <p class="text-[9px] text-outline font-bold uppercase mb-1">Ignorou?</p>
+              <p id="simIgnore" class="text-xs font-bold text-on-surface">—</p>
+            </div>
+            <div class="bg-surface p-3 rounded-xl border border-border-light text-center">
+              <p class="text-[9px] text-outline font-bold uppercase mb-1">Motor LLM</p>
+              <p id="simLlmUsed" class="text-xs font-bold text-on-surface">—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Raw JSON toggle -->
+        <details class="bg-surface-container-lowest rounded-xl border border-border-light shadow-sm">
+          <summary class="p-4 text-xs font-bold text-on-surface cursor-pointer select-none">JSON completo da resposta</summary>
+          <pre id="simRawJson" class="p-4 pt-0 text-[10px] font-mono text-on-surface-variant overflow-x-auto whitespace-pre-wrap max-h-64"></pre>
+        </details>
+      </section>
+
+      <!-- Empty state -->
+      <div id="simEmptyState" class="text-center py-12 text-xs text-outline">
+        Preencha a mensagem acima e clique em Simular para ver como a Camila responderia.
+      </div>
+    </div>
+
+    <!-- TAB 4: LOTES -->
     <div id="tab-lotes" class="tab-pane hidden flex flex-col gap-gutter">
       <!-- Audit Header -->
       <section class="flex flex-col gap-base">
@@ -644,11 +777,18 @@
       <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">layers</span>
       <span class="font-label-caps text-[10px] font-bold tracking-wider mt-0.5">Lotes</span>
     </button>
+    <!-- Agente Tab -->
+    <button id="nav-agente" onclick="switchTab('agente')" class="flex flex-col items-center justify-center rounded-xl px-4 py-1.5 active:scale-90 transition-all duration-200">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">psychology</span>
+      <span class="font-label-caps text-[10px] font-bold tracking-wider mt-0.5">Agente</span>
+    </button>
   </nav>
 
   <!-- Client-side Router and Controller Code -->
   <script>
-    const API_URL = window.location.origin;
+    const API_URL = (window.location.protocol === 'file:' || !window.location.origin || window.location.origin === 'null')
+      ? 'http://localhost:3001'
+      : window.location.origin;
     let currentPage = 1;
     let totalPages = 1;
     let selectedLeadId = null;
@@ -665,7 +805,7 @@
       document.getElementById(`tab-${tab}`).classList.remove('hidden');
 
       // Highlight active nav button
-      const tabs = ['overview', 'leads', 'lotes'];
+      const tabs = ['overview', 'leads', 'lotes', 'agente'];
       tabs.forEach(t => {
         const btn = document.getElementById(`nav-${t}`);
         const icon = btn.querySelector('.material-symbols-outlined');
@@ -1209,6 +1349,109 @@
       alert(`Próximo retorno agendado com sucesso.`);
     }
 
+    const INTENT_LABELS = {
+      opt_out: 'Opt-out',
+      numero_errado: 'Número errado',
+      ja_agendado: 'Já agendado',
+      aceite_recall: 'Aceite ✓',
+      sem_interesse: 'Sem interesse',
+      objecao_prevencao: 'Objeção leve',
+      resposta_livre: 'Resposta livre',
+      nao_reconhece: 'Não reconhece',
+      quero_informacoes: 'Quer informações',
+      mensagem_vazia: 'Vazia',
+    };
+
+    async function simulateAgent() {
+      const message = document.getElementById('simMessage').value.trim();
+      if (!message) {
+        document.getElementById('simMessage').focus();
+        return;
+      }
+
+      const btn = document.getElementById('btnSimulate');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span> SIMULANDO...';
+
+      const body = {
+        message,
+        paciente_nome: document.getElementById('simPatientName').value.trim() || 'Paciente Teste',
+        opt_out: document.getElementById('simOptOut').checked,
+        handoff_aberto: document.getElementById('simHandoffAberto').checked,
+        labels: document.getElementById('simLabelIaOff').checked ? ['ia_off'] : [],
+        history: {
+          nao_reconhece_count: parseInt(document.getElementById('simHistoryNaoReconhece').value, 10) || 0,
+          quero_informacoes_count: parseInt(document.getElementById('simHistoryQuerInfo').value, 10) || 0,
+          aceite_count: parseInt(document.getElementById('simHistoryAceite').value, 10) || 0,
+        },
+      };
+
+      const leadId = document.getElementById('simLeadId').value.trim();
+      if (leadId) body.lead_id = leadId;
+
+      try {
+        const res = await fetch(`${API_URL}/api/recall/agent/simulate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          alert(`Erro na simulação: ${data.error || res.status}`);
+          return;
+        }
+
+        const d = data.decision;
+        const intentLabel = (intent) => INTENT_LABELS[intent] || intent || '—';
+
+        document.getElementById('simDetIntent').textContent = intentLabel(data.deterministicClassification?.intent);
+        document.getElementById('simFinalIntent').textContent = intentLabel(d.intent);
+
+        const llmUsed = d.llm?.used === true;
+        document.getElementById('simLlmBadge').classList.toggle('hidden', !llmUsed);
+
+        const replyWrap = document.getElementById('simReplyWrap');
+        const replyEl = document.getElementById('simReplyMessage');
+        if (d.replyMessage) {
+          replyEl.textContent = d.replyMessage;
+          replyWrap.style.display = 'flex';
+        } else {
+          replyWrap.style.display = 'none';
+        }
+
+        const noteWrap = document.getElementById('simPrivateNoteWrap');
+        const noteEl = document.getElementById('simPrivateNote');
+        if (d.privateNote) {
+          noteEl.textContent = d.privateNote;
+          noteWrap.classList.remove('hidden');
+        } else {
+          noteWrap.classList.add('hidden');
+        }
+
+        document.getElementById('simLabels').textContent =
+          d.labelsToAdd?.length ? d.labelsToAdd.join(', ') : 'Nenhuma';
+        document.getElementById('simStatus').textContent = d.status || '—';
+        document.getElementById('simHandoff').textContent = d.openHandoff ? 'Abre handoff' : 'Não';
+        document.getElementById('simIgnore').textContent = d.ignore ? `Sim (${d.ignoreReason || '?'})` : 'Não';
+        document.getElementById('simLlmUsed').textContent =
+          !d.llm ? 'Desligado' :
+          (!d.llm.enabled ? 'Desligado' :
+          (!d.llm.configured ? 'Não configurado' :
+          (d.llm.used ? `Sim (${d.llm.model || ''})` : `Fallback det.${d.llm.fallbackReason ? ' — ' + d.llm.fallbackReason : ''}`)));
+
+        document.getElementById('simRawJson').textContent = JSON.stringify(data, null, 2);
+
+        document.getElementById('simEmptyState').style.display = 'none';
+        document.getElementById('simResultSection').style.display = 'flex';
+      } catch (err) {
+        alert(`Falha ao chamar o simulador: ${err.message}`);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm">psychology</span> SIMULAR RESPOSTA DA CAMILA';
+      }
+    }
+
     async function refreshAll() {
       await loadMetrics();
       await loadDispatchConfig();
@@ -1274,6 +1517,12 @@
 
       // Follow-up Scheduling Action
       document.getElementById('btnScheduleFollowup').addEventListener('click', () => scheduleFollowup());
+
+      // Agente Simulator
+      document.getElementById('btnSimulate').addEventListener('click', () => simulateAgent());
+      document.getElementById('simMessage').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) simulateAgent();
+      });
 
       // Motor do Recall Actions
       document.getElementById('btnGenerateDispatchQueue').addEventListener('click', () => generateDispatchQueue());
