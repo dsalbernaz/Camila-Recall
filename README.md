@@ -100,6 +100,15 @@ O servidor da Recall agora suporta um agente inicial de atendimento na inbox `5`
 - abrir handoff humano apenas quando o paciente confirmar interesse
 - respeitar opt-out e numero errado
 
+Referencia funcional do agente:
+
+- [docs/recall_agent_prompt_v1.md](C:/Users/dsalb/OneDrive/Documentos/Camila%203_0/camila_recall/docs/recall_agent_prompt_v1.md)
+
+Importante:
+
+- hoje o agente ativo em producao ainda e deterministicamente controlado pelo servidor
+- o documento acima representa o comportamento-alvo e o prompt-base para a futura versao com LLM
+
 Variaveis principais:
 
 - `RECALL_AGENT_ENABLED=true`
@@ -113,6 +122,26 @@ Variaveis principais:
 - `CHATWOOT_RECALL_LABEL_OPT_OUT=recall_opt_out`
 - `CHATWOOT_RECALL_LABEL_WRONG_NUMBER=recall_numero_errado`
 - `CHATWOOT_RECALL_LABEL_SEM_INTERESSE=recall_sem_interesse`
+
+## Modo LLM hibrido
+
+O Recall agora tambem suporta um modo hibrido para a inbox `5`:
+
+- regras duras continuam no servidor
+- o LLM interpreta a mensagem e redige a resposta
+- se houver falha de API, parse ou configuracao, o sistema cai automaticamente no fluxo deterministico atual
+
+Variaveis da camada LLM:
+
+- `RECALL_LLM_ENABLED=false`
+- `RECALL_LLM_PROVIDER=openai`
+- `RECALL_LLM_MODEL=gpt-4.1-mini`
+- `RECALL_LLM_TEMPERATURE=0.4`
+- `RECALL_LLM_MAX_OUTPUT_TOKENS=500`
+- `OPENAI_API_KEY=...`
+- `OPENAI_BASE_URL=https://api.openai.com/v1`
+
+Com isso, a evolucao para LLM fica desacoplada do restante do motor de disparo e do painel.
 
 Quando houver aceite do paciente, a Recall:
 

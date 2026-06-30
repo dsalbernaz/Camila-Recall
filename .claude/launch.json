@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "recall-server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["recall_server.js"],
+      "port": 3001
+    }
+  ]
+}
