@@ -322,20 +322,22 @@ function isPositiveRecallIntent(normalizedText) {
   if (normalizedText.includes('quero informa')) {
     return false;
   }
+  // Só aceita sinais inequívocos de aceite — termos curtos/ambíguos como "sim", "quero",
+  // "pode ser" dependem de contexto e são resolvidos pelo LLM, não aqui.
   return includesAny(normalizedText, [
-    'sim',
-    'quero',
-    'tenho interesse',
     'pode marcar',
     'pode agendar',
     'quero fazer',
+    'quero marcar',
+    'quero agendar',
     'vamos marcar',
     'vamos agendar',
-    'bora',
-    'pode ser',
-    'gostaria',
     'tenho interesse sim',
     'quero aproveitar',
+    'pode ser sim',
+    'claro que sim',
+    'com certeza',
+    'aceito',
   ]);
 }
 
@@ -350,6 +352,10 @@ function buildRecallClarificationMessage() {
 
 function buildRecallPersuasionMessage() {
   return 'Que bom que está cuidando disso. Mesmo assim, a limpeza remove o tártaro que a escovação não alcança, e ele pode acabar virando um problema de gengiva ou uma cárie silenciosa.\n\nPor isso, fazer essa prevenção a cada 6 meses costuma fazer bastante diferença. Quer aproveitar a avaliação com a limpeza por R$ 100?';
+}
+
+function buildRecallTriagemMessage() {
+  return 'Ótimo! Antes de te passar para o nosso time, você tem conhecimento de algum problema de saúde bucal para eu já deixar o doutor avisado? 🦷';
 }
 
 function buildRecallHandoffMessage(lead) {
@@ -456,6 +462,8 @@ function buildRecallClassificationFromIntent(intent) {
     case 'sem_interesse':
       return { intent, status: 'concluido_sem_interesse' };
     case 'objecao_prevencao':
+      return { intent, status: 'em_atendimento_ia' };
+    case 'aceite_pre_triagem':
       return { intent, status: 'em_atendimento_ia' };
     case 'aceite_recall':
       return { intent, status: 'em_atendimento_humano', openHandoff: true };
@@ -609,19 +617,21 @@ Mensagens curtas: 2 a 4 linhas, no máximo 1 emoji.
 1. opt_out — pediu para parar de receber mensagens / não quer mais contato.
 2. numero_errado — diz que é engano, não é a pessoa, número trocado.
 3. ja_agendado — afirma que já tem horário marcado ou já agendou.
-4. aceite_recall — aceite CLARO de fazer a avaliação/limpeza (ex.: "quero", "pode marcar", "tenho interesse sim").
-5. sem_interesse — recusa firme: não tem interesse OU já faz tratamento em outro lugar.
-6. objecao_prevencao — objeção LEVE/adiável: "agora não", "depois", "tá tudo bem", "não preciso no momento".
-7. resposta_livre — mensagem ambígua, dúvida, pergunta fora de escopo, ou sem aceite claro.
+4. aceite_pre_triagem — aceite CLARO de vir à clínica, mas você ainda NÃO perguntou sobre problemas de saúde bucal. Use este intent para fazer a pergunta de triagem antes de escalar. Sua replyMessage deve ser: "Ótimo! Antes de te passar para o nosso time, você tem conhecimento de algum problema de saúde bucal para eu já deixar o doutor avisado? 🦷"
+5. aceite_recall — aceite CLARO E a pergunta de triagem já foi feita (ou o próprio paciente já mencionou um problema/condição de saúde bucal). Use este intent para fazer o handoff com o resumo completo.
+6. sem_interesse — recusa firme: não tem interesse OU já faz tratamento em outro lugar.
+7. objecao_prevencao — objeção LEVE/adiável: "agora não", "depois", "tá tudo bem", "não preciso no momento".
+8. resposta_livre — mensagem ambígua, dúvida, pergunta fora de escopo, ou sem aceite claro.
 
-Regra de ambiguidade: na dúvida entre aceite e não-aceite, NUNCA marque aceite_recall.
+Regra de ambiguidade: na dúvida entre aceite e não-aceite, NUNCA marque aceite_recall nem aceite_pre_triagem.
 Se confidence < 0.6, use "resposta_livre" ou "objecao_prevencao".
+Se o paciente mencionar espontaneamente um problema de saúde bucal junto ao aceite (ex: "sim, tenho uma dor"), vá direto para aceite_recall e inclua o problema no handoffSummary — não precisa perguntar de novo.
 
 # SAÍDA (retorne SOMENTE este JSON)
 {
   "intent": "<um dos valores acima>",
   "replyMessage": "<mensagem para o paciente, no tom e tamanho definidos. String vazia se intent for opt_out ou numero_errado e nenhuma resposta for adequada>",
-  "handoffSummary": "<1 frase objetiva para o humano: situação + dado-chave. Ex.: 'Paciente aceitou avaliação + limpeza R$100; aguardando horário.' Vazio se não houver handoff>",
+  "handoffSummary": "<1 frase objetiva para o humano: situação + dado-chave + problema de saúde bucal relatado (se houver). Ex.: 'Paciente aceitou avaliação + limpeza R$100; menciona dor no dente 36; aguardando horário.' Vazio se não houver handoff>",
   "confidence": <número de 0.0 a 1.0 indicando sua certeza na classificação do intent>
 }
 
@@ -949,6 +959,12 @@ function buildRecallAgentDecisionDeterministic(lead, inbound, history, providedC
         ...classification,
         status: 'em_atendimento_ia',
         replyMessage: buildRecallPersuasionMessage(),
+      };
+    case 'aceite_pre_triagem':
+      return {
+        ...classification,
+        status: 'em_atendimento_ia',
+        replyMessage: buildRecallTriagemMessage(),
       };
     case 'aceite_recall':
       return {
