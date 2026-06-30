@@ -1035,7 +1035,7 @@ async function buildRecallAgentDecision(client, lead, inbound, history) {
     };
   }
 
-  if (['opt_out', 'numero_errado'].includes(heuristicClassification.intent)) {
+  if (['opt_out', 'numero_errado', 'quero_informacoes', 'ja_agendado'].includes(heuristicClassification.intent)) {
     return {
       ...buildRecallAgentDecisionDeterministic(lead, inbound, history, heuristicClassification),
       llm: {
