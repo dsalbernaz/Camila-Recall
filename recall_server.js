@@ -776,13 +776,19 @@ async function generateRecallLlmDecision(client, lead, inbound, history, heurist
   }
 
   // 2) Camila v2
+  const lastAgentTurn = [...context].reverse().find((t) => t.role === 'camila');
+  const isPostTriagem = lastAgentTurn?.intent === 'aceite_pre_triagem';
+
   const camilaUserContent = [
     `Nome do paciente: ${leadName}`,
     `Heurística determinística: ${heuristicClassification.intent}`,
     `Histórico resumido: nao_reconhece=${history.nao_reconhece_count || 0}, quero_informacoes=${history.quero_informacoes_count || 0}, aceite=${history.aceite_count || 0}`,
+    isPostTriagem
+      ? '[ESTADO: pós-triagem] Sua última mensagem ao paciente foi a pergunta de triagem de saúde bucal. A mensagem atual do paciente É a resposta a essa pergunta. Classifique OBRIGATORIAMENTE como "aceite_recall". Inclua o que o paciente mencionou (problema, necessidade ou ausência de problema) no handoffSummary. Se o paciente perguntou algo fora do escopo (preço, procedimento), reconheça brevemente na replyMessage e informe que o time de Relacionamento vai ajudar com todos os detalhes.'
+      : null,
     `Contexto recente XML:\n${contextXml}`,
     `Mensagem atual do paciente: ${effectiveMessage}`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 
   const camilaPayload = await openaiResponsesCreate({
     model: RECALL_LLM_MODEL,
