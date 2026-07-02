@@ -45,12 +45,25 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Trigger Portainer redeploy
+      - name: Force redeploy via SSH
         env:
-          PORTAINER_WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
-        run: |
-          if [ -z "$PORTAINER_WEBHOOK_URL" ]; then
-            echo "PORTAINER_WEBHOOK_URL não configurada — pulando redeploy automático."
-            exit 0
-          fi
-          curl -fsS -X POST "$PORTAINER_WEBHOOK_URL"
+          SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+          SSH_PORT: ${{ secrets.DEPLOY_SSH_PORT }}
+        if: ${{ env.SSH_HOST != '' }}
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_SSH_HOST }}
+          username: ${{ secrets.DEPLOY_SSH_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_SSH_PORT || 22 }}
+          script: |
+            set -e
+            IMAGE="ghcr.io/${{ github.repository_owner }}/camila-recall:latest"
+            docker pull "$IMAGE"
+            SERVICE=$(docker service ls --format '{{.Name}}' | grep -m1 camila_recall)
+            if [ -z "$SERVICE" ]; then
+              echo "Serviço Swarm 'camila_recall' não encontrado em 'docker service ls'."
+              exit 1
+            fi
+            echo "Atualizando serviço: $SERVICE"
+            docker service update --force --image "$IMAGE" "$SERVICE"
