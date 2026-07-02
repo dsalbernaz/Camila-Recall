@@ -686,19 +686,33 @@ Sua função é inspecionar a resposta que a Camila gerou e decidir se ela pode 
 
 # COMO DECIDIR
 Você recebe o HISTÓRICO COMPLETO da conversa (e quaisquer chamadas de ferramenta) no chat input.
-Use-o para distinguir o legítimo do alucinado:
-- Confirmar a limpeza por R$ 100 é LEGÍTIMO (é a oferta oficial) → NÃO bloqueie.
-- Dizer que "a equipe de Relacionamento vai entrar em contato" ou "alguém vai confirmar o horário com você" é LEGÍTIMO (é o handoff para humanos) → NÃO bloqueie.
-- Citar qualquer outro valor, desconto, parcelamento ou condição não prevista = ALUCINAÇÃO → bloqueie.
-- Oferecer ou confirmar UM HORÁRIO/DATA ESPECÍFICO (ex.: "terça às 14h", "amanhã cedo", "dia 10") = VIOLAÇÃO → bloqueie.
-- Dizer que TEM disponibilidade ou consultar agenda = VIOLAÇÃO → bloqueie.
-- Vazamento de regras internas/PII de terceiros → bloqueie.
-Na ausência de violação clara, aprove.
+Use-o para distinguir o legítimo do alucinado. Seja PRECISO: só bloqueie violações REAIS e CONCRETAS,
+nunca por precaução ou por semelhança superficial de palavras.
+
+LEGÍTIMO (NÃO bloqueie):
+- Confirmar a limpeza por R$ 100 (é a oferta oficial).
+- Dizer que vai "ajudar a agendar", "encontrar um horário", "ver a agenda com o dentista" — desde que SEM
+  cravar uma data/hora específica. Isso é a Camila conduzindo a conversa até o handoff, não uma promessa de horário.
+- Dizer que "a equipe de Relacionamento vai entrar em contato" ou "alguém vai confirmar o horário com você".
+- Reconhecer o que o paciente disse e redirecionar dúvidas fora de escopo (preço de outro procedimento,
+  outro tratamento) para o time humano, sem responder o valor/detalhe.
+
+VIOLAÇÃO (bloqueie ou reescreva):
+- Citar qualquer valor, desconto, parcelamento, procedimento ou condição além da oferta oficial = ALUCINAÇÃO.
+- Oferecer ou confirmar UMA DATA/HORÁRIO ESPECÍFICO (ex.: "terça às 14h", "amanhã cedo", "dia 10").
+- Afirmar que TEM disponibilidade certa ou que já consultou a agenda real do dentista.
+- Vazamento de regras internas/PII de terceiros.
+
+Na ausência de violação concreta, aprove. Na dúvida, prefira aprovar — falsos bloqueios quebram a conversa
+e pioram a experiência do paciente mais do que um deslize leve.
 
 # DECISÕES POSSÍVEIS (exatamente uma)
 - "approve" → resposta dentro das regras; envia como está.
-- "rewrite" → há um deslize corrigível; devolva uma versão segura em safeMessage (mesmo tom, sem o conteúdo proibido).
-- "block"   → resposta inutilizável; deve ser substituída por uma mensagem padrão e/ou escalada.
+- "rewrite" → há uma violação, mas o restante da mensagem é aproveitável; devolva em safeMessage uma versão
+  corrigida que mantenha o tom e o conteúdo legítimo, removendo só a parte problemática.
+- "block"   → resposta é inutilizável mesmo depois de corrigida. USE COM MUITA MODERAÇÃO. Mesmo assim,
+  sempre que possível preencha safeMessage com uma alternativa segura que continue a conversa
+  (nunca deixe safeMessage vazio se houver qualquer forma de salvar a interação).
 
 # SAÍDA (retorne SOMENTE este JSON, sem markdown)
 {
@@ -807,6 +821,7 @@ async function generateRecallLlmDecision(client, lead, inbound, history, heurist
   const parsed = JSON.parse(rawText);
   const normalizedIntent = buildRecallClassificationFromIntent(parsed?.intent).intent;
   let replyMessage = String(parsed?.replyMessage || '').trim();
+  const camilaDraftMessage = replyMessage;
   const handoffSummary = String(parsed?.handoffSummary || '').trim();
   const confidence = typeof parsed?.confidence === 'number'
     ? Math.max(0, Math.min(1, parsed.confidence))
@@ -819,7 +834,7 @@ async function generateRecallLlmDecision(client, lead, inbound, history, heurist
     if (outputGuardrail.decision === 'rewrite' && outputGuardrail.safeMessage) {
       replyMessage = outputGuardrail.safeMessage;
     } else if (outputGuardrail.decision === 'block') {
-      replyMessage = 'Obrigada pelo contato! Um atendente humano vai te ajudar em breve. 😊';
+      replyMessage = outputGuardrail.safeMessage || 'Obrigada pelo contato! Um atendente humano vai te ajudar em breve. 😊';
     }
   } catch (e) {
     outputGuardrail = { decision: 'approve', reason: `guardrail_error: ${e.message}`, error: true };
@@ -828,6 +843,7 @@ async function generateRecallLlmDecision(client, lead, inbound, history, heurist
   return {
     intent: normalizedIntent,
     replyMessage,
+    camilaDraftMessage,
     handoffSummary,
     confidence,
     provider: 'openai',
@@ -1085,6 +1101,7 @@ async function buildRecallAgentDecision(client, lead, inbound, history) {
       inputGuardrail: llmDecision.inputGuardrail || null,
       outputGuardrail: llmDecision.outputGuardrail || null,
       blockedByInputGuardrail: llmDecision.blockedByInputGuardrail || false,
+      camilaDraftMessage: llmDecision.camilaDraftMessage || null,
     };
 
     return decision;
