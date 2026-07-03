@@ -42,6 +42,8 @@ const RECALL_NUDGE_WINDOW_HOURS = Math.min(23, Math.max(1, parseInt(process.env.
 const RECALL_CLOSURE_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_CLOSURE_DELAY_DAYS, 10) || 3));
 const RECALL_COOLDOWN_SEM_RESPOSTA_DAYS = Math.max(1, parseInt(process.env.RECALL_COOLDOWN_SEM_RESPOSTA_DAYS, 10) || 60);
 const RECALL_COOLDOWN_SEM_INTERESSE_DAYS = Math.max(1, parseInt(process.env.RECALL_COOLDOWN_SEM_INTERESSE_DAYS, 10) || 180);
+const RECALL_CRON_ENABLED = String(process.env.RECALL_CRON_ENABLED || 'true').trim().toLowerCase() !== 'false';
+const RECALL_CRON_INTERVAL_MS = Math.max(60000, parseInt(process.env.RECALL_CRON_INTERVAL_MS, 10) || 15 * 60 * 1000);
 const META_WHATSAPP_TOKEN = process.env.META_WHATSAPP_TOKEN || '';
 const META_PHONE_NUMBER_ID = process.env.META_PHONE_NUMBER_ID || '';
 const HAS_RECALL_META_TOKEN = Boolean(String(process.env.RECALL_META_WHATSAPP_TOKEN || '').trim());
@@ -1596,6 +1598,157 @@ async function reactivateRecallLead(client, lead) {
   );
 }
 
+// Gera itens de fila para o lembrete (recall_lembrete_2), cobrindo os dois caminhos:
+// nunca respondeu à abertura, ou respondeu + recebeu nudge + continuou em silêncio.
+// Usado tanto pelo endpoint manual quanto pelo cron.
+async function generateRecallLembreteQueueItems(client, limit) {
+  const neverResponded = await client.query(
+    `SELECT
+       l.id, l.paciente_nome, l.telefone, l.origem_segmento, l.coorte,
+       l.ultimo_atendimento, l.last_import_batch_id,
+       max(e.created_at) AS last_opening_sent_at
+     FROM ${RECALL_SCHEMA}.recall_leads l
+     JOIN ${RECALL_SCHEMA}.recall_events e
+       ON e.lead_id = l.id
+      AND e.event_type = 'dispatch_executado'
+      AND coalesce(e.payload->>'stage', 'abertura') = 'abertura'
+     WHERE l.status = 'pendente'
+       AND l.respondeu = false
+       AND l.opt_out = false
+       AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+         WHERE q.lead_id = l.id AND q.queue_status IN ('pendente', 'reservado')
+       )
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e2
+         WHERE e2.lead_id = l.id AND e2.event_type = 'dispatch_executado'
+           AND coalesce(e2.payload->>'stage', 'abertura') = 'lembrete'
+       )
+     GROUP BY l.id, l.paciente_nome, l.telefone, l.origem_segmento, l.coorte, l.ultimo_atendimento, l.last_import_batch_id
+     HAVING max(e.created_at) <= now() - make_interval(days => ${RECALL_REMINDER_DELAY_DAYS})
+     ORDER BY max(e.created_at) ASC
+     LIMIT $1`,
+    [limit]
+  );
+
+  const rows = neverResponded.rows.map((r) => ({ ...r }));
+  const seenIds = new Set(rows.map((r) => r.id));
+  const engagedColdRows = await findRecallEngagedColdLembreteCandidates(client, limit);
+  for (const row of engagedColdRows) {
+    if (!seenIds.has(row.id)) {
+      rows.push({ ...row, last_opening_sent_at: null });
+      seenIds.add(row.id);
+    }
+  }
+
+  let inserted = 0;
+  for (const row of rows.slice(0, limit)) {
+    const templateName = getTemplateNameForStage('lembrete');
+    await client.query(
+      `INSERT INTO ${RECALL_SCHEMA}.recall_dispatch_queue_items (lead_id, queue_status, motivo, snapshot)
+       VALUES ($1, 'pendente', 'fila_disparo_lembrete', $2::jsonb)`,
+      [
+        row.id,
+        JSON.stringify({
+          stage: 'lembrete',
+          template_name: templateName,
+          paciente_nome: row.paciente_nome,
+          telefone: row.telefone,
+          origem_segmento: row.origem_segmento,
+          coorte: row.coorte,
+          ultimo_atendimento: row.ultimo_atendimento,
+          last_import_batch_id: row.last_import_batch_id,
+          last_opening_sent_at: row.last_opening_sent_at || null,
+        }),
+      ]
+    );
+    inserted += 1;
+  }
+  return { inserted };
+}
+
+async function executePendingRecallDispatchQueue(client, limit) {
+  const candidateRows = await client.query(
+    `SELECT id
+     FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items
+     WHERE queue_status IN ('pendente', 'reservado')
+     ORDER BY
+       CASE queue_status WHEN 'reservado' THEN 0 WHEN 'pendente' THEN 1 ELSE 2 END,
+       created_at ASC
+     LIMIT $1`,
+    [limit]
+  );
+  const results = [];
+  for (const row of candidateRows.rows) {
+    const result = await executeDispatchQueueItem(client, row.id);
+    results.push({ queueItemId: row.id, ...result });
+  }
+  return {
+    attempted: candidateRows.rows.length,
+    executed: results.filter((r) => r.success).length,
+    blocked: results.filter((r) => !r.success).length,
+    results,
+  };
+}
+
+async function runRecallFollowupCronTick() {
+  if (!isWithinAllowedWindow()) {
+    return { skipped: true, reason: 'fora_janela_horario' };
+  }
+
+  const client = new Client({ connectionString });
+  await client.connect();
+  const summary = { nudges: 0, lembretesGerados: 0, lembretesExecutados: 0, encerrados: 0, reativados: 0 };
+  try {
+    const nudgeCandidates = await findRecallNudgeCandidates(client, RECALL_MAX_SENDS_PER_RUN);
+    for (const lead of nudgeCandidates) {
+      const result = await sendRecallNudge(client, lead);
+      if (result.success) summary.nudges += 1;
+    }
+
+    const generated = await generateRecallLembreteQueueItems(client, RECALL_MAX_SENDS_PER_RUN);
+    summary.lembretesGerados = generated.inserted;
+
+    const executed = await executePendingRecallDispatchQueue(client, RECALL_MAX_SENDS_PER_RUN);
+    summary.lembretesExecutados = executed.executed;
+
+    const closureCandidates = await findRecallClosureCandidates(client, 50);
+    for (const lead of closureCandidates) {
+      await closeRecallLeadAsNoResponse(client, lead);
+      summary.encerrados += 1;
+    }
+
+    const reactivationCandidates = await findRecallReactivationCandidates(client, 50);
+    for (const lead of reactivationCandidates) {
+      await reactivateRecallLead(client, lead);
+      summary.reativados += 1;
+    }
+
+    return summary;
+  } finally {
+    await client.end();
+  }
+}
+
+function startRecallFollowupCron() {
+  if (!RECALL_CRON_ENABLED) {
+    console.log('[recall-cron] desabilitado via RECALL_CRON_ENABLED=false');
+    return;
+  }
+  console.log(`[recall-cron] ativo, intervalo de ${RECALL_CRON_INTERVAL_MS / 1000}s`);
+  setInterval(() => {
+    runRecallFollowupCronTick()
+      .then((summary) => {
+        if (summary?.skipped) return;
+        console.log('[recall-cron] tick:', JSON.stringify(summary));
+      })
+      .catch((error) => {
+        console.error('[recall-cron] erro:', error.message);
+      });
+  }, RECALL_CRON_INTERVAL_MS);
+}
+
 function buildDispatchConfig() {
   return {
     schema: RECALL_SCHEMA,
@@ -2894,4 +3047,5 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Recall Dashboard Server listening at http://localhost:${PORT}/recall`);
+  startRecallFollowupCron();
 });
