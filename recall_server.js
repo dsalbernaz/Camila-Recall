@@ -2571,7 +2571,12 @@ const server = http.createServer(async (req, res) => {
       const onlyReady = parsedUrl.searchParams.get('onlyReady') === 'true';
       const latestBatchOnly = parsedUrl.searchParams.get('latestBatchOnly') === 'true';
       const onlyFollowupDue = parsedUrl.searchParams.get('onlyFollowupDue') === 'true';
+      const onlyOpenHandoffs = parsedUrl.searchParams.get('onlyOpenHandoffs') === 'true';
 
+      if (onlyOpenHandoffs) {
+        filters.push('handoff_resolved = false');
+        filters.push('handoff_at IS NOT NULL');
+      }
       if (status) {
         filters.push(`status = $${idx++}`);
         params.push(status);

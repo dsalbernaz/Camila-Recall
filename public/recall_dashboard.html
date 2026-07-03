@@ -199,6 +199,7 @@
             </div>
             <div class="text-[11px] text-outline">Conversas em atendimento humano que ainda não foram resolvidas.</div>
             <div class="attention-list flex flex-col gap-2 mt-1" id="attentionHandoffs"></div>
+            <button onclick="viewAllOpenHandoffs()" type="button" class="text-[10px] font-bold text-status-warning hover:underline text-left mt-1">Ver todos os handoffs abertos →</button>
           </div>
           
           <!-- Card 3: Problemas de Base -->
@@ -325,6 +326,7 @@
           <div class="flex gap-2">
             <button class="quick-filter px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all" id="quickReadyBtn" type="button">Somente prontos</button>
             <button class="quick-filter px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all" id="quickLatestBtn" type="button">Somente último lote</button>
+            <button class="quick-filter px-3 py-1.5 bg-surface-container hover:bg-surface-variant text-on-surface-variant text-xs font-semibold rounded-lg active:scale-95 transition-all" id="quickHandoffsBtn" type="button">Handoffs abertos</button>
           </div>
         </div>
         
@@ -398,11 +400,14 @@
             <select id="statusSelect" class="w-full bg-transparent border-none p-0 px-1 font-body-md text-xs text-on-surface focus:ring-0">
               <option value="">Todos</option>
               <option value="pendente">Pendente</option>
-              <option value="followup_due">Retorno ate hoje</option>
+              <option value="em_atendimento_ia">Em atendimento (IA)</option>
               <option value="em_atendimento_humano">Em atendimento humano</option>
-              <option value="respondido">Respondido</option>
+              <option value="agendado">Agendado (aceite)</option>
+              <option value="concluido_sem_interesse">Sem interesse</option>
+              <option value="sem_resposta">Sem resposta (encerrado)</option>
               <option value="opt_out">Opt-out</option>
               <option value="erro">Erro</option>
+              <option value="followup_due">Retorno até hoje</option>
             </select>
           </div>
           <div class="bg-surface border border-border-light p-2 rounded-xl">
@@ -456,8 +461,11 @@
                 <label class="text-[9px] text-outline font-bold">STATUS OPERACIONAL</label>
                 <select id="detailStatus" class="w-full bg-surface-container-lowest border-border-light rounded-xl p-3 text-sm focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
                   <option value="pendente">Pendente</option>
+                  <option value="em_atendimento_ia">Em atendimento (IA)</option>
                   <option value="em_atendimento_humano">Em atendimento humano</option>
-                  <option value="respondido">Respondido</option>
+                  <option value="agendado">Agendado (aceite)</option>
+                  <option value="concluido_sem_interesse">Sem interesse</option>
+                  <option value="sem_resposta">Sem resposta (encerrado)</option>
                   <option value="opt_out">Opt-out</option>
                   <option value="erro">Erro</option>
                 </select>
@@ -794,6 +802,7 @@
     let selectedLeadId = null;
     let onlyReady = false;
     let latestBatchOnly = false;
+    let onlyOpenHandoffs = false;
     let lastLoadedBatchId = '';
     let dispatchConfig = null;
 
@@ -826,6 +835,16 @@
       selectedLeadId = leadId;
       switchTab('leads');
       await loadLeadDetail(leadId);
+    }
+
+    function viewAllOpenHandoffs() {
+      onlyOpenHandoffs = true;
+      onlyReady = false;
+      latestBatchOnly = false;
+      currentPage = 1;
+      switchTab('leads');
+      updateQuickFilterButtons();
+      loadLeads();
     }
 
     // Format current date in Header dynamically
@@ -869,11 +888,12 @@
       if (search) params.set('search', search);
       if (segmento) params.set('segmento', segmento);
       if (coorte) params.set('coorte', coorte);
-      if (status) params.set('status', status);
+      if (status && status !== 'followup_due') params.set('status', status);
       if (batchId) params.set('batchId', batchId);
-      
+
       if (onlyReady) params.set('onlyReady', 'true');
       if (latestBatchOnly) params.set('latestBatchOnly', 'true');
+      if (onlyOpenHandoffs) params.set('onlyOpenHandoffs', 'true');
       if (status === 'followup_due') params.set('onlyFollowupDue', 'true');
       return params.toString();
     }
@@ -884,6 +904,9 @@
       
       document.getElementById('quickLatestBtn').classList.toggle('bg-secondary', latestBatchOnly);
       document.getElementById('quickLatestBtn').classList.toggle('text-on-secondary', latestBatchOnly);
+
+      document.getElementById('quickHandoffsBtn').classList.toggle('bg-secondary', onlyOpenHandoffs);
+      document.getElementById('quickHandoffsBtn').classList.toggle('text-on-secondary', onlyOpenHandoffs);
     }
 
     async function loadLeads() {
@@ -1537,6 +1560,12 @@
       });
       document.getElementById('quickLatestBtn').addEventListener('click', () => {
         latestBatchOnly = !latestBatchOnly;
+        currentPage = 1;
+        updateQuickFilterButtons();
+        loadLeads();
+      });
+      document.getElementById('quickHandoffsBtn').addEventListener('click', () => {
+        onlyOpenHandoffs = !onlyOpenHandoffs;
         currentPage = 1;
         updateQuickFilterButtons();
         loadLeads();
