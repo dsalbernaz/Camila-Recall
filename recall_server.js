@@ -38,6 +38,10 @@ const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 
 const RECALL_TEMPLATE_LANGUAGE = String(process.env.RECALL_TEMPLATE_LANGUAGE || 'pt_BR').trim();
 const RECALL_TEMPLATE_USE_FIRST_NAME = String(process.env.RECALL_TEMPLATE_USE_FIRST_NAME || 'true').trim().toLowerCase() !== 'false';
 const RECALL_REMINDER_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_REMINDER_DELAY_DAYS, 10) || 3));
+const RECALL_NUDGE_WINDOW_HOURS = Math.min(23, Math.max(1, parseInt(process.env.RECALL_NUDGE_WINDOW_HOURS, 10) || 21));
+const RECALL_CLOSURE_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_CLOSURE_DELAY_DAYS, 10) || 3));
+const RECALL_COOLDOWN_SEM_RESPOSTA_DAYS = Math.max(1, parseInt(process.env.RECALL_COOLDOWN_SEM_RESPOSTA_DAYS, 10) || 60);
+const RECALL_COOLDOWN_SEM_INTERESSE_DAYS = Math.max(1, parseInt(process.env.RECALL_COOLDOWN_SEM_INTERESSE_DAYS, 10) || 180);
 const META_WHATSAPP_TOKEN = process.env.META_WHATSAPP_TOKEN || '';
 const META_PHONE_NUMBER_ID = process.env.META_PHONE_NUMBER_ID || '';
 const HAS_RECALL_META_TOKEN = Boolean(String(process.env.RECALL_META_WHATSAPP_TOKEN || '').trim());
@@ -1416,6 +1420,182 @@ async function executeDispatchQueueItem(client, queueItemId) {
   };
 }
 
+// ===== Régua de follow-up: nudge de janela, lembrete estendido, encerramento e reentrada =====
+
+function buildRecallNudgeMessage(lead) {
+  const firstName = getLeadFirstName(lead.paciente_nome);
+  return `Oi, ${firstName}! Ficou com alguma dúvida sobre a avaliação e a limpeza por R$ 100? Se quiser, é só me chamar por aqui 😊`;
+}
+
+async function findRecallNudgeCandidates(client, limit) {
+  const result = await client.query(
+    `SELECT
+       l.id, l.paciente_nome, l.telefone, l.chatwoot_conversation_id,
+       last_inbound.created_at AS last_inbound_at
+     FROM ${RECALL_SCHEMA}.recall_leads l
+     JOIN LATERAL (
+       SELECT created_at
+       FROM ${RECALL_SCHEMA}.recall_events e
+       WHERE e.lead_id = l.id AND e.event_type = 'chatwoot_inbound'
+       ORDER BY e.id DESC
+       LIMIT 1
+     ) last_inbound ON true
+     WHERE l.status = 'em_atendimento_ia'
+       AND l.respondeu = true
+       AND l.opt_out = false
+       AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       AND last_inbound.created_at <= now() - make_interval(hours => ${RECALL_NUDGE_WINDOW_HOURS})
+       AND last_inbound.created_at > now() - interval '24 hours'
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e2
+         WHERE e2.lead_id = l.id
+           AND e2.event_type = 'recall_nudge_enviado'
+           AND e2.created_at > last_inbound.created_at
+       )
+     ORDER BY last_inbound.created_at ASC
+     LIMIT $1`,
+    [limit]
+  );
+  return result.rows;
+}
+
+async function sendRecallNudge(client, lead) {
+  if (!lead.chatwoot_conversation_id) {
+    return { success: false, reason: 'sem_conversation_id' };
+  }
+  const gating = canSendLeadNow(lead);
+  if (!gating.allowed) {
+    return { success: false, reason: gating.reason };
+  }
+  const message = buildRecallNudgeMessage(lead);
+  await postChatwootConversationMessage(lead.chatwoot_conversation_id, message);
+  await client.query(
+    `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+     VALUES ($1, 'recall_nudge_enviado', $2::jsonb)`,
+    [lead.id, JSON.stringify({ message, conversation_id: lead.chatwoot_conversation_id })]
+  );
+  return { success: true, message };
+}
+
+async function findRecallEngagedColdLembreteCandidates(client, limit) {
+  const result = await client.query(
+    `SELECT l.id, l.paciente_nome, l.telefone, l.origem_segmento, l.coorte, l.ultimo_atendimento, l.last_import_batch_id
+     FROM ${RECALL_SCHEMA}.recall_leads l
+     JOIN LATERAL (
+       SELECT created_at
+       FROM ${RECALL_SCHEMA}.recall_events e
+       WHERE e.lead_id = l.id AND e.event_type = 'recall_nudge_enviado'
+       ORDER BY e.id DESC
+       LIMIT 1
+     ) last_nudge ON true
+     WHERE l.status = 'em_atendimento_ia'
+       AND l.respondeu = true
+       AND l.opt_out = false
+       AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       AND last_nudge.created_at <= now() - make_interval(days => ${RECALL_REMINDER_DELAY_DAYS})
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e2
+         WHERE e2.lead_id = l.id AND e2.event_type = 'chatwoot_inbound'
+           AND e2.created_at > last_nudge.created_at
+       )
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e3
+         WHERE e3.lead_id = l.id AND e3.event_type = 'dispatch_executado'
+           AND coalesce(e3.payload->>'stage', 'abertura') = 'lembrete'
+           AND e3.created_at > last_nudge.created_at
+       )
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+         WHERE q.lead_id = l.id AND q.queue_status IN ('pendente', 'reservado')
+       )
+     ORDER BY last_nudge.created_at ASC
+     LIMIT $1`,
+    [limit]
+  );
+  return result.rows;
+}
+
+async function findRecallClosureCandidates(client, limit) {
+  const result = await client.query(
+    `SELECT l.id, l.paciente_nome, l.status
+     FROM ${RECALL_SCHEMA}.recall_leads l
+     JOIN LATERAL (
+       SELECT created_at
+       FROM ${RECALL_SCHEMA}.recall_events e
+       WHERE e.lead_id = l.id AND e.event_type = 'dispatch_executado'
+         AND coalesce(e.payload->>'stage', 'abertura') = 'lembrete'
+       ORDER BY e.id DESC
+       LIMIT 1
+     ) last_lembrete ON true
+     WHERE l.status NOT IN ('sem_resposta', 'agendado', 'concluido_sem_interesse', 'opt_out', 'erro', 'em_atendimento_humano')
+       AND l.opt_out = false
+       AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       AND last_lembrete.created_at <= now() - make_interval(days => ${RECALL_CLOSURE_DELAY_DAYS})
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e2
+         WHERE e2.lead_id = l.id AND e2.event_type = 'chatwoot_inbound'
+           AND e2.created_at > last_lembrete.created_at
+       )
+     ORDER BY last_lembrete.created_at ASC
+     LIMIT $1`,
+    [limit]
+  );
+  return result.rows;
+}
+
+async function closeRecallLeadAsNoResponse(client, lead) {
+  await client.query(
+    `UPDATE ${RECALL_SCHEMA}.recall_leads
+     SET status = 'sem_resposta', updated_at = now()
+     WHERE id = $1`,
+    [lead.id]
+  );
+  await client.query(
+    `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+     VALUES ($1, 'recall_encerrado_sem_resposta', $2::jsonb)`,
+    [lead.id, JSON.stringify({ previous_status: lead.status })]
+  );
+}
+
+async function findRecallReactivationCandidates(client, limit) {
+  const result = await client.query(
+    `SELECT l.id, l.paciente_nome, l.status, last_status_event.created_at AS status_since
+     FROM ${RECALL_SCHEMA}.recall_leads l
+     JOIN LATERAL (
+       SELECT created_at FROM ${RECALL_SCHEMA}.recall_events e
+       WHERE e.lead_id = l.id
+         AND e.event_type IN ('recall_encerrado_sem_resposta', 'chatwoot_agent_reply')
+       ORDER BY e.id DESC
+       LIMIT 1
+     ) last_status_event ON true
+     WHERE l.opt_out = false
+       AND (
+         (l.status = 'sem_resposta' AND last_status_event.created_at <= now() - make_interval(days => ${RECALL_COOLDOWN_SEM_RESPOSTA_DAYS}))
+         OR
+         (l.status = 'concluido_sem_interesse' AND last_status_event.created_at <= now() - make_interval(days => ${RECALL_COOLDOWN_SEM_INTERESSE_DAYS}))
+       )
+     ORDER BY last_status_event.created_at ASC
+     LIMIT $1`,
+    [limit]
+  );
+  return result.rows;
+}
+
+async function reactivateRecallLead(client, lead) {
+  await client.query(
+    `UPDATE ${RECALL_SCHEMA}.recall_leads
+     SET status = 'pendente', respondeu = false, handoff_at = NULL, handoff_resolved = false,
+         chatwoot_conversation_id = NULL, updated_at = now()
+     WHERE id = $1`,
+    [lead.id]
+  );
+  await client.query(
+    `INSERT INTO ${RECALL_SCHEMA}.recall_events (lead_id, event_type, payload)
+     VALUES ($1, 'recall_reativado', $2::jsonb)`,
+    [lead.id, JSON.stringify({ previous_status: lead.status })]
+  );
+}
+
 function buildDispatchConfig() {
   return {
     schema: RECALL_SCHEMA,
@@ -1956,6 +2136,14 @@ const server = http.createServer(async (req, res) => {
              LIMIT ${limit}`,
             params
           );
+          const engagedColdRows = await findRecallEngagedColdLembreteCandidates(client, limit);
+          const seenIds = new Set(candidates.rows.map((r) => r.id));
+          for (const row of engagedColdRows) {
+            if (!seenIds.has(row.id)) {
+              candidates.rows.push({ ...row, last_opening_sent_at: null });
+              seenIds.add(row.id);
+            }
+          }
         } else {
           candidates = await client.query(
             `SELECT
@@ -2030,6 +2218,64 @@ const server = http.createServer(async (req, res) => {
       } catch (error) {
         await client.query('ROLLBACK').catch(() => {});
         throw error;
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (pathname === '/api/recall/followup/nudge/run' && req.method === 'POST') {
+      const body = await parseJsonBody(req);
+      const limit = Math.min(RECALL_MAX_SENDS_PER_RUN, Math.max(1, parseInt(body.limit, 10) || RECALL_MAX_SENDS_PER_RUN));
+      const client = new Client({ connectionString });
+      await client.connect();
+      try {
+        const candidates = await findRecallNudgeCandidates(client, limit);
+        const results = [];
+        for (const lead of candidates) {
+          const result = await sendRecallNudge(client, lead);
+          results.push({ leadId: lead.id, ...result });
+        }
+        sendJson(res, 200, {
+          success: true,
+          candidates: candidates.length,
+          sent: results.filter((r) => r.success).length,
+          results,
+        });
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (pathname === '/api/recall/followup/close-stale/run' && req.method === 'POST') {
+      const body = await parseJsonBody(req);
+      const limit = Math.min(200, Math.max(1, parseInt(body.limit, 10) || 50));
+      const client = new Client({ connectionString });
+      await client.connect();
+      try {
+        const candidates = await findRecallClosureCandidates(client, limit);
+        for (const lead of candidates) {
+          await closeRecallLeadAsNoResponse(client, lead);
+        }
+        sendJson(res, 200, { success: true, closed: candidates.length, leadIds: candidates.map((l) => l.id) });
+      } finally {
+        await client.end();
+      }
+      return;
+    }
+
+    if (pathname === '/api/recall/followup/reactivate/run' && req.method === 'POST') {
+      const body = await parseJsonBody(req);
+      const limit = Math.min(200, Math.max(1, parseInt(body.limit, 10) || 50));
+      const client = new Client({ connectionString });
+      await client.connect();
+      try {
+        const candidates = await findRecallReactivationCandidates(client, limit);
+        for (const lead of candidates) {
+          await reactivateRecallLead(client, lead);
+        }
+        sendJson(res, 200, { success: true, reactivated: candidates.length, leadIds: candidates.map((l) => l.id) });
       } finally {
         await client.end();
       }
