@@ -919,7 +919,7 @@ function buildRecallAgentDecisionDeterministic(lead, inbound, history, providedC
 // mensagens próprias — não é texto livre, então não passam pelo LLM.
 function matchRecallTemplateButton(content) {
   const n = normalizeRecallText(content);
-  if (n === 'quero informacoes') return 'quero_informacoes';
+  if (n === 'quero informacoes' || n === 'quero mais informacoes') return 'quero_informacoes';
   if (n === 'nao reconheco') return 'nao_reconhece';
   return null;
 }
