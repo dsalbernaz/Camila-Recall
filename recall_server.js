@@ -11,7 +11,7 @@ const RECALL_SCHEMA = process.env.RECALL_DB_SCHEMA || 'recall';
 const connectionString = `postgresql://${process.env.PGUSER || 'postgres'}:${process.env.PGPASSWORD}@${process.env.PGHOST || 'db.nndduotjbyunggamqnyh.supabase.co'}:${process.env.PGPORT || 5432}/${process.env.PGDATABASE || 'postgres'}`;
 const RECALL_DRY_RUN = process.env.RECALL_DRY_RUN !== 'false';
 const RECALL_ENABLE_REAL_SEND = process.env.RECALL_ENABLE_REAL_SEND === 'true';
-const RECALL_TEST_DESTINATION_PHONE = String(process.env.RECALL_TEST_DESTINATION_PHONE || '5512991286873').trim();
+const RECALL_TEST_DESTINATION_PHONE = String(process.env.RECALL_TEST_DESTINATION_PHONE || '').trim();
 const RECALL_ALLOWED_PHONES = new Set(
   String(process.env.RECALL_ALLOWED_PHONES || RECALL_TEST_DESTINATION_PHONE)
     .split(',')
