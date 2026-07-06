@@ -304,8 +304,12 @@ function extractChatwootInbound(rawBody) {
 
 async function logMarketingTemplateSendIfMatch(inbound) {
   if (inbound.event !== 'message_created' || !inbound.isOutgoing) return;
-  const normalized = normalizeRecallText(inbound.content);
-  if (!normalized.includes(MARKETING_TEMPLATE_MARKER)) return;
+
+  const templateParams = inbound.raw?.additional_attributes?.template_params;
+  const templateName = String(templateParams?.name || '').trim().toLowerCase();
+  const matchesByTemplateName = templateName === MARKETING_TEMPLATE_NAME.toLowerCase();
+  const matchesByContent = normalizeRecallText(inbound.content).includes(MARKETING_TEMPLATE_MARKER);
+  if (!matchesByTemplateName && !matchesByContent) return;
 
   await runQuery(
     `INSERT INTO ${RECALL_SCHEMA}.marketing_template_sends
