@@ -38,6 +38,9 @@ const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 
 const RECALL_TEMPLATE_LANGUAGE = String(process.env.RECALL_TEMPLATE_LANGUAGE || 'pt_BR').trim();
 const RECALL_TEMPLATE_USE_FIRST_NAME = String(process.env.RECALL_TEMPLATE_USE_FIRST_NAME || 'true').trim().toLowerCase() !== 'false';
 const RECALL_REMINDER_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_REMINDER_DELAY_DAYS, 10) || 3));
+const MARKETING_TEMPLATE_NAME = String(process.env.MARKETING_TEMPLATE_NAME || 'profilaxia').trim();
+const MARKETING_TEMPLATE_MARKER = String(process.env.MARKETING_TEMPLATE_MARKER || 'campanha de profilaxia orthodontic').trim().toLowerCase();
+const MARKETING_WEEKLY_LIMIT = Math.max(1, parseInt(process.env.MARKETING_WEEKLY_LIMIT, 10) || 250);
 const RECALL_NUDGE_WINDOW_HOURS = Math.min(23, Math.max(1, parseInt(process.env.RECALL_NUDGE_WINDOW_HOURS, 10) || 21));
 const RECALL_CLOSURE_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_CLOSURE_DELAY_DAYS, 10) || 3));
 const RECALL_COOLDOWN_SEM_RESPOSTA_DAYS = Math.max(1, parseInt(process.env.RECALL_COOLDOWN_SEM_RESPOSTA_DAYS, 10) || 60);
@@ -287,13 +290,46 @@ function extractChatwootInbound(rawBody) {
   return {
     event,
     isIncoming,
+    isOutgoing: messageType === 1 || messageType === 'outgoing',
     content,
     inboxId: inboxId != null ? String(inboxId) : null,
     conversationId: conversationId != null ? Number(conversationId) : null,
     contactId: contactId != null ? String(contactId) : null,
+    contactName: sender.name || conversation.meta?.sender?.name || null,
     phone: normalizePhone(phoneRaw),
     labels,
     raw: body,
+  };
+}
+
+async function logMarketingTemplateSendIfMatch(inbound) {
+  if (inbound.event !== 'message_created' || !inbound.isOutgoing) return;
+  const normalized = normalizeRecallText(inbound.content);
+  if (!normalized.includes(MARKETING_TEMPLATE_MARKER)) return;
+
+  await runQuery(
+    `INSERT INTO ${RECALL_SCHEMA}.marketing_template_sends
+       (template_name, conversation_id, contact_phone, contact_name, inbox_id)
+     VALUES ($1, $2, $3, $4, $5)`,
+    [MARKETING_TEMPLATE_NAME, inbound.conversationId, inbound.phone, inbound.contactName, inbound.inboxId]
+  );
+}
+
+async function getMarketingWeeklySummary() {
+  const rows = await runQuery(
+    `SELECT count(*)::int AS sent
+     FROM ${RECALL_SCHEMA}.marketing_template_sends
+     WHERE template_name = $1
+       AND sent_at >= date_trunc('week', now())`,
+    [MARKETING_TEMPLATE_NAME]
+  );
+  const sent = rows[0]?.sent || 0;
+  return {
+    templateName: MARKETING_TEMPLATE_NAME,
+    sent,
+    limit: MARKETING_WEEKLY_LIMIT,
+    remaining: Math.max(0, MARKETING_WEEKLY_LIMIT - sent),
+    overLimit: sent >= MARKETING_WEEKLY_LIMIT,
   };
 }
 
@@ -2218,8 +2254,15 @@ const server = http.createServer(async (req, res) => {
 
     if (pathname === '/api/recall/chatwoot/webhook' && req.method === 'POST') {
       const body = await parseJsonBody(req);
+      await logMarketingTemplateSendIfMatch(extractChatwootInbound(body));
       const result = await handleRecallChatwootInbound(body);
       sendJson(res, result.ignored ? 202 : (result.success ? 200 : 404), result);
+      return;
+    }
+
+    if (pathname === '/api/recall/marketing/summary' && req.method === 'GET') {
+      const summary = await getMarketingWeeklySummary();
+      sendJson(res, 200, summary);
       return;
     }
 

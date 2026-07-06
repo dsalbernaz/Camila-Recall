@@ -219,6 +219,27 @@
         </div>
       </section>
 
+      <!-- Mensagens de Marketing Section -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 border border-border-light shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div>
+            <h3 class="font-headline-sm text-sm font-bold">Mensagens de Marketing (semana)</h3>
+            <p class="text-[11px] text-on-surface-variant mt-0.5">Template: <span id="marketingTemplateName">-</span></p>
+          </div>
+          <span class="font-display-kpi text-xl font-bold text-on-surface" id="marketingSentCount">0</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-surface-variant overflow-hidden">
+          <div class="h-full bg-status-success transition-all" id="marketingProgressBar" style="width:0%"></div>
+        </div>
+        <div class="flex justify-between mt-1 text-[10px] text-on-surface-variant">
+          <span id="marketingRemainingLabel">-</span>
+          <span id="marketingLimitLabel">-</span>
+        </div>
+        <div id="marketingAlertBanner" class="hidden mt-2 text-[11px] font-bold text-status-error bg-error-container px-3 py-2 rounded-lg">
+          ⚠ Limite semanal atingido — pausar novos envios deste template até a próxima semana.
+        </div>
+      </section>
+
       <!-- Motor do Recall Section -->
       <section class="bg-primary-container text-on-primary rounded-2xl p-6 relative overflow-hidden shadow-lg">
         <div class="relative z-10 flex flex-col gap-5">
@@ -1475,6 +1496,23 @@
       }
     }
 
+    async function loadMarketingSummary() {
+      const res = await fetch(`${API_URL}/api/recall/marketing/summary`);
+      const m = await res.json();
+      document.getElementById('marketingTemplateName').textContent = m.templateName || '-';
+      document.getElementById('marketingSentCount').textContent = `${m.sent} / ${m.limit}`;
+      document.getElementById('marketingRemainingLabel').textContent = `${m.remaining} restantes`;
+      document.getElementById('marketingLimitLabel').textContent = `Limite: ${m.limit}/semana`;
+
+      const pct = Math.min(100, Math.round((m.sent / m.limit) * 100));
+      const bar = document.getElementById('marketingProgressBar');
+      bar.style.width = `${pct}%`;
+      bar.classList.remove('bg-status-success', 'bg-status-warning', 'bg-status-error');
+      bar.classList.add(m.overLimit ? 'bg-status-error' : (pct >= 80 ? 'bg-status-warning' : 'bg-status-success'));
+
+      document.getElementById('marketingAlertBanner').classList.toggle('hidden', !m.overLimit);
+    }
+
     async function refreshAll() {
       await loadMetrics();
       await loadDispatchConfig();
@@ -1483,6 +1521,7 @@
       await loadQueue();
       await loadLeads();
       await loadBatches();
+      await loadMarketingSummary();
     }
 
     // --- SETUP LISTENERS ---
