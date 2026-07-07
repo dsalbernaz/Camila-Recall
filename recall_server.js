@@ -47,6 +47,12 @@ const RECALL_COOLDOWN_SEM_RESPOSTA_DAYS = Math.max(1, parseInt(process.env.RECAL
 const RECALL_COOLDOWN_SEM_INTERESSE_DAYS = Math.max(1, parseInt(process.env.RECALL_COOLDOWN_SEM_INTERESSE_DAYS, 10) || 180);
 const RECALL_CRON_ENABLED = String(process.env.RECALL_CRON_ENABLED || 'true').trim().toLowerCase() !== 'false';
 const RECALL_CRON_INTERVAL_MS = Math.max(60000, parseInt(process.env.RECALL_CRON_INTERVAL_MS, 10) || 15 * 60 * 1000);
+const RECALL_ABERTURA_SCHEDULE_TIMES = String(process.env.RECALL_ABERTURA_SCHEDULE_TIMES || '09:00,12:00,18:00')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean);
+const RECALL_ABERTURA_BATCH_SIZE = Math.max(1, parseInt(process.env.RECALL_ABERTURA_BATCH_SIZE, 10) || 20);
+const RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES = Math.max(5, parseInt(process.env.RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES, 10) || 20);
 const META_WHATSAPP_TOKEN = process.env.META_WHATSAPP_TOKEN || '';
 const META_PHONE_NUMBER_ID = process.env.META_PHONE_NUMBER_ID || '';
 const HAS_RECALL_META_TOKEN = Boolean(String(process.env.RECALL_META_WHATSAPP_TOKEN || '').trim());
@@ -1641,6 +1647,97 @@ async function reactivateRecallLead(client, lead) {
 // Gera itens de fila para o lembrete (recall_lembrete_2), cobrindo os dois caminhos:
 // nunca respondeu à abertura, ou respondeu + recebeu nudge + continuou em silêncio.
 // Usado tanto pelo endpoint manual quanto pelo cron.
+// Gera itens de fila de ABERTURA (primeiro contato) para leads que nunca foram
+// contatados, sem filtro de lote — cobre a base toda ao longo do tempo.
+async function generateRecallAberturaQueueItems(client, limit) {
+  const candidates = await client.query(
+    `SELECT l.id, l.paciente_nome, l.telefone, l.origem_segmento, l.coorte, l.ultimo_atendimento, l.last_import_batch_id
+     FROM ${RECALL_SCHEMA}.recall_leads l
+     WHERE l.status = 'pendente'
+       AND l.respondeu = false
+       AND l.opt_out = false
+       AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_dispatch_queue_items q
+         WHERE q.lead_id = l.id AND q.queue_status IN ('pendente', 'reservado')
+       )
+       AND NOT EXISTS (
+         SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e
+         WHERE e.lead_id = l.id AND e.event_type = 'dispatch_executado'
+           AND coalesce(e.payload->>'stage', 'abertura') = 'abertura'
+       )
+     ORDER BY l.coorte_prioridade ASC, l.ultimo_atendimento ASC NULLS LAST, l.updated_at DESC
+     LIMIT $1`,
+    [limit]
+  );
+
+  let inserted = 0;
+  for (const row of candidates.rows) {
+    const templateName = getTemplateNameForStage('abertura');
+    await client.query(
+      `INSERT INTO ${RECALL_SCHEMA}.recall_dispatch_queue_items (lead_id, queue_status, motivo, snapshot)
+       VALUES ($1, 'pendente', 'fila_disparo_agendado', $2::jsonb)`,
+      [
+        row.id,
+        JSON.stringify({
+          stage: 'abertura',
+          template_name: templateName,
+          paciente_nome: row.paciente_nome,
+          telefone: row.telefone,
+          origem_segmento: row.origem_segmento,
+          coorte: row.coorte,
+          ultimo_atendimento: row.ultimo_atendimento,
+          last_import_batch_id: row.last_import_batch_id,
+        }),
+      ]
+    );
+    inserted += 1;
+  }
+  return { inserted };
+}
+
+function getSaoPauloDateString(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat('en-CA', { timeZone: RECALL_TIMEZONE, year: 'numeric', month: '2-digit', day: '2-digit' });
+  return formatter.format(date); // YYYY-MM-DD
+}
+
+// Dispara lotes de abertura em horários fixos do dia (ex.: 09:00, 12:00, 18:00),
+// cada um só uma vez por dia (controlado pela tabela abertura_schedule_runs).
+// Independente da janela geral (RECALL_TIME_WINDOWS) — tem seu próprio horário.
+async function runScheduledAberturaBatches(client) {
+  const nowMinutes = getMinutesNowInTimezone(new Date(), RECALL_TIMEZONE);
+  const today = getSaoPauloDateString();
+  const results = [];
+
+  for (const scheduledTime of RECALL_ABERTURA_SCHEDULE_TIMES) {
+    const scheduledMinutes = parseTimeToMinutes(scheduledTime);
+    if (scheduledMinutes === null) continue;
+
+    const isDue = nowMinutes >= scheduledMinutes && nowMinutes <= scheduledMinutes + RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES;
+    if (!isDue) continue;
+
+    const already = await client.query(
+      `SELECT 1 FROM ${RECALL_SCHEMA}.abertura_schedule_runs WHERE run_date = $1 AND scheduled_time = $2`,
+      [today, scheduledTime]
+    );
+    if (already.rows.length) continue;
+
+    const generated = await generateRecallAberturaQueueItems(client, RECALL_ABERTURA_BATCH_SIZE);
+    const executed = await executePendingRecallDispatchQueue(client, RECALL_ABERTURA_BATCH_SIZE);
+
+    await client.query(
+      `INSERT INTO ${RECALL_SCHEMA}.abertura_schedule_runs (run_date, scheduled_time, generated_count, executed_count)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (run_date, scheduled_time) DO NOTHING`,
+      [today, scheduledTime, generated.inserted, executed.executed]
+    );
+
+    results.push({ scheduledTime, generated: generated.inserted, executed: executed.executed });
+  }
+
+  return results;
+}
+
 async function generateRecallLembreteQueueItems(client, limit) {
   const neverResponded = await client.query(
     `SELECT
@@ -1733,14 +1830,18 @@ async function executePendingRecallDispatchQueue(client, limit) {
 }
 
 async function runRecallFollowupCronTick() {
-  if (!isWithinAllowedWindow()) {
-    return { skipped: true, reason: 'fora_janela_horario' };
-  }
-
   const client = new Client({ connectionString });
   await client.connect();
-  const summary = { nudges: 0, lembretesGerados: 0, lembretesExecutados: 0, encerrados: 0, reativados: 0 };
+  const summary = { nudges: 0, lembretesGerados: 0, lembretesExecutados: 0, encerrados: 0, reativados: 0, aberturaAgendada: [] };
   try {
+    // Horários fixos de abertura têm seu próprio agendamento, independente da
+    // janela geral do follow-up (ex.: pode incluir 18:00, fora de RECALL_TIME_WINDOWS).
+    summary.aberturaAgendada = await runScheduledAberturaBatches(client);
+
+    if (!isWithinAllowedWindow()) {
+      return { ...summary, skippedFollowup: true, reason: 'fora_janela_horario' };
+    }
+
     const nudgeCandidates = await findRecallNudgeCandidates(client, RECALL_MAX_SENDS_PER_RUN);
     for (const lead of nudgeCandidates) {
       const result = await sendRecallNudge(client, lead);
@@ -1780,7 +1881,7 @@ function startRecallFollowupCron() {
   setInterval(() => {
     runRecallFollowupCronTick()
       .then((summary) => {
-        if (summary?.skipped) return;
+        if (summary?.skippedFollowup && !summary.aberturaAgendada?.length) return;
         console.log('[recall-cron] tick:', JSON.stringify(summary));
       })
       .catch((error) => {
