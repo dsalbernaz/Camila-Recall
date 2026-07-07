@@ -52,7 +52,7 @@ const RECALL_ABERTURA_SCHEDULE_TIMES = String(process.env.RECALL_ABERTURA_SCHEDU
   .map((value) => value.trim())
   .filter(Boolean);
 const RECALL_ABERTURA_BATCH_SIZE = Math.max(1, parseInt(process.env.RECALL_ABERTURA_BATCH_SIZE, 10) || 20);
-const RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES = Math.max(5, parseInt(process.env.RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES, 10) || 20);
+const RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES = Math.max(5, parseInt(process.env.RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES, 10) || 45);
 const META_WHATSAPP_TOKEN = process.env.META_WHATSAPP_TOKEN || '';
 const META_PHONE_NUMBER_ID = process.env.META_PHONE_NUMBER_ID || '';
 const HAS_RECALL_META_TOKEN = Boolean(String(process.env.RECALL_META_WHATSAPP_TOKEN || '').trim());
