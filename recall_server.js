@@ -53,6 +53,13 @@ const RECALL_ABERTURA_SCHEDULE_TIMES = String(process.env.RECALL_ABERTURA_SCHEDU
   .filter(Boolean);
 const RECALL_ABERTURA_BATCH_SIZE = Math.max(1, parseInt(process.env.RECALL_ABERTURA_BATCH_SIZE, 10) || 20);
 const RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES = Math.max(5, parseInt(process.env.RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES, 10) || 45);
+const RECALL_BLOCK_WEEKENDS = String(process.env.RECALL_BLOCK_WEEKENDS || 'true').trim().toLowerCase() !== 'false';
+const RECALL_BLOCKED_DATES = new Set(
+  String(process.env.RECALL_BLOCKED_DATES || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+);
 const META_WHATSAPP_TOKEN = process.env.META_WHATSAPP_TOKEN || '';
 const META_PHONE_NUMBER_ID = process.env.META_PHONE_NUMBER_ID || '';
 const HAS_RECALL_META_TOKEN = Boolean(String(process.env.RECALL_META_WHATSAPP_TOKEN || '').trim());
@@ -1701,6 +1708,23 @@ function getSaoPauloDateString(date = new Date()) {
   return formatter.format(date); // YYYY-MM-DD
 }
 
+// Bloqueia todo o ciclo de disparo (abertura, lembrete, nudge) em fins de semana
+// e em datas específicas configuradas (feriados). Fechamento/reativação de leads
+// (que não enviam mensagem) continuam rodando normalmente.
+function isRecallDispatchBlockedToday(date = new Date()) {
+  const dateString = getSaoPauloDateString(date);
+  if (RECALL_BLOCKED_DATES.has(dateString)) {
+    return { blocked: true, reason: 'data_bloqueada', dateString };
+  }
+  if (RECALL_BLOCK_WEEKENDS) {
+    const weekday = new Intl.DateTimeFormat('en-US', { timeZone: RECALL_TIMEZONE, weekday: 'short' }).format(date);
+    if (weekday === 'Sat' || weekday === 'Sun') {
+      return { blocked: true, reason: 'fim_de_semana', dateString };
+    }
+  }
+  return { blocked: false, reason: null, dateString };
+}
+
 // Dispara lotes de abertura em horários fixos do dia (ex.: 09:00, 12:00, 18:00),
 // cada um só uma vez por dia (controlado pela tabela abertura_schedule_runs).
 // Independente da janela geral (RECALL_TIME_WINDOWS) — tem seu próprio horário.
@@ -1830,6 +1854,11 @@ async function executePendingRecallDispatchQueue(client, limit) {
 }
 
 async function runRecallFollowupCronTick() {
+  const blockStatus = isRecallDispatchBlockedToday();
+  if (blockStatus.blocked) {
+    return { skipped: true, reason: blockStatus.reason, dateString: blockStatus.dateString };
+  }
+
   const client = new Client({ connectionString });
   await client.connect();
   const summary = { nudges: 0, lembretesGerados: 0, lembretesExecutados: 0, encerrados: 0, reativados: 0, aberturaAgendada: [] };
@@ -1881,6 +1910,7 @@ function startRecallFollowupCron() {
   setInterval(() => {
     runRecallFollowupCronTick()
       .then((summary) => {
+        if (summary?.skipped) return;
         if (summary?.skippedFollowup && !summary.aberturaAgendada?.length) return;
         console.log('[recall-cron] tick:', JSON.stringify(summary));
       })
@@ -2372,6 +2402,11 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (pathname === '/api/recall/dispatch/generate' && req.method === 'POST') {
+      const blockStatus = isRecallDispatchBlockedToday();
+      if (blockStatus.blocked) {
+        sendJson(res, 403, { success: false, error: 'disparo_bloqueado_hoje', reason: blockStatus.reason, dateString: blockStatus.dateString });
+        return;
+      }
       const body = await parseJsonBody(req);
       const limit = Math.min(100, Math.max(1, parseInt(body.limit, 10) || 20));
       const latestBatchOnly = body.latest_batch_only !== false;
@@ -2526,6 +2561,11 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (pathname === '/api/recall/followup/nudge/run' && req.method === 'POST') {
+      const blockStatus = isRecallDispatchBlockedToday();
+      if (blockStatus.blocked) {
+        sendJson(res, 403, { success: false, error: 'disparo_bloqueado_hoje', reason: blockStatus.reason, dateString: blockStatus.dateString });
+        return;
+      }
       const body = await parseJsonBody(req);
       const limit = Math.min(RECALL_MAX_SENDS_PER_RUN, Math.max(1, parseInt(body.limit, 10) || RECALL_MAX_SENDS_PER_RUN));
       const client = new Client({ connectionString });
@@ -2584,6 +2624,11 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (pathname === '/api/recall/dispatch/execute-batch' && req.method === 'POST') {
+      const blockStatus = isRecallDispatchBlockedToday();
+      if (blockStatus.blocked) {
+        sendJson(res, 403, { success: false, error: 'disparo_bloqueado_hoje', reason: blockStatus.reason, dateString: blockStatus.dateString });
+        return;
+      }
       const body = await parseJsonBody(req);
       const limit = Math.min(RECALL_MAX_SENDS_PER_RUN, Math.max(1, parseInt(body.limit, 10) || RECALL_MAX_SENDS_PER_RUN));
       const client = new Client({ connectionString });
