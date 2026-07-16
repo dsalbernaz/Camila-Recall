@@ -1124,6 +1124,16 @@ async function mergeChatwootConversationLabels(conversationId, labelsToAdd = [])
   return merged;
 }
 
+async function fetchChatwootConversationLabels(conversationId) {
+  if (!conversationId) return [];
+  try {
+    const result = await chatwootRequest(`/conversations/${conversationId}/labels`, { method: 'GET' });
+    return Array.isArray(result.payload) ? result.payload.map(String) : [];
+  } catch (error) {
+    return [];
+  }
+}
+
 async function handleRecallChatwootInbound(rawBody) {
   const inbound = extractChatwootInbound(rawBody);
 
@@ -1138,6 +1148,11 @@ async function handleRecallChatwootInbound(rawBody) {
   if (!inbound.content) {
     return { success: true, ignored: true, reason: 'conteudo_vazio' };
   }
+
+  // O payload do webhook do Chatwoot não traz os labels atualizados da conversa
+  // (confirmado: sempre vinha vazio em produção). Busca direto pela API para que
+  // um label como ia_off, aplicado manualmente por um humano, seja respeitado.
+  inbound.labels = await fetchChatwootConversationLabels(inbound.conversationId);
 
   const client = new Client({ connectionString });
   await client.connect();
