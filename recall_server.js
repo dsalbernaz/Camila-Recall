@@ -33,7 +33,7 @@ const RECALL_TEST_MESSAGE = process.env.RECALL_TEST_MESSAGE
   || `Oi! Aqui e a equipe da ${process.env.CLINIC_NAME || 'clinica'}. Esta mensagem faz parte do piloto controlado da Camila Recall.`;
 const RECALL_TIMEZONE = String(process.env.RECALL_TIMEZONE || 'America/Sao_Paulo').trim() || 'America/Sao_Paulo';
 const RECALL_TEMPLATE_NAME = String(process.env.RECALL_TEMPLATE_NAME || '').trim();
-const RECALL_TEMPLATE_OPENING = String(process.env.RECALL_TEMPLATE_OPENING || RECALL_TEMPLATE_NAME || 'recall_abertura_1').trim();
+const RECALL_TEMPLATE_OPENING = String(process.env.RECALL_TEMPLATE_OPENING || RECALL_TEMPLATE_NAME || 'recall_abertura_v2').trim();
 const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 'recall_lembrete_2_1').trim();
 const RECALL_TEMPLATE_LANGUAGE = String(process.env.RECALL_TEMPLATE_LANGUAGE || 'pt_BR').trim();
 const RECALL_TEMPLATE_USE_FIRST_NAME = String(process.env.RECALL_TEMPLATE_USE_FIRST_NAME || 'true').trim().toLowerCase() !== 'false';
