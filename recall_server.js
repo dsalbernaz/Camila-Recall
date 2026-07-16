@@ -34,7 +34,7 @@ const RECALL_TEST_MESSAGE = process.env.RECALL_TEST_MESSAGE
 const RECALL_TIMEZONE = String(process.env.RECALL_TIMEZONE || 'America/Sao_Paulo').trim() || 'America/Sao_Paulo';
 const RECALL_TEMPLATE_NAME = String(process.env.RECALL_TEMPLATE_NAME || '').trim();
 const RECALL_TEMPLATE_OPENING = String(process.env.RECALL_TEMPLATE_OPENING || RECALL_TEMPLATE_NAME || 'recall_abertura_1').trim();
-const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 'recall_lembrete_2').trim();
+const RECALL_TEMPLATE_REMINDER = String(process.env.RECALL_TEMPLATE_REMINDER || 'recall_lembrete_2_1').trim();
 const RECALL_TEMPLATE_LANGUAGE = String(process.env.RECALL_TEMPLATE_LANGUAGE || 'pt_BR').trim();
 const RECALL_TEMPLATE_USE_FIRST_NAME = String(process.env.RECALL_TEMPLATE_USE_FIRST_NAME || 'true').trim().toLowerCase() !== 'false';
 const RECALL_REMINDER_DELAY_DAYS = Math.min(30, Math.max(1, parseInt(process.env.RECALL_REMINDER_DELAY_DAYS, 10) || 3));
@@ -972,8 +972,12 @@ function buildRecallAgentDecisionDeterministic(lead, inbound, history, providedC
 // mensagens próprias — não é texto livre, então não passam pelo LLM.
 function matchRecallTemplateButton(content) {
   const n = normalizeRecallText(content);
+  // Botões do template de abertura (recall_abertura_1)
   if (n === 'quero informacoes' || n === 'quero mais informacoes') return 'quero_informacoes';
   if (n === 'nao reconheco') return 'nao_reconhece';
+  // Botões do template de lembrete (recall_lembrete_2_1)
+  if (n === 'quero agendar meu retorno') return 'aceite_pre_triagem';
+  if (n === 'nao tenho interesse') return 'sem_interesse';
   return null;
 }
 
