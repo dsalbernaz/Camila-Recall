@@ -219,6 +219,45 @@
         </div>
       </section>
 
+      <!-- Progresso dos Disparos (Base Recall) Section -->
+      <section class="bg-surface-container-lowest rounded-2xl p-5 border border-border-light shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <div>
+            <h3 class="font-headline-sm text-sm font-bold">Progresso dos Disparos (Recall)</h3>
+            <p class="text-[11px] text-on-surface-variant mt-0.5">
+              Ritmo atual: <span id="progressRitmoDiario">-</span>/dia útil
+              (<span id="progressBatchSize">-</span> por horário × <span id="progressHorarios">-</span> horários)
+            </p>
+          </div>
+          <span class="font-display-kpi text-xl font-bold text-on-surface" id="progressAberturaCount">0</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-surface-variant overflow-hidden">
+          <div class="h-full bg-status-success transition-all" id="progressAberturaBar" style="width:0%"></div>
+        </div>
+        <div class="flex justify-between mt-1 text-[10px] text-on-surface-variant">
+          <span id="progressRestanteLabel">-</span>
+          <span id="progressEstimativaLabel">-</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
+          <div class="bg-surface-container rounded-lg p-2 text-center">
+            <p class="font-display-kpi text-sm font-bold text-on-surface" id="progressPendente">0</p>
+            <p class="text-[9px] text-on-surface-variant uppercase">Pendentes</p>
+          </div>
+          <div class="bg-surface-container rounded-lg p-2 text-center">
+            <p class="font-display-kpi text-sm font-bold text-on-surface" id="progressEmAtendimentoIa">0</p>
+            <p class="text-[9px] text-on-surface-variant uppercase">Com a Camila</p>
+          </div>
+          <div class="bg-surface-container rounded-lg p-2 text-center">
+            <p class="font-display-kpi text-sm font-bold text-on-surface" id="progressEmAtendimentoHumano">0</p>
+            <p class="text-[9px] text-on-surface-variant uppercase">Com Humano</p>
+          </div>
+          <div class="bg-surface-container rounded-lg p-2 text-center">
+            <p class="font-display-kpi text-sm font-bold text-on-surface" id="progressSemResposta">0</p>
+            <p class="text-[9px] text-on-surface-variant uppercase">Sem Resposta</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Mensagens de Marketing Section -->
       <section class="bg-surface-container-lowest rounded-2xl p-5 border border-border-light shadow-sm">
         <div class="flex items-center justify-between mb-2">
@@ -1513,6 +1552,29 @@
       document.getElementById('marketingAlertBanner').classList.toggle('hidden', !m.overLimit);
     }
 
+    async function loadDispatchProgress() {
+      const res = await fetch(`${API_URL}/api/recall/dispatch/progress`);
+      const p = await res.json();
+
+      document.getElementById('progressAberturaCount').textContent = `${p.aberturaEnviada} / ${p.totalLeads}`;
+      document.getElementById('progressRitmoDiario').textContent = p.ritmoDiarioConfigurado;
+      document.getElementById('progressBatchSize').textContent = p.aberturaBatchSize;
+      document.getElementById('progressHorarios').textContent = p.horariosPorDia;
+
+      const pct = p.totalLeads ? Math.min(100, Math.round((p.aberturaEnviada / p.totalLeads) * 100)) : 0;
+      document.getElementById('progressAberturaBar').style.width = `${pct}%`;
+
+      document.getElementById('progressRestanteLabel').textContent = `${p.aberturaRestante} ainda não contatados`;
+      document.getElementById('progressEstimativaLabel').textContent = p.diasUteisEstimados != null
+        ? `~${p.diasUteisEstimados} dias úteis para concluir`
+        : '-';
+
+      document.getElementById('progressPendente').textContent = p.porStatus?.pendente ?? 0;
+      document.getElementById('progressEmAtendimentoIa').textContent = p.porStatus?.em_atendimento_ia ?? 0;
+      document.getElementById('progressEmAtendimentoHumano').textContent = p.porStatus?.em_atendimento_humano ?? 0;
+      document.getElementById('progressSemResposta').textContent = p.porStatus?.sem_resposta ?? 0;
+    }
+
     async function refreshAll() {
       await loadMetrics();
       await loadDispatchConfig();
@@ -1522,6 +1584,7 @@
       await loadLeads();
       await loadBatches();
       await loadMarketingSummary();
+      await loadDispatchProgress();
     }
 
     // --- SETUP LISTENERS ---

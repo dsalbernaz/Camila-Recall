@@ -51,7 +51,7 @@ const RECALL_ABERTURA_SCHEDULE_TIMES = String(process.env.RECALL_ABERTURA_SCHEDU
   .split(',')
   .map((value) => value.trim())
   .filter(Boolean);
-const RECALL_ABERTURA_BATCH_SIZE = Math.max(1, parseInt(process.env.RECALL_ABERTURA_BATCH_SIZE, 10) || 20);
+const RECALL_ABERTURA_BATCH_SIZE = Math.max(1, parseInt(process.env.RECALL_ABERTURA_BATCH_SIZE, 10) || 35);
 const RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES = Math.max(5, parseInt(process.env.RECALL_ABERTURA_SCHEDULE_GRACE_MINUTES, 10) || 45);
 const RECALL_BLOCK_WEEKENDS = String(process.env.RECALL_BLOCK_WEEKENDS || 'true').trim().toLowerCase() !== 'false';
 const RECALL_BLOCKED_DATES = new Set(
@@ -2548,6 +2548,58 @@ const server = http.createServer(async (req, res) => {
       `);
 
       sendJson(res, 200, rows[0]);
+      return;
+    }
+
+    if (pathname === '/api/recall/dispatch/progress' && req.method === 'GET') {
+      const rows = await runQuery(`
+        SELECT
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads) AS total_leads,
+          (SELECT count(DISTINCT lead_id)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'dispatch_executado' AND payload->>'stage' = 'abertura') AS abertura_enviada,
+          (SELECT count(DISTINCT lead_id)
+             FROM ${RECALL_SCHEMA}.recall_events
+            WHERE event_type = 'dispatch_executado' AND payload->>'stage' = 'lembrete') AS lembrete_enviado,
+          (SELECT count(*)
+             FROM ${RECALL_SCHEMA}.recall_leads l
+            WHERE NOT EXISTS (
+              SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e
+              WHERE e.lead_id = l.id AND e.event_type = 'dispatch_executado' AND e.payload->>'stage' = 'abertura'
+            )) AS abertura_restante,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'pendente') AS pendentes,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'sem_resposta') AS sem_resposta,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'em_atendimento_ia') AS em_atendimento_ia,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'em_atendimento_humano') AS em_atendimento_humano,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'concluido_sem_interesse') AS concluido_sem_interesse,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'opt_out') AS opt_out,
+          (SELECT count(*) FROM ${RECALL_SCHEMA}.recall_leads WHERE status = 'erro') AS erro
+      `);
+
+      const summary = rows[0] || {};
+      const ritmoDiario = RECALL_ABERTURA_BATCH_SIZE * RECALL_ABERTURA_SCHEDULE_TIMES.length;
+      const aberturaRestante = Number(summary.abertura_restante) || 0;
+      const diasUteisEstimados = ritmoDiario > 0 ? Math.ceil(aberturaRestante / ritmoDiario) : null;
+
+      sendJson(res, 200, {
+        totalLeads: Number(summary.total_leads) || 0,
+        aberturaEnviada: Number(summary.abertura_enviada) || 0,
+        aberturaRestante,
+        lembreteEnviado: Number(summary.lembrete_enviado) || 0,
+        porStatus: {
+          pendente: Number(summary.pendentes) || 0,
+          sem_resposta: Number(summary.sem_resposta) || 0,
+          em_atendimento_ia: Number(summary.em_atendimento_ia) || 0,
+          em_atendimento_humano: Number(summary.em_atendimento_humano) || 0,
+          concluido_sem_interesse: Number(summary.concluido_sem_interesse) || 0,
+          opt_out: Number(summary.opt_out) || 0,
+          erro: Number(summary.erro) || 0,
+        },
+        ritmoDiarioConfigurado: ritmoDiario,
+        aberturaBatchSize: RECALL_ABERTURA_BATCH_SIZE,
+        horariosPorDia: RECALL_ABERTURA_SCHEDULE_TIMES.length,
+        diasUteisEstimados,
+      });
       return;
     }
 
