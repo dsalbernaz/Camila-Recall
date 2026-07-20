@@ -1969,7 +1969,7 @@ async function findRecallNudgeCandidates(client, limit) {
        last_inbound.created_at AS last_inbound_at
      FROM ${RECALL_SCHEMA}.recall_leads l
      JOIN LATERAL (
-       SELECT created_at
+       SELECT created_at, payload->>'intent' AS intent
        FROM ${RECALL_SCHEMA}.recall_events e
        WHERE e.lead_id = l.id AND e.event_type = 'chatwoot_inbound'
        ORDER BY e.id DESC
@@ -1979,6 +1979,9 @@ async function findRecallNudgeCandidates(client, limit) {
        AND l.respondeu = true
        AND l.opt_out = false
        AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       -- Paciente já recusou diretamente (ex.: "Não" a "faz sentido cuidar disso agora?").
+       -- Camila já tentou uma persuasão na hora; não insiste de novo com um nudge depois.
+       AND last_inbound.intent IS DISTINCT FROM 'objecao_prevencao'
        AND last_inbound.created_at <= now() - make_interval(hours => ${RECALL_NUDGE_WINDOW_HOURS})
        AND last_inbound.created_at > now() - interval '24 hours'
        AND NOT EXISTS (
