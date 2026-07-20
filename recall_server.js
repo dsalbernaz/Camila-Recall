@@ -3,6 +3,7 @@ require('dns').setDefaultResultOrder('ipv4first');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { Client } = require('pg');
 require('dotenv').config();
 
@@ -82,6 +83,36 @@ const CHATWOOT_RECALL_LABEL_WRONG_NUMBER = String(process.env.CHATWOOT_RECALL_LA
 const CHATWOOT_RECALL_LABEL_SEM_INTERESSE = String(process.env.CHATWOOT_RECALL_LABEL_SEM_INTERESSE || 'recall_sem_interesse').trim() || 'recall_sem_interesse';
 const RECALL_HUMAN_PAUSE_HOURS = Math.max(0.1, Number(process.env.RECALL_HUMAN_PAUSE_HOURS) || 2);
 const RECALL_HUMAN_PAUSE_MS = RECALL_HUMAN_PAUSE_HOURS * 60 * 60 * 1000;
+// Sem valor padrão de propósito: sem essas duas env vars configuradas, o dashboard
+// nega TODO acesso (falha fechado) em vez de ficar aberto por engano.
+const RECALL_DASHBOARD_USER = String(process.env.RECALL_DASHBOARD_USER || '').trim();
+const RECALL_DASHBOARD_PASSWORD = String(process.env.RECALL_DASHBOARD_PASSWORD || '');
+// Único endpoint que precisa ficar público: é chamado pelo Chatwoot (webhook), não pelo navegador.
+const RECALL_PUBLIC_PATHS = new Set(['/api/recall/chatwoot/webhook']);
+
+function timingSafeStringEqual(a, b) {
+  const bufA = Buffer.from(String(a));
+  const bufB = Buffer.from(String(b));
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
+}
+
+function isRecallDashboardAuthorized(req) {
+  if (!RECALL_DASHBOARD_USER || !RECALL_DASHBOARD_PASSWORD) return false;
+  const header = String(req.headers['authorization'] || '');
+  if (!header.startsWith('Basic ')) return false;
+  let decoded;
+  try {
+    decoded = Buffer.from(header.slice(6), 'base64').toString('utf8');
+  } catch (error) {
+    return false;
+  }
+  const sepIndex = decoded.indexOf(':');
+  if (sepIndex === -1) return false;
+  const user = decoded.slice(0, sepIndex);
+  const pass = decoded.slice(sepIndex + 1);
+  return timingSafeStringEqual(user, RECALL_DASHBOARD_USER) && timingSafeStringEqual(pass, RECALL_DASHBOARD_PASSWORD);
+}
 const RECALL_LLM_ENABLED = String(process.env.RECALL_LLM_ENABLED || 'false').trim().toLowerCase() === 'true';
 const RECALL_LLM_PROVIDER = String(process.env.RECALL_LLM_PROVIDER || 'openai').trim().toLowerCase() || 'openai';
 const RECALL_LLM_MODEL = String(process.env.RECALL_LLM_MODEL || 'gpt-4.1-mini').trim();
@@ -2476,6 +2507,13 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
     res.end();
+    return;
+  }
+
+  if (!RECALL_PUBLIC_PATHS.has(pathname) && !isRecallDashboardAuthorized(req)) {
+    res.setHeader('WWW-Authenticate', 'Basic realm="Camila Recall Dashboard"');
+    res.writeHead(401, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('Autenticação necessária.');
     return;
   }
 
