@@ -80,6 +80,8 @@ const CHATWOOT_RECALL_LABEL_AGUARDANDO = String(process.env.CHATWOOT_RECALL_LABE
 const CHATWOOT_RECALL_LABEL_OPT_OUT = String(process.env.CHATWOOT_RECALL_LABEL_OPT_OUT || 'recall_opt_out').trim() || 'recall_opt_out';
 const CHATWOOT_RECALL_LABEL_WRONG_NUMBER = String(process.env.CHATWOOT_RECALL_LABEL_WRONG_NUMBER || 'recall_numero_errado').trim() || 'recall_numero_errado';
 const CHATWOOT_RECALL_LABEL_SEM_INTERESSE = String(process.env.CHATWOOT_RECALL_LABEL_SEM_INTERESSE || 'recall_sem_interesse').trim() || 'recall_sem_interesse';
+const RECALL_HUMAN_PAUSE_HOURS = Math.max(0.1, Number(process.env.RECALL_HUMAN_PAUSE_HOURS) || 2);
+const RECALL_HUMAN_PAUSE_MS = RECALL_HUMAN_PAUSE_HOURS * 60 * 60 * 1000;
 const RECALL_LLM_ENABLED = String(process.env.RECALL_LLM_ENABLED || 'false').trim().toLowerCase() === 'true';
 const RECALL_LLM_PROVIDER = String(process.env.RECALL_LLM_PROVIDER || 'openai').trim().toLowerCase() || 'openai';
 const RECALL_LLM_MODEL = String(process.env.RECALL_LLM_MODEL || 'gpt-4.1-mini').trim();
@@ -783,7 +785,7 @@ async function generateRecallLlmDecision(client, lead, inbound, history, heurist
 async function findRecallLeadForInbound(client, inbound) {
   if (inbound.conversationId) {
     const byConversation = await client.query(
-      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id, status, respondeu, opt_out, handoff_at, handoff_resolved, meta_error
+      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id, status, respondeu, opt_out, handoff_at, handoff_resolved, human_pause_until, meta_error
        FROM ${RECALL_SCHEMA}.recall_leads
        WHERE chatwoot_conversation_id = $1
        LIMIT 1`,
@@ -796,7 +798,7 @@ async function findRecallLeadForInbound(client, inbound) {
 
   if (inbound.phone && inbound.phone !== normalizePhone(RECALL_TEST_DESTINATION_PHONE)) {
     const byPhone = await client.query(
-      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id, status, respondeu, opt_out, handoff_at, handoff_resolved, meta_error
+      `SELECT id, paciente_nome, telefone, chatwoot_conversation_id, status, respondeu, opt_out, handoff_at, handoff_resolved, human_pause_until, meta_error
        FROM ${RECALL_SCHEMA}.recall_leads
        WHERE regexp_replace(coalesce(telefone, ''), '\\D', '', 'g') = $1
        LIMIT 1`,
@@ -809,7 +811,7 @@ async function findRecallLeadForInbound(client, inbound) {
 
   if (inbound.phone && inbound.phone === normalizePhone(RECALL_TEST_DESTINATION_PHONE)) {
     const byLatestDispatch = await client.query(
-      `SELECT l.id, l.paciente_nome, l.telefone, l.chatwoot_conversation_id, l.status, l.respondeu, l.opt_out, l.handoff_at, l.handoff_resolved, l.meta_error
+      `SELECT l.id, l.paciente_nome, l.telefone, l.chatwoot_conversation_id, l.status, l.respondeu, l.opt_out, l.handoff_at, l.handoff_resolved, l.human_pause_until, l.meta_error
        FROM ${RECALL_SCHEMA}.recall_events e
        JOIN ${RECALL_SCHEMA}.recall_leads l
          ON l.id = e.lead_id
@@ -862,6 +864,14 @@ function buildRecallAgentDecisionDeterministic(lead, inbound, history, providedC
       ...classification,
       ignore: true,
       reason: 'handoff_aberto',
+    };
+  }
+
+  if (lead.human_pause_until && new Date(lead.human_pause_until) > new Date()) {
+    return {
+      ...classification,
+      ignore: true,
+      reason: 'pausado_humano',
     };
   }
 
@@ -1100,9 +1110,7 @@ async function postChatwootConversationMessage(conversationId, content, options 
       content,
       message_type: 'outgoing',
       private: options.private === true,
-      ...(options.private === true
-        ? {}
-        : { content_attributes: { sent_by: RECALL_AGENT_SENDER } }),
+      content_attributes: { sent_by: RECALL_AGENT_SENDER },
     },
   });
 }
@@ -1134,6 +1142,68 @@ async function fetchChatwootConversationLabels(conversationId) {
   } catch (error) {
     return [];
   }
+}
+
+async function handleRecallHumanTakeoverIfNeeded(inbound) {
+  if (inbound.event !== 'message_created' || !inbound.isOutgoing) return;
+  if (!inbound.inboxId || inbound.inboxId !== String(CHATWOOT_RECALL_INBOX_ID)) return;
+  if (!inbound.conversationId) return;
+
+  const sentBy = inbound.raw?.content_attributes?.sent_by;
+  if (sentBy === RECALL_AGENT_SENDER) return; // mensagem da própria Camila, não é intervenção humana
+
+  const pauseUntil = new Date(Date.now() + RECALL_HUMAN_PAUSE_MS);
+  await runQuery(
+    `UPDATE ${RECALL_SCHEMA}.recall_leads
+        SET human_takeover_at = coalesce(human_takeover_at, now()),
+            human_pause_until = $2
+      WHERE chatwoot_conversation_id = $1`,
+    [inbound.conversationId, pauseUntil]
+  );
+}
+
+async function resolveExpiredRecallHumanPauses(client, limit = 50) {
+  const { rows } = await client.query(
+    `SELECT id, chatwoot_conversation_id
+       FROM ${RECALL_SCHEMA}.recall_leads
+      WHERE human_pause_until IS NOT NULL
+        AND human_pause_until <= now()
+      LIMIT $1`,
+    [limit]
+  );
+
+  let mantidos = 0;
+  let retomados = 0;
+
+  for (const lead of rows) {
+    let status = null;
+    if (lead.chatwoot_conversation_id) {
+      try {
+        const conversation = await chatwootRequest(`/conversations/${lead.chatwoot_conversation_id}`, { method: 'GET' });
+        status = conversation?.status || null;
+      } catch (error) {
+        status = null;
+      }
+    }
+
+    // Independente do resultado, a pausa é liberada: se a conversa foi resolvida
+    // pelo humano, a Camila permanece fora até a próxima interação do paciente;
+    // se não foi resolvida, a Camila volta a responder normalmente.
+    await client.query(
+      `UPDATE ${RECALL_SCHEMA}.recall_leads
+          SET human_pause_until = NULL, human_takeover_at = NULL
+        WHERE id = $1`,
+      [lead.id]
+    );
+
+    if (status === 'resolved') {
+      mantidos += 1;
+    } else {
+      retomados += 1;
+    }
+  }
+
+  return { total: rows.length, mantidos, retomados };
 }
 
 async function handleRecallChatwootInbound(rawBody) {
@@ -1882,8 +1952,12 @@ async function runRecallFollowupCronTick() {
 
   const client = new Client({ connectionString });
   await client.connect();
-  const summary = { nudges: 0, lembretesGerados: 0, lembretesExecutados: 0, encerrados: 0, reativados: 0, aberturaAgendada: [] };
+  const summary = { nudges: 0, lembretesGerados: 0, lembretesExecutados: 0, encerrados: 0, reativados: 0, aberturaAgendada: [], pausasHumanoResolvidas: null };
   try {
+    // Checa pausas de 2h por intervenção humana vencidas antes de qualquer outra
+    // ação, independente da janela de disparo (não envia mensagem, só libera estado).
+    summary.pausasHumanoResolvidas = await resolveExpiredRecallHumanPauses(client);
+
     // Horários fixos de abertura têm seu próprio agendamento, independente da
     // janela geral do follow-up (ex.: pode incluir 18:00, fora de RECALL_TIME_WINDOWS).
     summary.aberturaAgendada = await runScheduledAberturaBatches(client);
@@ -2410,7 +2484,9 @@ const server = http.createServer(async (req, res) => {
 
     if (pathname === '/api/recall/chatwoot/webhook' && req.method === 'POST') {
       const body = await parseJsonBody(req);
-      await logMarketingTemplateSendIfMatch(extractChatwootInbound(body));
+      const inboundForSideEffects = extractChatwootInbound(body);
+      await logMarketingTemplateSendIfMatch(inboundForSideEffects);
+      await handleRecallHumanTakeoverIfNeeded(inboundForSideEffects);
       const result = await handleRecallChatwootInbound(body);
       sendJson(res, result.ignored ? 202 : (result.success ? 200 : 404), result);
       return;
