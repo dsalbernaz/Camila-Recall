@@ -414,7 +414,7 @@ function buildRecallPersuasionMessage() {
 }
 
 function buildRecallTriagemMessage() {
-  return 'Ótimo! Antes de te passar para o nosso time, você tem conhecimento de algum problema de saúde bucal para eu já deixar o doutor avisado? 🦷';
+  return 'Ótimo! Você vai aproveitar a avaliação clínica com o dentista + limpeza dental por R$ 100, em vez de R$ 150. Antes de te passar para o nosso time, você tem conhecimento de algum problema de saúde bucal para eu já deixar o doutor avisado? 🦷';
 }
 
 function buildRecallHandoffMessage(lead) {
@@ -686,7 +686,7 @@ Mensagens curtas: 2 a 4 linhas, no máximo 1 emoji.
 2. numero_errado — engano REAL: a pessoa nunca foi paciente, número trocado, "não sou essa pessoa", "quem é você?". NÃO use para quem diz que JÁ FOI paciente e não é mais — esse é o alvo do recall (use objecao_prevencao).
 3. nao_reconhece — diz que não lembra ou não reconhece a clínica, mas pode ter cadastro. Acolha e esclareça que ele tem cadastro na OrthoDontic de São José dos Campos.
 4. ja_agendado — afirma que já tem horário marcado ou já agendou.
-5. aceite_pre_triagem — aceite CLARO de vir à clínica, mas você ainda NÃO perguntou sobre problemas de saúde bucal. Use este intent para fazer a pergunta de triagem antes de escalar. Sua replyMessage deve ser: "Ótimo! Antes de te passar para o nosso time, você tem conhecimento de algum problema de saúde bucal para eu já deixar o doutor avisado? 🦷"
+5. aceite_pre_triagem — aceite CLARO de vir à clínica, mas você ainda NÃO perguntou sobre problemas de saúde bucal. Use este intent para fazer a pergunta de triagem antes de escalar. IMPORTANTE: veja a linha "[ESTADO: oferta]" no início da mensagem do usuário. Se ela disser que a condição especial AINDA NÃO foi mencionada, inclua essa explicação brevemente na replyMessage antes da pergunta de triagem (ex.: "Ótimo! Você vai aproveitar a avaliação clínica com o dentista + limpeza dental por R$ 100, em vez de R$ 150."). Se disser que JÁ foi mencionada, não repita, só pergunte: "Antes de te passar para o nosso time, você tem conhecimento de algum problema de saúde bucal para eu já deixar o doutor avisado? 🦷"
 6. aceite_recall — aceite CLARO E a pergunta de triagem já foi feita (ou o próprio paciente já mencionou um problema/condição de saúde bucal). Use este intent para fazer o handoff com o resumo completo.
 7. sem_interesse — recusa firme: não tem interesse OU já faz tratamento em outro lugar.
 8. objecao_prevencao — objeção LEVE/adiável: "agora não", "depois", "tá tudo bem", "não preciso no momento"; ou paciente antigo distante ("não sou mais paciente", "faz tempo").
@@ -729,8 +729,10 @@ async function generateRecallLlmDecision(client, lead, inbound, history, heurist
   // a resposta atual do paciente É o aceite. Isso é decidido no CÓDIGO, não pelo LLM.
   const lastAgentTurn = [...context].reverse().find((t) => t.role === 'camila');
   const isPostTriagem = lastAgentTurn?.intent === 'aceite_pre_triagem';
+  const offerAlreadyMentioned = context.some((t) => t.role === 'camila' && /r\$\s?100/i.test(t.content || ''));
 
   const camilaUserContent = [
+    `[ESTADO: oferta] A condição especial (avaliação clínica + limpeza dental por R$ 100, em vez de R$ 150) já foi mencionada nesta conversa: ${offerAlreadyMentioned ? 'SIM' : 'NÃO'}.`,
     `Nome do paciente: ${leadName}`,
     `Heurística determinística: ${heuristicClassification.intent}`,
     `Histórico resumido: nao_reconhece=${history.nao_reconhece_count || 0}, quero_informacoes=${history.quero_informacoes_count || 0}, aceite=${history.aceite_count || 0}`,
