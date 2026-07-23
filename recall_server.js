@@ -256,7 +256,27 @@ function normalizeNextActionType(actionType) {
 }
 
 function normalizePhone(value) {
-  return String(value || '').replace(/\D+/g, '');
+  const digits = String(value || '').replace(/\D+/g, '');
+  if (!digits) return '';
+
+  // Reconstitui o "nono dígito" de celulares brasileiros quando ausente (ex.:
+  // contato do Chatwoot chega como 55+DDD+8 dígitos, sem o 9 do celular).
+  // Causa raiz confirmada na conversa 5381 (contato "Simoní"): o número salvo
+  // na base já tinha o 9, mas o número recebido do Chatwoot não tinha, e a
+  // busca de lead por telefone falhava silenciosamente.
+  const withCountryCode = digits.startsWith('55') && (digits.length === 12 || digits.length === 13);
+  const local = withCountryCode
+    ? digits.slice(2)
+    : (digits.length === 10 || digits.length === 11 ? digits : null);
+
+  if (local && local.length === 10 && /[6-9]/.test(local[2])) {
+    return `55${local.slice(0, 2)}9${local.slice(2)}`;
+  }
+  if (local && local.length === 11) {
+    return `55${local}`;
+  }
+
+  return digits;
 }
 
 function normalizeDispatchQueueStatus(status) {
