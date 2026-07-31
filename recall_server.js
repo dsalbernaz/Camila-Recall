@@ -2030,9 +2030,10 @@ async function findRecallNudgeCandidates(client, limit) {
        AND l.respondeu = true
        AND l.opt_out = false
        AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
-       -- Paciente já recusou diretamente (ex.: "Não" a "faz sentido cuidar disso agora?").
-       -- Camila já tentou uma persuasão na hora; não insiste de novo com um nudge depois.
+       -- Paciente já deu um sinal negativo/de dúvida (recusa leve ou "não reconheço").
+       -- Camila já tentou uma resposta na hora; não insiste de novo com um nudge depois.
        AND last_inbound.intent IS DISTINCT FROM 'objecao_prevencao'
+       AND last_inbound.intent IS DISTINCT FROM 'nao_reconhece'
        AND last_inbound.created_at <= now() - make_interval(hours => ${RECALL_NUDGE_WINDOW_HOURS})
        AND last_inbound.created_at > now() - interval '24 hours'
        AND NOT EXISTS (
@@ -2077,10 +2078,21 @@ async function findRecallEngagedColdLembreteCandidates(client, limit) {
        ORDER BY e.id DESC
        LIMIT 1
      ) last_nudge ON true
+     JOIN LATERAL (
+       SELECT payload->>'intent' AS intent
+       FROM ${RECALL_SCHEMA}.recall_events e4
+       WHERE e4.lead_id = l.id AND e4.event_type = 'chatwoot_inbound'
+       ORDER BY e4.id DESC
+       LIMIT 1
+     ) last_inbound ON true
      WHERE l.status = 'em_atendimento_ia'
        AND l.respondeu = true
        AND l.opt_out = false
        AND (l.handoff_at IS NULL OR l.handoff_resolved = true)
+       -- Mesmo sinal negativo/de dúvida que bloqueia o nudge: não reengaja com
+       -- um lembrete "frio" quem já recusou levemente ou disse não reconhecer.
+       AND last_inbound.intent IS DISTINCT FROM 'objecao_prevencao'
+       AND last_inbound.intent IS DISTINCT FROM 'nao_reconhece'
        AND last_nudge.created_at <= now() - make_interval(days => ${RECALL_REMINDER_DELAY_DAYS})
        AND NOT EXISTS (
          SELECT 1 FROM ${RECALL_SCHEMA}.recall_events e2
