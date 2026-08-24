@@ -9,6 +9,8 @@ require('dotenv').config();
 
 const PORT = process.env.RECALL_PORT || 3001;
 const RECALL_SCHEMA = process.env.RECALL_DB_SCHEMA || 'recall';
+// Schema da Camila RH (triagem de candidatos), que compartilha a Inbox 5 com o Recall.
+const RH_SCHEMA = process.env.RH_DB_SCHEMA || 'rh';
 const connectionString = `postgresql://${process.env.PGUSER || 'postgres'}:${process.env.PGPASSWORD}@${process.env.PGHOST || 'db.nndduotjbyunggamqnyh.supabase.co'}:${process.env.PGPORT || 5432}/${process.env.PGDATABASE || 'postgres'}`;
 const RECALL_DRY_RUN = process.env.RECALL_DRY_RUN !== 'false';
 const RECALL_ENABLE_REAL_SEND = process.env.RECALL_ENABLE_REAL_SEND === 'true';
@@ -81,6 +83,9 @@ const CHATWOOT_RECALL_LABEL_AGUARDANDO = String(process.env.CHATWOOT_RECALL_LABE
 const CHATWOOT_RECALL_LABEL_OPT_OUT = String(process.env.CHATWOOT_RECALL_LABEL_OPT_OUT || 'recall_opt_out').trim() || 'recall_opt_out';
 const CHATWOOT_RECALL_LABEL_WRONG_NUMBER = String(process.env.CHATWOOT_RECALL_LABEL_WRONG_NUMBER || 'recall_numero_errado').trim() || 'recall_numero_errado';
 const CHATWOOT_RECALL_LABEL_SEM_INTERESSE = String(process.env.CHATWOOT_RECALL_LABEL_SEM_INTERESSE || 'recall_sem_interesse').trim() || 'recall_sem_interesse';
+// Inbox 5 é compartilhada com a Camila RH (triagem de candidatos a operador).
+// Conversa marcada com esta label pertence à RH, não a um paciente de recall.
+const CHATWOOT_RH_CANDIDATO_LABEL = String(process.env.CHATWOOT_RH_CANDIDATO_LABEL || 'rh_candidato').trim() || 'rh_candidato';
 const RECALL_HUMAN_PAUSE_HOURS = Math.max(0.1, Number(process.env.RECALL_HUMAN_PAUSE_HOURS) || 2);
 const RECALL_HUMAN_PAUSE_MS = RECALL_HUMAN_PAUSE_HOURS * 60 * 60 * 1000;
 // Sem valor padrão de propósito: sem essas duas env vars configuradas, o dashboard
@@ -1583,6 +1588,74 @@ async function fetchChatwootConversationLabels(conversationId) {
   }
 }
 
+// Gate da Inbox 5: decide se uma conversa pertence à Camila RH (candidato a vaga)
+// em vez de à Camila Recall (paciente). A label CHATWOOT_RH_CANDIDATO_LABEL é o
+// atalho rápido (checado antes desta função ser chamada); esta função é o
+// fallback que casa por conversation_id/telefone em rh.rh_candidatos e aplica a
+// label na hora — cobre o candidato que respondeu antes da label ser aplicada no
+// disparo do convite, e evita que a conversa fique órfã entre os dois agentes.
+async function findAndClaimRhCandidatoForInbound(inbound) {
+  if (!inbound.conversationId && !inbound.phone) return null;
+
+  const client = new Client({ connectionString });
+  await client.connect();
+  try {
+    let candidato = null;
+
+    if (inbound.conversationId) {
+      const byConversation = await client.query(
+        `SELECT id, telefone, chatwoot_conversation_id, chatwoot_contact_id, status
+           FROM ${RH_SCHEMA}.rh_candidatos
+          WHERE chatwoot_conversation_id = $1
+          LIMIT 1`,
+        [String(inbound.conversationId)]
+      );
+      if (byConversation.rows.length) candidato = byConversation.rows[0];
+    }
+
+    if (!candidato && inbound.phone) {
+      const byPhone = await client.query(
+        `SELECT id, telefone, chatwoot_conversation_id, chatwoot_contact_id, status
+           FROM ${RH_SCHEMA}.rh_candidatos
+          WHERE regexp_replace(coalesce(telefone, ''), '\\D', '', 'g') = $1
+          LIMIT 1`,
+        [inbound.phone]
+      );
+      if (byPhone.rows.length) candidato = byPhone.rows[0];
+    }
+
+    if (!candidato) return null;
+
+    await client.query(
+      `UPDATE ${RH_SCHEMA}.rh_candidatos
+          SET chatwoot_conversation_id = coalesce(chatwoot_conversation_id, $2),
+              chatwoot_contact_id = coalesce(chatwoot_contact_id, $3),
+              atualizado_em = now()
+        WHERE id = $1`,
+      [candidato.id, inbound.conversationId ? String(inbound.conversationId) : null, inbound.contactId ? String(inbound.contactId) : null]
+    );
+
+    await client.query(
+      `INSERT INTO ${RH_SCHEMA}.rh_events (candidato_id, event_type, payload)
+       VALUES ($1, 'chatwoot_inbound_roteado', $2::jsonb)`,
+      [candidato.id, JSON.stringify({ conversation_id: inbound.conversationId, phone: inbound.phone, content: inbound.content })]
+    );
+
+    if (inbound.conversationId) {
+      try {
+        await mergeChatwootConversationLabels(inbound.conversationId, [CHATWOOT_RH_CANDIDATO_LABEL]);
+      } catch (error) {
+        // Não bloqueia o roteamento por falha ao aplicar a label — a próxima
+        // mensagem tenta de novo pela mesma checagem de telefone.
+      }
+    }
+
+    return candidato;
+  } finally {
+    await client.end();
+  }
+}
+
 async function handleRecallHumanTakeoverIfNeeded(inbound) {
   if (inbound.event !== 'message_created' || !inbound.isOutgoing) return;
   if (!inbound.inboxId || inbound.inboxId !== String(CHATWOOT_RECALL_INBOX_ID)) return;
@@ -1664,6 +1737,15 @@ async function handleRecallChatwootInbound(rawBody) {
   // (confirmado: sempre vinha vazio em produção). Busca direto pela API para que
   // um label como ia_off, aplicado manualmente por um humano, seja respeitado.
   inbound.labels = await fetchChatwootConversationLabels(inbound.conversationId);
+
+  if (inbound.labels.includes(CHATWOOT_RH_CANDIDATO_LABEL)) {
+    return { success: true, ignored: true, reason: 'conversa_rh_candidato' };
+  }
+
+  const rhCandidato = await findAndClaimRhCandidatoForInbound(inbound);
+  if (rhCandidato) {
+    return { success: true, ignored: true, reason: 'conversa_rh_candidato', candidatoId: rhCandidato.id };
+  }
 
   const client = new Client({ connectionString });
   await client.connect();
